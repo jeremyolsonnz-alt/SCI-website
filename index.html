@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Beyond SCI — Jeremy Olson</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #2A2820;
+    --bark: #5C4A2A;
+    --rust: #8B4513;
+    --sage: #6B7C5E;
+    --gold: #C8963C;
+    --muted: #7A7060;
+    --border: #E0D8C8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--charcoal);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: #C8C0B0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    background: var(--charcoal);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 5rem 6rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(200,150,60,0.04) 40px,
+      rgba(200,150,60,0.04) 41px
+    );
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 1.15;
+    color: var(--cream);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: #A89E8C;
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--charcoal);
+    border: none;
+    padding: 0.85rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #D8A84C; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 0.85rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-pillars {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .pillar-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,150,60,0.2);
+    padding: 1.5rem 1.75rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .pillar-card:hover { background: rgba(200,150,60,0.08); border-color: rgba(200,150,60,0.5); }
+  .pillar-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .pillar-title {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+  .pillar-sub {
+    font-size: 0.82rem;
+    color: #7A7060;
+    line-height: 1.5;
+  }
+
+  /* SECTION WRAPPER */
+  section { padding: 6rem 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.25;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 1.25rem;
+  }
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 620px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-aside {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    color: var(--bark);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .about-text p {
+    margin-bottom: 1rem;
+    color: #4A4438;
+    font-size: 0.97rem;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* PILLAR SECTIONS */
+  .pillar-section { border-top: 1px solid var(--border); }
+  .pillar-section:nth-child(even) { background: var(--cream); }
+
+  .pillar-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+  .pillar-number-large {
+    font-family: 'Lora', serif;
+    font-size: 6rem;
+    line-height: 1;
+    color: rgba(200,150,60,0.15);
+    font-weight: 400;
+    margin-bottom: -1rem;
+  }
+
+  /* RESEARCH - domain grid */
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+  .domain-cell {
+    background: var(--warm-white);
+    padding: 1.5rem;
+  }
+  .pillar-section:nth-child(even) .domain-cell { background: var(--cream); }
+  .domain-score {
+    font-size: 1.6rem;
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    color: var(--rust);
+    margin-bottom: 0.3rem;
+  }
+  .domain-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--charcoal);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+  .domain-note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* KEY FINDING BOX */
+  .finding-box {
+    background: var(--charcoal);
+    padding: 2.5rem 3rem;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .finding-box::before {
+    content: '"';
+    font-family: 'Lora', serif;
+    font-size: 10rem;
+    line-height: 1;
+    color: rgba(200,150,60,0.1);
+    position: absolute;
+    top: -1rem;
+    left: 1.5rem;
+  }
+  .finding-box p {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    line-height: 1.65;
+    color: var(--cream);
+    font-style: italic;
+    position: relative; z-index: 2;
+    max-width: 700px;
+  }
+  .finding-source {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 1rem;
+    font-style: normal;
+    display: block;
+  }
+
+  /* VOICES */
+  .voices-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+  .voice-card {
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    background: rgba(200,150,60,0.04);
+  }
+  .voice-text {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #4A4438;
+  }
+  .voice-attr {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.6rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* HARMONICA */
+  .harp-benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+  .benefit-card {
+    padding: 2rem 1.75rem;
+    border: 1px solid var(--border);
+    background: var(--warm-white);
+  }
+  .benefit-icon {
+    width: 40px; height: 40px;
+    background: var(--charcoal);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .benefit-icon svg { width: 20px; height: 20px; fill: var(--gold); }
+  .benefit-title {
+    font-weight: 500;
+    font-size: 0.92rem;
+    margin-bottom: 0.5rem;
+    color: var(--charcoal);
+  }
+  .benefit-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+  /* MODULE TIMELINE */
+  .module-list { margin: 3rem 0; }
+  .module-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .module-item:last-child { border-bottom: none; }
+  .module-num {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    color: rgba(200,150,60,0.3);
+    font-weight: 400;
+    line-height: 1;
+    padding-top: 0.15rem;
+  }
+  .module-content {}
+  .module-title {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+    color: var(--charcoal);
+  }
+  .module-duration {
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .module-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+  .module-skills {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;
+  }
+  .skill-tag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    background: rgba(200,150,60,0.1);
+    color: var(--bark);
+    letter-spacing: 0.04em;
+  }
+
+  /* GIE */
+  .gie-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .gie-phase-list { list-style: none; margin: 2rem 0; }
+  .gie-phase {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .gie-phase:last-child { border-bottom: none; }
+  .gie-dot {
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 0.45rem;
+  }
+  .gie-phase-title {
+    font-weight: 500;
+    font-size: 0.92rem;
+    margin-bottom: 0.3rem;
+    color: var(--charcoal);
+  }
+  .gie-phase-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+  .gie-suggestions {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 2rem 2.25rem;
+  }
+  .gie-suggestions h4 {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+    color: var(--bark);
+  }
+  .suggestion-item {
+    display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: start;
+  }
+  .sug-num {
+    font-size: 0.72rem;
+    color: var(--gold);
+    font-weight: 500;
+    min-width: 18px;
+    padding-top: 0.15rem;
+  }
+  .sug-text { font-size: 0.85rem; color: #5A5040; line-height: 1.6; }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 3rem 0;
+  }
+  .stat-cell {
+    background: var(--warm-white);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+  }
+  .pillar-section:nth-child(even) .stat-cell { background: var(--cream); }
+  .stat-val {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    color: var(--charcoal);
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--charcoal);
+    padding: 6rem 0;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-section .section-title { color: var(--cream); }
+  .contact-section .section-intro { color: #7A7060; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7A7060;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--cream);
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group select { appearance: none; cursor: pointer; }
+  .form-group textarea { min-height: 120px; }
+
+  /* FOOTER */
+  footer {
+    background: #1A1810;
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    color: #5A5040;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: #444030;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 3rem 2rem; min-height: auto; }
+    .hero-pillars { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .pillar-header { grid-template-columns: 1fr; gap: 1.5rem; }
+    .harp-benefit-grid { grid-template-columns: 1fr 1fr; }
+    .gie-grid { grid-template-columns: 1fr; }
+    .voices-grid { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .harp-benefit-grid { grid-template-columns: 1fr; }
+    .domain-grid { grid-template-columns: 1fr 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .finding-box { padding: 1.75rem 1.5rem; }
+    .hero h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Living Beyond <span>SCI</span></div>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="harmonica_page.html">Harmonica</a></li>
+    <li><a href="#gie">Guided Imagery</a></li>
+    <li><a href="#bibliography">Bibliography</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top: 5rem; padding-bottom: 5rem;">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Jeremy Olson — MSocSc, Waikato University</div>
+    <h1>Life after spinal cord injury can be <em>richer</em> than you think</h1>
+    <p class="hero-desc">Twenty years of research, practice, and lived experience across three programs — all dedicated to improving quality of life, respiratory health, and physical recovery after SCI.</p>
+    <div class="hero-cta">
+      <a href="#research" class="btn-primary">Explore the Research</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-pillars">
+    <a href="#research" class="pillar-card">
+      <div class="pillar-num">Pillar 01 — Deakin University</div>
+      <div class="pillar-title">Quality of Life Research</div>
+      <div class="pillar-sub">78 participants · 41 surveys analysed · 8 domains of life</div>
+    </a>
+    <a href="harmonica_page.html" class="pillar-card">
+      <div class="pillar-num">Pillar 02 — Hands-Free Programme</div>
+      <div class="pillar-title">Harmonica for Quadriplegia</div>
+      <div class="pillar-sub">Respiratory strengthening · Musical expression · 6-module curriculum</div>
+    </a>
+    <a href="#gie" class="pillar-card">
+      <div class="pillar-num">Pillar 03 — Mind-Body Therapy</div>
+      <div class="pillar-title">Guided Imagery Exposure</div>
+      <div class="pillar-sub">Neural regeneration · BRAC cycles · Visualisation protocol</div>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" style="padding: 5rem 0;">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-aside">"What helps people not just survive SCI — but flourish?"</div>
+      <div class="about-text">
+        <p>My name is Jeremy Olson. I hold a Masters of Psychology from Waikato University, New Zealand, and conducted my graduate research at Deakin University in Melbourne, Australia, under the supervision of Professor Robert Cummins.</p>
+        <p>Over two decades I have pursued one question through three very different lenses: academic research, musical rehabilitation, and mind-body medicine. This website brings that work together for the first time in one place.</p>
+        <p>Whether you are a person living with SCI, a rehabilitation clinician, a researcher, or a family member — I hope something here is useful to you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLAR 1: RESEARCH -->
+<section id="research" class="pillar-section" style="padding: 6rem 0;">
+  <div class="container">
+    <div class="pillar-header">
+      <div>
+        <div class="pillar-number-large">01</div>
+        <div class="section-label">Deakin University · Melbourne</div>
+        <h2 class="section-title">Quality of Life Research</h2>
+        <p class="section-intro">A graduate psychology study examining subjective quality of life and strategies of control in 78 people with SCI from Australia, USA, New Zealand, Canada, the UK, and Germany — supervised by Professor Robert Cummins.</p>
+      </div>
+      <div>
+        <div class="stat-row" style="margin: 0;">
+          <div class="stat-cell"><div class="stat-val">78</div><div class="stat-label">Participants</div></div>
+          <div class="stat-cell"><div class="stat-val">41</div><div class="stat-label">Surveys analysed</div></div>
+          <div class="stat-cell"><div class="stat-val">4,709</div><div class="stat-label">Total data points</div></div>
+          <div class="stat-cell"><div class="stat-val">18 yrs</div><div class="stat-label">Avg time post-injury</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Life Satisfaction Scores — SCI vs General Population</div>
+    <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 1.5rem;">Mean scores expressed as % of scale maximum (%SM). General population norm: ~73–75%SM across all domains.</p>
+
+    <div class="domain-grid">
+      <div class="domain-cell">
+        <div class="domain-score">53.2%</div>
+        <div class="domain-name">Material Well-being</div>
+        <div class="domain-note">Extra costs of SCI, reduced employment — lowest SCI domain score</div>
+      </div>
+      <div class="domain-cell">
+        <div class="domain-score">59.3%</div>
+        <div class="domain-name">Health</div>
+        <div class="domain-note">Secondary conditions, pain (46–80% prevalence), and aging effects</div>
+      </div>
+      <div class="domain-cell">
+        <div class="domain-score">52.1%</div>
+        <div class="domain-name">Productivity</div>
+        <div class="domain-note">Only ~30% in paid employment; education a key protective factor</div>
+      </div>
+      <div class="domain-cell">
+        <div class="domain-score">66.5%</div>
+        <div class="domain-name">Intimacy</div>
+        <div class="domain-note">Highest SCI domain — family and close relationships most protective</div>
+      </div>
+      <div class="domain-cell">
+        <div class="domain-score">65.3%</div>
+        <div class="domain-name">Safety</div>
+        <div class="domain-note">Independence, mobility, housing — not significantly different from general population</div>
+      </div>
+      <div class="domain-cell">
+        <div class="domain-score">64.3%</div>
+        <div class="domain-name">Place in Community</div>
+        <div class="domain-note">Social integration, civic participation — barriers often attitudinal</div>
+      </div>
+      <div class="domain-cell">
+        <div class="domain-score">63.4%</div>
+        <div class="domain-name">Emotional Well-being</div>
+        <div class="domain-note">Depression not inevitable — 20–45% experience moderate-severe depression post-injury</div>
+      </div>
+      <div class="domain-cell">
+        <div class="domain-score">63.7%</div>
+        <div class="domain-name">Spirituality</div>
+        <div class="domain-note">Personal growth often reported. No participant cited spirituality as making coping harder</div>
+      </div>
+    </div>
+
+    <div class="finding-box">
+      <p>The only strategy of control significantly associated with higher life satisfaction was "compensatory secondary control" — specifically, attributing the inability to achieve a goal to <strong>bad luck</strong>. A sense of fatalism, rather than self-blame, predicted wellbeing across six life domains.</p>
+      <span class="finding-source">Olson & Cummins (1999) — Deakin University</span>
+    </div>
+
+    <div class="section-label" style="margin-top: 3rem;">In Their Own Words — What Helped Coping</div>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-text">"The will to win. No other option. Feedback in regard to progress has been positive."</div>
+        <div class="voice-attr">Survey participant</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-text">"Attitude to life — if we are here only once, make the best of it. There is always someone worse off than yourself. Life is what you make it."</div>
+        <div class="voice-attr">Survey participant, 16 years post-injury</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-text">"Support from family and friends, I am usually positive in my outlook; I am reasonably inventive; I try until I prove to myself I cannot succeed."</div>
+        <div class="voice-attr">Survey participant</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-text">"By moving to a place of acceptance, I have learned to cope best. No longer do I have an abundance of negative energy surrounding my situation."</div>
+        <div class="voice-attr">Survey participant</div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top: 2rem;">What Made Coping Harder</div>
+    <div class="voices-grid">
+      <div class="voice-card" style="border-color: var(--rust);">
+        <div class="voice-text">"There is no escaping the paralysis. It confronts you from the time you awake until you go to sleep."</div>
+        <div class="voice-attr">Survey participant</div>
+      </div>
+      <div class="voice-card" style="border-color: var(--rust);">
+        <div class="voice-text">"Architects and building practitioners who do not understand or care about the requirements of people with a disability. Governments who claim in policy to assist but in practice do not."</div>
+        <div class="voice-attr">Survey participant</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem; padding: 2rem 2.25rem; border: 1px solid var(--border); background: rgba(200,150,60,0.04);">
+      <div class="section-label">Key Implications for Rehabilitation</div>
+      <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.8; max-width: 700px;">Persons with SCI placed <strong>significantly greater importance</strong> than the general population on productivity, safety, and place in community — yet reported lower satisfaction in these same areas. These three domains may need greater emphasis in rehabilitation planning. Greater age and longer time since injury were both associated with higher life satisfaction, suggesting that adaptation and acceptance develop over time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLAR 2: HARMONICA -->
+<section id="harmonica" class="pillar-section" style="background: var(--cream); padding: 6rem 0;">
+  <div class="container">
+    <div class="pillar-header">
+      <div>
+        <div class="pillar-number-large">02</div>
+        <div class="section-label">Hands-Free Programme</div>
+        <h2 class="section-title">Harmonica for Quadriplegia</h2>
+        <p class="section-intro">A free, web-based blues harmonica curriculum designed specifically for people with high-level spinal cord injuries — addressing both respiratory health and quality of life through music.</p>
+      </div>
+      <div style="padding-top: 1rem;">
+        <div class="finding-box" style="margin: 0;">
+          <p style="font-size: 1rem;">"Strengthening the breath and living longer is a by-product of having a good old-fashioned blast on the harp."</p>
+          <span class="finding-source">Jeremy Olson — Programme founder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Why the Harmonica?</div>
+    <div class="harp-benefit-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        </div>
+        <div class="benefit-title">Truly hands-free</div>
+        <div class="benefit-desc">One of the few instruments that can be played without any hand function, using a harmonica holder/rack. Accessible for all levels of quadriplegia.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </div>
+        <div class="benefit-title">Respiratory strengthening</div>
+        <div class="benefit-desc">Paralysis weakens diaphragm muscles, increasing risk of dangerous lung infections. Playing harmonica provides an engaging alternative to blowing through a straw.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        </div>
+        <div class="benefit-title">Emotional expression</div>
+        <div class="benefit-desc">Music provides a voice for feelings that are hard to put into words — joy, grief, frustration, and hope. The blues tradition is especially suited to authentic emotional expression.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <div class="benefit-title">Community connection</div>
+        <div class="benefit-desc">Music creates natural social connection — jamming, performing, and sharing experience with others. Endorsed by SCI associations across Australia, Canada, NZ, South Africa, and the USA.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        </div>
+        <div class="benefit-title">Free and accessible</div>
+        <div class="benefit-desc">The course requires minimal equipment — a C harmonica (~$30) and a rack holder — and is freely available online. Practice lying down, sitting, anywhere.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        </div>
+        <div class="benefit-title">Quick to sound good</div>
+        <div class="benefit-desc">"The harmonica is one of the few instruments where you start sounding pretty good before long." The blues scale is just 7 notes, and songs like Spoonful can be started in the first week.</div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top: 2rem;">Curriculum — 6 Progressive Modules</div>
+    <div class="module-list">
+      <div class="module-item">
+        <div class="module-num">01</div>
+        <div class="module-content">
+          <div class="module-duration">Week 1</div>
+          <div class="module-title">Foundation &amp; Setup</div>
+          <div class="module-desc">Choosing and fitting a harmonica rack, puckering technique for single notes, understanding harmonica layout, building a personalized practice schedule.</div>
+          <div class="module-skills"><span class="skill-tag">Single notes</span><span class="skill-tag">Posture</span><span class="skill-tag">Rack setup</span><span class="skill-tag">Practice habits</span></div>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num">02</div>
+        <div class="module-content">
+          <div class="module-duration">Week 2</div>
+          <div class="module-title">Rhythm &amp; Expression</div>
+          <div class="module-desc">Harmonica chugging for bluesy grooves, first improvisation exercises using call and response, playing with dynamics. First song: Spoonful by Etta James.</div>
+          <div class="module-skills"><span class="skill-tag">Chugging</span><span class="skill-tag">Dynamics</span><span class="skill-tag">Improvisation</span><span class="skill-tag">Spoonful</span></div>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num">03</div>
+        <div class="module-content">
+          <div class="module-duration">Weeks 3–4</div>
+          <div class="module-title">Bending Notes — the Bluesy Sound</div>
+          <div class="module-desc">The characteristic blues sound comes from bending holes 1–6 draw. Tongue and air control technique, troubleshooting, and emotional application of bent notes.</div>
+          <div class="module-skills"><span class="skill-tag">Draw bends</span><span class="skill-tag">Tongue position</span><span class="skill-tag">Bendometer app</span><span class="skill-tag">Wailing sound</span></div>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num">04</div>
+        <div class="module-content">
+          <div class="module-duration">Week 5</div>
+          <div class="module-title">The Blues Scale &amp; 12-Bar Structure</div>
+          <div class="module-desc">The seven-note blues scale: -2 -3' 4 -4'' -4 -5 6. Understanding tension and resolution, the 12-bar blues structure, and playing safely over chord changes. Song: Happy by Pharrell Williams.</div>
+          <div class="module-skills"><span class="skill-tag">Blues scale</span><span class="skill-tag">12-bar blues</span><span class="skill-tag">Turnaround</span><span class="skill-tag">Happy</span></div>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num">05</div>
+        <div class="module-content">
+          <div class="module-duration">Weeks 6–7</div>
+          <div class="module-title">Essential Riffs &amp; Special Effects</div>
+          <div class="module-desc">Classic riffs (Good Morning, Mannish Boy, Duke, Trouble, Low-Down Blues), slides, throat vibrato, trills, octaves, and making the harmonica "talk" using speech consonants. Songs: Roadhouse Blues, Smells Like Teen Spirit.</div>
+          <div class="module-skills"><span class="skill-tag">Riffs</span><span class="skill-tag">Vibrato</span><span class="skill-tag">Slides</span><span class="skill-tag">Trills</span><span class="skill-tag">Octaves</span></div>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num">06</div>
+        <div class="module-content">
+          <div class="module-duration">Weeks 8+</div>
+          <div class="module-title">Performance &amp; Improvisation</div>
+          <div class="module-desc">Building longer connected phrases, dramatic arcs, playing with others, choosing the right key, and performing 5 complete songs. Guidance for continuing the journey into local jam sessions and open mics.</div>
+          <div class="module-skills"><span class="skill-tag">Jamming</span><span class="skill-tag">5-song repertoire</span><span class="skill-tag">Personal style</span><span class="skill-tag">Performance</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2rem; padding: 1.75rem 2rem; background: var(--charcoal); display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;">
+      <div>
+        <div style="font-family: 'Lora', serif; font-size: 1rem; color: var(--cream); margin-bottom: 0.3rem;">Access the free course</div>
+        <div style="font-size: 0.83rem; color: #7A7060;">Freely available online — no account needed. Harmonica + rack required (~$30–50 total).</div>
+      </div>
+      <a href="#contact" class="btn-primary">Contact Jeremy to Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- PILLAR 3: GIE -->
+<style>
+  /* GIE expanded styles */
+  .gie-hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start; margin-bottom: 4rem;
+  }
+  .gie-science-box {
+    background: var(--charcoal); padding: 2rem 2.25rem;
+  }
+  .gie-science-box p {
+    font-size: 0.88rem; color: #A89E8C; line-height: 1.85; margin-bottom: 0.85rem;
+  }
+  .gie-science-box p:last-child { margin-bottom: 0; }
+  .gie-science-title {
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .gie-science-title::before {
+    content: ''; width: 20px; height: 1px; background: var(--gold); display: block;
+  }
+
+  /* Protocol steps with images */
+  .gie-steps { margin: 3rem 0; }
+  .gie-step {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: start;
+    padding: 3rem 0; border-bottom: 1px solid var(--border);
+  }
+  .gie-step:last-child { border-bottom: none; }
+  .gie-step:nth-child(even) { direction: rtl; }
+  .gie-step:nth-child(even) > * { direction: ltr; }
+  .gie-step-text {}
+  .gie-step-num {
+    font-family: 'Lora', serif; font-size: 3.5rem;
+    color: rgba(200,150,60,0.15); line-height: 1;
+    margin-bottom: 0.5rem; font-weight: 400;
+  }
+  .gie-step-title {
+    font-family: 'Lora', serif; font-size: 1.3rem;
+    font-weight: 400; color: var(--charcoal);
+    margin-bottom: 0.75rem; line-height: 1.3;
+  }
+  .gie-step-desc {
+    font-size: 0.92rem; color: #4A4438; line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+  .gie-step-detail {
+    font-size: 0.85rem; color: var(--muted); line-height: 1.8;
+  }
+  .gie-step-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem;
+  }
+  .gie-tag {
+    font-size: 0.72rem; padding: 0.25rem 0.65rem;
+    background: rgba(200,150,60,0.1); color: var(--bark);
+    letter-spacing: 0.04em;
+  }
+
+  /* Image placeholder */
+  .gie-img-frame {
+    position: relative; background: #1E1C14;
+    border: 1px solid rgba(200,150,60,0.2);
+    overflow: hidden; cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .gie-img-frame:hover { border-color: rgba(200,150,60,0.5); }
+  .gie-img-frame img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; transition: opacity 0.3s;
+  }
+  .gie-img-placeholder {
+    min-height: 280px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 2rem; text-align: center;
+    gap: 1rem;
+  }
+  .placeholder-icon {
+    width: 48px; height: 48px; border: 1px dashed rgba(200,150,60,0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .placeholder-icon svg { width: 22px; height: 22px; fill: rgba(200,150,60,0.4); }
+  .placeholder-title {
+    font-family: 'Lora', serif; font-size: 0.95rem;
+    color: rgba(200,150,60,0.6); font-style: italic;
+  }
+  .placeholder-hint {
+    font-size: 0.72rem; color: #3A3828; letter-spacing: 0.06em;
+    text-transform: uppercase; line-height: 1.6;
+  }
+  .placeholder-filename {
+    font-family: monospace; font-size: 0.75rem;
+    color: rgba(200,150,60,0.3); background: rgba(200,150,60,0.05);
+    padding: 0.3rem 0.6rem; border: 1px solid rgba(200,150,60,0.1);
+  }
+  .img-caption {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(200,150,60,0.15);
+    font-size: 0.75rem; color: #5A5040;
+    letter-spacing: 0.04em;
+  }
+
+  /* Lightbox */
+  .lightbox-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92); z-index: 1000;
+    align-items: center; justify-content: center;
+    padding: 2rem;
+  }
+  .lightbox-overlay.open { display: flex; }
+  .lightbox-inner {
+    position: relative; max-width: 800px; width: 100%;
+    max-height: 90vh;
+  }
+  .lightbox-inner img {
+    width: 100%; max-height: 80vh; object-fit: contain;
+    display: block;
+  }
+  .lightbox-close {
+    position: absolute; top: -2.5rem; right: 0;
+    color: #7A7060; cursor: pointer; font-size: 0.8rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: none; border: none; font-family: 'DM Sans', sans-serif;
+  }
+  .lightbox-caption {
+    padding: 0.75rem 0; font-size: 0.82rem; color: #5A5040;
+    font-style: italic; font-family: 'Lora', serif;
+  }
+
+  /* Anatomy reference grid */
+  .anatomy-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border); margin: 3rem 0;
+  }
+  .anatomy-cell {
+    background: var(--warm-white); cursor: pointer;
+    transition: background 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .anatomy-cell:hover { background: #F0EBE0; }
+  .anatomy-img-area {
+    height: 180px; background: #1E1C14;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .anatomy-img-area img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .anatomy-placeholder {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem; padding: 1rem; text-align: center; width: 100%;
+  }
+  .anatomy-placeholder svg { width: 28px; height: 28px; fill: rgba(200,150,60,0.25); }
+  .anatomy-placeholder-text {
+    font-size: 0.7rem; color: #3A3828; text-transform: uppercase;
+    letter-spacing: 0.06em; line-height: 1.5;
+  }
+  .anatomy-cell-info { padding: 1rem; }
+  .anatomy-cell-title {
+    font-weight: 500; font-size: 0.85rem;
+    margin-bottom: 0.3rem; color: var(--charcoal);
+  }
+  .anatomy-cell-desc {
+    font-size: 0.78rem; color: var(--muted); line-height: 1.55;
+  }
+  .anatomy-cell-filename {
+    font-family: monospace; font-size: 0.68rem; color: rgba(200,150,60,0.5);
+    margin-top: 0.5rem; display: block;
+  }
+  .click-hint {
+    position: absolute; top: 0.5rem; right: 0.5rem;
+    background: rgba(0,0,0,0.5); color: rgba(200,150,60,0.7);
+    font-size: 0.65rem; padding: 0.2rem 0.4rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .anatomy-cell:hover .click-hint { opacity: 1; }
+
+  /* Suggestions panel */
+  .suggestions-panel {
+    background: var(--charcoal); padding: 3rem;
+    margin: 3rem 0;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: start;
+  }
+  .suggestions-intro h3 {
+    font-family: 'Lora', serif; font-size: 1.4rem;
+    color: var(--cream); font-weight: 400; margin-bottom: 1rem;
+    line-height: 1.35;
+  }
+  .suggestions-intro p {
+    font-size: 0.88rem; color: #7A7060; line-height: 1.8;
+  }
+  .suggestions-list { }
+  .sug-full-item {
+    display: flex; gap: 1rem; padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: start;
+  }
+  .sug-full-item:last-child { border-bottom: none; }
+  .sug-full-num {
+    font-family: 'Lora', serif; font-size: 1rem;
+    color: rgba(200,150,60,0.4); min-width: 24px;
+    padding-top: 0.1rem;
+  }
+  .sug-full-text {
+    font-size: 0.88rem; color: #A89E8C; line-height: 1.75;
+    font-style: italic; font-family: 'Lora', serif;
+  }
+
+  /* Participation & disclaimer */
+  .gie-bottom-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .gie-info-card {
+    padding: 1.75rem; border: 1px solid var(--border);
+  }
+  .gie-info-card-title {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.85rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .gie-info-card-title::before {
+    content: ''; width: 16px; height: 1px; background: var(--gold); display: block;
+  }
+  .gie-info-card p {
+    font-size: 0.85rem; color: var(--muted); line-height: 1.75;
+  }
+  .gie-disclaimer {
+    margin-top: 2rem; padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--rust);
+    background: rgba(139,69,19,0.04);
+  }
+  .gie-disclaimer p {
+    font-size: 0.83rem; color: #6A4A3A; line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .gie-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .gie-step { grid-template-columns: 1fr; gap: 1.5rem; }
+    .gie-step:nth-child(even) { direction: ltr; }
+    .anatomy-grid { grid-template-columns: 1fr 1fr; }
+    .suggestions-panel { grid-template-columns: 1fr; gap: 2rem; }
+    .gie-bottom-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .anatomy-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<section id="gie" class="pillar-section" style="padding: 6rem 0;">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="gie-hero-grid">
+      <div>
+        <div class="pillar-number-large">03</div>
+        <div class="section-label">Mind-Body Therapy</div>
+        <h2 class="section-title">Guided Imagery Exposure</h2>
+        <p class="section-intro">A rehabilitation intervention combining naturally occurring cycles of relaxation with specific mental imagery techniques — aimed at stimulating nerve growth and improving movement and sensation after spinal cord injury.</p>
+        <p style="font-size:0.92rem;color:var(--muted);line-height:1.8;border-left:3px solid var(--gold);padding-left:1.25rem;font-style:italic;">"The imagination is one of humanity's oldest and greatest healing resources. The fact that thousands of drug studies have identified the placebo effect shows the power of the imagination."</p>
+      </div>
+      <div class="gie-science-box">
+        <div class="gie-science-title">The theoretical basis</div>
+        <p>When we think, neurons fire repeatedly throughout the brain. This releases chemicals that directly affect nerve cells of the central nervous system. The imagination is therefore not merely psychological — it is a physiological event.</p>
+        <p>Ernest Rossi's work <em>The Psychobiology of Mind-Body Healing</em> traces the biological pathways by which mental imagery during naturally occurring rest states can influence the immune and endocrine systems — and potentially, the nervous system itself.</p>
+        <p>GIE is designed to identify these rest windows and use them deliberately, with specific imagery directed at spinal cord regeneration. After 20 years of research, this protocol represents my best current understanding of how to direct that process.</p>
+        <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.08);font-size:0.78rem;color:#5A5040;line-height:1.7;">
+          Time commitment: ~20 minutes per day · Duration: 3 months · Outcome: unknown, dependent on injury, belief, and consistency
+        </div>
+      </div>
+    </div>
+
+    <!-- Anatomy Reference Images -->
+    <div class="section-label">Visualisation aids — anatomy reference images</div>
+    <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;max-width:680px;margin-bottom:0.5rem;">Study these images before each session. The more vividly you can recall the structure of your spine and nervous system, the more targeted your visualisation becomes. Click any image to enlarge.</p>
+    <p style="font-size:0.78rem;color:rgba(200,150,60,0.6);margin-bottom:1.5rem;font-style:italic;">Images coming soon — placeholders shown below. To add your images, save them in the same folder as this file using the filenames shown.</p>
+
+    <div class="anatomy-grid">
+      <div class="anatomy-cell" onclick="openLightbox('img-spine', 'Cross-section of the spinal column — showing gray matter (butterfly shape) and white matter. Imagine the Luna moth with wings outstretched.')">
+        <div class="anatomy-img-area">
+          <div class="anatomy-placeholder">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            <div class="anatomy-placeholder-text">Image pending</div>
+          </div>
+          <!-- When ready, replace the div above with: <img id="img-spine" src="spine-crosssection.jpg" alt="Cross-section of the spinal column"> -->
+          <span class="click-hint">enlarge</span>
+        </div>
+        <div class="anatomy-cell-info">
+          <div class="anatomy-cell-title">Spinal column cross-section</div>
+          <div class="anatomy-cell-desc">Gray and white matter structure. The gray matter resembles a butterfly or Luna moth with wings outstretched — use this as your mental anchor.</div>
+          <span class="anatomy-cell-filename">→ save as: spine-crosssection.jpg</span>
+        </div>
+      </div>
+
+      <div class="anatomy-cell" onclick="openLightbox('img-nervous', 'The nervous system — full body nerve pathways from brain to extremities. Visualise liquid white light flowing through these pathways.')">
+        <div class="anatomy-img-area">
+          <div class="anatomy-placeholder">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            <div class="anatomy-placeholder-text">Image pending</div>
+          </div>
+          <!-- When ready: <img id="img-nervous" src="nervous-system.jpg" alt="The nervous system"> -->
+          <span class="click-hint">enlarge</span>
+        </div>
+        <div class="anatomy-cell-info">
+          <div class="anatomy-cell-title">The nervous system</div>
+          <div class="anatomy-cell-desc">Full-body nerve pathways from brain to extremities. During breathing exercises, imagine white light flowing through these exact routes.</div>
+          <span class="anatomy-cell-filename">→ save as: nervous-system.jpg</span>
+        </div>
+      </div>
+
+      <div class="anatomy-cell" onclick="openLightbox('img-skeleton', 'The skeletal system — vertebral column and bone structure. Study the vertebrae and imagine the space within the spinal canal.')">
+        <div class="anatomy-img-area">
+          <div class="anatomy-placeholder">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            <div class="anatomy-placeholder-text">Image pending</div>
+          </div>
+          <!-- When ready: <img id="img-skeleton" src="skeletal-system.jpg" alt="The skeletal system"> -->
+          <span class="click-hint">enlarge</span>
+        </div>
+        <div class="anatomy-cell-info">
+          <div class="anatomy-cell-title">The skeletal system</div>
+          <div class="anatomy-cell-desc">Vertebral column and bone structure. Visualise the vertebrae protecting the cord, and imagine the ideal structure — perfectly formed, intact.</div>
+          <span class="anatomy-cell-filename">→ save as: skeletal-system.jpg</span>
+        </div>
+      </div>
+
+      <div class="anatomy-cell" onclick="openLightbox('img-perfect', 'Perfect body imagery — your chosen ideal of physical wholeness. Superimpose this image over your own body during Step 3 of the protocol.')">
+        <div class="anatomy-img-area">
+          <div class="anatomy-placeholder">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            <div class="anatomy-placeholder-text">Image pending</div>
+          </div>
+          <!-- When ready: <img id="img-perfect" src="perfect-body-image.jpg" alt="Perfect body image"> -->
+          <span class="click-hint">enlarge</span>
+        </div>
+        <div class="anatomy-cell-info">
+          <div class="anatomy-cell-title">Perfect body image</div>
+          <div class="anatomy-cell-desc">Your chosen embodiment of wholeness — Jesus Christ, or your own pre-injury self, or another ideal. Memorise every detail. This is the template you superimpose over your body.</div>
+          <span class="anatomy-cell-filename">→ save as: perfect-body-image.jpg</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Protocol Steps -->
+    <div class="section-label" style="margin-top:3rem;">The five-step protocol</div>
+    <p style="font-size:0.88rem;color:var(--muted);max-width:600px;line-height:1.8;margin-bottom:0.5rem;">Each step builds on the previous. The full session runs approximately 20 minutes and is most effective during a naturally occurring rest phase.</p>
+
+    <div class="gie-steps">
+
+      <div class="gie-step">
+        <div class="gie-step-text">
+          <div class="gie-step-num">01</div>
+          <div class="gie-step-title">Recognising the rest phase</div>
+          <div class="gie-step-desc">Every 90–120 minutes, the body enters a naturally occurring cycle of relaxation — the Basic Rest-Activity Cycle (BRAC), first identified by biologists in the 1950s. These phases last anywhere from a few moments to 20 minutes. They are your window.</div>
+          <div class="gie-step-detail">Signs of a rest phase: a slowing and deepening of breath, a desire to close your eyes, a sense of turning inward, a natural pause from external activity. During these states, the mind is more responsive to inner suggestions and thoughts have a greater influence on bodily processes.</div>
+          <div class="gie-step-tags">
+            <span class="gie-tag">Every 90–120 min</span>
+            <span class="gie-tag">5–20 min duration</span>
+            <span class="gie-tag">Deepened breath</span>
+            <span class="gie-tag">Heightened receptivity</span>
+          </div>
+        </div>
+        <div class="gie-img-frame" style="min-height:260px;">
+          <div class="gie-img-placeholder">
+            <div class="placeholder-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </div>
+            <div class="placeholder-title">BRAC cycle diagram</div>
+            <div class="placeholder-hint">A diagram showing the 90-minute rest-activity cycle across a 24-hour day could go here</div>
+            <div class="placeholder-filename">brac-diagram.jpg</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gie-step">
+        <div class="gie-step-text">
+          <div class="gie-step-num">02</div>
+          <div class="gie-step-title">Bone and nerve structure visualisation</div>
+          <div class="gie-step-desc">Study the anatomy reference images above before your session. During the rest phase, close your eyes and vividly reconstruct the structure of your spine and nervous system from memory — as clearly as if projected on a screen.</div>
+          <div class="gie-step-detail">Imagine the vertebrae and spinal canal. See the cross-section of the cord — the gray matter like a butterfly or Luna moth with wings outstretched. Imagine bright, liquid white light within the cerebrospinal fluid bridging across the site of injury. See nerve fibres growing toward each other, atom by atom, molecule by molecule, cell by cell. Use the anatomy images as anchors — the more detail you recall, the more targeted your visualisation.</div>
+          <div class="gie-step-tags">
+            <span class="gie-tag">Anatomy study</span>
+            <span class="gie-tag">Spinal cord cross-section</span>
+            <span class="gie-tag">White light imagery</span>
+            <span class="gie-tag">Nerve growth visualisation</span>
+          </div>
+        </div>
+        <div class="gie-img-frame" onclick="openLightbox('img-spine', 'Cross-section of the spinal column — the gray matter forms a butterfly shape. This is the structure you will visualise during Step 2.')" style="min-height:260px;cursor:pointer;">
+          <div class="gie-img-placeholder">
+            <div class="placeholder-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            </div>
+            <div class="placeholder-title">Spinal cross-section image</div>
+            <div class="placeholder-hint">Replace placeholder with your anatomy image</div>
+            <div class="placeholder-filename">spine-crosssection.jpg</div>
+          </div>
+          <div class="img-caption">Tap to enlarge · Gray matter: butterfly shape · White matter: surrounding</div>
+        </div>
+      </div>
+
+      <div class="gie-step">
+        <div class="gie-step-text">
+          <div class="gie-step-num">03</div>
+          <div class="gie-step-title">Perfect body imagery</div>
+          <div class="gie-step-desc">Before sleep each night, study your chosen perfect body image until you can reproduce it clearly with eyes closed. During sessions, visualise this ideal form standing before you — in every detail, down to individual hairs, the texture of clothing, the expression of the face.</div>
+          <div class="gie-step-detail">When the image is vivid, invite it to enter your body — rising up above your head, feet first, aligning itself perfectly with your own physical form. Feel your body respond. This perfect pattern is now superimposed over your nervous system. Hold the superimposed image and attempt movement of paralysed body parts. Note any new sensations, however faint. Even a light, whispy change on the skin is significant — it indicates new connections. Repeat the same movement pattern over and over to establish nervous-system memory.</div>
+          <div class="gie-step-tags">
+            <span class="gie-tag">Superimposition technique</span>
+            <span class="gie-tag">Attempted movement</span>
+            <span class="gie-tag">Sensation awareness</span>
+            <span class="gie-tag">Neural memory</span>
+          </div>
+        </div>
+        <div class="gie-img-frame" onclick="openLightbox('img-perfect', 'Your perfect body image — the template superimposed over your own form during Step 3.')" style="min-height:260px;cursor:pointer;">
+          <div class="gie-img-placeholder">
+            <div class="placeholder-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            </div>
+            <div class="placeholder-title">Perfect body image</div>
+            <div class="placeholder-hint">Your chosen image of wholeness — Jesus or pre-injury self</div>
+            <div class="placeholder-filename">perfect-body-image.jpg</div>
+          </div>
+          <div class="img-caption">Memorise every detail · Study nightly before sleep</div>
+        </div>
+      </div>
+
+      <div class="gie-step">
+        <div class="gie-step-text">
+          <div class="gie-step-num">04</div>
+          <div class="gie-step-title">White light breathing</div>
+          <div class="gie-step-desc">A breathing exercise that combines respiratory focus with directed imagery. Imagine a sphere of bright, sparkling white light just above your head. On each inhale, draw this light down through the crown of your head and send it along your nerve pathways.</div>
+          <div class="gie-step-detail">Follow the light as it travels from your brain down through the cervical spine, continuing through the thoracic and lumbar regions. When it reaches the site of injury, see it flooding the cerebrospinal fluid and bridging across the break — glowing, alive, connecting. On each exhale, release tension, doubt, and any negative thought. With each cycle, the connections grow. Ask your subconscious — that part of you that regulates heart rate, temperature, and all involuntary functions — to direct this light in whatever way will best serve healing.</div>
+          <div class="gie-step-tags">
+            <span class="gie-tag">Breath-led imagery</span>
+            <span class="gie-tag">Cerebrospinal fluid</span>
+            <span class="gie-tag">Subconscious instruction</span>
+            <span class="gie-tag">Tension release</span>
+          </div>
+        </div>
+        <div class="gie-img-frame" onclick="openLightbox('img-nervous', 'The nervous system — full-body nerve pathways. Use this as your map during the white light breathing exercise.')" style="min-height:260px;cursor:pointer;">
+          <div class="gie-img-placeholder">
+            <div class="placeholder-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            </div>
+            <div class="placeholder-title">Nervous system image</div>
+            <div class="placeholder-hint">Visualise white light flowing through these pathways</div>
+            <div class="placeholder-filename">nervous-system.jpg</div>
+          </div>
+          <div class="img-caption">Your roadmap for the white light breathing exercise</div>
+        </div>
+      </div>
+
+      <div class="gie-step">
+        <div class="gie-step-text">
+          <div class="gie-step-num">05</div>
+          <div class="gie-step-title">Dream work and journalling</div>
+          <div class="gie-step-desc">Before sleep, read the Positive Suggestions below aloud or silently. Review your day — notice where you acted from your highest ideal and where you fell short. This is not self-criticism; it is a feedback loop.</div>
+          <div class="gie-step-detail">Upon waking, record your dreams immediately. The subconscious communicates through dream imagery — symbols, feelings, and narratives that can guide your waking practice. Look for feedback about your visualisation work. Over time, a two-way communication develops between your conscious intent and your unconscious process. The journal is where this dialogue becomes visible. Ask your subconscious questions before sleeping. Note any inspiration upon waking. Be consistent — this is the thread that ties the practice together across weeks and months.</div>
+          <div class="gie-step-tags">
+            <span class="gie-tag">Dream recording</span>
+            <span class="gie-tag">Positive suggestions</span>
+            <span class="gie-tag">Daily reflection</span>
+            <span class="gie-tag">Conscious-subconscious loop</span>
+          </div>
+        </div>
+        <div class="gie-img-frame" style="min-height:260px;">
+          <div class="gie-img-placeholder">
+            <div class="placeholder-icon">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            </div>
+            <div class="placeholder-title">Journal / dream work image</div>
+            <div class="placeholder-hint">An image evoking reflection, writing, or inner landscape could go here</div>
+            <div class="placeholder-filename">journal-image.jpg</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Positive Suggestions -->
+    <div class="suggestions-panel">
+      <div class="suggestions-intro">
+        <h3>Positive Suggestions<br>for Nerve Regeneration</h3>
+        <p>Read these aloud or silently before sleep each night. With repetition, they move from conscious statement to subconscious instruction. The subconscious — the part of you that already regulates every involuntary process in your body — receives these as directives.</p>
+        <p style="margin-top:1rem;">Sometimes it can help to visualise writing each suggestion on a blackboard as you read it. The act of mentally "writing" deepens the impression on the subconscious mind.</p>
+        <div style="margin-top:1.5rem;padding:1.25rem;background:rgba(255,255,255,0.04);border-left:2px solid rgba(200,150,60,0.3);">
+          <p style="font-size:0.8rem;color:#5A5040;font-style:italic;">"Be positive in your imagination and faith. This will give greater power for your subconscious to act. Just focus on doing the exercises. Do not focus on the specifics of curing — focus on the practice itself."</p>
+        </div>
+      </div>
+      <div class="suggestions-list">
+        <div class="sug-full-item"><span class="sug-full-num">1.</span><span class="sug-full-text">My spinal cord and nervous system is regenerating, healing, and repairing toward normal and perfect function.</span></div>
+        <div class="sug-full-item"><span class="sug-full-num">2.</span><span class="sug-full-text">My subconscious mind is working seven days a week, 24 hours a day — every moment — to regenerate, heal, and restore my spinal cord and nervous system.</span></div>
+        <div class="sug-full-item"><span class="sug-full-num">3.</span><span class="sug-full-text">When I was a foetus in my mother's womb, my spinal cord and nervous system developed and became fully functional in nine months or less. My spinal cord and nervous system can become fully functional again.</span></div>
+        <div class="sug-full-item"><span class="sug-full-num">4.</span><span class="sug-full-text">My subconscious mind is controlling and creating in my body all required proteins, molecules, hormones, nerve growth factors, and stem cells necessary to regenerate my spinal cord and nervous system.</span></div>
+        <div class="sug-full-item"><span class="sug-full-num">5.</span><span class="sug-full-text">Within each of my body's cells is the genetics to create, recreate, and repair any cell, tissue, organ, or system within my body. My subconscious mind is now altering my genetics to regenerate and fully restore my spinal cord and nervous system.</span></div>
+        <div class="sug-full-item"><span class="sug-full-num">6.</span><span class="sug-full-text">My subconscious mind is restoring all normal spinal cord and nervous system connections for complete full-body mobility, strength, and sensory awareness.</span></div>
+        <div class="sug-full-item"><span class="sug-full-num">7.</span><span class="sug-full-text">All impediments and obstructions to spinal cord regeneration are only illusions — as every cell in the body regenerates at least once every seven years.</span></div>
+        <div class="sug-full-item"><span class="sug-full-num">8.</span><span class="sug-full-text">I commission my subconscious mind the task of regenerating my spinal cord and nervous system from this point forward until the task is completed.</span></div>
+        <div class="sug-full-item"><span class="sug-full-num">9.</span><span class="sug-full-text">I give thanks to my subconscious mind for regenerating, healing, and repairing my spinal cord and nervous system to normal and perfect function.</span></div>
+        <div class="sug-full-item"><span class="sug-full-num">10.</span><span class="sug-full-text">With God, all things are possible.</span></div>
+      </div>
+    </div>
+
+    <!-- Participation, Requirements, Disclaimer -->
+    <div class="gie-bottom-grid">
+      <div class="gie-info-card">
+        <div class="gie-info-card-title">Who can participate</div>
+        <p>Adults (18+) who have sustained spinal cord injury. Participation is entirely voluntary and anonymous — personal information is never linked to study data. You are free to withdraw at any time with no obligation.</p>
+      </div>
+      <div class="gie-info-card">
+        <div class="gie-info-card-title">Time commitment</div>
+        <p>Approximately 20 minutes per day, for three months. Sessions are most effective during naturally occurring rest phases throughout the day — not only at bedtime. Consistency matters more than duration.</p>
+      </div>
+      <div class="gie-info-card">
+        <div class="gie-info-card-title">What to expect</div>
+        <p>The outcome is unknown and will depend on injury level, completeness, belief systems, and consistency. Any new sensation — however faint — should be noted and reported. Awareness always precedes sensation. Progress may be subtle at first.</p>
+      </div>
+    </div>
+
+    <div class="gie-disclaimer">
+      <p><strong>Important:</strong> Guided Imagery Exposure does not replace any current medical care, medications, or professional advice from your doctors. All participants take full personal responsibility for any changes that may occur. If you are interested in participating, please contact Jeremy directly.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<!-- BIBLIOGRAPHY -->
+<section id="bibliography" style="padding: 6rem 0; background: var(--cream); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">Deakin University Research</div>
+    <h2 class="section-title">Bibliography</h2>
+    <p class="section-intro">References cited across the Quality of Life research conducted at Deakin University, Melbourne, supervised by Professor Robert Cummins. Surveys are listed in Appendix A of the thesis.</p>
+
+    <div style="columns: 2; column-gap: 3rem; margin-top: 2rem;" id="bib-list">
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Abramson, L. Y., Seligman, M. E., &amp; Teasdale, J. D. (1978). Learned helplessness in humans: Critique and reformulation. <em>Journal of Abnormal Psychology, 87</em>, 49–74.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Andrews, F., &amp; Withey, S. (1976). <em>Social Indicators of Well-being.</em> Plenum Press, New York.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Bach, J. R., &amp; Tilton, M. C. (1994). Satisfaction and well-being measures in ventilator assisted individuals with traumatic tetraplegia. <em>Archives of Physical Medicine and Rehabilitation, 73</em>, 627–632.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Baltes, P. B., &amp; Baltes, M. M. (1990). Psychological perspectives on successful aging: The model of selective optimization. In P. B. Baltes &amp; M. M. Baltes (Eds.), <em>Successful Aging: Perspectives from the Behavioural Sciences</em> (pp. 1–34). Cambridge University Press, New York.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Barone, S. H. (1993). Adaptation to spinal cord injury. <em>Dissertation Abstracts International, 54–07B</em>, 3547.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Best, C. (1996). <em>The quality of rural and metropolitan life.</em> Unpublished Thesis, Deakin University, Melbourne.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Bodenhamer, E., Achterberg-Lawlis, J., Kevorkian, G., Belanus, A., &amp; Cofer, J. (1983). Staff and patient perceptions of the psychosocial concerns of spinal cord injured persons. <em>American Journal of Physical Medicine, 62</em>(4), 182–193.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Boschen, K. A. (1990). Life satisfaction, housing satisfaction, and locus of control: A comparison between spinal cord injured and non-disabled individuals. <em>Canadian Journal of Rehabilitation, 4</em>(2), 75–85.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Boschen, K. A. (1996). Correlates of life satisfaction, residential satisfaction, and locus of control among adults with spinal cord injuries. <em>Rehabilitation Counseling Bulletin, 39</em>(4), 230–243.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Boswell, B., Dawson, M., &amp; Heininger, E. (1998). Quality of life as defined by adults with spinal cord injuries. <em>Journal of Rehabilitation, 64</em>, 27–32.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Bracken, M. B., &amp; Shepard, M. (1980). Coping and adaptation following acute spinal cord injury: A theoretical analysis. <em>Paraplegia, 18</em>, 74–85.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Bracken, M. B., Shepard, M. J., &amp; Webb, S. B. (1981). Psychological response to acute spinal cord injury: An epidemiological study. <em>Paraplegia, 19</em>, 271–283.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Buckelew, S. P., Baumstark, K. E., Frank, R. G., &amp; Hewett, J. E. (1990). Adjustment following spinal cord injury. <em>Rehabilitation Psychology, 35</em>(2), 101–109.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Bulman, R. J., &amp; Wortman, C. B. (1977). Attributions of blame and coping in the "Real World": Severe accident victims react to their lot. <em>Journal of Personality and Social Psychology, 35</em>(5), 351–363.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Carlson, C. E. (1979). Conceptual style and life satisfaction following spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 60</em>, 346–352.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Charlifue, S. W., &amp; Gerhart, K. A. (1991). Behavioural and demographic predictors of suicide after traumatic spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 72</em>, 488–492.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Chwalisz, K., Diener, E., &amp; Gallagher, D. (1988). Autonomic arousal feedback and emotional experience: Evidence from the spinal cord injured. <em>Journal of Personality and Social Psychology, 54</em>(5), 820–828.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Clayton, K. S., &amp; Chubon, R. A. (1994). Factors associated with the quality of life of long-term spinal cord injured persons. <em>Archives of Physical Medicine and Rehabilitation, 73</em>, 633–638.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Craig, A. R., Hancock, K., &amp; Dickson, H. (1994a). Spinal cord injury: A search for determinants of depression two years after the event. <em>British Journal of Clinical Psychology, 33</em>, 221–230.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Craig, A. R., Hancock, K., Dickson, H., &amp; Chang, E. (1997). Long-term psychological outcomes in spinal cord injured persons: Results of a controlled trial using cognitive behavior therapy. <em>Archives of Physical Medicine and Rehabilitation, 78</em>, 33–38.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Crisp, R. (1992). The long-term adjustment of 60 persons with spinal cord injury. <em>Australian Psychologist, 27</em>, 43–47.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Cummins, R. A. (1995). On the trail of the gold standard for subjective well-being. <em>Social Indicators Research, 35</em>, 179–200.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Cummins, R. A. (1996). Assessing quality of life. In R. Brown (Ed.), <em>Quality of Life for Handicapped People.</em> Chapman and Hall, London.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Cummins, R. A. (1997). <em>Comprehensive Quality of Life Scale — Adult (ComQol-A5)</em> (5th ed.). Deakin University, School of Psychology, Melbourne.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Cummins, R. A. (1998). Normative life satisfaction: Measurement issues and a homeostatic model. <em>Draft Paper</em>, Deakin University, Melbourne.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Cummins, R., McCabe, M. P., Romeo, Y., &amp; Gullone, E. (1994). The Comprehensive Quality of Life Scale (ComQol): Instrument development and psychometric evaluation on tertiary staff and students. <em>Educational and Psychological Measurement, 54</em>, 372–382.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Cushman, L. A., &amp; Hassett, J. (1992). Spinal cord injury: 10 and 15 years after. <em>Paraplegia, 30</em>, 690–696.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Decker, S. D., &amp; Schulz, R. (1985). Correlates of life satisfaction and depression in middle-aged and elderly spinal cord injured persons. <em>American Journal of Occupational Therapy, 39</em>(11), 740–745.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Dew, M. A., Lynch, K., Ernst, J., &amp; Rosenthal, R. (1983). Reaction and adjustment to spinal cord injury. <em>Journal of Applied Rehabilitation Counseling, 14</em>, 32–39.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Elliott, T. R., &amp; Frank, R. G. (1996). Depression following spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 77</em>, 816–823.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Folkman, S., &amp; Lazarus, R. S. (1980). An analysis of coping in a middle-aged community sample. <em>Journal of Health and Social Behavior, 21</em>, 219–239.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Foroughi, E. (1995). <em>Cross-cultural quality of life among Persians.</em> Unpublished Thesis, Deakin University, Melbourne.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Fuhrer, M., Rintala, D., Hart, K., Clearman, R., &amp; Young, M. (1992). Relationship of life satisfaction to impairment, disability, and handicap among persons with spinal cord injury living in the community. <em>Archives of Physical Medicine and Rehabilitation, 74</em>, 552–557.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Gagnon, L., Noreau, L., &amp; Laramee, M. (1997). Quality of life in individuals with spinal cord injury. <em>The Journal of Spinal Cord Medicine, 20</em>(1), 168.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Gerhart, K. A., Bergstrom, E., Charlifue, S. W., Menter, R. R., &amp; Whiteneck, G. G. (1993). Long-term spinal cord injury: Functional changes over time. <em>Archives of Physical Medicine and Rehabilitation, 74</em>, 1030–1034.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Golding, D., &amp; Cummins, R. A. (1997). <em>Spirituality and Quality of Life.</em> Deakin University, Melbourne.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Hanson, S., Buckelew, S. P., Hewett, J., &amp; O'Neal, G. (1993). The relationship between coping and adjustment after spinal cord injury. <em>Rehabilitation Psychology, 38</em>, 41–54.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Heckhausen, J., &amp; Schulz, R. (1995). A life-span theory of control. <em>Psychological Review, 102</em>(2), 284–304.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Heckhausen, J., Schulz, R., &amp; Wrosch, C. (1997). <em>Optimisation in Primary and Secondary Control Scale (OPS-Scale).</em> Unpublished manuscript, Max Planck Institute.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Heinemann, A. W., Bulka, M., &amp; Smetak, S. (1988). Attributions and disability acceptance following traumatic injury: A replication and extension. <em>Rehabilitation Psychology, 33</em>(4), 195–206.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Kennedy, P., Marsh, N., Lowe, R., Grey, N., Short, E., &amp; Rogers, B. (2000). A randomized controlled trial of a brief psychological intervention after spinal cord injury. <em>Rehabilitation Psychology, 45</em>(2), 143–154.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Krause, J. S. (1992). Life satisfaction after spinal cord injury: A descriptive study. <em>Rehabilitation Psychology, 37</em>, 61–70.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Krause, J. S. (1998). Subjective well-being after spinal cord injury: Relationship to gender, race-ethnicity, and chronologic age. <em>Rehabilitation Psychology, 43</em>(4), 282–296.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Krause, J. S., &amp; Crewe, N. M. (1991). Chronologic age, time since injury, and time of measurement: Effect on adjustment after spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 72</em>, 91–100.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Lazarus, R. S., &amp; Folkman, S. (1984). <em>Stress, Appraisal, and Coping.</em> Springer, New York.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Lin, K., Chuang, C., Kao, M., Lien, I., &amp; Tsauo, J. (1997). Quality of life of spinal cord injured patients in Taiwan: A subgroup study. <em>Spinal Cord, 35</em>, 841–849.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Lundquist, C., Siosteen, A., Blomstrand, C., Lind, B., &amp; Sullivan, M. (1990). Spinal cord injuries: Clinical, functional, and emotional status. <em>Spine, 16</em>, 78–83.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Matheis, E. N., Tulsky, D. S., &amp; Matheis, R. J. (2006). The relation between spirituality and quality of life among individuals with spinal cord injury. <em>Rehabilitation Psychology, 51</em>(3), 265–271.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">McColl, M. A., &amp; Rosenthal, C. (1994). A model of resource needs of aging spinal cord injured men. <em>Paraplegia, 32</em>, 261–270.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">McMillen, J. C., &amp; Cook, C. L. (2003). The positive by-products of spinal cord injury and their correlates. <em>Rehabilitation Psychology, 48</em>(2), 77–85.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Nieves, C. C., Charter, R. A., &amp; Aspinall, M. J. (1991). Relationship between effective coping and perceived quality of life in spinal cord injured patients. <em>Rehabilitation Nursing, 16</em>(3), 129–132.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Olson, J. M., &amp; Cummins, R. A. (1999). The relationship between strategies of control and levels of subjective quality of life after spinal cord injury. <em>Unpublished Manuscript</em>, Deakin University, Australia.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Post, M. W., de Witte, L. P., van Asbeck, F. W., van Dijk, A. J., &amp; Schrijvers, A. J. (1998). Predictors of health status and life satisfaction in spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 79</em>, 395–401.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Putzke, J. D., Richards, J. S., &amp; Dowler, R. N. (2000). The impact of pain in spinal cord injury: A case-control study. <em>Rehabilitation Psychology, 45</em>(4), 386–401.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Richards, J. S., Elliott, T. R., Shewchuk, R. M., &amp; Fine, P. R. (1997). Attribution of responsibility for onset of spinal cord injury and psychosocial outcomes in the first year post-injury. <em>Rehabilitation Psychology, 42</em>(2), 115–124.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Rintala, D. H., Loubser, P. G., Castro, J., Hart, K. A., &amp; Fuhrer, M. J. (1998). Chronic pain in a community-based sample of men with spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 79</em>, 604–614.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Rothbaum, F., Weisz, J. R., &amp; Snyder, S. S. (1982). Changing the world and changing the self: A two-process model of perceived control. <em>Journal of Personality and Social Psychology, 42</em>(1), 5–37.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Schulz, R., &amp; Decker, S. (1985). Long-term adjustment to physical disability: The role of social support, perceived control, and self-blame. <em>Journal of Personality and Social Psychology, 48</em>(5), 1162–1172.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Sherman, J. E., DeVinney, D. J., &amp; Sperling, K. B. (2004). Social support and adjustment after spinal cord injury: Influence of past peer-mentoring experiences and current live-in partner. <em>Rehabilitation Psychology, 49</em>(2), 140–149.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Siosteen, A., Lundqvist, C., Blomstrand, C., Sullivan, L., &amp; Sullivan, M. (1990). The quality of life of three functional spinal cord injury subgroups in a Swedish community. <em>Paraplegia, 28</em>, 476–488.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Ville, I., &amp; Ravaud, J. (1996). Work, non-work and consequent satisfaction after spinal cord injury. <em>International Journal of Rehabilitation Research, 19</em>, 241–252.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Watson, D., Clark, L. A., &amp; Tellegen, A. (1988). Development and validation of brief measures of positive and negative affect: The PANAS scales. <em>Journal of Personality and Social Psychology, 54</em>(6), 1063–1070.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Whiteneck, G. G., Charlifue, S. W., Gerhart, K. A., Lammertse, D. P., Manley, S., Menter, R. R., &amp; Seedroff, K. R. (Eds.). (1992). <em>Aging with Spinal Cord Injury.</em> Demos, New York.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Yerxa, E. J., &amp; Baum, S. (1998). Engagement in daily occupations and life satisfaction among people with spinal cord injuries. <em>The Occupational Therapy Journal of Research, 6</em>(5), 271–283.</p>
+
+      <p style="font-size:0.82rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;break-inside:avoid;">Young, M. E., Rintala, D. H., Rossi, C. D., Hart, K. A., &amp; Fuhrer, M. J. (1995). Alcohol and marijuana use in a community-based sample of persons with spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 76</em>, 525–532.</p>
+
+    </div>
+
+    <div style="margin-top:2rem;padding:1.25rem 1.5rem;border-left:3px solid var(--gold);background:rgba(200,150,60,0.04);">
+      <p style="font-size:0.83rem;color:var(--muted);line-height:1.7;">Full bibliography including all 41 surveys analysed in the meta-analysis is available in the original thesis: <em>Strategies of Control and Subjective Quality of Life after Spinal Cord Injury</em>, J. M. Olson (MSocSc), Deakin University, 2001. Supervised by Professor Robert Cummins, PhD.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label" style="color: var(--gold);">Get in Touch</div>
+        <h2 class="section-title" style="color: var(--cream);">Reach out about any of the three programmes</h2>
+        <p class="section-intro">Whether you have SCI, work in rehabilitation, are a researcher, or just want to know more — I would be glad to hear from you.</p>
+        <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.25rem;">
+          <div>
+            <div style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5A5040; margin-bottom: 0.4rem;">Suitable for</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span style="font-size: 0.78rem; padding: 0.3rem 0.75rem; border: 1px solid rgba(200,150,60,0.3); color: #A89E8C;">People with SCI</span>
+              <span style="font-size: 0.78rem; padding: 0.3rem 0.75rem; border: 1px solid rgba(200,150,60,0.3); color: #A89E8C;">Clinicians</span>
+              <span style="font-size: 0.78rem; padding: 0.3rem 0.75rem; border: 1px solid rgba(200,150,60,0.3); color: #A89E8C;">Researchers</span>
+              <span style="font-size: 0.78rem; padding: 0.3rem 0.75rem; border: 1px solid rgba(200,150,60,0.3); color: #A89E8C;">Family members</span>
+              <span style="font-size: 0.78rem; padding: 0.3rem 0.75rem; border: 1px solid rgba(200,150,60,0.3); color: #A89E8C;">Media</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First name</label>
+            <input type="text" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label>Last name</label>
+            <input type="text" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>I am interested in</label>
+          <select>
+            <option value="">Select a programme...</option>
+            <option>Quality of Life Research (Deakin)</option>
+            <option>Hands-Free Harmonica Programme</option>
+            <option>Guided Imagery Exposure</option>
+            <option>All three programmes</option>
+            <option>Speaking / media enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me a little about yourself and what you're looking for..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="align-self: flex-start;">Send Message</button>
+        <div id="form-confirm" style="display:none; font-size:0.85rem; color: var(--gold); margin-top: 0.5rem;">Thank you — I'll be in touch soon.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Living Beyond SCI — Jeremy Olson</div>
+  <div class="footer-copy">© 2011–2025 Jeremy Olson. All rights reserved.</div>
+</footer>
+
+<script>
+function openLightbox(imgId, caption) {
+  const img = document.getElementById(imgId);
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCap = document.getElementById('lightbox-caption');
+  if (img && img.src && !img.src.endsWith('#')) {
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+  } else {
+    lbImg.src = '';
+    lbImg.style.display = 'none';
+  }
+  lbCap.textContent = caption || '';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox-img').style.display = 'block';
+    document.body.style.overflow = '';
+  }
+}
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:#2A2820;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid #C8963C;z-index:99;';
+  }
+}
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-confirm').style.display = 'block';
+  e.target.reset();
+}
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.domain-cell, .benefit-card, .voice-card, .module-item, .gie-phase, .pillar-card').forEach(el => {
+  el.style.cssText += 'opacity:0;transform:translateY(18px);transition:opacity 0.5s ease, transform 0.5s ease;';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
