@@ -667,6 +667,64 @@
 </section>
 
 <!-- PILLAR 1: RESEARCH -->
+<style>
+  .article-grid { display: flex; flex-direction: column; gap: 0; margin: 2.5rem 0; }
+  .article-card {
+    display: grid; grid-template-columns: 80px 1fr auto;
+    gap: 0; border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .article-card:first-child { border-top: 1px solid var(--border); }
+  .article-card:hover { background: rgba(200,150,60,0.04); }
+  .article-num-col {
+    padding: 2rem 1.5rem 2rem 0;
+    font-family: 'Lora', serif; font-size: 2.5rem;
+    color: rgba(200,150,60,0.18); line-height: 1;
+    font-weight: 400; display: flex; align-items: flex-start;
+    padding-top: 2.1rem;
+  }
+  .article-body { padding: 2rem 2rem 2rem 0; }
+  .article-tag {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .article-title {
+    font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 400;
+    color: var(--charcoal); margin-bottom: 0.6rem; line-height: 1.35;
+  }
+  .article-plain {
+    font-size: 0.9rem; color: #4A4438; line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+  .article-academic {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.75;
+    border-left: 2px solid var(--border); padding-left: 1rem;
+    font-style: italic;
+  }
+  .article-meta {
+    font-size: 0.72rem; color: rgba(200,150,60,0.7);
+    margin-top: 0.75rem; letter-spacing: 0.04em;
+  }
+  .article-link-col {
+    padding: 2rem 0 2rem 1rem;
+    display: flex; align-items: flex-start; padding-top: 2.2rem;
+  }
+  .article-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.75rem; color: var(--gold); text-decoration: none;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid rgba(200,150,60,0.3); padding: 0.4rem 0.8rem;
+    white-space: nowrap; transition: background 0.2s, border-color 0.2s;
+  }
+  .article-link:hover { background: rgba(200,150,60,0.08); border-color: var(--gold); }
+  .article-link svg { width: 12px; height: 12px; fill: var(--gold); }
+  @media (max-width: 700px) {
+    .article-card { grid-template-columns: 40px 1fr; }
+    .article-link-col { display: none; }
+    .article-num-col { font-size: 1.8rem; padding-right: 0.75rem; }
+  }
+</style>
+
 <section id="research" class="pillar-section" style="padding: 6rem 0;">
   <div class="container">
     <div class="pillar-header">
@@ -674,7 +732,7 @@
         <div class="pillar-number-large">01</div>
         <div class="section-label">Deakin University · Melbourne</div>
         <h2 class="section-title">Quality of Life Research</h2>
-        <p class="section-intro">A graduate psychology study examining subjective quality of life and strategies of control in 78 people with SCI from Australia, USA, New Zealand, Canada, the UK, and Germany — supervised by Professor Robert Cummins.</p>
+        <p class="section-intro">A graduate psychology study examining subjective quality of life and strategies of control in 78 people with SCI — supervised by Professor Robert Cummins. Five key publications from this body of work are summarised below.</p>
       </div>
       <div>
         <div class="stat-row" style="margin: 0;">
@@ -686,97 +744,238 @@
       </div>
     </div>
 
-    <div class="section-label">Life Satisfaction Scores — SCI vs General Population</div>
-    <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 1.5rem;">Mean scores expressed as % of scale maximum (%SM). General population norm: ~73–75%SM across all domains.</p>
+    <div class="section-label">Five Key Publications</div>
+    <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.5rem;">Each summary is written in plain English — then followed by the academic version. Click <em>Read Article</em> to open the full text.</p>
 
-    <div class="domain-grid">
-      <div class="domain-cell">
-        <div class="domain-score">53.2%</div>
-        <div class="domain-name">Material Well-being</div>
-        <div class="domain-note">Extra costs of SCI, reduced employment — lowest SCI domain score</div>
+    <div class="article-grid">
+
+      <!-- Article 1 -->
+      <div class="article-card">
+        <div class="article-num-col">01</div>
+        <div class="article-body">
+          <div class="article-tag">Methodology · Quality of Life Measurement</div>
+          <div class="article-title">How Do You Measure Whether Life Is Going Well?</div>
+          <div class="article-plain">When someone has a spinal cord injury, doctors often look at things like whether they can walk or work — but these don't tell the whole story. This paper argues that the most honest way to measure how life is going is simply to ask the person themselves. After all, two people with the same injury can feel very differently about their lives. It also examines the best way to design the questions — how many options to give, how to word them — so that people's answers truly reflect how they feel.</div>
+          <div class="article-academic">This paper examines the theoretical and methodological basis for using subjective rather than objective indicators in quality of life assessment following SCI. It argues that self-reported life satisfaction — assessed through bidimensional, end-defined, 10-point Likert scales — provides the most valid and culturally equitable measure of rehabilitation outcome, and presents the rationale for the Comprehensive Quality of Life Scale (ComQol) as the preferred instrument.</div>
+          <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Chapter 1: Quality of Life Measurement</div>
+        </div>
+        <div class="article-link-col">
+          <a href="measuringqualityoflife.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="domain-cell">
-        <div class="domain-score">59.3%</div>
-        <div class="domain-name">Health</div>
-        <div class="domain-note">Secondary conditions, pain (46–80% prevalence), and aging effects</div>
+
+      <!-- Article 2 -->
+      <div class="article-card">
+        <div class="article-num-col">02</div>
+        <div class="article-body">
+          <div class="article-tag">Meta-Analysis · 41 Studies · 4,709 People</div>
+          <div class="article-title">How Satisfied Are People With SCI With Their Lives — Compared to Everyone Else?</div>
+          <div class="article-plain">This paper pulls together data from 41 different studies involving 4,709 people with spinal cord injuries, and compares their life satisfaction to people in the general population. The finding is clear: people with SCI report lower satisfaction across almost every area of life — work, relationships, health, money, and overall happiness. But the gap varies. Some areas are closer to normal than others, and the research points to specific places where rehabilitation could make the biggest difference.</div>
+          <div class="article-academic">A systematic meta-analysis of 41 published surveys of the SCI population (total N = 4,709) examining subjective quality of life across eight life domains. All data were converted to a common Percentage of Scale Maximum (%SM) metric and compared against general population norms. Statistically significant deficits were identified in the domains of material well-being, productivity, intimacy, place in community, spirituality, and life in general (p &lt; .001). Safety and emotional well-being did not reach significance.</div>
+          <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Chapter 2: Reported Levels of SQOL after SCI</div>
+        </div>
+        <div class="article-link-col">
+          <a href="reportedlevelsofsubjectivequalityoflife.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="domain-cell">
-        <div class="domain-score">52.1%</div>
-        <div class="domain-name">Productivity</div>
-        <div class="domain-note">Only ~30% in paid employment; education a key protective factor</div>
+
+      <!-- Article 3 -->
+      <div class="article-card">
+        <div class="article-num-col">03</div>
+        <div class="article-body">
+          <div class="article-tag">Domain Analysis · Eight Areas of Life</div>
+          <div class="article-title">What Actually Affects Life Satisfaction After SCI — Area by Area</div>
+          <div class="article-plain">Life satisfaction isn't just one thing — it's made up of different areas: money, health, work, relationships, safety, community, emotional wellbeing, and spirituality. This paper looks at each one in detail for people living with SCI. It explains what the research says about why scores are low in some areas (like work and money) and why others (like close relationships and spirituality) tend to hold up better — and what can be done about the ones that are struggling.</div>
+          <div class="article-academic">This chapter presents a domain-specific analysis of subjective quality of life across eight areas of life as defined by the ComQol framework. Drawing on both quantitative survey data and qualitative participant narratives, it examines the psychosocial, environmental, and structural determinants of satisfaction within each domain. Particular attention is given to the relationships between employment, independence, social support, physical health, and domain-specific life satisfaction in the SCI population.</div>
+          <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Chapter 3: The Quality of Eight Domains of Life</div>
+        </div>
+        <div class="article-link-col">
+          <a href="qualityofeightdomainsoflife.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="domain-cell">
-        <div class="domain-score">66.5%</div>
-        <div class="domain-name">Intimacy</div>
-        <div class="domain-note">Highest SCI domain — family and close relationships most protective</div>
+
+      <!-- Article 4 -->
+      <div class="article-card">
+        <div class="article-num-col">04</div>
+        <div class="article-body">
+          <div class="article-tag">Key Finding · Strategies of Control · Fatalism</div>
+          <div class="article-title">The Surprising Mindset That Predicts a Better Quality of Life After SCI</div>
+          <div class="article-plain">You might think that people who try hardest to control their situation would be happiest — but this study found the opposite. Among 78 people with SCI, the only mental strategy consistently linked to higher life satisfaction was this: when something goes wrong and you can't change it, blaming bad luck rather than yourself. People who could let go of what wasn't in their control — and put it down to chance rather than personal failure — reported significantly better wellbeing across six areas of life. This finding suggests that a degree of fatalism, far from being negative, may be an important part of psychological resilience after SCI.</div>
+          <div class="article-academic">This empirical study investigated the relationship between five strategies of control — as measured by the Optimisation in Primary and Secondary Control Scale (OPS-Scale; Heckhausen &amp; Schulz, 1995) — and levels of subjective quality of life in 78 persons with SCI. Multiple regression analysis identified compensatory secondary control, specifically protective attribution to bad luck, as the sole significant predictor of total life satisfaction (β = .412, p &lt; .01), accounting for 12.3% of unique variance. Findings are discussed in relation to the role of external locus of control and fatalistic orientation as adaptive coping mechanisms in SCI rehabilitation.</div>
+          <div class="article-meta">Olson, J. M. &amp; Cummins, R. A. — Deakin University, 1999 · Key empirical paper</div>
+        </div>
+        <div class="article-link-col">
+          <a href="therelationshipbetweenstrategiesofcontrolandsubjectivequalityoflife.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="domain-cell">
-        <div class="domain-score">65.3%</div>
-        <div class="domain-name">Safety</div>
-        <div class="domain-note">Independence, mobility, housing — not significantly different from general population</div>
+
+      <!-- Article 5 -->
+      <div class="article-card">
+        <div class="article-num-col">05</div>
+        <div class="article-body">
+          <div class="article-tag">Qualitative Research · 78 Voices · Coping</div>
+          <div class="article-title">What Helped — and What Didn't — In the Words of 78 People Living With SCI</div>
+          <div class="article-plain">Instead of just using numbers and statistics, this part of the research simply asked 78 people with spinal cord injuries two questions: what has helped you cope most, and what has made it hardest? Their answers are honest, sometimes raw, and deeply human. Family, friends, faith, attitude, and humour came up again and again as sources of strength. Pain, loss of independence, physical barriers, financial stress, and other people's attitudes came up as the hardest things to deal with. No questionnaire could capture what these voices do.</div>
+          <div class="article-academic">This paper presents a thematic qualitative analysis of open-ended survey responses from 78 individuals with SCI addressing the questions: "What has allowed you to cope best with your injury?" and "What has made coping most difficult?" Responses were coded and categorised according to the eight ComQol life domains. Beneficial factors were most frequently attributable to the domain of intimacy — particularly familial and social support networks. Factors impeding coping clustered predominantly within the domain of safety — specifically loss of independence and physical accessibility barriers. The absence of any spirituality-related statements in the negative coping category is a notable finding.</div>
+          <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Qualitative component</div>
+        </div>
+        <div class="article-link-col">
+          <a href="copingvoices.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="domain-cell">
-        <div class="domain-score">64.3%</div>
-        <div class="domain-name">Place in Community</div>
-        <div class="domain-note">Social integration, civic participation — barriers often attitudinal</div>
-      </div>
-      <div class="domain-cell">
-        <div class="domain-score">63.4%</div>
-        <div class="domain-name">Emotional Well-being</div>
-        <div class="domain-note">Depression not inevitable — 20–45% experience moderate-severe depression post-injury</div>
-      </div>
-      <div class="domain-cell">
-        <div class="domain-score">63.7%</div>
-        <div class="domain-name">Spirituality</div>
-        <div class="domain-note">Personal growth often reported. No participant cited spirituality as making coping harder</div>
-      </div>
+
     </div>
 
     <div class="finding-box">
       <p>The only strategy of control significantly associated with higher life satisfaction was "compensatory secondary control" — specifically, attributing the inability to achieve a goal to <strong>bad luck</strong>. A sense of fatalism, rather than self-blame, predicted wellbeing across six life domains.</p>
-      <span class="finding-source">Olson & Cummins (1999) — Deakin University</span>
-    </div>
-
-    <div class="section-label" style="margin-top: 3rem;">In Their Own Words — What Helped Coping</div>
-    <div class="voices-grid">
-      <div class="voice-card">
-        <div class="voice-text">"The will to win. No other option. Feedback in regard to progress has been positive."</div>
-        <div class="voice-attr">Survey participant</div>
-      </div>
-      <div class="voice-card">
-        <div class="voice-text">"Attitude to life — if we are here only once, make the best of it. There is always someone worse off than yourself. Life is what you make it."</div>
-        <div class="voice-attr">Survey participant, 16 years post-injury</div>
-      </div>
-      <div class="voice-card">
-        <div class="voice-text">"Support from family and friends, I am usually positive in my outlook; I am reasonably inventive; I try until I prove to myself I cannot succeed."</div>
-        <div class="voice-attr">Survey participant</div>
-      </div>
-      <div class="voice-card">
-        <div class="voice-text">"By moving to a place of acceptance, I have learned to cope best. No longer do I have an abundance of negative energy surrounding my situation."</div>
-        <div class="voice-attr">Survey participant</div>
-      </div>
-    </div>
-
-    <div class="section-label" style="margin-top: 2rem;">What Made Coping Harder</div>
-    <div class="voices-grid">
-      <div class="voice-card" style="border-color: var(--rust);">
-        <div class="voice-text">"There is no escaping the paralysis. It confronts you from the time you awake until you go to sleep."</div>
-        <div class="voice-attr">Survey participant</div>
-      </div>
-      <div class="voice-card" style="border-color: var(--rust);">
-        <div class="voice-text">"Architects and building practitioners who do not understand or care about the requirements of people with a disability. Governments who claim in policy to assist but in practice do not."</div>
-        <div class="voice-attr">Survey participant</div>
-      </div>
+      <span class="finding-source">Olson &amp; Cummins (1999) — Deakin University</span>
     </div>
 
     <div style="margin-top: 3rem; padding: 2rem 2.25rem; border: 1px solid var(--border); background: rgba(200,150,60,0.04);">
-      <div class="section-label">Key Implications for Rehabilitation</div>
-      <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.8; max-width: 700px;">Persons with SCI placed <strong>significantly greater importance</strong> than the general population on productivity, safety, and place in community — yet reported lower satisfaction in these same areas. These three domains may need greater emphasis in rehabilitation planning. Greater age and longer time since injury were both associated with higher life satisfaction, suggesting that adaptation and acceptance develop over time.</p>
+      <div class="section-label">Key Implication for Rehabilitation</div>
+      <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.8; max-width: 700px;">People with SCI placed significantly greater importance than the general population on productivity, safety, and place in community — yet reported lower satisfaction in those same areas. These three domains may need greater emphasis in rehabilitation planning. Greater age and longer time since injury were both associated with higher life satisfaction, suggesting that adaptation deepens over time.</p>
     </div>
   </div>
 </section>
 
 <!-- PILLAR 2: HARMONICA -->
+<style>
+  .mod-video-grid { display: flex; flex-direction: column; gap: 0; margin: 2.5rem 0; }
+  .mod-video-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; border-bottom: 1px solid var(--border);
+  }
+  .mod-video-row:first-child { border-top: 1px solid var(--border); }
+  .mod-video-info { padding: 2rem 2rem 2rem 0; }
+  .mod-video-week { font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem; }
+  .mod-video-title { font-family:'Lora',serif;font-size:1.1rem;font-weight:400;color:var(--charcoal);margin-bottom:0.5rem; }
+  .mod-video-desc { font-size:0.87rem;color:var(--muted);line-height:1.75;margin-bottom:0.75rem; }
+  .mod-video-skills { display:flex;flex-wrap:wrap;gap:0.4rem; }
+  .mod-video-frame {
+    padding: 2rem 0 2rem 2rem;
+    border-left: 1px solid var(--border);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .yt-placeholder {
+    background: #1A1810; position: relative;
+    aspect-ratio: 16/9; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.75rem;
+    cursor: pointer; overflow: hidden;
+    transition: background 0.2s;
+  }
+  .yt-placeholder:hover { background: #222018; }
+  .yt-play {
+    width: 48px; height: 48px; background: rgba(200,150,60,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(200,150,60,0.3);
+    transition: background 0.2s;
+  }
+  .yt-placeholder:hover .yt-play { background: rgba(200,150,60,0.3); }
+  .yt-play svg { width: 20px; height: 20px; fill: var(--gold); margin-left: 3px; }
+  .yt-label { font-size:0.72rem;color:#5A5040;letter-spacing:0.08em;text-transform:uppercase;text-align:center; }
+  .yt-hint { font-size:0.65rem;color:#3A3020;text-align:center;padding:0 1rem;line-height:1.5; }
+  /* When a real YouTube ID is set, the iframe replaces the placeholder */
+  .yt-embed { width:100%;aspect-ratio:16/9;border:none;display:block; }
+
+  /* Stripe payment section */
+  .payment-section {
+    background: var(--charcoal); padding: 3.5rem;
+    margin-top: 3rem;
+  }
+  .payment-header {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: start; margin-bottom: 2.5rem;
+  }
+  .payment-title {
+    font-family:'Lora',serif;font-size:1.5rem;font-weight:400;
+    color:var(--cream);margin-bottom:0.75rem;
+  }
+  .payment-desc { font-size:0.88rem;color:#7A7060;line-height:1.8; }
+  .payment-note {
+    font-size:0.78rem;color:#5A5040;line-height:1.7;
+    border-left:2px solid rgba(200,150,60,0.25);padding-left:1rem;
+    margin-top:1rem;
+  }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1px; background: rgba(255,255,255,0.06);
+  }
+  .pricing-card {
+    background: rgba(255,255,255,0.04); padding: 1.75rem;
+    position: relative; transition: background 0.2s;
+  }
+  .pricing-card.featured {
+    background: rgba(200,150,60,0.1);
+    border: 1px solid rgba(200,150,60,0.3);
+  }
+  .pricing-badge {
+    position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+    background:var(--gold);color:var(--charcoal);
+    font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
+    padding:0.25rem 0.75rem;font-weight:500;white-space:nowrap;
+  }
+  .pricing-name { font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:#7A7060;margin-bottom:0.75rem; }
+  .pricing-amount-row { display:flex;gap:0.5rem;align-items:baseline;margin-bottom:0.4rem;flex-wrap:wrap; }
+  .pricing-main { font-family:'Lora',serif;font-size:1.8rem;color:var(--cream);font-weight:400; }
+  .pricing-currency { font-size:0.75rem;color:#5A5040;margin-bottom:0.2rem;align-self:flex-end; }
+  .pricing-intl { font-size:0.75rem;color:#5A5040;line-height:1.7;margin-bottom:1rem; }
+  .pricing-features { margin-bottom:1.25rem; }
+  .pricing-feature {
+    display:flex;gap:0.5rem;align-items:start;
+    font-size:0.82rem;color:#8A8070;padding:0.3rem 0;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+  }
+  .pricing-feature:last-child { border-bottom:none; }
+  .pf-check { color:var(--gold);flex-shrink:0;font-size:0.75rem;padding-top:0.15rem; }
+  .btn-stripe {
+    display:block;width:100%;text-align:center;
+    background:var(--gold);color:var(--charcoal);
+    padding:0.75rem;font-family:'DM Sans',sans-serif;
+    font-size:0.82rem;font-weight:500;letter-spacing:0.04em;
+    text-decoration:none;border:none;cursor:pointer;
+    transition:background 0.2s;
+  }
+  .btn-stripe:hover { background:#D8A84C; }
+  .btn-stripe-ghost {
+    display:block;width:100%;text-align:center;
+    background:transparent;color:var(--cream);
+    padding:0.75rem;font-family:'DM Sans',sans-serif;
+    font-size:0.82rem;letter-spacing:0.04em;
+    text-decoration:none;border:1px solid rgba(255,255,255,0.15);cursor:pointer;
+    transition:border-color 0.2s,color 0.2s;
+  }
+  .btn-stripe-ghost:hover { border-color:var(--gold);color:var(--gold); }
+  .stripe-footer {
+    margin-top:1.5rem;display:flex;align-items:center;
+    gap:0.75rem;justify-content:center;
+  }
+  .stripe-footer svg { width:16px;height:16px;fill:#5A5040; }
+  .stripe-footer span { font-size:0.75rem;color:#5A5040; }
+
+  @media (max-width:900px) {
+    .mod-video-row { grid-template-columns:1fr; }
+    .mod-video-frame { padding:0 0 2rem 0;border-left:none;border-top:1px solid var(--border);margin-top:0.5rem; }
+    .payment-header { grid-template-columns:1fr; gap:1.5rem; }
+    .pricing-grid { grid-template-columns:1fr; }
+    .payment-section { padding:2rem; }
+  }
+</style>
+
 <section id="harmonica" class="pillar-section" style="background: var(--cream); padding: 6rem 0;">
   <div class="container">
     <div class="pillar-header">
@@ -784,7 +983,7 @@
         <div class="pillar-number-large">02</div>
         <div class="section-label">Hands-Free Programme</div>
         <h2 class="section-title">Harmonica for Quadriplegia</h2>
-        <p class="section-intro">A free, web-based blues harmonica curriculum designed specifically for people with high-level spinal cord injuries — addressing both respiratory health and quality of life through music.</p>
+        <p class="section-intro">A free, self-paced blues harmonica curriculum designed for people with high-level spinal cord injuries — addressing respiratory health, emotional expression, and quality of life through music. Each module has a demonstration video and a full written guide.</p>
       </div>
       <div style="padding-top: 1rem;">
         <div class="finding-box" style="margin: 0;">
@@ -794,123 +993,418 @@
       </div>
     </div>
 
-    <div class="section-label">Why the Harmonica?</div>
-    <div class="harp-benefit-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+    <div class="section-label">Six Modules — Free Self-Paced Course</div>
+    <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.5rem;">Video demonstrations for each module coming soon. Click <em>Full Curriculum</em> for the complete written guide.</p>
+
+    <div class="mod-video-grid">
+
+      <div class="mod-video-row">
+        <div class="mod-video-info">
+          <div class="mod-video-week">Week 1</div>
+          <div class="mod-video-title">Module 1 — Foundation &amp; Setup</div>
+          <div class="mod-video-desc">How to fit your harmonica rack, produce your first clean single notes using the puckering technique, and build a practice schedule that actually works.</div>
+          <div class="mod-video-skills"><span class="skill-tag">Single notes</span><span class="skill-tag">Rack setup</span><span class="skill-tag">Puckering</span><span class="skill-tag">Practice habits</span></div>
         </div>
-        <div class="benefit-title">Truly hands-free</div>
-        <div class="benefit-desc">One of the few instruments that can be played without any hand function, using a harmonica holder/rack. Accessible for all levels of quadriplegia.</div>
+        <div class="mod-video-frame">
+          <!-- Replace YOUR_YOUTUBE_ID_1 with the actual YouTube video ID when ready -->
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_1')">
+            <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="yt-label">Module 1 Demo</div>
+            <div class="yt-hint">Video coming soon — upload to YouTube and paste the video ID here</div>
+          </div>
+        </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+
+      <div class="mod-video-row">
+        <div class="mod-video-info">
+          <div class="mod-video-week">Week 2</div>
+          <div class="mod-video-title">Module 2 — Rhythm &amp; Expression</div>
+          <div class="mod-video-desc">Harmonica chugging for instant bluesy grooves, your first improvised phrases using call and response, and your first song: Spoonful by Etta James.</div>
+          <div class="mod-video-skills"><span class="skill-tag">Chugging</span><span class="skill-tag">Call &amp; response</span><span class="skill-tag">Spoonful</span></div>
         </div>
-        <div class="benefit-title">Respiratory strengthening</div>
-        <div class="benefit-desc">Paralysis weakens diaphragm muscles, increasing risk of dangerous lung infections. Playing harmonica provides an engaging alternative to blowing through a straw.</div>
+        <div class="mod-video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_2')">
+            <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="yt-label">Module 2 Demo</div>
+            <div class="yt-hint">Video coming soon</div>
+          </div>
+        </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+
+      <div class="mod-video-row">
+        <div class="mod-video-info">
+          <div class="mod-video-week">Weeks 3–4</div>
+          <div class="mod-video-title">Module 3 — Bending Notes</div>
+          <div class="mod-video-desc">The characteristic blues wail comes from bending draw notes. This module covers tongue position, air control, and how to use the Bendometer app to see exactly which note you're hitting.</div>
+          <div class="mod-video-skills"><span class="skill-tag">Draw bends</span><span class="skill-tag">Tongue position</span><span class="skill-tag">Bendometer</span></div>
         </div>
-        <div class="benefit-title">Emotional expression</div>
-        <div class="benefit-desc">Music provides a voice for feelings that are hard to put into words — joy, grief, frustration, and hope. The blues tradition is especially suited to authentic emotional expression.</div>
+        <div class="mod-video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_3')">
+            <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="yt-label">Module 3 Demo</div>
+            <div class="yt-hint">Video coming soon</div>
+          </div>
+        </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+
+      <div class="mod-video-row">
+        <div class="mod-video-info">
+          <div class="mod-video-week">Week 5</div>
+          <div class="mod-video-title">Module 4 — Blues Scale &amp; 12-Bar Structure</div>
+          <div class="mod-video-desc">Seven notes. That's the blues scale. This module shows you what they are, how they feel, and how to use them over the 12-bar blues structure. Song: Happy by Pharrell Williams.</div>
+          <div class="mod-video-skills"><span class="skill-tag">Blues scale</span><span class="skill-tag">12-bar blues</span><span class="skill-tag">Happy</span></div>
         </div>
-        <div class="benefit-title">Community connection</div>
-        <div class="benefit-desc">Music creates natural social connection — jamming, performing, and sharing experience with others. Endorsed by SCI associations across Australia, Canada, NZ, South Africa, and the USA.</div>
+        <div class="mod-video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_4')">
+            <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="yt-label">Module 4 Demo</div>
+            <div class="yt-hint">Video coming soon</div>
+          </div>
+        </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+
+      <div class="mod-video-row">
+        <div class="mod-video-info">
+          <div class="mod-video-week">Weeks 6–7</div>
+          <div class="mod-video-title">Module 5 — Riffs, Effects &amp; Harmonica Talk</div>
+          <div class="mod-video-desc">Classic riffs, slides, throat vibrato, trills, octaves — and how to use speech consonants to make your harp literally speak. Songs: Roadhouse Blues and Smells Like Teen Spirit.</div>
+          <div class="mod-video-skills"><span class="skill-tag">Riffs</span><span class="skill-tag">Vibrato</span><span class="skill-tag">Slides</span><span class="skill-tag">Trills</span></div>
         </div>
-        <div class="benefit-title">Free and accessible</div>
-        <div class="benefit-desc">The course requires minimal equipment — a C harmonica (~$30) and a rack holder — and is freely available online. Practice lying down, sitting, anywhere.</div>
+        <div class="mod-video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_5')">
+            <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="yt-label">Module 5 Demo</div>
+            <div class="yt-hint">Video coming soon</div>
+          </div>
+        </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+
+      <div class="mod-video-row">
+        <div class="mod-video-info">
+          <div class="mod-video-week">Weeks 8+</div>
+          <div class="mod-video-title">Module 6 — Performance &amp; Improvisation</div>
+          <div class="mod-video-desc">Building longer phrases, finding your personal style, playing with other musicians, and performing 5 complete songs from memory. You finish this module as a performer.</div>
+          <div class="mod-video-skills"><span class="skill-tag">Improvisation</span><span class="skill-tag">5 songs</span><span class="skill-tag">Jamming</span><span class="skill-tag">Personal style</span></div>
         </div>
-        <div class="benefit-title">Quick to sound good</div>
-        <div class="benefit-desc">"The harmonica is one of the few instruments where you start sounding pretty good before long." The blues scale is just 7 notes, and songs like Spoonful can be started in the first week.</div>
+        <div class="mod-video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_6')">
+            <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="yt-label">Module 6 Demo</div>
+            <div class="yt-hint">Video coming soon</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="harmonica_page.html" class="btn-primary">Full Written Curriculum →</a>
+    </div>
+
+    <!-- STRIPE PAYMENT SECTION -->
+    <div class="payment-section">
+      <div class="payment-header">
+        <div>
+          <div class="section-label" style="color:var(--gold);">1-on-1 Tuition</div>
+          <div class="payment-title">Book a private session<br>with Jeremy</div>
+          <div class="payment-desc">Whether you're stuck on bending, want to work on a specific song, or just need someone to play along with — private sessions are tailored entirely to where you are right now. All levels welcome. Sessions run via video call.</div>
+          <div class="payment-note">Prices shown in NZD. International students are charged the equivalent in their local currency — Stripe handles the conversion automatically so you always see your local price at checkout.</div>
+        </div>
+        <div style="padding-top:0.5rem;">
+          <div style="font-size:0.78rem;color:#5A5040;line-height:1.8;margin-bottom:1rem;">What to expect in a session:</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="display:flex;gap:0.75rem;font-size:0.85rem;color:#8A8070;align-items:start;"><span style="color:var(--gold);flex-shrink:0;">✓</span>A short warm-up to hear where you're at</div>
+            <div style="display:flex;gap:0.75rem;font-size:0.85rem;color:#8A8070;align-items:start;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Focused work on your specific challenge</div>
+            <div style="display:flex;gap:0.75rem;font-size:0.85rem;color:#8A8070;align-items:start;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Playing together on backing tracks</div>
+            <div style="display:flex;gap:0.75rem;font-size:0.85rem;color:#8A8070;align-items:start;"><span style="color:var(--gold);flex-shrink:0;">✓</span>A clear practice goal to take away</div>
+            <div style="display:flex;gap:0.75rem;font-size:0.85rem;color:#8A8070;align-items:start;"><span style="color:var(--gold);flex-shrink:0;">✓</span>Recorded session available on request</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <div class="pricing-name">Single Session</div>
+          <div class="pricing-amount-row">
+            <div class="pricing-main">NZ$80</div>
+          </div>
+          <div class="pricing-intl">≈ US$48 &nbsp;·&nbsp; £38 &nbsp;·&nbsp; €44</div>
+          <div class="pricing-features">
+            <div class="pricing-feature"><span class="pf-check">✓</span>60-minute video call</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>Any module or technique</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>Suitable for all levels</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>Book at any time</div>
+          </div>
+          <!-- Replace href with your Stripe payment link once created -->
+          <a href="#contact" class="btn-stripe-ghost">Book Now</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Best Value</div>
+          <div class="pricing-name" style="margin-top:0.75rem;">3-Session Pack</div>
+          <div class="pricing-amount-row">
+            <div class="pricing-main">NZ$210</div>
+            <div class="pricing-currency">save NZ$30</div>
+          </div>
+          <div class="pricing-intl">≈ US$126 &nbsp;·&nbsp; £100 &nbsp;·&nbsp; €115</div>
+          <div class="pricing-features">
+            <div class="pricing-feature"><span class="pf-check">✓</span>3 × 60-minute sessions</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>Use within 3 months</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>Progress between sessions tracked</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>Personalised practice plan</div>
+          </div>
+          <a href="#contact" class="btn-stripe">Book Pack →</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-name">6-Session Pack</div>
+          <div class="pricing-amount-row">
+            <div class="pricing-main">NZ$390</div>
+            <div class="pricing-currency">save NZ$90</div>
+          </div>
+          <div class="pricing-intl">≈ US$234 &nbsp;·&nbsp; £186 &nbsp;·&nbsp; €214</div>
+          <div class="pricing-features">
+            <div class="pricing-feature"><span class="pf-check">✓</span>6 × 60-minute sessions</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>Use within 6 months</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>Full module progression</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>Priority booking</div>
+            <div class="pricing-feature"><span class="pf-check">✓</span>WhatsApp support between sessions</div>
+          </div>
+          <a href="#contact" class="btn-stripe-ghost">Book Pack</a>
+        </div>
+
+      </div>
+
+      <div class="stripe-footer">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+        <span>Secure payment via Stripe · Visa, Mastercard, Apple Pay accepted · All currencies supported</span>
+      </div>
+      <div style="margin-top:1rem;font-size:0.75rem;color:#3A3020;text-align:center;">
+        Payment links will be active once Stripe account is connected. In the meantime, use the contact form below to book a session directly.
       </div>
     </div>
 
-    <div class="section-label" style="margin-top: 2rem;">Curriculum — 6 Progressive Modules</div>
-    <div class="module-list">
-      <div class="module-item">
-        <div class="module-num">01</div>
-        <div class="module-content">
-          <div class="module-duration">Week 1</div>
-          <div class="module-title">Foundation &amp; Setup</div>
-          <div class="module-desc">Choosing and fitting a harmonica rack, puckering technique for single notes, understanding harmonica layout, building a personalized practice schedule.</div>
-          <div class="module-skills"><span class="skill-tag">Single notes</span><span class="skill-tag">Posture</span><span class="skill-tag">Rack setup</span><span class="skill-tag">Practice habits</span></div>
-        </div>
-      </div>
-      <div class="module-item">
-        <div class="module-num">02</div>
-        <div class="module-content">
-          <div class="module-duration">Week 2</div>
-          <div class="module-title">Rhythm &amp; Expression</div>
-          <div class="module-desc">Harmonica chugging for bluesy grooves, first improvisation exercises using call and response, playing with dynamics. First song: Spoonful by Etta James.</div>
-          <div class="module-skills"><span class="skill-tag">Chugging</span><span class="skill-tag">Dynamics</span><span class="skill-tag">Improvisation</span><span class="skill-tag">Spoonful</span></div>
-        </div>
-      </div>
-      <div class="module-item">
-        <div class="module-num">03</div>
-        <div class="module-content">
-          <div class="module-duration">Weeks 3–4</div>
-          <div class="module-title">Bending Notes — the Bluesy Sound</div>
-          <div class="module-desc">The characteristic blues sound comes from bending holes 1–6 draw. Tongue and air control technique, troubleshooting, and emotional application of bent notes.</div>
-          <div class="module-skills"><span class="skill-tag">Draw bends</span><span class="skill-tag">Tongue position</span><span class="skill-tag">Bendometer app</span><span class="skill-tag">Wailing sound</span></div>
-        </div>
-      </div>
-      <div class="module-item">
-        <div class="module-num">04</div>
-        <div class="module-content">
-          <div class="module-duration">Week 5</div>
-          <div class="module-title">The Blues Scale &amp; 12-Bar Structure</div>
-          <div class="module-desc">The seven-note blues scale: -2 -3' 4 -4'' -4 -5 6. Understanding tension and resolution, the 12-bar blues structure, and playing safely over chord changes. Song: Happy by Pharrell Williams.</div>
-          <div class="module-skills"><span class="skill-tag">Blues scale</span><span class="skill-tag">12-bar blues</span><span class="skill-tag">Turnaround</span><span class="skill-tag">Happy</span></div>
-        </div>
-      </div>
-      <div class="module-item">
-        <div class="module-num">05</div>
-        <div class="module-content">
-          <div class="module-duration">Weeks 6–7</div>
-          <div class="module-title">Essential Riffs &amp; Special Effects</div>
-          <div class="module-desc">Classic riffs (Good Morning, Mannish Boy, Duke, Trouble, Low-Down Blues), slides, throat vibrato, trills, octaves, and making the harmonica "talk" using speech consonants. Songs: Roadhouse Blues, Smells Like Teen Spirit.</div>
-          <div class="module-skills"><span class="skill-tag">Riffs</span><span class="skill-tag">Vibrato</span><span class="skill-tag">Slides</span><span class="skill-tag">Trills</span><span class="skill-tag">Octaves</span></div>
-        </div>
-      </div>
-      <div class="module-item">
-        <div class="module-num">06</div>
-        <div class="module-content">
-          <div class="module-duration">Weeks 8+</div>
-          <div class="module-title">Performance &amp; Improvisation</div>
-          <div class="module-desc">Building longer connected phrases, dramatic arcs, playing with others, choosing the right key, and performing 5 complete songs. Guidance for continuing the journey into local jam sessions and open mics.</div>
-          <div class="module-skills"><span class="skill-tag">Jamming</span><span class="skill-tag">5-song repertoire</span><span class="skill-tag">Personal style</span><span class="skill-tag">Performance</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top: 2rem; padding: 1.75rem 2rem; background: var(--charcoal); display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;">
-      <div>
-        <div style="font-family: 'Lora', serif; font-size: 1rem; color: var(--cream); margin-bottom: 0.3rem;">Access the free course</div>
-        <div style="font-size: 0.83rem; color: #7A7060;">Freely available online — no account needed. Harmonica + rack required (~$30–50 total).</div>
-      </div>
-      <a href="#contact" class="btn-primary">Contact Jeremy to Learn More</a>
-    </div>
   </div>
 </section>
 
 <!-- PILLAR 3: GIE -->
 <style>
-  /* GIE expanded styles */
+  .gie-teaser-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start; margin-bottom: 3rem;
+  }
+  .gie-teaser-left { }
+  .gie-teaser-right { }
+  .gie-stage-preview {
+    display: flex; flex-direction: column; gap: 0;
+    margin: 2rem 0;
+  }
+  .gie-stage-row {
+    display: flex; gap: 1rem; padding: 1rem 0;
+    border-bottom: 1px solid var(--border); align-items: start;
+  }
+  .gie-stage-row:last-child { border-bottom: none; }
+  .gie-stage-num-badge {
+    width: 32px; height: 32px; background: var(--charcoal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; color: var(--gold); font-weight: 500;
+    flex-shrink: 0;
+  }
+  .gie-stage-info { }
+  .gie-stage-days {
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.2rem;
+  }
+  .gie-stage-name { font-size: 0.9rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.2rem; }
+  .gie-stage-hint { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+  /* Mailchimp signup */
+  .gie-signup-box {
+    background: var(--charcoal); padding: 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .gie-signup-box::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(200,150,60,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .gie-signup-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .gie-signup-eyebrow::before {
+    content: ''; width: 16px; height: 1px; background: var(--gold); display: block;
+  }
+  .gie-signup-title {
+    font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 400;
+    color: var(--cream); margin-bottom: 0.75rem; line-height: 1.35;
+  }
+  .gie-signup-desc {
+    font-size: 0.88rem; color: #7A7060; line-height: 1.8; margin-bottom: 1.5rem;
+  }
+  .gie-signup-form { display: flex; flex-direction: column; gap: 0.75rem; }
+  .gie-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .gie-input {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    color: var(--cream); padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+    outline: none; width: 100%;
+    transition: border-color 0.2s;
+  }
+  .gie-input:focus { border-color: var(--gold); }
+  .gie-input::placeholder { color: #4A4438; }
+  .gie-submit {
+    background: var(--gold); color: var(--charcoal); border: none;
+    padding: 0.85rem 2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em;
+    cursor: pointer; transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .gie-submit:hover { background: #D8A84C; }
+  .gie-signup-privacy {
+    font-size: 0.72rem; color: #3A3020; line-height: 1.6; margin-top: 0.5rem;
+  }
+  .gie-confirm {
+    display: none; padding: 1rem 1.25rem;
+    background: rgba(200,150,60,0.1); border-left: 3px solid var(--gold);
+    font-size: 0.88rem; color: #A89E8C; line-height: 1.7;
+  }
+  .gie-what-you-get {
+    margin-top: 1.5rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .gie-wgy-title {
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #5A5040; margin-bottom: 0.75rem;
+  }
+  .gie-wgy-item {
+    display: flex; gap: 0.6rem; font-size: 0.82rem; color: #7A7060;
+    padding: 0.3rem 0; align-items: start;
+  }
+  .gie-wgy-check { color: var(--gold); flex-shrink: 0; font-size: 0.75rem; }
+
+  @media (max-width: 900px) {
+    .gie-teaser-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .gie-form-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section id="gie" class="pillar-section" style="padding: 6rem 0;">
+  <div class="container">
+
+    <!-- Teaser header -->
+    <div class="pillar-header">
+      <div>
+        <div class="pillar-number-large">03</div>
+        <div class="section-label">Mind-Body Therapy · Free 30-Day Programme</div>
+        <h2 class="section-title">Guided Imagery Exposure</h2>
+        <p class="section-intro">What if your mind could play a role in healing your spinal cord? Not as wishful thinking — but as a deliberate, structured practice grounded in neuroscience and delivered to you over 30 days.</p>
+      </div>
+      <div style="padding-top:1.5rem;">
+        <p style="font-size:1.05rem;color:var(--bark);font-family:'Lora',serif;font-style:italic;line-height:1.7;margin-bottom:1.25rem;">"After 20 years of research, I have finally found something that might be effective. I want to share it with you."</p>
+        <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;">— Jeremy Olson, developer of the Guided Imagery Exposure protocol</p>
+      </div>
+    </div>
+
+    <!-- Personal teaser + signup -->
+    <div class="gie-teaser-grid">
+      <div class="gie-teaser-left">
+        <div class="section-label">What is this programme?</div>
+
+        <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.25rem;">Every 90 minutes or so, your body does something remarkable. It enters a natural window of deep rest — a state where your mind becomes quieter, your breath slows, and something shifts. Scientists call it the Basic Rest-Activity Cycle. Most people let these moments pass without noticing.</p>
+
+        <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.25rem;">Guided Imagery Exposure is about learning to recognise those windows — and then using them. Not to zone out. But to direct very specific mental imagery toward your spine and nervous system. To visualise healing at the cellular level. To give your subconscious mind — the part of you that already regulates your heartbeat, your temperature, your immune response — a new instruction set.</p>
+
+        <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.25rem;">Is this proven? Not yet. I'll be honest with you about that. The outcome depends on the nature of your injury, your consistency, and your belief in the process. But the neuroscience of mind-body interaction is real. The placebo effect — the documented ability of belief and imagination to produce measurable physical change — is real. And after two decades of research into what helps people flourish after SCI, this is the most exciting thing I have found.</p>
+
+        <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.5rem;">The programme is free. It takes about 20 minutes a day. It arrives in your inbox over 30 days — ten stages, three days each. All I ask is that you keep a journal and let me know what you experience.</p>
+
+        <div style="padding:1.5rem;border-left:3px solid var(--gold);background:rgba(200,150,60,0.04);margin-bottom:1.5rem;">
+          <p style="font-size:0.9rem;color:var(--bark);font-family:'Lora',serif;font-style:italic;line-height:1.75;">"The imagination is one of humanity's oldest and greatest healing resources. Every cell in the body regenerates at least once every seven years. All impediments to spinal cord regeneration are only illusions."</p>
+        </div>
+
+        <div class="section-label">The 10 stages — what arrives in your inbox</div>
+        <div class="gie-stage-preview">
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">1</div><div class="gie-stage-info"><div class="gie-stage-days">Days 1–3</div><div class="gie-stage-name">Introduction &amp; Orientation</div><div class="gie-stage-hint">What GIE is, the science behind it, what to expect, and the mindset that makes it work</div></div></div>
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">2</div><div class="gie-stage-info"><div class="gie-stage-days">Days 4–6</div><div class="gie-stage-name">Learning to Recognise Rest Phases</div><div class="gie-stage-hint">Identifying your BRAC windows and beginning daily breath meditation</div></div></div>
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">3</div><div class="gie-stage-info"><div class="gie-stage-days">Days 7–9</div><div class="gie-stage-name">Anatomy Study</div><div class="gie-stage-hint">Building vivid mental recall of your spine and nervous system using anatomy images</div></div></div>
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">4</div><div class="gie-stage-info"><div class="gie-stage-days">Days 10–12</div><div class="gie-stage-name">Bone and Nerve Visualisation</div><div class="gie-stage-hint">Your first full sessions — imagining perfect structure and new connections forming</div></div></div>
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">5</div><div class="gie-stage-info"><div class="gie-stage-days">Days 13–15</div><div class="gie-stage-name">Perfect Body Imagery</div><div class="gie-stage-hint">The superimposition technique — overlaying an ideal body image over your own</div></div></div>
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">6</div><div class="gie-stage-info"><div class="gie-stage-days">Days 16–18</div><div class="gie-stage-name">White Light Breathing</div><div class="gie-stage-hint">Inhaling light through nerve pathways, bridging across the injury site</div></div></div>
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">7</div><div class="gie-stage-info"><div class="gie-stage-days">Days 19–21</div><div class="gie-stage-name">Movement &amp; Sensation Awareness</div><div class="gie-stage-hint">Combining all three techniques with attempted movement. Awareness precedes sensation.</div></div></div>
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">8</div><div class="gie-stage-info"><div class="gie-stage-days">Days 22–24</div><div class="gie-stage-name">Dream Work &amp; Journalling</div><div class="gie-stage-hint">The conscious-subconscious feedback loop — recording and acting on what arises</div></div></div>
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">9</div><div class="gie-stage-info"><div class="gie-stage-days">Days 25–27</div><div class="gie-stage-name">Positive Suggestions &amp; Deepening</div><div class="gie-stage-hint">All 10 positive suggestions integrated into a single 20-minute daily practice</div></div></div>
+          <div class="gie-stage-row"><div class="gie-stage-num-badge">10</div><div class="gie-stage-info"><div class="gie-stage-days">Days 28–30</div><div class="gie-stage-name">Review &amp; Continuing</div><div class="gie-stage-hint">Reflecting on your experience and building a practice that continues beyond 30 days</div></div></div>
+        </div>
+      </div>
+
+      <div class="gie-teaser-right">
+        <!-- MAILCHIMP SIGNUP BOX -->
+        <div class="gie-signup-box">
+          <div class="gie-signup-eyebrow">Free 30-Day Programme</div>
+          <div class="gie-signup-title">Join the Guided Imagery Exposure programme</div>
+          <div class="gie-signup-desc">Enter your name and email and I'll send you Stage 1 within 24 hours. Each stage arrives every three days — giving you time to practise before moving on. The course is entirely free. Your details are kept private and never shared.</div>
+
+          <!-- Replace this form action with your Mailchimp embed action URL -->
+          <!-- In Mailchimp: Audience → Signup Forms → Embedded Forms → copy the action URL from the <form> tag -->
+          <div class="gie-confirm" id="gie-confirm">
+            <strong style="color:var(--gold);">Welcome.</strong> Stage 1 is on its way to your inbox. Check your spam folder if you don't see it within 24 hours — and add Jeremy's email to your contacts so future stages arrive safely.
+          </div>
+          <div class="gie-signup-form" id="gie-form">
+            <div class="gie-form-row">
+              <input class="gie-input" type="text" name="FNAME" placeholder="First name" required>
+              <input class="gie-input" type="text" name="LNAME" placeholder="Last name">
+            </div>
+            <input class="gie-input" type="email" name="EMAIL" placeholder="Your email address" required>
+            <select class="gie-input" name="COUNTRY" style="cursor:pointer;appearance:none;">
+              <option value="">Country (optional)</option>
+              <option>Australia</option>
+              <option>New Zealand</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>Canada</option>
+              <option>South Africa</option>
+              <option>Other</option>
+            </select>
+            <!-- Replace onclick with Mailchimp form submission once connected -->
+            <button type="button" class="gie-submit" onclick="gieSignup()">Join the Programme — It's Free →</button>
+            <div class="gie-signup-privacy">Your email is used only to deliver the 10-stage programme via Mailchimp. You can unsubscribe at any time. This programme does not replace medical care.</div>
+          </div>
+
+          <div class="gie-what-you-get">
+            <div class="gie-wgy-title">What you receive</div>
+            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>10 emails delivered over 30 days</div>
+            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>Anatomy reference images for visualisation</div>
+            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>Full protocol with step-by-step guidance</div>
+            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>All 10 positive suggestions</div>
+            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>Journal prompts for each stage</div>
+            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>Direct email access to Jeremy</div>
+          </div>
+        </div>
+
+        <!-- Science teaser -->
+        <div style="margin-top:1.5rem;padding:1.75rem;border:1px solid var(--border);">
+          <div class="section-label" style="margin-bottom:0.75rem;">The science behind it</div>
+          <p style="font-size:0.87rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">When you think, neurons fire. When neurons fire, chemicals are released that affect other cells in your central nervous system. The imagination is not separate from the body — it is a biological event.</p>
+          <p style="font-size:0.87rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">Ernest Rossi's research <em>The Psychobiology of Mind-Body Healing</em> traces the precise biological pathways by which mental imagery during states of deep rest influences the immune and endocrine systems. GIE builds on this foundation.</p>
+          <p style="font-size:0.85rem;color:var(--muted);line-height:1.75;border-left:2px solid var(--border);padding-left:1rem;font-style:italic;">The outcome of this intervention is unknown. It depends on injury, belief, and consistency. But if there is any chance the mind can influence recovery — this programme is designed to give it every opportunity to do so.</p>
+        </div>
+
+        <!-- Disclaimer -->
+        <div style="margin-top:1rem;padding:1rem 1.25rem;border-left:3px solid var(--rust);background:rgba(139,69,19,0.04);">
+          <p style="font-size:0.78rem;color:#6A4A3A;line-height:1.7;"><strong>Important:</strong> Guided Imagery Exposure does not replace any current medical care, medications, or professional advice. All participants take full personal responsibility. You are free to stop at any time.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider before full protocol -->
+    <div style="border-top:1px solid var(--border);margin:3rem 0;"></div>
+    <div class="section-label">Full Protocol — For those already enrolled</div>
+    <p style="font-size:0.88rem;color:var(--muted);max-width:600px;line-height:1.8;margin-bottom:2rem;">The complete five-step protocol and anatomy visualisation aids are available below. Sign up above to receive the guided email version with full stage-by-stage instructions.</p>
   .gie-hero-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 4rem; align-items: start; margin-bottom: 4rem;
@@ -1661,6 +2155,26 @@
 </footer>
 
 <script>
+function loadYT(el, videoId) {
+  if (videoId.startsWith('YOUR_')) return;
+  const iframe = document.createElement('iframe');
+  iframe.className = 'yt-embed';
+  iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+  iframe.allow = 'autoplay; encrypted-media';
+  iframe.allowFullscreen = true;
+  el.replaceWith(iframe);
+}
+function gieSignup() {
+  const form = document.getElementById('gie-form');
+  const confirm = document.getElementById('gie-confirm');
+  const email = form.querySelector('[name="EMAIL"]').value;
+  const fname = form.querySelector('[name="FNAME"]').value;
+  if (!email || !fname) { alert('Please enter your name and email to join.'); return; }
+  // TODO: Replace this with Mailchimp form POST action once your account is connected
+  // For now, shows confirmation message
+  form.style.display = 'none';
+  confirm.style.display = 'block';
+}
 function openLightbox(imgId, caption) {
   const img = document.getElementById(imgId);
   const lb = document.getElementById('lightbox');
