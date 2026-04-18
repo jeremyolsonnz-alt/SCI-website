@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reported Levels of Quality of Life after SCI — Jeremy Olson</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#F5F0E8;--warm-white:#FAF8F4;--charcoal:#2A2820;--bark:#5C4A2A;--rust:#8B4513;--gold:#C8963C;--muted:#7A7060;--border:#E0D8C8;}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--charcoal);font-size:16px;line-height:1.75;}
+  nav{position:sticky;top:0;z-index:100;background:var(--charcoal);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:2px solid var(--gold);}
+  .nav-brand{font-family:'Lora',serif;font-size:1.1rem;color:var(--cream);text-decoration:none;}
+  .nav-brand span{color:var(--gold);}
+  .nav-back{font-size:0.8rem;color:#7A7060;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-back:hover{color:var(--gold);}
+  .page-hero{background:var(--charcoal);padding:4rem 0 3rem;border-bottom:1px solid rgba(200,150,60,0.2);}
+  .hero-inner{max-width:860px;margin:0 auto;padding:0 2.5rem;}
+  .breadcrumb{font-size:0.72rem;color:#5A5040;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem;}
+  .breadcrumb a{color:#5A5040;text-decoration:none;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .article-eyebrow{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.6rem;}
+  .article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);display:block;}
+  .article-h1{font-family:'Lora',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.2;color:var(--cream);font-weight:400;margin-bottom:1rem;}
+  .article-standfirst{font-size:1.05rem;color:#8A8070;line-height:1.8;max-width:680px;margin-bottom:2rem;}
+  .article-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+  .meta-item{font-size:0.75rem;color:#5A5040;letter-spacing:0.06em;}
+  .meta-item strong{color:#A89E8C;font-weight:400;}
+  .article-body{max-width:860px;margin:0 auto;padding:4rem 2.5rem;}
+  .plain-intro{background:rgba(200,150,60,0.06);border-left:3px solid var(--gold);padding:1.75rem 2rem;margin-bottom:3rem;}
+  .plain-intro-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+  .plain-intro p{font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:0.85rem;}
+  .plain-intro p:last-child{margin-bottom:0;}
+  h2.section-head{font-family:'Lora',serif;font-size:1.4rem;font-weight:400;color:var(--charcoal);margin:2.5rem 0 1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border);}
+  h3.sub-head{font-size:0.95rem;font-weight:500;color:var(--bark);margin:1.75rem 0 0.6rem;}
+  p.body-text{font-size:0.95rem;color:#4A4438;line-height:1.9;margin-bottom:1rem;}
+  .key-finding{background:var(--charcoal);padding:2rem 2.5rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+  .key-finding::before{content:'"';font-family:'Lora',serif;font-size:8rem;line-height:1;color:rgba(200,150,60,0.08);position:absolute;top:-0.5rem;left:1rem;}
+  .key-finding p{font-family:'Lora',serif;font-size:1.15rem;line-height:1.65;color:var(--cream);font-style:italic;position:relative;z-index:2;}
+  .key-finding-source{font-family:'DM Sans',sans-serif;font-size:0.75rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.75rem;font-style:normal;display:block;}
+  .data-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.82rem;}
+  .data-table th{background:var(--charcoal);color:var(--cream);padding:0.6rem 0.85rem;text-align:left;font-weight:500;font-size:0.75rem;letter-spacing:0.04em;}
+  .data-table td{padding:0.55rem 0.85rem;border-bottom:1px solid var(--border);color:#4A4438;vertical-align:top;}
+  .data-table tr:nth-child(even) td{background:var(--cream);}
+  .table-caption{font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;font-style:italic;}
+  .table-note{font-size:0.75rem;color:var(--muted);margin-top:0.5rem;line-height:1.6;}
+  .domain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin:2rem 0;}
+  .domain-cell{background:var(--warm-white);padding:1.25rem;}
+  .domain-score{font-family:'Lora',serif;font-size:1.6rem;color:var(--rust);margin-bottom:0.25rem;}
+  .domain-name{font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--charcoal);margin-bottom:0.35rem;}
+  .domain-pop{font-size:0.75rem;color:var(--muted);}
+  .highlight-box{border:1px solid var(--border);padding:1.5rem 1.75rem;margin:2rem 0;background:rgba(200,150,60,0.03);}
+  .highlight-box-title{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+  .highlight-box ul{padding-left:1.25rem;}
+  .highlight-box li{font-size:0.9rem;color:#4A4438;line-height:1.8;margin-bottom:0.3rem;}
+  .academic-note{border-top:1px solid var(--border);margin-top:3rem;padding-top:2rem;}
+  .academic-note-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+  .academic-note p{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:0.75rem;font-style:italic;}
+  footer{background:#1A1810;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);}
+  .footer-brand{font-family:'Lora',serif;font-size:0.9rem;color:#5A5040;text-decoration:none;}
+  .footer-copy{font-size:0.75rem;color:#3A3020;}
+  @media(max-width:700px){.article-body{padding:2.5rem 1.5rem;}.hero-inner{padding:0 1.5rem;}.domain-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
+  <a href="index.html#research" class="nav-back">← Back to Research</a>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#research">Research</a> › <span>Article 2 of 5</span></div>
+    <div class="article-eyebrow">Meta-Analysis · 41 Studies · 4,709 People</div>
+    <h1 class="article-h1">How Satisfied Are People With SCI<br>With Their Lives?</h1>
+    <p class="article-standfirst">A systematic analysis of 41 published studies covering 4,709 people with spinal cord injuries — comparing life satisfaction across eight domains against general population norms from around the world.</p>
+    <div class="article-meta">
+      <div class="meta-item"><strong>Author</strong> Jeremy Olson, MSocSc</div>
+      <div class="meta-item"><strong>Institution</strong> Deakin University, Melbourne</div>
+      <div class="meta-item"><strong>Chapter</strong> 2 — Reported Levels of SQOL after SCI</div>
+      <div class="meta-item"><strong>Year</strong> 2001</div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="plain-intro">
+    <div class="plain-intro-label">Plain English Summary</div>
+    <p>This paper pulls together data from 41 different research studies involving 4,709 people with spinal cord injuries, and compares how satisfied they are with their lives to people in the general population.</p>
+    <p>The finding is clear and consistent: people with SCI report lower satisfaction across almost every major area of life — work, money, relationships, health, community involvement, and overall happiness. This gap is statistically significant across most domains.</p>
+    <p>However, the picture is not uniformly bleak. Two areas — safety and emotional well-being — showed no significant difference from the general population. And the domain of close relationships, while still lower than average, was by far the highest-scoring area for people with SCI. This suggests that rehabilitation efforts should focus especially on the areas that are most affected, and that the resilience people show in maintaining relationships is a genuine strength worth building on.</p>
+    <p>The average age at time of injury in the combined sample was 28.8 years — meaning most people with SCI are living with it through the prime decades of their lives. The implications for long-term wellbeing and rehabilitation are significant.</p>
+  </div>
+
+  <h2 class="section-head">About the Research</h2>
+
+  <p class="body-text">All 41 studies were published between 1977 and 2006 and were conducted mainly in English-speaking Western countries, with the United States being the most common country of origin. To make meaningful comparisons between studies that used different rating scales, all scores were converted to a common metric: the Percentage of Scale Maximum score (%SM).</p>
+
+  <p class="body-text">This formula expresses each score as a percentage of the highest possible score on that particular scale — allowing a study using a 5-point scale and one using a 10-point scale to be compared on equal terms. General population norms were drawn from 11 large studies (each with over 200 participants) of adults in Western countries.</p>
+
+  <div class="highlight-box">
+    <div class="highlight-box-title">Combined Sample Characteristics</div>
+    <ul>
+      <li>Total participants: 4,709</li>
+      <li>Mean age: 39.5 years</li>
+      <li>Mean time since injury: 10.7 years</li>
+      <li>Mean age at time of injury: 28.8 years</li>
+      <li>Paraplegia: 48.4% · Quadriplegia: 51.6%</li>
+      <li>Countries represented: USA, Australia, Canada, Sweden, Britain, Japan, Taiwan, France, Netherlands, and others</li>
+    </ul>
+  </div>
+
+  <h2 class="section-head">Life Satisfaction Scores — SCI Population vs General Population</h2>
+
+  <p class="body-text">The chart below shows the mean life satisfaction score for each of the eight life domains, expressed as a percentage of the maximum possible score. The general population norm across all domains sits at approximately 73–75%SM.</p>
+
+  <div class="domain-grid">
+    <div class="domain-cell"><div class="domain-score">53.2%</div><div class="domain-name">Material Well-being</div><div class="domain-pop">General population: 69.1%</div></div>
+    <div class="domain-cell"><div class="domain-score">59.3%</div><div class="domain-name">Health</div><div class="domain-pop">General population: 75.5%</div></div>
+    <div class="domain-cell"><div class="domain-score">52.1%</div><div class="domain-name">Productivity</div><div class="domain-pop">General population: 74.6%</div></div>
+    <div class="domain-cell"><div class="domain-score">66.5%</div><div class="domain-name">Intimacy</div><div class="domain-pop">General population: 82.7%</div></div>
+    <div class="domain-cell"><div class="domain-score">65.3%</div><div class="domain-name">Safety</div><div class="domain-pop">General population: 69.9% — not significant</div></div>
+    <div class="domain-cell"><div class="domain-score">64.3%</div><div class="domain-name">Place in Community</div><div class="domain-pop">General population: 71.8%</div></div>
+    <div class="domain-cell"><div class="domain-score">63.4%</div><div class="domain-name">Emotional Well-being</div><div class="domain-pop">General population: 69.4% — not significant</div></div>
+    <div class="domain-cell"><div class="domain-score">63.7%</div><div class="domain-name">Spirituality</div><div class="domain-pop">General population: 75.6%</div></div>
+  </div>
+
+  <div class="key-finding">
+    <p>The overall mean life satisfaction score across all 41 SCI surveys was 60.8% — significantly below the general population norm of approximately 73–75%. This difference was statistically significant (p &lt; .01) and was consistent across the majority of life domains.</p>
+    <span class="key-finding-source">Olson, J. M. — Deakin University, 2001</span>
+  </div>
+
+  <h2 class="section-head">What the Findings Mean — Domain by Domain</h2>
+
+  <h3 class="sub-head">Material Well-being (53.2%) — The Lowest Score</h3>
+  <p class="body-text">Financial satisfaction was the lowest-scoring domain in the SCI population. The extra costs of living with paralysis are substantial — medical supplies, specialised equipment, home modifications, transport, and attendant care — and these are typically compounded by reduced employment income. This finding held across all countries studied, including Sweden, which has a generous welfare system.</p>
+
+  <h3 class="sub-head">Productivity (52.1%) — Significantly Below Average</h3>
+  <p class="body-text">Around 30% of people with SCI are in paid employment, compared to much higher rates in the general population. However, productivity is not limited to paid work — it includes volunteering, recreation, and family roles. Satisfaction with productivity was the second-lowest domain score and was statistically significantly below the general population norm.</p>
+
+  <h3 class="sub-head">Intimacy (66.5%) — The Highest SCI Score, But Still Lower Than the Norm</h3>
+  <p class="body-text">Close relationships — with family, partners, and friends — were consistently the strongest source of satisfaction for people with SCI, just as they are for the general population. Even so, the SCI score of 66.5% remains significantly below the general population average of 82.7%. The gap is partly explained by documented challenges in sexual relationships and the complex role changes that injury imposes on families.</p>
+
+  <h3 class="sub-head">Safety and Emotional Well-being — The Two Exceptions</h3>
+  <p class="body-text">These were the only two domains where the difference between the SCI population and the general population did not reach statistical significance. This finding is noteworthy — it suggests that people with SCI do not, on average, feel significantly less secure or emotionally worse than the general population. Depression, while common in the years immediately following injury, is not the universal long-term experience that is sometimes assumed.</p>
+
+  <h2 class="section-head">What This Tells Us About Rehabilitation</h2>
+
+  <p class="body-text">The finding that safety and emotional well-being scores are comparable to the general population, while material well-being and productivity scores are dramatically lower, points to a specific challenge for rehabilitation: the barriers to a good life after SCI are often structural and financial, not simply psychological.</p>
+
+  <p class="body-text">This suggests that rehabilitation programmes which focus solely on psychological adjustment may be missing the point. Employment support, financial planning, housing accessibility, and community integration may have as much — or more — impact on life satisfaction as psychological interventions.</p>
+
+  <p class="body-text">At the same time, the relative strength of the intimacy domain confirms what many people with SCI report: that relationships, when they are strong, are a powerful buffer against the broader difficulties of living with paralysis. Protecting and strengthening social relationships should be a central component of rehabilitation.</p>
+
+  <div class="academic-note">
+    <div class="academic-note-label">Academic Context &amp; Methods</div>
+    <p>All SQOL data were converted to Percentage of Scale Maximum (%SM) scores using the formula: (Mean Score − 1) × 100 / (Number of Scale Points − 1). Statistical significance between SCI and general population scores was assessed using two-tailed t-test analysis with confidence intervals of at least 95%. General population norms were derived from 11 large-scale studies (N &gt; 200) of Western adult populations. Spirituality norms were obtained from a normative Australian sample of 273 adults (Golding &amp; Cummins, 1997). The aggregate SCI total mean SQOL score of 60.8% ± 10.0% was significantly lower than the general population norm of approximately 73.5% (t = 3.86, df = 17, p &lt; .01).</p>
+  </div>
+
+</div>
+
+<div style="background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div style="max-width:860px;margin:0 auto;padding:1.25rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <a href="measuringqualityoflife.html" style="font-size:0.8rem;color:var(--gold);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;">← Article 1: Measuring Quality of Life</a>
+    <a href="qualityofeightdomainsoflife.html" style="font-size:0.8rem;color:var(--gold);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;">Article 3: The Eight Domains →</a>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-brand">Living Beyond <span style="color:var(--gold);">SCI</span> — Jeremy Olson</a>
+  <div class="footer-copy">© 2001–2025 Jeremy Olson. All rights reserved.</div>
+</footer>
+</body>
+</html>
