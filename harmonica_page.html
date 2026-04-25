@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hands-Free Harmonica Programme — Jeremy Olson</title>
+<title>Hands-Free Harmonica for High-Level SCI — Jeremy Olson</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -105,21 +105,20 @@
     line-height: 1.2;
     color: var(--cream);
     font-weight: 400;
-    max-width: 700px;
+    max-width: 740px;
     margin-bottom: 1.25rem;
   }
   .page-hero h1 em { font-style: italic; color: var(--gold); }
   .hero-desc {
     font-size: 1rem;
     color: #8A8070;
-    max-width: 600px;
+    max-width: 620px;
     line-height: 1.8;
     margin-bottom: 2.5rem;
   }
   .hero-stats {
     display: flex; gap: 2.5rem; flex-wrap: wrap;
   }
-  .hero-stat { }
   .hero-stat-val {
     font-family: 'Lora', serif;
     font-size: 1.8rem;
@@ -151,7 +150,7 @@
   }
   .section-intro {
     font-size: 1rem; color: var(--muted);
-    max-width: 640px; line-height: 1.8; margin-bottom: 2.5rem;
+    max-width: 680px; line-height: 1.8; margin-bottom: 2.5rem;
   }
 
   /* WHY SECTION */
@@ -177,8 +176,47 @@
   }
   .why-text p:last-child { margin-bottom: 0; }
 
-  /* BENEFIT CARDS */
-  .benefits-section { padding: 5rem 0; background: var(--cream); border-bottom: 1px solid var(--border); }
+  /* RESPIRATORY SECTION */
+  .resp-section { padding: 5rem 0; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .resp-grid {
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 4rem; align-items: start; margin-top: 2.5rem;
+  }
+  .resp-text p { font-size: 0.95rem; color: #4A4438; line-height: 1.85; margin-bottom: 1rem; }
+  .resp-text p:last-child { margin-bottom: 0; }
+  .resp-callout {
+    background: var(--charcoal);
+    padding: 2rem 2.25rem;
+    margin-top: 0;
+  }
+  .resp-callout-label {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.85rem;
+  }
+  .resp-callout-title {
+    font-family: 'Lora', serif; font-size: 1.25rem; color: var(--cream);
+    font-weight: 400; margin-bottom: 1rem; line-height: 1.3;
+  }
+  .resp-callout p { font-size: 0.88rem; color: #A89E8C; line-height: 1.75; margin-bottom: 0.85rem; }
+  .resp-callout p:last-child { margin-bottom: 0; }
+  .resp-figures {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .resp-figure {
+    background: var(--warm-white); border: 1px solid var(--border); padding: 1.5rem;
+  }
+  .resp-figure-stat {
+    font-family: 'Lora', serif; font-size: 1.9rem; color: var(--bark);
+    font-weight: 400; line-height: 1; margin-bottom: 0.5rem;
+  }
+  .resp-figure-label {
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .resp-figure-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  /* BENEFITS */
+  .benefits-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
   .benefit-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem;
   }
@@ -195,7 +233,7 @@
   .benefit-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
 
   /* SETUP */
-  .setup-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  .setup-section { padding: 5rem 0; background: var(--cream); border-bottom: 1px solid var(--border); }
   .setup-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
   }
@@ -212,9 +250,9 @@
   }
   .equip-icon svg { width: 16px; height: 16px; fill: var(--gold); }
   .equip-name { font-weight: 500; font-size: 0.9rem; margin-bottom: 0.3rem; }
-  .equip-detail { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .equip-detail { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+  .equip-detail strong { color: #4A4438; font-weight: 500; }
 
-  .setup-tips { }
   .tip-box {
     background: var(--charcoal); padding: 1.75rem 2rem; margin-bottom: 1rem;
   }
@@ -224,26 +262,46 @@
   }
   .tip-text { font-size: 0.88rem; color: #A89E8C; line-height: 1.7; }
 
-  /* PRACTICE METHOD */
-  .method-section { padding: 5rem 0; background: var(--cream); border-bottom: 1px solid var(--border); }
-  .method-grid {
+  /* ADAPTED TECHNIQUE */
+  .adapt-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  .adapt-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem;
   }
-  .method-card {
+  .adapt-card {
     padding: 2rem; border: 1px solid var(--border); background: var(--warm-white);
   }
-  .method-title {
+  .adapt-title {
     font-weight: 500; font-size: 0.95rem; margin-bottom: 0.6rem;
     display: flex; align-items: center; gap: 0.75rem;
   }
-  .method-dot {
+  .adapt-dot {
     width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0;
   }
-  .method-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-  .method-tips { margin-top: 0.75rem; padding-left: 1.5rem; }
-  .method-tips li { font-size: 0.82rem; color: #6A6050; line-height: 1.8; }
+  .adapt-desc { font-size: 0.88rem; color: #4A4438; line-height: 1.7; margin-bottom: 0.75rem; }
+  .adapt-tips { padding-left: 1.25rem; }
+  .adapt-tips li { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
 
-  /* SCHEDULE */
+  /* PRACTICE METHOD */
+  .practice-section { padding: 5rem 0; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .practice-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem;
+  }
+  .practice-card {
+    padding: 2rem; border: 1px solid var(--border); background: var(--warm-white);
+  }
+  .practice-title {
+    font-weight: 500; font-size: 0.95rem; margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .practice-dot {
+    width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0;
+  }
+  .practice-desc { font-size: 0.88rem; color: #4A4438; line-height: 1.7; margin-bottom: 0.85rem; }
+  .practice-desc:last-child { margin-bottom: 0; }
+  .practice-list { padding-left: 1.25rem; margin-top: 0.5rem; }
+  .practice-list li { font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+
+  /* SCHEDULE BOX */
   .schedule-box {
     margin-top: 2.5rem; background: var(--charcoal); padding: 2.5rem 3rem;
     display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
@@ -255,170 +313,287 @@
   .schedule-row {
     display: flex; justify-content: space-between; align-items: center;
     padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    gap: 1rem;
   }
   .schedule-label { font-size: 0.82rem; color: #7A7060; }
-  .schedule-val { font-size: 0.88rem; color: var(--cream); font-weight: 500; }
-  .four-components { }
+  .schedule-val { font-size: 0.85rem; color: var(--cream); font-weight: 500; text-align: right; }
   .component-item {
-    display: grid; grid-template-columns: 100px 1fr;
+    display: grid; grid-template-columns: 110px 1fr;
     gap: 0.75rem; padding: 0.75rem 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     align-items: start;
   }
   .component-name {
-    font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase;
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--gold);
   }
   .component-desc { font-size: 0.83rem; color: #8A8070; line-height: 1.6; }
 
-  /* CURRICULUM MODULES */
-  .curriculum-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
-  .module-tabs {
-    display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 3rem;
-    overflow-x: auto;
+  /* PUSH-THROUGH QUOTE */
+  .push-quote {
+    margin-top: 3rem; padding: 2.25rem 2.5rem;
+    background: var(--warm-white); border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
   }
-  .mod-tab {
-    padding: 0.85rem 1.4rem;
-    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
-    color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent;
-    white-space: nowrap; transition: color 0.2s, border-color 0.2s;
-    background: none; border-top: none; border-left: none; border-right: none;
-    font-family: 'DM Sans', sans-serif;
+  .push-quote p {
+    font-family: 'Lora', serif; font-size: 1.15rem; line-height: 1.7;
+    color: #4A4438; font-style: italic; font-weight: 400;
   }
-  .mod-tab:hover { color: var(--charcoal); }
-  .mod-tab.active { color: var(--charcoal); border-bottom-color: var(--gold); }
-  .mod-panel { display: none; }
-  .mod-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .mod-header { margin-bottom: 1.5rem; }
-  .mod-week {
-    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.5rem;
-  }
-  .mod-title {
-    font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 400;
-    color: var(--charcoal); margin-bottom: 0.6rem;
-  }
-  .mod-focus {
-    font-size: 0.82rem; color: var(--muted); font-style: italic;
-  }
-  .mod-desc { font-size: 0.92rem; color: #4A4438; line-height: 1.85; margin-bottom: 1.5rem; }
-  .mod-lessons { list-style: none; }
-  .mod-lesson {
-    padding: 0.85rem 0; border-bottom: 1px solid var(--border);
-    display: flex; gap: 1rem; align-items: start;
-  }
-  .mod-lesson:last-child { border-bottom: none; }
-  .lesson-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0; }
-  .lesson-text { font-size: 0.88rem; color: #4A4438; line-height: 1.65; }
-  .mod-milestone {
-    background: rgba(200,150,60,0.06); border: 1px solid rgba(200,150,60,0.25);
-    padding: 1.5rem; margin-top: 2rem;
-  }
-  .milestone-label {
-    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.75rem;
-  }
-  .milestone-item {
-    display: flex; gap: 0.6rem; margin-bottom: 0.5rem; align-items: start;
-  }
-  .milestone-item:last-child { margin-bottom: 0; }
-  .check { color: var(--gold); font-size: 0.85rem; padding-top: 0.1rem; flex-shrink: 0; }
-  .milestone-text { font-size: 0.85rem; color: #5A5040; line-height: 1.6; }
-  .mod-song-box {
-    background: var(--charcoal); padding: 1.5rem 1.75rem; margin-bottom: 1.5rem;
-  }
-  .song-label {
-    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.5rem;
-  }
-  .song-name {
-    font-family: 'Lora', serif; font-size: 1.05rem; color: var(--cream);
-    font-weight: 400; margin-bottom: 0.4rem;
-  }
-  .song-tab { font-family: monospace; font-size: 1rem; color: #8A8070; letter-spacing: 0.1em; }
-  .mod-refs h4 {
-    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 0.75rem;
-  }
-  .master-item {
-    display: flex; gap: 0.75rem; padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border); align-items: start;
-  }
-  .master-initial {
-    width: 32px; height: 32px; background: var(--charcoal);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.72rem; color: var(--gold); font-weight: 500; flex-shrink: 0;
-  }
-  .master-name { font-size: 0.85rem; font-weight: 500; color: var(--charcoal); }
-  .master-note { font-size: 0.78rem; color: var(--muted); }
 
-  /* RIFFS */
-  .riffs-section { padding: 5rem 0; background: var(--cream); border-bottom: 1px solid var(--border); }
-  .riff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 2rem; }
-  .riff-cell { background: var(--warm-white); padding: 1.5rem; }
-  .riff-name { font-weight: 500; font-size: 0.88rem; margin-bottom: 0.5rem; color: var(--charcoal); }
-  .riff-tab { font-family: monospace; font-size: 1rem; color: var(--rust); letter-spacing: 0.08em; line-height: 1.8; }
-  .riff-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; }
-
-  /* SONGS */
-  .songs-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
-  .song-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
-  .song-card {
-    border: 1px solid var(--border); padding: 1.75rem; background: var(--warm-white);
+  /* MASTERS / CHECK OUT */
+  .masters-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  .masters-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem;
+  }
+  .master-card {
+    display: flex; gap: 1.25rem; padding: 1.5rem 1.75rem;
+    border: 1px solid var(--border); background: var(--warm-white);
+    align-items: flex-start;
     transition: border-color 0.2s;
   }
-  .song-card:hover { border-color: var(--gold); }
-  .song-module-tag {
-    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.5rem;
-  }
-  .song-card-title { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.2rem; }
-  .song-artist { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.75rem; }
-  .song-tab-preview {
-    font-family: monospace; font-size: 0.88rem; color: var(--rust);
-    background: rgba(139,69,19,0.06); padding: 0.6rem 0.8rem;
-    letter-spacing: 0.06em; line-height: 1.8;
-    border-left: 2px solid var(--rust);
-  }
-  .song-why { font-size: 0.82rem; color: var(--muted); line-height: 1.65; margin-top: 0.75rem; }
-
-  /* TECHNIQUES */
-  .techniques-section { padding: 5rem 0; background: var(--cream); border-bottom: 1px solid var(--border); }
-  .technique-accordion { margin-top: 2rem; }
-  .tech-item { border-bottom: 1px solid var(--border); }
-  .tech-header {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.25rem 0; cursor: pointer; user-select: none;
-  }
-  .tech-header:hover .tech-name { color: var(--rust); }
-  .tech-name { font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
-  .tech-module { font-size: 0.72rem; color: var(--muted); }
-  .tech-toggle {
-    width: 24px; height: 24px; border: 1px solid var(--border);
+  .master-card:hover { border-color: var(--gold); }
+  .master-initial {
+    width: 44px; height: 44px; background: var(--charcoal);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1rem; color: var(--gold); flex-shrink: 0; transition: transform 0.2s;
+    font-family: 'Lora', serif; font-size: 0.9rem; color: var(--gold);
+    font-weight: 400; flex-shrink: 0;
   }
-  .tech-body {
-    display: none; padding-bottom: 1.5rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  .master-name { font-size: 0.95rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.3rem; }
+  .master-note { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+
+  /* GAP SECTION — Crossing notes to music */
+  .gap-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  .gap-intro { max-width: 720px; margin-bottom: 3rem; }
+  .gap-subsection { margin-top: 3.5rem; }
+  .gap-subsection:first-of-type { margin-top: 2rem; }
+  .gap-subhead {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
   }
-  .tech-body.collapsed { display: none; }
-  .tech-desc { font-size: 0.88rem; color: #4A4438; line-height: 1.8; }
-  .tech-tips { }
-  .tech-tips-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.6rem; }
-  .tech-tips ul { padding-left: 1.1rem; }
-  .tech-tips li { font-size: 0.83rem; color: #5A5040; line-height: 1.8; }
+  .gap-subeyebrow {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.85rem;
+  }
+  .gap-body p {
+    font-size: 0.95rem; color: #4A4438; line-height: 1.85;
+    margin-bottom: 1rem; max-width: 720px;
+  }
+  .gap-body p:last-child { margin-bottom: 0; }
+
+  /* Call-and-response exercise list */
+  .cnr-list {
+    margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;
+  }
+  .cnr-item {
+    display: grid; grid-template-columns: 60px 1fr;
+    gap: 1.5rem; padding: 1.5rem 1.75rem;
+    background: var(--warm-white); border: 1px solid var(--border);
+    align-items: start;
+  }
+  .cnr-num {
+    font-family: 'Lora', serif; font-size: 1.6rem;
+    color: var(--gold); line-height: 1; padding-top: 0.1rem;
+  }
+  .cnr-title {
+    font-weight: 500; font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--charcoal);
+  }
+  .cnr-desc {
+    font-size: 0.85rem; color: var(--muted); line-height: 1.7;
+    font-style: italic; margin-bottom: 1rem;
+  }
+  .cnr-audio-slot {
+    background: rgba(200,150,60,0.06);
+    border: 1px dashed rgba(200,150,60,0.4);
+    padding: 0.75rem 1rem;
+    font-size: 0.78rem;
+    color: var(--bark);
+    letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .cnr-audio-slot::before {
+    content: ''; width: 28px; height: 28px;
+    background: rgba(200,150,60,0.15); border-radius: 50%;
+    display: inline-block; flex-shrink: 0;
+    background-image: radial-gradient(circle, var(--gold) 30%, transparent 30%);
+    background-size: 8px 8px; background-repeat: no-repeat; background-position: center;
+  }
+  .cnr-closing {
+    margin-top: 2rem;
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--bark);
+    border-left: 3px solid var(--gold);
+    padding-left: 1.5rem;
+  }
+
+  /* Phrase library */
+  .phrase-protocol {
+    margin: 2rem 0;
+    background: var(--cream);
+    padding: 2rem 2.25rem;
+    border: 1px solid var(--border);
+  }
+  .phrase-protocol-title {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .phrase-protocol ol {
+    padding-left: 1.5rem; margin: 0;
+  }
+  .phrase-protocol li {
+    font-size: 0.88rem; color: #4A4438; line-height: 1.85;
+    padding-left: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .phrase-list {
+    margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .phrase-item {
+    display: grid; grid-template-columns: 50px 1fr 200px;
+    gap: 1.5rem; padding: 1.25rem 1.5rem;
+    background: var(--warm-white); border: 1px solid var(--border);
+    align-items: center;
+  }
+  .phrase-num {
+    font-family: 'Lora', serif; font-size: 1.1rem;
+    color: var(--gold); line-height: 1;
+  }
+  .phrase-source {
+    font-weight: 500; font-size: 0.9rem; color: var(--charcoal); margin-bottom: 0.2rem;
+  }
+  .phrase-source em {
+    font-weight: 400; color: var(--bark); font-style: italic;
+  }
+  .phrase-pattern {
+    font-family: 'Lora', serif; font-style: italic;
+    font-size: 0.83rem; color: var(--muted); margin-bottom: 0.2rem;
+  }
+  .phrase-oneliner {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.6;
+  }
+  .phrase-audio-slot {
+    background: rgba(200,150,60,0.06);
+    border: 1px dashed rgba(200,150,60,0.4);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.72rem;
+    color: var(--bark);
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+  .phrase-journal {
+    margin-top: 2.5rem;
+    background: var(--charcoal);
+    padding: 2rem 2.25rem;
+  }
+  .phrase-journal-label {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.85rem;
+  }
+  .phrase-journal-title {
+    font-family: 'Lora', serif; font-size: 1.25rem; color: var(--cream);
+    font-weight: 400; margin-bottom: 1rem; line-height: 1.3;
+  }
+  .phrase-journal p {
+    font-size: 0.88rem; color: #A89E8C; line-height: 1.75; margin-bottom: 0.85rem;
+  }
+  .phrase-journal p:last-child { margin-bottom: 0; }
+
+  /* VIDEOS */
+  .videos-section { padding: 5rem 0; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .video-list { display: flex; flex-direction: column; gap: 3rem; margin-top: 2.5rem; }
+  .video-row {
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: center;
+  }
+  .video-row.reverse { grid-template-columns: 1.1fr 1fr; }
+  .video-row.reverse .video-text { order: 2; }
+  .video-row.reverse .video-frame { order: 1; }
+  .video-num {
+    font-family: 'Lora', serif; font-size: 2.8rem; color: rgba(200,150,60,0.3);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .video-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .video-title {
+    font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 400;
+    color: var(--charcoal); margin-bottom: 0.75rem; line-height: 1.3;
+  }
+  .video-desc { font-size: 0.9rem; color: #4A4438; line-height: 1.8; margin-bottom: 1rem; }
+  .video-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .video-tag {
+    font-size: 0.72rem; padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border); color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .video-frame {
+    position: relative; aspect-ratio: 16/9;
+    background: var(--charcoal); overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .yt-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    cursor: pointer;
+    background: linear-gradient(135deg, #2A2820 0%, #1A1810 100%);
+    transition: background 0.2s;
+  }
+  .yt-placeholder:hover { background: linear-gradient(135deg, #34302A 0%, #201E16 100%); }
+  .yt-play-btn {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.75rem;
+    transition: transform 0.2s;
+  }
+  .yt-placeholder:hover .yt-play-btn { transform: scale(1.08); }
+  .yt-play-btn::after {
+    content: ''; width: 0; height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid var(--charcoal);
+    margin-left: 4px;
+  }
+  .yt-placeholder-label {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #7A7060;
+  }
+  .yt-embed { width: 100%; height: 100%; border: none; }
+
+  /* ENDORSEMENTS */
+  .endorse-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  .endorse-intro { max-width: 680px; margin-bottom: 2.5rem; }
+  .endorse-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
+  }
+  .endorse-cell {
+    border: 1px solid var(--border); padding: 1.5rem 1rem;
+    text-align: center; background: var(--warm-white);
+  }
+  .endorse-country {
+    font-family: 'Lora', serif; font-size: 1rem; color: var(--charcoal);
+    font-weight: 400; margin-bottom: 0.35rem;
+  }
+  .endorse-org {
+    font-size: 0.72rem; color: var(--muted); line-height: 1.55;
+  }
 
   /* CTA */
   .cta-section {
     background: var(--charcoal); padding: 5rem 0;
   }
-  .cta-inner { text-align: center; max-width: 600px; margin: 0 auto; }
+  .cta-inner { text-align: center; max-width: 640px; margin: 0 auto; }
   .cta-inner h2 {
     font-family: 'Lora', serif; font-size: 2rem; font-weight: 400;
     color: var(--cream); margin-bottom: 1rem;
   }
-  .cta-inner p { font-size: 0.95rem; color: #7A7060; line-height: 1.8; margin-bottom: 2rem; }
+  .cta-inner p { font-size: 0.95rem; color: #8A8070; line-height: 1.8; margin-bottom: 2rem; }
   .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
   .btn-primary {
     background: var(--gold); color: var(--charcoal); border: none;
@@ -448,19 +623,25 @@
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    .why-grid, .setup-grid, .schedule-box { grid-template-columns: 1fr; gap: 2rem; }
-    .mod-panel.active { grid-template-columns: 1fr; }
+    .why-grid, .setup-grid, .resp-grid, .schedule-box { grid-template-columns: 1fr; gap: 2.5rem; }
     .benefit-grid { grid-template-columns: 1fr 1fr; }
-    .riff-grid { grid-template-columns: 1fr 1fr; }
-    .song-grid { grid-template-columns: 1fr; }
-    .tech-body { grid-template-columns: 1fr; }
+    .adapt-grid, .practice-grid, .masters-grid { grid-template-columns: 1fr; }
+    .resp-figures { grid-template-columns: 1fr; }
+    .schedule-box { padding: 2rem; }
+    .cnr-item { grid-template-columns: 40px 1fr; gap: 1rem; padding: 1.25rem; }
+    .phrase-item { grid-template-columns: 40px 1fr; gap: 1rem; }
+    .phrase-item .phrase-audio-slot { grid-column: 1 / -1; margin-top: 0.5rem; }
+    .video-row, .video-row.reverse { grid-template-columns: 1fr; gap: 1.5rem; }
+    .video-row.reverse .video-text { order: 1; }
+    .video-row.reverse .video-frame { order: 2; }
+    .endorse-grid { grid-template-columns: repeat(2, 1fr); }
     nav { padding: 0 1.25rem; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    .method-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .benefit-grid, .riff-grid { grid-template-columns: 1fr; }
+    .benefit-grid { grid-template-columns: 1fr; }
+    .endorse-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 1.5rem; }
     .page-hero { padding: 3rem 0 2.5rem; }
   }
@@ -469,7 +650,7 @@
 <body>
 
 <nav>
-  <a href="sci_website.html" class="nav-brand">Living Beyond <span>SCI</span></a>
+  <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
   <ul class="nav-links">
     <li><a href="index.html#research">Research</a></li>
     <li><a href="#" class="active">Harmonica</a></li>
@@ -485,29 +666,29 @@
 <div class="page-hero">
   <div class="hero-inner">
     <div class="breadcrumb">
-      <a href="sci_website.html">Home</a>
+      <a href="index.html">Home</a>
       <span class="breadcrumb-sep">›</span>
       <span>Hands-Free Harmonica</span>
     </div>
     <div class="hero-eyebrow">Pillar 02 — Hands-Free Programme</div>
-    <h1>Blues harmonica — designed for <em>quadriplegia</em></h1>
-    <p class="hero-desc">A free, self-paced course from first note to performance-ready improvisation. No hand function required. All you need is a C harmonica, a rack holder, and the desire to make music.</p>
+    <h1>Hands-free harmonica after <em>high-level SCI</em></h1>
+    <p class="hero-desc">A free course designed for people with quadriplegia who cannot use their hands. The harmonica is played through a neck-mounted rack, which makes it one of the few instruments accessible to high-level injuries — and one of the most effective respiratory exercises available.</p>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-val">6</div>
-        <div class="hero-stat-label">Modules</div>
+        <div class="hero-stat-val">0</div>
+        <div class="hero-stat-label">Hand function required</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-val">8–12 wks</div>
-        <div class="hero-stat-label">Completion time</div>
+        <div class="hero-stat-val">~$40</div>
+        <div class="hero-stat-label">Total equipment cost</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-val">5</div>
-        <div class="hero-stat-label">Songs to perform</div>
+        <div class="hero-stat-label">Endorsing SCI associations</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-val">Free</div>
-        <div class="hero-stat-label">Cost of course</div>
+        <div class="hero-stat-label">Cost of programme</div>
       </div>
     </div>
   </div>
@@ -524,10 +705,52 @@
         <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">— Jeremy Olson, on the standard respiratory exercise prescribed after high-level SCI</p>
       </div>
       <div class="why-text">
-        <p>A few years ago I realised something that could change the lives of many people for the better. Paralysis after high-level spinal cord injury is often associated with weakness of the diaphragm muscles — the same muscles that drive the harmonica. This creates dangerous susceptibility to lung infections.</p>
-        <p>The harmonica is one of the few musical instruments that can be played entirely hands-free, using a neck-mounted holder. It requires no prior musical knowledge to get started. The holes are numbered. You can play lying down. And unlike blowing through a straw, it is actually enjoyable.</p>
-        <p>With the help of expert harmonica players — including Ben Hewlett — and several people with quadriplegia, I designed a web-based beginner course that has been endorsed and advertised by SCI associations in Australia, Canada, New Zealand, South Africa, and the USA.</p>
+        <p>A few years ago I realised something that could change the lives of many people for the better. Paralysis after high-level spinal cord injury is often associated with weakness of the diaphragm and intercostal muscles — the same muscles that drive the harmonica. That weakness creates a dangerous susceptibility to lung infections, which remain one of the leading causes of death in this population.</p>
+        <p>The harmonica is one of the very few musical instruments that can be played entirely hands-free, using a neck-mounted holder. It requires no prior musical knowledge to get started. The holes are numbered. You can play sitting, reclining, or lying flat. Unlike blowing through a straw, it is actually enjoyable — and the more enjoyable the exercise, the more often you do it.</p>
+        <p>With the help of expert harmonica players — including Ben Hewlett — and several people living with quadriplegia, I built a beginner course that has been endorsed by SCI associations in Australia, Canada, New Zealand, South Africa, and the USA.</p>
         <p>Strengthening the breath and living longer is a by-product of having a good old-fashioned blast on the harp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESPIRATORY -->
+<section class="resp-section">
+  <div class="container">
+    <div class="section-label">The clinical case</div>
+    <h2 class="section-title">A respiratory exercise you will actually do</h2>
+    <p class="section-intro">Incentive spirometry, balloon inflation, breathing through a straw — the standard respiratory exercises after high-level SCI are boring, repetitive, and easy to abandon. Adherence is the real problem, not effectiveness. The harmonica solves the adherence problem by being musical.</p>
+
+    <div class="resp-grid">
+      <div class="resp-text">
+        <p>Respiratory complications remain the leading cause of death in people with cervical spinal cord injury. Weakness of the diaphragm, intercostal, and abdominal muscles reduces vital capacity, impairs the cough reflex, and allows secretions to pool — creating the conditions for pneumonia and atelectasis.</p>
+        <p>Playing the harmonica requires sustained, controlled inhalation (draw notes) and exhalation (blow notes), alternating in musical rhythm. Every phrase is a micro-workout for the same muscles that physiotherapists want you to train. A typical three-minute song delivers several hundred coordinated breath cycles of varying depth and force — far more engaging than counting repetitions on a spirometer.</p>
+        <p>Harmonica-based respiratory training has been studied in people with COPD and, more recently, in SCI. While the evidence base for SCI specifically is still developing, the theoretical rationale is strong: the instrument exercises exactly the muscles that need exercising, it creates inspiratory resistance through the reed plate, and it produces immediate acoustic feedback that rewards good breath control. Programmes such as <em>Harmonicas for Health</em> have brought this approach into pulmonary rehabilitation settings worldwide.</p>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-top:1.25rem;"><em>This programme is not a replacement for respiratory physiotherapy. If you have a tracheostomy, phrenic nerve pacemaker, or a ventilator dependency that affects your ability to generate airflow at the mouth, speak with your respiratory team before starting.</em></p>
+      </div>
+      <div class="resp-callout">
+        <div class="resp-callout-label">Why it works where straws fail</div>
+        <div class="resp-callout-title">Musical reward replaces willpower</div>
+        <p>A spirometer gives you a number. A harmonica gives you a note, a phrase, a song. When the exercise produces music that you and the people around you want to hear, compliance stops being the bottleneck.</p>
+        <p>The instrument also provides natural progression. A beginner trains shallow, controlled breaths on simple melodies; an intermediate player draws deeper, holds notes longer, and bends pitch — which requires even finer breath control. The exercise scales with your lungs.</p>
+      </div>
+    </div>
+
+    <div class="resp-figures">
+      <div class="resp-figure">
+        <div class="resp-figure-stat">Inspiratory</div>
+        <div class="resp-figure-label">Draw notes</div>
+        <div class="resp-figure-desc">Drawing air through the reed creates measurable resistance — loading the diaphragm the same way an inspiratory muscle trainer does, but with a musical result.</div>
+      </div>
+      <div class="resp-figure">
+        <div class="resp-figure-stat">Expiratory</div>
+        <div class="resp-figure-label">Blow notes</div>
+        <div class="resp-figure-desc">Sustained blow notes and chugging patterns strengthen the abdominal and accessory expiratory muscles that drive an effective cough.</div>
+      </div>
+      <div class="resp-figure">
+        <div class="resp-figure-stat">Coordinated</div>
+        <div class="resp-figure-label">Breath control</div>
+        <div class="resp-figure-desc">Alternating inhalation and exhalation in rhythm trains the neuromuscular coordination that underpins speech, singing, and secretion clearance.</div>
       </div>
     </div>
   </div>
@@ -536,51 +759,51 @@
 <!-- BENEFITS -->
 <section class="benefits-section">
   <div class="container">
-    <div class="section-label">Six reasons to start</div>
-    <h2 class="section-title">What you gain from playing</h2>
+    <div class="section-label">What you gain</div>
+    <h2 class="section-title">Six reasons to start</h2>
     <div class="benefit-grid">
       <div class="benefit-card">
         <div class="benefit-num">01</div>
         <div class="benefit-title">Respiratory strengthening</div>
-        <div class="benefit-desc">Every blow and draw works the diaphragm and respiratory muscles. Regular practice can meaningfully improve lung function and reduce infection risk for people with high-level SCI.</div>
+        <div class="benefit-desc">Every blow and draw works the diaphragm and respiratory muscles. Consistent practice can meaningfully improve vital capacity and cough strength — the two things most closely tied to infection risk after cervical SCI.</div>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">02</div>
         <div class="benefit-title">Hands-free accessibility</div>
-        <div class="benefit-desc">A harmonica rack sits around your neck and holds the instrument at your mouth. No hand function needed. You can play sitting, reclining, or lying flat — whatever your posture allows.</div>
+        <div class="benefit-desc">A harmonica rack sits around your neck and holds the instrument at your mouth. No hand function needed. You can play sitting, reclining, in a tilt-in-space chair, or lying flat — whatever your posture allows.</div>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">03</div>
         <div class="benefit-title">Emotional expression</div>
-        <div class="benefit-desc">The blues tradition was built on expressing what words cannot. Joy, grief, frustration, defiance, and hope all have a sound on the harp. This gives your emotional life a direct outlet.</div>
+        <div class="benefit-desc">The blues tradition was built on expressing what words cannot. Joy, grief, frustration, defiance, and hope all have a sound on the harp. After an injury that can strip away so many outlets, this is a direct one.</div>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">04</div>
         <div class="benefit-title">Quick gratification</div>
-        <div class="benefit-desc">The harmonica is unique — you can sound good within days. The blues scale is only 7 notes. Songs like Spoonful and Happy can be started in your first week, providing early motivation.</div>
+        <div class="benefit-desc">The harmonica is unique — you can sound good within days. The blues scale is only seven notes. Simple songs can be started in your first week, which matters enormously for motivation when rehabilitation already feels slow.</div>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">05</div>
         <div class="benefit-title">Community and connection</div>
-        <div class="benefit-desc">Music naturally creates social bonds. Learning harmonica opens doors to jam sessions, online communities of players, and connection with a rich musical lineage going back to the Mississippi Delta.</div>
+        <div class="benefit-desc">Music creates social bonds. Learning the harp opens doors to online player communities, local jam sessions, and a rich musical lineage — and gives you something to offer back at family gatherings and hospital visits.</div>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">06</div>
         <div class="benefit-title">Cognitive engagement</div>
-        <div class="benefit-desc">Learning music engages memory, attention, pattern recognition, and creative problem-solving. The self-directed practice methodology taught in this course builds metacognitive skills that transfer beyond music.</div>
+        <div class="benefit-desc">Learning music engages memory, attention, pattern recognition, and creative problem-solving. The self-directed practice methods taught here build metacognitive skills that transfer well beyond music.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SETUP -->
+<!-- SETUP FOR QUADRIPLEGIA -->
 <section class="setup-section">
   <div class="container">
     <div class="section-label">Before you start</div>
-    <h2 class="section-title">Equipment and setup</h2>
+    <h2 class="section-title">Equipment and setup for quadriplegia</h2>
     <div class="setup-grid">
       <div>
-        <p class="section-intro" style="margin-bottom:1.5rem;">The entire course requires two pieces of equipment. Total cost: around $30–50.</p>
+        <p class="section-intro" style="margin-bottom:1.5rem;">The entire programme requires two pieces of equipment. Total cost is around $30–50. A carer or family member will need to help you get set up the first few times — after that, most players can stay set up for the duration of a practice session without further assistance.</p>
         <div class="equipment-list">
           <div class="equip-item">
             <div class="equip-icon">
@@ -588,16 +811,16 @@
             </div>
             <div>
               <div class="equip-name">10-hole diatonic harmonica in C</div>
-              <div class="equip-detail">Recommended: Hohner Special 20, Lee Oskar Major Diatonic, or Suzuki Bluesmaster. Buy a decent harmonica — cheap ones are harder to play, respond poorly to bending, and don't last. A C harmonica plays songs in the key of G. Low notes on the left, high on the right.</div>
+              <div class="equip-detail">Recommended: <strong>Hohner Special 20</strong>, Lee Oskar Major Diatonic, or Suzuki Bluesmaster. Spend a little — cheap harmonicas are harder to play, respond poorly to bending, and do not last. A C harmonica plays blues in the key of G. Low notes on the left, high on the right. The holes are numbered 1–10.</div>
             </div>
           </div>
           <div class="equip-item">
             <div class="equip-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.34 0-2.58-2.09-4.66-4.67-4.66-1.28 0-2.44.52-3.29 1.35L8 3.39 5.96 1.35C5.11.52 3.95 0 2.67 0 .09 0-2 2.08-2 4.66c0 .46.11.9.18 1.34H-2v14h22V6z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
             </div>
             <div>
-              <div class="equip-name">Harmonica holder / rack</div>
-              <div class="equip-detail">Choose a rack that holds the harp securely and brings it to comfortable reach of your mouth. Place the harmonica slightly right of centre on the rack. Tighten wing-nuts so the harp cannot slip away from your lips during playing. A shirt collar or fabric pad on the chest helps stabilise the rack against your body.</div>
+              <div class="equip-name">Harmonica holder / neck rack</div>
+              <div class="equip-detail">The standard Hohner or Lee Oskar rack works for most people. For quadriplegia, look for a rack with <strong>adjustable arms and a wing-nut clamp</strong> so the harmonica can be locked in place. A padded neck collar or a folded cloth between the rack and your chest reduces pressure marks and stops the rack from sliding. Some players prefer a table-mounted stand over a neck rack — both approaches are taught in the videos below.</div>
             </div>
           </div>
           <div class="equip-item">
@@ -605,417 +828,584 @@
               <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>
             </div>
             <div>
-              <div class="equip-name">Recording device (optional but recommended)</div>
-              <div class="equip-detail">A smartphone is sufficient. Recording yourself and listening back is one of the most powerful learning tools in the course — it develops self-awareness, builds confidence, and reveals what you were unaware of while playing.</div>
+              <div class="equip-name">Recording device (optional, recommended)</div>
+              <div class="equip-detail">A smartphone mounted on a tripod or bedside table is ideal. Voice-activated phones and assistive switches let most players start and stop recording independently. Listening back to yourself is one of the most powerful learning tools in the programme — it reveals things you were unaware of while playing.</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="setup-tips">
+      <div>
         <div class="tip-box">
-          <div class="tip-label">Posture tip</div>
-          <div class="tip-text">Make sure your posture is straight — do not reach forward in a tense position. If possible, check yourself in a mirror when setting up. Tension in the neck and shoulders will interfere with your breathing and tone.</div>
+          <div class="tip-label">Rack positioning</div>
+          <div class="tip-text">Before tightening the rack, check that the harmonica sits at the natural height of your mouth when your head is in neutral — not tipped forward or lifted up. For most people, the harp ends up slightly right of centre. Reaching forward or tilting the chin down creates neck strain and interferes with breathing. If possible, have your carer check the position from the side.</div>
         </div>
         <div class="tip-box">
-          <div class="tip-label">Puckering technique</div>
-          <div class="tip-text">Puckering is not the same as pursing your lips for whistling. Place the harmonica well inside your mouth — enough to cover about 3 holes. Let it rest on your lower lip. Relax your jaw so the harp can move freely. Use the sides of your mouth to block the two outer holes until the centre hole sounds clean.</div>
+          <div class="tip-label">Working with a carer</div>
+          <div class="tip-text">The setup conversation is: <em>"A little higher. A little to the left. Now tighten the right wing-nut. Good."</em> Most carers get it right within two or three sessions. A clear photo of your preferred setup, stuck on the wall, makes handovers easier between different support workers.</div>
+        </div>
+        <div class="tip-box">
+          <div class="tip-label">Playing lying down</div>
+          <div class="tip-text">Many players practise in bed during the morning routine or before sleep. A rack works fine when reclining if you have the harmonica angled slightly downward. If you cannot wear the rack, ask a carer to place the harp on a folded towel on your chest, positioned so you can reach it with a small head movement.</div>
         </div>
         <div class="tip-box">
           <div class="tip-label">The Bendometer app</div>
-          <div class="tip-text">Once you reach Module 3 (bending), the Bendometer software at harpsoft.com is highly recommended. Play through your computer microphone and it shows you exactly which note you are hitting — invaluable visual feedback for mastering bent notes.</div>
+          <div class="tip-text">Once you reach the bending stage, the Bendometer software at harpsoft.com is highly recommended. Play through your device microphone and it shows you exactly which note you are hitting — invaluable visual feedback for mastering bent notes without a teacher in the room.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRACTICE METHOD -->
-<section class="method-section">
+<!-- ADAPTED TECHNIQUE -->
+<section class="adapt-section">
+  <div class="container">
+    <div class="section-label">Hands-free adaptations</div>
+    <h2 class="section-title">Playing without hands</h2>
+    <p class="section-intro">Standard harmonica technique assumes you are cupping the instrument with both hands — controlling tone, vibrato, and wah effects with hand movement. Hands-free players use different tools to achieve the same musical results. None of these adaptations compromises the core sound of the harp.</p>
+    <div class="adapt-grid">
+      <div class="adapt-card">
+        <div class="adapt-title"><div class="adapt-dot"></div>Head movement replaces hand movement</div>
+        <div class="adapt-desc">To change which hole you are playing, you move your head — not the harmonica. Small, precise lateral movements of the jaw and neck find each hole. This feels awkward for the first week and then becomes automatic, the same way typists stop looking at the keyboard.</div>
+        <ul class="adapt-tips">
+          <li>Practise finding holes 1, 4, and 7 with your eyes closed</li>
+          <li>Use the metal cover plate as a tactile reference for your lips</li>
+          <li>Keep the jaw relaxed — tension makes hole-finding harder</li>
+        </ul>
+      </div>
+      <div class="adapt-card">
+        <div class="adapt-title"><div class="adapt-dot"></div>Throat vibrato instead of hand vibrato</div>
+        <div class="adapt-desc">Professional players often use hand-cupping to produce vibrato. Hands-free players use throat vibrato — a gentle "ha-ha-ha" pulse in the airflow, generated from the diaphragm. This is arguably the more expressive technique, and it is the one taught throughout this programme.</div>
+        <ul class="adapt-tips">
+          <li>Start with exaggerated "ha-ha-ha" pulses, then refine</li>
+          <li>Throat vibrato also strengthens the diaphragm directly</li>
+          <li>Tongue vibrato ("da-da-da") is a useful alternative</li>
+        </ul>
+      </div>
+      <div class="adapt-card">
+        <div class="adapt-title"><div class="adapt-dot"></div>Trills from head rocking, not hand movement</div>
+        <div class="adapt-desc">A trill — rapid alternation between two adjacent holes — is produced by gently rocking the head side to side. The rack holds the harp still; your head does the work. A small side-to-side motion of perhaps half an inch is all you need.</div>
+        <ul class="adapt-tips">
+          <li>Start slowly on holes 4 and 5, then build speed</li>
+          <li>Keep the neck loose — do not force the rhythm</li>
+          <li>Trills sound best in the middle register (holes 4–7)</li>
+        </ul>
+      </div>
+      <div class="adapt-card">
+        <div class="adapt-title"><div class="adapt-dot"></div>Slides using the rack's fixed position</div>
+        <div class="adapt-desc">Sliding into or out of a note is just a controlled horizontal movement of the lips across the harp. Because the rack holds the instrument stationary, hands-free slides are actually <em>more</em> consistent than hand-held slides — your reference point never moves.</div>
+        <ul class="adapt-tips">
+          <li>Slide up: move head right. Slide down: move head left</li>
+          <li>A short slide of 1–2 holes is usually more musical than a long one</li>
+          <li>Combine slides with bends for expressive blues phrasing</li>
+        </ul>
+      </div>
+      <div class="adapt-card">
+        <div class="adapt-title"><div class="adapt-dot"></div>Bending with tongue and soft palate</div>
+        <div class="adapt-desc">Bending — the signature blues sound — is produced entirely inside the mouth, with or without hands. You lower the tongue, shape the soft palate, and slightly change the draw angle. Hands-free players learn bending exactly the same way hand players do. The Bendometer app is particularly useful here.</div>
+        <ul class="adapt-tips">
+          <li>Start with the 4-draw bend — the easiest to find</li>
+          <li>Think "whistling low" inside your mouth</li>
+          <li>If you squeak, you are pulling air too hard — relax</li>
+        </ul>
+      </div>
+      <div class="adapt-card">
+        <div class="adapt-title"><div class="adapt-dot"></div>Making the harp talk with consonants</div>
+        <div class="adapt-desc">Speech consonants — <em>b, d, t, k, r</em> — articulated silently while you play, transform individual notes into phrases that sound almost vocal. This is how skilled players make the harmonica appear to speak. It is pure mouth work, no hands required.</div>
+        <ul class="adapt-tips">
+          <li>Try "da-da" for staccato, "wah-wah" for flowing phrases</li>
+          <li>Vowel shapes (ah, ee, oo) change the tone of a held note</li>
+          <li>Listen to Sonny Terry or Jason Ricci for masterclass examples</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO PRACTISE -->
+<section class="practice-section">
   <div class="container">
     <div class="section-label">How to practise</div>
-    <h2 class="section-title">The practice methodology</h2>
-    <p class="section-intro">Good practice habits accelerate progress more than raw practice time. This course teaches you how to practise, not just what to practise.</p>
-    <div class="method-grid">
-      <div class="method-card">
-        <div class="method-title"><div class="method-dot"></div>Studying a song</div>
-        <div class="method-desc">Learn a song so well it enters your body. This means analysing it (taking it apart) and then synthesising it (hearing how it works as a whole). If you own it and make it yours, you can remember it. Practice gets easier when you know and love a song inside out.</div>
-        <ul class="method-tips">
-          <li>Key (of harp and song)</li>
-          <li>Form (12-bars, intro, bridge)</li>
+    <h2 class="section-title">Practice habits that accelerate progress</h2>
+    <p class="section-intro">You will get better much quicker if you build good practice habits early. The harmonica rewards focused, mindful practice far more than mechanical repetition. This section gives you the framework I use and recommend — adapted from years of teaching and from working with players who have gone from absolute beginner to performance-ready.</p>
+
+    <div class="practice-grid">
+      <div class="practice-card">
+        <div class="practice-title"><div class="practice-dot"></div>Studying a song</div>
+        <div class="practice-desc">Study a piece so well that it enters your body. This means analysing the song — taking it apart — and then synthesising it again to hear how it works as a whole. If you own it and make it yours, you will remember it. Practice gets easier when you know and love a song inside out.</div>
+        <ul class="practice-list">
+          <li>Key — of the harp and of the song</li>
+          <li>Form — 12 bars, intro, bridge, turnaround</li>
           <li>Phrases — how call and response relate</li>
           <li>Rhythm, melody, harmony</li>
+          <li>Style — vamping, slides, trills</li>
+          <li>Visualise the notes on the harp as you play</li>
           <li>Dynamics — does it get louder or softer?</li>
         </ul>
       </div>
-      <div class="method-card">
-        <div class="method-title"><div class="method-dot"></div>Problem-solving</div>
-        <div class="method-desc">Break songs into smaller, manageable chunks. Focus on the spot causing problems and master that piece. This lets you start practicing from the middle of a song without going back to the beginning every time.</div>
-        <ul class="method-tips">
-          <li>Play slower until correct, then build speed</li>
+      <div class="practice-card">
+        <div class="practice-title"><div class="practice-dot"></div>Problem-solving</div>
+        <div class="practice-desc">Break songs into smaller, manageable chunks. Focus on the spot causing problems and master that piece. This way you can start practising from the middle of a song without having to go back to the beginning every time. Songs are easier to remember as musical words and sentences — not as one long stream of notes.</div>
+        <ul class="practice-list">
+          <li>Play slower until correct, then build speed gradually</li>
           <li>Only rehearse a piece once you have it right</li>
-          <li>Don't practice what you already know — that is not progress</li>
+          <li>Don't practise what you already know — that is not progress</li>
           <li>If something feels easier, do more of it</li>
+          <li>If it feels harder, try moving or thinking in a different way</li>
         </ul>
       </div>
-      <div class="method-card">
-        <div class="method-title"><div class="method-dot"></div>Using backing tracks</div>
-        <div class="method-desc">Practise as much as possible with a blues rhythm track in G — piano, guitar, drums. Bookmark your favourite backing tracks on YouTube that connect you to the emotion you are trying to reach. If you can capture your mood, you can have a conversation with your listeners through the harmonica.</div>
+      <div class="practice-card">
+        <div class="practice-title"><div class="practice-dot"></div>Backing music</div>
+        <div class="practice-desc">Practise as much as possible with a blues rhythm track in G — piano, guitar, drums. Bookmark your favourite backing tracks on YouTube that connect you to the emotion you are trying to reach. If you can capture your mood, you can have a conversation with your listeners — playing emotion <em>through</em> the harmonica. If you want to scream, laugh, or cry, the harmonica is how you say it.</div>
       </div>
-      <div class="method-card">
-        <div class="method-title"><div class="method-dot"></div>Recording yourself</div>
-        <div class="method-desc">Record and listen back. You will hear things you were unaware of during the session. Be honest: is that what you wanted to hear? If not, you now know what to work on. Recording builds confidence because you become aware of when you sound good. It also develops your ear for self-evaluation.</div>
+      <div class="practice-card">
+        <div class="practice-title"><div class="practice-dot"></div>Recording yourself</div>
+        <div class="practice-desc">Record and listen back. You will hear things you were unaware of during the session. Be honest with yourself — is that what you wanted to hear? If not, you now know what to work on.</div>
+        <div class="practice-desc">Recording also builds confidence, because you become aware of when you sound good. Over time, by critiquing your own playing, you become an independent learner — able to practise whenever and however you want, and to make continuous adjustments without needing a teacher in the room.</div>
       </div>
     </div>
 
     <div class="schedule-box">
       <div>
         <div class="schedule-title">Recommended practice schedule</div>
-        <div class="schedule-row"><span class="schedule-label">Days per week</span><span class="schedule-val">5–6 days</span></div>
-        <div class="schedule-row"><span class="schedule-label">Time per session</span><span class="schedule-val">20–30 minutes</span></div>
-        <div class="schedule-row"><span class="schedule-label">New material</span><span class="schedule-val">50% of session</span></div>
-        <div class="schedule-row"><span class="schedule-label">Review / refine</span><span class="schedule-val">50% of session</span></div>
-        <div class="schedule-row"><span class="schedule-label">Weekly long session</span><span class="schedule-val">1 × 45–60 min improvisation focus</span></div>
-        <div class="schedule-row"><span class="schedule-label">Self-assessment</span><span class="schedule-val">Record yourself weekly</span></div>
+        <div class="schedule-row"><span class="schedule-label">Days per week</span><span class="schedule-val">5+ days</span></div>
+        <div class="schedule-row"><span class="schedule-label">Time per session</span><span class="schedule-val">20 min minimum</span></div>
+        <div class="schedule-row"><span class="schedule-label">New material</span><span class="schedule-val">50% of the session</span></div>
+        <div class="schedule-row"><span class="schedule-label">Review and refine</span><span class="schedule-val">50% of the session</span></div>
+        <div class="schedule-row"><span class="schedule-label">Self-assessment</span><span class="schedule-val">Record weekly</span></div>
+        <div class="schedule-row" style="border-bottom:none;padding-top:1rem;"><span class="schedule-label" style="font-style:italic;color:#5A5040;">Mindful and experimental — not mechanical and repetitive</span></div>
       </div>
-      <div class="four-components">
+      <div>
         <div class="schedule-title">The four practice components</div>
         <div class="component-item">
           <div class="component-name">Technique</div>
-          <div class="component-desc">Single notes, chords, chugging, bending, slides, trills, vibrato, octaves</div>
+          <div class="component-desc">Single notes, chords, octaves, chugging, bending, slides, trills, vibrato</div>
         </div>
         <div class="component-item">
           <div class="component-name">Knowledge</div>
-          <div class="component-desc">Blues scale, 12-bar structure, riffs, rhythm patterns, keys</div>
+          <div class="component-desc">The blues scale, 12-bar structure, riffs, rhythm patterns, keys</div>
         </div>
         <div class="component-item">
           <div class="component-name">Repertoire</div>
-          <div class="component-desc">Songs you learn and practise until performance-ready</div>
+          <div class="component-desc">Songs you learn and practise until you can play them from memory</div>
         </div>
-        <div class="component-item">
+        <div class="component-item" style="border-bottom:none;">
           <div class="component-name">Appreciation</div>
           <div class="component-desc">Listening to master players to train your ear and inspire your playing</div>
         </div>
       </div>
     </div>
+
+    <div class="push-quote">
+      <p>Sometimes you are going to feel untalented and incompetent — when nothing sounds right and you want to give up. Don't be disheartened. No matter how good you get, you will always find something else to frustrate and then delight you. This is when you push through, and when the rewards arrive that the few have earned.</p>
+    </div>
   </div>
 </section>
 
-<!-- CURRICULUM -->
-<section class="curriculum-section">
+<!-- CROSSING THE GAP — notes to music -->
+<section class="gap-section">
   <div class="container">
-    <div class="section-label">The course</div>
-    <h2 class="section-title">Six progressive modules</h2>
-    <p class="section-intro">Each module builds on the previous. Students advance at their own pace, with clear milestones at each stage.</p>
+    <div class="section-label">The hardest stage</div>
+    <h2 class="section-title">Crossing the gap from notes to music</h2>
+    <p class="section-intro gap-intro">There is a stage every learner reaches where the notes come out clean, the breath is steady, the holes are in the right place — and it still does not sound like music. This is real. It has a name. It is the gap between producing notes and playing phrases, and it is where most adult learners stall. The two exercises below are designed to walk you across it. Neither requires hand function. Both work as well in bed as at a table.</p>
 
-    <div class="module-tabs">
-      <button class="mod-tab active" onclick="showMod(0)">Module 1</button>
-      <button class="mod-tab" onclick="showMod(1)">Module 2</button>
-      <button class="mod-tab" onclick="showMod(2)">Module 3</button>
-      <button class="mod-tab" onclick="showMod(3)">Module 4</button>
-      <button class="mod-tab" onclick="showMod(4)">Module 5</button>
-      <button class="mod-tab" onclick="showMod(5)">Module 6</button>
+    <!-- CALL AND RESPONSE -->
+    <div class="gap-subsection">
+      <div class="gap-subeyebrow">Exercise one</div>
+      <h3 class="gap-subhead">Call-and-response — learning to play in conversation</h3>
+      <div class="gap-body">
+        <p>The single most important thing the harmonica does is hold a conversation. Blues itself is built on conversation — twelve bars of call and answer, repeated for as long as anyone has anything to say. Before you can have that conversation with a band, you need to have it with one other voice. That is what these exercises are for.</p>
+        <p>Each track below contains a phrase I play, followed by an exact stretch of silence for you to fill. Copy what I played as closely as you can. You will get it wrong at first. That is the point — the gap between what you heard and what came out is the lesson. Listen to the original again. Try once more. Move on when you have it.</p>
+        <p>Work through the five exercises in order. Spend a week on each if you need to. There is no rush, and there is no test at the end — only a working ear, which is the prize.</p>
+      </div>
+
+      <div class="cnr-list">
+        <div class="cnr-item">
+          <div class="cnr-num">01</div>
+          <div>
+            <div class="cnr-title">Two-note phrase, middle register</div>
+            <div class="cnr-desc">Hole 4-draw and 5-draw only. Two seconds long. Pure imitation. The point is to listen, not to play.</div>
+            <!-- AUDIO TO BE RECORDED: cnr-01.mp3 — pure harmonica, no backing track, ~3 min of call-and-silence pairs -->
+            <div class="cnr-audio-slot">Audio exercise — to be recorded</div>
+          </div>
+        </div>
+        <div class="cnr-item">
+          <div class="cnr-num">02</div>
+          <div>
+            <div class="cnr-title">Four-note phrase, middle register</div>
+            <div class="cnr-desc">Same idea, slightly longer. Still no bending. Pay attention to the rhythm — the timing matters as much as the pitches.</div>
+            <!-- AUDIO TO BE RECORDED: cnr-02.mp3 — pure harmonica, no backing track -->
+            <div class="cnr-audio-slot">Audio exercise — to be recorded</div>
+          </div>
+        </div>
+        <div class="cnr-item">
+          <div class="cnr-num">03</div>
+          <div>
+            <div class="cnr-title">Same notes, different rhythm</div>
+            <div class="cnr-desc">The pitches stay where they were. The rhythm shifts. Your ear learns to hear rhythm separately from melody — a real skill that takes a while to come.</div>
+            <!-- AUDIO TO BE RECORDED: cnr-03.mp3 — pure harmonica, no backing track -->
+            <div class="cnr-audio-slot">Audio exercise — to be recorded</div>
+          </div>
+        </div>
+        <div class="cnr-item">
+          <div class="cnr-num">04</div>
+          <div>
+            <div class="cnr-title">Answer with the same shape</div>
+            <div class="cnr-desc">Now you stop copying me and start replying. I play a phrase that goes up-up-down. You answer with a different phrase that also goes up-up-down. Backing track underneath — slow blues in G.</div>
+            <!-- AUDIO TO BE RECORDED: cnr-04.mp3 — harmonica + slow blues backing in G -->
+            <div class="cnr-audio-slot">Audio exercise — to be recorded</div>
+          </div>
+        </div>
+        <div class="cnr-item">
+          <div class="cnr-num">05</div>
+          <div>
+            <div class="cnr-title">Answer with a contrasting shape</div>
+            <div class="cnr-desc">I play a question. You answer it with something that resolves it. This is where blues phrasing actually lives. Backing track underneath — same slow blues in G.</div>
+            <!-- AUDIO TO BE RECORDED: cnr-05.mp3 — harmonica + slow blues backing in G -->
+            <div class="cnr-audio-slot">Audio exercise — to be recorded</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cnr-closing">When you can do exercise five without thinking, you are no longer a beginner.</div>
     </div>
 
-    <!-- MODULE 1 -->
-    <div class="mod-panel active" id="mod-0">
-      <div>
-        <div class="mod-week">Week 1</div>
-        <div class="mod-title">Foundation &amp; Setup</div>
-        <div class="mod-focus">Getting started right</div>
-        <p class="mod-desc">The foundation of everything that follows. Module 1 is about producing clean, single notes and building the practice habits that will accelerate your progress throughout the course.</p>
-        <ul class="mod-lessons">
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Equipment &amp; setup</strong> — Choosing your C harmonica, fitting a holder/rack, understanding harmonica layout (low notes left, high notes right), proper posture and positioning</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Puckering technique</strong> — Single note isolation, breathing naturally through the harmonica, finding and playing holes 1–6 accurately, first 3-hole melodies</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Practice foundations</strong> — Creating your personalised practice schedule, the four components (Technique, Knowledge, Repertoire, Appreciation), recording yourself for self-assessment, using backing tracks from day one</div></li>
-        </ul>
-        <div class="mod-milestone">
-          <div class="milestone-label">Module 1 Milestone</div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Play clean single notes on holes 1–6</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Complete a 20-minute practice session comfortably</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Record yourself and identify one area to improve</span></div>
-        </div>
+    <!-- PHRASE STEALING -->
+    <div class="gap-subsection">
+      <div class="gap-subeyebrow">Exercise two</div>
+      <h3 class="gap-subhead">Phrase-stealing — building a vocabulary the way every player has</h3>
+      <div class="gap-body">
+        <p>Every harmonica player who ever sounded good learned by stealing phrases from someone they admired. There is no shortcut and no shame in it. The reason this works is that you skip the hardest part — <em>inventing</em> musical phrases — and instead practise <em>deploying</em> them. Invention comes later, naturally, once your ear is full of good material.</p>
+        <p>Below are ten phrases I have transcribed from the masters and recorded for you to learn. Each is short. Each was written by someone whose name is on the recording. Each will sound like music every time you play it, because it already is music.</p>
+        <p>Spend one week on each phrase. Ten phrases over ten weeks gives you a working vocabulary — enough to start dropping them into a slow blues and have something real to say.</p>
       </div>
-      <div>
-        <div class="mod-refs">
-          <h4>Check out</h4>
-          <div class="master-item">
-            <div class="master-initial">AG</div>
-            <div><div class="master-name">Adam Gussow</div><div class="master-note">The founding father of modern blues harmonica and YouTube instruction. Over 200 videos. Essential viewing for any beginner.</div></div>
-          </div>
-          <div class="master-item">
-            <div class="master-initial">TL</div>
-            <div><div class="master-name">Tomlin Leckie</div><div class="master-note">Edinburgh-based blues harmonica teacher with comprehensive beginner instruction on YouTube.</div></div>
-          </div>
-        </div>
-        <div style="margin-top:2rem; padding:1.5rem; border:1px solid var(--border);">
-          <div class="section-label" style="margin-bottom:0.75rem;">Harmonica layout (C harp)</div>
-          <div style="font-family:monospace; font-size:0.82rem; color:var(--muted); line-height:2;">
-            <div>Hole:&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;4&nbsp;&nbsp;5&nbsp;&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;8&nbsp;&nbsp;9&nbsp;&nbsp;10</div>
-            <div>Blow:&nbsp;&nbsp; C&nbsp;&nbsp;E&nbsp;&nbsp;G&nbsp;&nbsp;C&nbsp;&nbsp;E&nbsp;&nbsp;G&nbsp;&nbsp;C&nbsp;&nbsp;E&nbsp;&nbsp;G&nbsp;&nbsp;C</div>
-            <div>Draw:&nbsp;&nbsp; D&nbsp;&nbsp;G&nbsp;&nbsp;B&nbsp;&nbsp;D&nbsp;&nbsp;F&nbsp;&nbsp;A&nbsp;&nbsp;B&nbsp;&nbsp;D&nbsp;&nbsp;F&nbsp;&nbsp;A</div>
-          </div>
-          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.75rem;">A C harmonica plays in the key of G (2nd position / cross harp) — the standard for blues.</p>
-        </div>
-      </div>
-    </div>
 
-    <!-- MODULE 2 -->
-    <div class="mod-panel" id="mod-1">
-      <div>
-        <div class="mod-week">Week 2</div>
-        <div class="mod-title">Rhythm &amp; Expression</div>
-        <div class="mod-focus">Making music with rhythm</div>
-        <p class="mod-desc">Your first week making actual music. Chugging creates an instantly recognisable blues groove, and by the end of this module you will be improvising your first original phrases.</p>
-        <ul class="mod-lessons">
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Harmonica chugging</strong> — Playing chord clusters (multiple holes), alternating blow and draw rhythmically, moving the chugging pattern across the harmonica, keeping time with backing tracks</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>First improvisation</strong> — The concept of call and response, creating 2-bar phrases using holes 1–4, playing with dynamics (loud/soft)</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>First song: Spoonful by Etta James</strong> — A simple, soulful two-note motif that demonstrates how much emotion you can express with very little</div></li>
-        </ul>
-        <div class="mod-milestone">
-          <div class="milestone-label">Module 2 Milestone</div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Maintain steady chugging rhythm for 12 bars</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Create simple 2-bar improvised phrases</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Play along with a Spoonful backing track</span></div>
-        </div>
+      <div class="phrase-protocol">
+        <div class="phrase-protocol-title">The protocol</div>
+        <ol>
+          <li>Pick one phrase. Just one.</li>
+          <li>Listen to it ten times before you play anything. Sing it under your breath.</li>
+          <li>Play it slowly, exactly. Match every detail of the original.</li>
+          <li>Loop the audio and play along until you cannot tell where my recording ends and your playing begins.</li>
+          <li>Now play it over a slow blues backing track in G — only that phrase, dropped in wherever it feels right. Twelve bars. Twelve more bars. Keep going.</li>
+          <li>When you can drop the phrase in confidently, it belongs to you. Move to the next one next week.</li>
+        </ol>
       </div>
-      <div>
-        <div class="mod-song-box">
-          <div class="song-label">Song — Module 2</div>
-          <div class="song-name">Spoonful — Etta James</div>
-          <div style="font-size:0.78rem;color:#7A7060;margin-top:0.4rem;margin-bottom:1rem;">A two-note phrase. Raw, minimal, and deeply emotional.</div>
-          <div class="song-label" style="margin-bottom:0.4rem;">Tab</div>
-          <div class="song-tab">That spoon-ful,&nbsp;&nbsp;spoon-ful,&nbsp;&nbsp;spooooonful<br>-3'&nbsp;-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-3'&nbsp;-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-3'&nbsp;-2</div>
-          <p style="font-size:0.75rem;color:#5A5040;margin-top:0.75rem;">Note: -3' means 3 draw, bent down a half-step. You will master this fully in Module 3.</p>
-        </div>
-        <div class="mod-refs">
-          <h4>Check out</h4>
-          <div class="master-item">
-            <div class="master-initial">RS</div>
-            <div><div class="master-name">Ronnie Shellist</div><div class="master-note">If you want a real bluesy sound and to understand improvisation — this is the player to study.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- MODULE 3 -->
-    <div class="mod-panel" id="mod-2">
-      <div>
-        <div class="mod-week">Weeks 3–4</div>
-        <div class="mod-title">Bending Notes</div>
-        <div class="mod-focus">The essential blues sound</div>
-        <p class="mod-desc">Bending is what makes harmonica sound like harmonica. When you scoop your tongue from the front to the back of your mouth on a draw note, you lower the pitch — creating the crying, wailing quality that defines blues music.</p>
-        <ul class="mod-lessons">
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Introduction to bending</strong> — What bending is and why it matters. Physical technique: tongue position (yawning motion), air pressure, empty lungs before bending. First bends on holes 1, 2, and 3 draw</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Draw bends across holes 1–6</strong> — Progressive exercises, half-step vs whole-step bends, reaching bent notes cleanly without sounding the straight note first, common troubleshooting</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Musical application</strong> — Bending for emotional effect, the "question and answer" using bent notes, classic bent note licks integrated into Spoonful</div></li>
-        </ul>
-        <div style="background:rgba(200,150,60,0.06);border-left:3px solid var(--gold);padding:1.25rem 1.5rem;margin:1.5rem 0;">
-          <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);margin-bottom:0.5rem;">Bending tips</div>
-          <ul style="padding-left:1.1rem;">
-            <li style="font-size:0.83rem;color:#5A5040;line-height:1.8;">Have your lungs totally empty before starting to bend</li>
-            <li style="font-size:0.83rem;color:#5A5040;line-height:1.8;">You do not need to play loud — soft playing also extends harp life</li>
-            <li style="font-size:0.83rem;color:#5A5040;line-height:1.8;">Press your tongue firmly against your teeth, then pretend to yawn slightly</li>
-            <li style="font-size:0.83rem;color:#5A5040;line-height:1.8;">Use the Bendometer app to see exactly which note you are hitting</li>
-          </ul>
+      <div class="phrase-list">
+        <div class="phrase-item">
+          <div class="phrase-num">01</div>
+          <div>
+            <div class="phrase-source">Sonny Boy Williamson II — <em>Help Me</em></div>
+            <div class="phrase-pattern">4-draw, 4-draw bent, 3-draw, 2-draw</div>
+            <div class="phrase-oneliner">This phrase falls. The bent 4-draw is the heart of it.</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-01.mp3 — slow, looped 4-6 times -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
-        <div class="mod-milestone">
-          <div class="milestone-label">Module 3 Milestone</div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Execute controlled half-step bends on holes 1–4 draw</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Reach and hold bent notes without squeaking</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Improvise a 4-bar phrase using bent notes expressively</span></div>
+        <div class="phrase-item">
+          <div class="phrase-num">02</div>
+          <div>
+            <div class="phrase-source"><em>Phrase to be selected</em></div>
+            <div class="phrase-pattern">Hole pattern to be added</div>
+            <div class="phrase-oneliner">One-line description to be added</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-02.mp3 -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
+        </div>
+        <div class="phrase-item">
+          <div class="phrase-num">03</div>
+          <div>
+            <div class="phrase-source"><em>Phrase to be selected</em></div>
+            <div class="phrase-pattern">Hole pattern to be added</div>
+            <div class="phrase-oneliner">One-line description to be added</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-03.mp3 -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
+        </div>
+        <div class="phrase-item">
+          <div class="phrase-num">04</div>
+          <div>
+            <div class="phrase-source"><em>Phrase to be selected</em></div>
+            <div class="phrase-pattern">Hole pattern to be added</div>
+            <div class="phrase-oneliner">One-line description to be added</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-04.mp3 -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
+        </div>
+        <div class="phrase-item">
+          <div class="phrase-num">05</div>
+          <div>
+            <div class="phrase-source"><em>Phrase to be selected</em></div>
+            <div class="phrase-pattern">Hole pattern to be added</div>
+            <div class="phrase-oneliner">One-line description to be added</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-05.mp3 -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
+        </div>
+        <div class="phrase-item">
+          <div class="phrase-num">06</div>
+          <div>
+            <div class="phrase-source"><em>Phrase to be selected</em></div>
+            <div class="phrase-pattern">Hole pattern to be added</div>
+            <div class="phrase-oneliner">One-line description to be added</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-06.mp3 -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
+        </div>
+        <div class="phrase-item">
+          <div class="phrase-num">07</div>
+          <div>
+            <div class="phrase-source"><em>Phrase to be selected</em></div>
+            <div class="phrase-pattern">Hole pattern to be added</div>
+            <div class="phrase-oneliner">One-line description to be added</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-07.mp3 -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
+        </div>
+        <div class="phrase-item">
+          <div class="phrase-num">08</div>
+          <div>
+            <div class="phrase-source"><em>Phrase to be selected</em></div>
+            <div class="phrase-pattern">Hole pattern to be added</div>
+            <div class="phrase-oneliner">One-line description to be added</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-08.mp3 -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
+        </div>
+        <div class="phrase-item">
+          <div class="phrase-num">09</div>
+          <div>
+            <div class="phrase-source"><em>Phrase to be selected</em></div>
+            <div class="phrase-pattern">Hole pattern to be added</div>
+            <div class="phrase-oneliner">One-line description to be added</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-09.mp3 -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
+        </div>
+        <div class="phrase-item">
+          <div class="phrase-num">10</div>
+          <div>
+            <div class="phrase-source"><em>Phrase to be selected</em></div>
+            <div class="phrase-pattern">Hole pattern to be added</div>
+            <div class="phrase-oneliner">One-line description to be added</div>
+          </div>
+          <!-- AUDIO TO BE RECORDED: phrase-10.mp3 -->
+          <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
       </div>
-      <div>
-        <div style="padding:1.5rem;border:1px solid var(--border);margin-bottom:1.5rem;">
-          <div class="section-label" style="margin-bottom:0.75rem;">Bending map — holes 1–6 draw</div>
-          <div style="font-family:monospace;font-size:0.85rem;line-height:2.2;color:var(--charcoal);">
-            <div>Hole 1: D → D♭ <span style="color:var(--muted)">(1 bend)</span></div>
-            <div>Hole 2: G → F♯ → F <span style="color:var(--muted)">(2 bends)</span></div>
-            <div>Hole 3: B → B♭ → A → A♭ <span style="color:var(--muted)">(3 bends — most expressive)</span></div>
-            <div>Hole 4: D → D♭ <span style="color:var(--muted)">(1 bend)</span></div>
-            <div>Hole 5: F → E <span style="color:var(--muted)">(1 bend)</span></div>
-            <div>Hole 6: A → A♭ <span style="color:var(--muted)">(1 bend)</span></div>
-          </div>
-        </div>
-        <div class="mod-refs">
-          <h4>Check out</h4>
-          <div class="master-item">
-            <div class="master-initial">JR</div>
-            <div><div class="master-name">Jason Ricci</div><div class="master-note">A living legend and harmonica virtuoso. If you want to understand what bent notes can do at the highest level — essential viewing.</div></div>
-          </div>
-          <div class="master-item">
-            <div class="master-initial">LS</div>
-            <div><div class="master-name">Lee Sankey</div><div class="master-note">Wrote a paper on the importance of visualising note patterns for learning a musical instrument. Relaxed and insightful teaching approach.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- MODULE 4 -->
-    <div class="mod-panel" id="mod-3">
-      <div>
-        <div class="mod-week">Week 5</div>
-        <div class="mod-title">The Blues Scale &amp; 12-Bar Structure</div>
-        <div class="mod-focus">The foundation of improvisation</div>
-        <p class="mod-desc">The blues scale is only seven notes — but they can be played in a multitude of ways. Once you know it and understand the 12-bar structure, you have the keys to improvise over almost any blues song.</p>
-        <ul class="mod-lessons">
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>The blues scale</strong> — The seven notes: -2 -3' 4 -4'' -4 -5 6. Understanding tension and resolution in each note. Sing the scale before playing it. Visualise the pattern on the harmonica with eyes closed.</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>12-bar structure</strong> — Standard 12-bar blues: 12 bars of 4 beats repeated. Counting bars to keep your place. The "cheat sheet" of three draw positions across a 12-bar cycle.</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>First 12-bar improvisation</strong> — Using only blues scale notes for safe improvisation, creating phrases that fit chord changes, playing with space — when not to play.</div></li>
-        </ul>
-        <div class="mod-milestone">
-          <div class="milestone-label">Module 4 Milestone</div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Play the blues scale from memory in both directions</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Identify where you are in a 12-bar progression while listening</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Improvise continuously over one complete 12-bar cycle</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="mod-song-box">
-          <div class="song-label">The Blues Scale</div>
-          <div class="song-tab" style="font-size:1.1rem;letter-spacing:0.12em;">-2 &nbsp;-3' &nbsp;4 &nbsp;-4'' &nbsp;-4 &nbsp;-5 &nbsp;6</div>
-          <p style="font-size:0.75rem;color:#7A7060;margin-top:0.75rem;">Sing this out loud before playing. Feel the tension in -5 and the resolution in 6. Each note has a quality you will learn to recognise.</p>
-        </div>
-        <div class="mod-song-box" style="margin-top:1rem;">
-          <div class="song-label">12-Bar Cheat Sheet (Key of G)</div>
-          <div class="song-tab" style="font-size:0.82rem;line-height:2.2;">
-            -2 -2 -2 -2 &nbsp;(bars 1–4)<br>
-            &nbsp;4 &nbsp;4 &nbsp;4 &nbsp;4 &nbsp;(bars 5–6)<br>
-            -2 -2 -2 -2 &nbsp;(bars 7–8)<br>
-            -4 -4 -4 -4 &nbsp;(bars 9–10)<br>
-            -2 -2 -2 -2 &nbsp;(bars 11–12, with -4 on last 2 beats)
-          </div>
-        </div>
-        <div class="mod-song-box" style="margin-top:1rem;">
-          <div class="song-label">Song — Module 4</div>
-          <div class="song-name">Happy — Pharrell Williams</div>
-          <div class="song-tab" style="margin-top:0.5rem;">-2 -3 4 -3 -4 4<br>-3 4 -3 -2 -2 -2<br>-4 -5 6 6 6 -5 -6 -5 -4</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODULE 5 -->
-    <div class="mod-panel" id="mod-4">
-      <div>
-        <div class="mod-week">Weeks 6–7</div>
-        <div class="mod-title">Riffs, Special Effects &amp; Harmonica Talk</div>
-        <div class="mod-focus">Building your vocabulary</div>
-        <p class="mod-desc">A short set of notes that sound great together is called a riff. Module 5 builds your musical vocabulary with classic riffs, expressive techniques, and the unique ability to make your harmonica "speak" using speech consonants.</p>
-        <ul class="mod-lessons">
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Classic riffs</strong> — Good Morning, Up, Trouble, Mannish Boy, Duke, Low-Down Blues. When and how to use each. Creating variations.</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Special effects</strong> — Slides (up to and down from notes), throat vibrato ("ha-ha-ha" on airflow), trills (head movement side to side), octaves (holes 1+4, 2+5 etc. with tongue blocking middle holes)</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Harmonica talk</strong> — Using English pronunciation strategies to phrase notes. Consonants: b (bed), d (dog), t (tip), k (cat), r (rug). Vowels: a, e, i, o, u — long and short. This makes the harmonica literally speak.</div></li>
-        </ul>
-        <div class="mod-milestone">
-          <div class="milestone-label">Module 5 Milestone</div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Play 5+ classic riffs from memory</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Incorporate slides, vibrato, and trills naturally into phrases</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Perform Roadhouse Blues and Smells Like Teen Spirit complete</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="mod-song-box">
-          <div class="song-label">Song — Module 5a</div>
-          <div class="song-name">Roadhouse Blues — The Doors</div>
-          <div class="song-tab" style="font-size:0.78rem;line-height:2;">
-            -2 -2 -2 34 -3 &nbsp;(verse chug)<br>
-            -2 -3 4 -4 4 -3 3 -3 -2 -2<br>
-            -4 -5 -4 -5 -4 -5 -4 | -4 6 -5 -4 4 -2
-          </div>
-        </div>
-        <div class="mod-song-box" style="margin-top:1rem;">
-          <div class="song-label">Song — Module 5b</div>
-          <div class="song-name">Smells Like Teen Spirit — Nirvana</div>
-          <div class="song-tab" style="font-size:0.82rem;">Just play -2 4 -4 -2 over the chorus</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODULE 6 -->
-    <div class="mod-panel" id="mod-5">
-      <div>
-        <div class="mod-week">Weeks 8+</div>
-        <div class="mod-title">Performance &amp; Advanced Improvisation</div>
-        <div class="mod-focus">Becoming performance-ready</div>
-        <p class="mod-desc">The final module is about putting it all together — building longer musical statements, playing with other musicians, and developing your own distinctive voice. This is where technique becomes artistry.</p>
-        <ul class="mod-lessons">
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Advanced improvisation</strong> — Building 4–8 bar phrases, dramatic arcs (tension and release), targeting chord tones for stronger resolution, trading fours with a backing track</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Playing with others</strong> — Musical etiquette: when to play, when to listen. Never play over a singer or lead instrument. Play between vocal lines. Adjusting volume and tone to fit the band. Choosing the right harmonica key for different songs.</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Your performance repertoire</strong> — Refining all four songs (Spoonful, Happy, Roadhouse Blues, Smells Like Teen Spirit) plus one student-choice song. Recording a performance-quality video.</div></li>
-          <li class="mod-lesson"><div class="lesson-dot"></div><div class="lesson-text"><strong>Continuing your journey</strong> — Finding local jam sessions and open mic nights, exploring different keys and positions, next steps: amplified harmonica, chromatic harmonica, advanced techniques</div></li>
-        </ul>
-        <div class="mod-milestone">
-          <div class="milestone-label">Course Completion</div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Improvise confidently over 12-bar blues for 3+ minutes</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Perform 5 complete songs from memory</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Record a performance-quality video</span></div>
-          <div class="milestone-item"><span class="check">✓</span><span class="milestone-text">Articulate your personal practice plan for continued growth</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="mod-refs">
-          <h4>Choose your 5th song</h4>
-          <div style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Select one song that speaks to you:</div>
-          <div style="display:flex;flex-direction:column;gap:0.5rem;">
-            <div style="font-size:0.85rem;color:#4A4438;padding:0.5rem 0;border-bottom:1px solid var(--border);">Hoochie Coochie Man — Muddy Waters</div>
-            <div style="font-size:0.85rem;color:#4A4438;padding:0.5rem 0;border-bottom:1px solid var(--border);">The Thrill Is Gone — B.B. King</div>
-            <div style="font-size:0.85rem;color:#4A4438;padding:0.5rem 0;border-bottom:1px solid var(--border);">Crossroads — Cream</div>
-            <div style="font-size:0.85rem;color:#4A4438;padding:0.5rem 0;border-bottom:1px solid var(--border);">Piano Man — Billy Joel</div>
-            <div style="font-size:0.85rem;color:#4A4438;padding:0.5rem 0;border-bottom:1px solid var(--border);">Heart of Gold — Neil Young</div>
-            <div style="font-size:0.85rem;color:#4A4438;padding:0.5rem 0;">Love in Vain — Robert Johnson</div>
-          </div>
-        </div>
-        <div class="mod-refs" style="margin-top:2rem;">
-          <h4>Master players to study</h4>
-          <div class="master-item"><div class="master-initial">AG</div><div><div class="master-name">Adam Gussow</div><div class="master-note">Modern Blues Harmonica — 200+ YouTube videos. The essential starting point.</div></div></div>
-          <div class="master-item"><div class="master-initial">JR</div><div><div class="master-name">Jason Ricci</div><div class="master-note">Speed, technical mastery, and raw power.</div></div></div>
-          <div class="master-item"><div class="master-initial">RS</div><div><div class="master-name">Ronnie Shellist</div><div class="master-note">Authentic blues phrasing and improvisation.</div></div></div>
-          <div class="master-item"><div class="master-initial">ML</div><div><div class="master-name">Malcolm Lane</div><div class="master-note">"Learn to Play Harmonica by Ear" — excellent internet course.</div></div></div>
-        </div>
+      <div class="phrase-journal">
+        <div class="phrase-journal-label">Optional but powerful</div>
+        <div class="phrase-journal-title">Keep a phrase journal</div>
+        <p>One line per phrase, in a notebook, a phone note, a Google doc — the format does not matter. Write down what player it came from, when you learned it, and what feeling it carries for you. After ten phrases this becomes a personal artefact that proves you are a player. After fifty it is a record of how your ear has grown.</p>
+        <p>The act of <em>naming</em> each phrase — "the falling Sonny Boy phrase," "the long Adam Gussow bend" — is what turns a row of notes into a musical object you own.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RIFFS -->
-<section class="riffs-section">
+<!-- DEMONSTRATION VIDEOS -->
+<section class="videos-section">
   <div class="container">
-    <div class="section-label">Quick reference</div>
-    <h2 class="section-title">Essential riffs</h2>
-    <p class="section-intro">Record yourself playing the riffs you like so you never lose them. Play around with them and integrate them into what you already know.</p>
-    <div class="riff-grid">
-      <div class="riff-cell">
-        <div class="riff-name">Good Morning Riff</div>
-        <div class="riff-tab">-1 &nbsp;2 &nbsp;-2</div>
-        <div class="riff-note">Simple, optimistic opener</div>
+    <div class="section-label">Demonstration videos</div>
+    <h2 class="section-title">Watch and play along</h2>
+    <p class="section-intro">Each video below walks you through one part of the hands-free method. Start with video one and work through them in order. All videos are hosted on YouTube — play them at full screen, rewind as often as you need, and try each step immediately with your own harp.</p>
+    <div class="video-list">
+
+      <div class="video-row">
+        <div class="video-text">
+          <div class="video-num">01</div>
+          <div class="video-eyebrow">Getting set up</div>
+          <div class="video-title">Rack setup for quadriplegia</div>
+          <div class="video-desc">How to position and tighten a neck rack so the harmonica stays exactly where you need it. Covers working with a carer, adjusting for different postures (upright, reclining, lying flat), and troubleshooting the most common setup problems.</div>
+          <div class="video-tags">
+            <span class="video-tag">Rack positioning</span>
+            <span class="video-tag">Carer setup</span>
+            <span class="video-tag">Posture</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_1')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Rack Setup Demonstration</div>
+          </div>
+        </div>
       </div>
-      <div class="riff-cell">
-        <div class="riff-name">Up Riff</div>
-        <div class="riff-tab">-2 &nbsp;-2 &nbsp;4 &nbsp;-4</div>
-        <div class="riff-note">Ascending energy</div>
+
+      <div class="video-row reverse">
+        <div class="video-text">
+          <div class="video-num">02</div>
+          <div class="video-eyebrow">Your first clean note</div>
+          <div class="video-title">Single notes using the puckering technique</div>
+          <div class="video-desc">Producing a clean, isolated note on a single hole — the foundation for everything that follows. Emphasis on the hands-free pucker: lips relaxed, harp deep enough in the mouth that the side holes are blocked, head movement to find each hole.</div>
+          <div class="video-tags">
+            <span class="video-tag">Puckering</span>
+            <span class="video-tag">Single notes</span>
+            <span class="video-tag">Head movement</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_2')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Puckering Technique</div>
+          </div>
+        </div>
       </div>
-      <div class="riff-cell">
-        <div class="riff-name">Trouble Riff</div>
-        <div class="riff-tab">-4 &nbsp;-5 &nbsp;-4 &nbsp;-5 &nbsp;6</div>
-        <div class="riff-note">Dark, brooding feel</div>
+
+      <div class="video-row">
+        <div class="video-text">
+          <div class="video-num">03</div>
+          <div class="video-eyebrow">Breath as rhythm</div>
+          <div class="video-title">Chugging — your first rhythmic pattern</div>
+          <div class="video-desc">Alternating blow and draw chords in rhythm to produce the chugging sound that drives train-beat blues. Chugging is also the single best respiratory exercise on the instrument — deep, sustained, coordinated breath work that sounds like music from day one.</div>
+          <div class="video-tags">
+            <span class="video-tag">Chugging</span>
+            <span class="video-tag">Breath control</span>
+            <span class="video-tag">Rhythm</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_3')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Chugging Rhythm</div>
+          </div>
+        </div>
       </div>
-      <div class="riff-cell">
-        <div class="riff-name">Mannish Boy Riff</div>
-        <div class="riff-tab">3 4 3 -3 3 -123 123</div>
-        <div class="riff-note">Classic Chicago blues signature</div>
+
+      <div class="video-row reverse">
+        <div class="video-text">
+          <div class="video-num">04</div>
+          <div class="video-eyebrow">The blues sound</div>
+          <div class="video-title">Bending notes, hands-free</div>
+          <div class="video-desc">Bending is the sound most people associate with blues harmonica — a note that slides down in pitch and comes back up. This video shows how to produce it using only tongue and soft palate, with no hand-cupping required. Includes troubleshooting for the common squeaks and dead notes.</div>
+          <div class="video-tags">
+            <span class="video-tag">Bending</span>
+            <span class="video-tag">Tongue position</span>
+            <span class="video-tag">Bendometer</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_4')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Bending Notes</div>
+          </div>
+        </div>
       </div>
-      <div class="riff-cell">
-        <div class="riff-name">Duke Riff</div>
-        <div class="riff-tab">-2 &nbsp;-3 &nbsp;-4 &nbsp;5 &nbsp;6 &nbsp;6</div>
-        <div class="riff-note">Smooth, ascending run</div>
+
+      <div class="video-row">
+        <div class="video-text">
+          <div class="video-num">05</div>
+          <div class="video-eyebrow">Expression without hands</div>
+          <div class="video-title">Vibrato, trills, and slides</div>
+          <div class="video-desc">The three effects that give a phrase its character — produced with throat, head, and lips rather than hands. Throat vibrato from the diaphragm, trills from gentle side-to-side head rocking, and slides from controlled lip movement across the fixed rack.</div>
+          <div class="video-tags">
+            <span class="video-tag">Throat vibrato</span>
+            <span class="video-tag">Trills</span>
+            <span class="video-tag">Slides</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_5')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Expression Techniques</div>
+          </div>
+        </div>
       </div>
-      <div class="riff-cell">
-        <div class="riff-name">Low-Down Blues Riff</div>
-        <div class="riff-tab">-2 &nbsp;-2" &nbsp;-1 &nbsp;-2" &nbsp;2</div>
-        <div class="riff-note">Deep, gritty feel using bends</div>
+
+      <div class="video-row reverse">
+        <div class="video-text">
+          <div class="video-num">06</div>
+          <div class="video-eyebrow">Putting it together</div>
+          <div class="video-title">Playing along with a 12-bar blues</div>
+          <div class="video-desc">A complete play-along over a slow blues backing track in G. Uses only the techniques from videos one through five. By the end of this video most viewers can produce a recognisably musical performance — which is the entire point.</div>
+          <div class="video-tags">
+            <span class="video-tag">12-bar blues</span>
+            <span class="video-tag">Backing tracks</span>
+            <span class="video-tag">First performance</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_6')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">12-Bar Blues Play-Along</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ENDORSEMENTS -->
+<section class="endorse-section">
+  <div class="container">
+    <div class="section-label">Endorsed by</div>
+    <h2 class="section-title">SCI associations in five countries</h2>
+    <p class="section-intro endorse-intro">The programme has been promoted through the newsletters and member channels of spinal cord injury associations in Australia, Canada, New Zealand, South Africa, and the United States. It has been built with direct input from people living with quadriplegia and from the professional harmonica teacher Ben Hewlett.</p>
+    <div class="endorse-grid">
+      <div class="endorse-cell">
+        <div class="endorse-country">Australia</div>
+        <div class="endorse-org">SCI community networks</div>
+      </div>
+      <div class="endorse-cell">
+        <div class="endorse-country">Canada</div>
+        <div class="endorse-org">SCI community networks</div>
+      </div>
+      <div class="endorse-cell">
+        <div class="endorse-country">New Zealand</div>
+        <div class="endorse-org">SCI community networks</div>
+      </div>
+      <div class="endorse-cell">
+        <div class="endorse-country">South Africa</div>
+        <div class="endorse-org">SCI community networks</div>
+      </div>
+      <div class="endorse-cell">
+        <div class="endorse-country">United States</div>
+        <div class="endorse-org">SCI community networks</div>
       </div>
     </div>
-    <p style="font-size:0.82rem;color:var(--muted);margin-top:1rem;">Tab notation: numbers = hole number, - = draw, no dash = blow, ' = half-step bend, '' = whole-step bend</p>
+  </div>
+</section>
+
+<!-- MASTERS TO STUDY -->
+<section class="masters-section">
+  <div class="container">
+    <div class="section-label">Music appreciation</div>
+    <h2 class="section-title">Masters to study</h2>
+    <p class="section-intro">Listening is part of practice. Spending time with the players who define the instrument trains your ear, gives you a vocabulary of phrases to absorb, and reminds you what is possible. The teachers below are the ones I recommend most often — Adam Gussow above all, who is essentially the founding father of online harmonica instruction.</p>
+    <div class="masters-grid">
+      <div class="master-card">
+        <div class="master-initial">AG</div>
+        <div>
+          <div class="master-name">Adam Gussow</div>
+          <div class="master-note">The founding father of modern blues harmonica on YouTube. Over 200 instructional videos on his Modern Blues Harmonica channel. Essential viewing — start here and you will not need much else for a long time.</div>
+        </div>
+      </div>
+      <div class="master-card">
+        <div class="master-initial">JR</div>
+        <div>
+          <div class="master-name">Jason Ricci</div>
+          <div class="master-note">Modern virtuoso. Speed, technical mastery, and raw expressive power. Watch him for what is possible at the far end of the instrument.</div>
+        </div>
+      </div>
+      <div class="master-card">
+        <div class="master-initial">RS</div>
+        <div>
+          <div class="master-name">Ronnie Shellist</div>
+          <div class="master-note">Authentic blues phrasing and improvisation. Excellent for developing feel and a relaxed musical voice.</div>
+        </div>
+      </div>
+      <div class="master-card">
+        <div class="master-initial">ST</div>
+        <div>
+          <div class="master-name">Sonny Terry</div>
+          <div class="master-note">The gold standard for the harmonica as a vocal instrument. Listen for how he makes the harp talk, laugh, and cry — all techniques you can learn hands-free.</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:2rem;padding:1.25rem 1.5rem;border-left:3px solid var(--gold);background:rgba(200,150,60,0.04);">
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">When you find a phrase you love, slow it down and try to copy it. This is how every harmonica player who has ever lived has learned the instrument — by listening to a master and stealing what they did. There is no shortcut, and there is no shame in it.</p>
+    </div>
   </div>
 </section>
 
@@ -1023,8 +1413,8 @@
 <section class="cta-section">
   <div class="container">
     <div class="cta-inner">
-      <h2>Ready to start?</h2>
-      <p>Don't be disheartened when nothing sounds right at first. No matter how good you get, you will always find something new to frustrate and then delight you. Push through — the rewards are worth it.</p>
+      <h2>Ready to pick up the harp?</h2>
+      <p>The course is free. The equipment costs around $40. The first clean note is somewhere between five minutes and a few days away. Get in touch if you would like help getting started, want to share your progress, or have questions about the programme.</p>
       <div class="cta-buttons">
         <a href="index.html#contact" class="btn-primary">Contact Jeremy</a>
         <a href="index.html" class="btn-ghost">Back to Main Site</a>
@@ -1034,11 +1424,20 @@
 </section>
 
 <footer>
-  <a href="sci_website.html" class="footer-brand">Living Beyond SCI — Jeremy Olson</a>
+  <a href="index.html" class="footer-brand">Living Beyond SCI — Jeremy Olson</a>
   <div class="footer-copy">© 2011–2025 Jeremy Olson. All rights reserved.</div>
 </footer>
 
 <script>
+function loadYT(el, videoId) {
+  if (videoId.startsWith('YOUR_')) return;
+  const iframe = document.createElement('iframe');
+  iframe.className = 'yt-embed';
+  iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+  iframe.allow = 'autoplay; encrypted-media';
+  iframe.allowFullscreen = true;
+  el.replaceWith(iframe);
+}
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
   if (links.style.display === 'flex') {
@@ -1046,14 +1445,6 @@ function toggleMenu() {
   } else {
     links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:#2A2820;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid #C8963C;z-index:99;';
   }
-}
-function showMod(n) {
-  document.querySelectorAll('.mod-panel').forEach((p,i) => {
-    p.classList.toggle('active', i === n);
-  });
-  document.querySelectorAll('.mod-tab').forEach((t,i) => {
-    t.classList.toggle('active', i === n);
-  });
 }
 // Fade-in on scroll
 const observer = new IntersectionObserver((entries) => {
@@ -1064,7 +1455,7 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.08 });
-document.querySelectorAll('.benefit-card, .equip-item, .method-card, .riff-cell, .song-card, .master-item').forEach(el => {
+document.querySelectorAll('.benefit-card, .equip-item, .adapt-card, .practice-card, .resp-figure, .video-row, .endorse-cell, .master-card').forEach(el => {
   el.style.cssText += 'opacity:0;transform:translateY(16px);transition:opacity 0.45s ease,transform 0.45s ease;';
   observer.observe(el);
 });
