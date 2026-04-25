@@ -1196,100 +1196,8 @@
   }
   .gie-teaser-left { }
   .gie-teaser-right { }
-  .gie-stage-preview {
-    display: flex; flex-direction: column; gap: 0;
-    margin: 2rem 0;
-  }
-  .gie-stage-row {
-    display: flex; gap: 1rem; padding: 1rem 0;
-    border-bottom: 1px solid var(--border); align-items: start;
-  }
-  .gie-stage-row:last-child { border-bottom: none; }
-  .gie-stage-num-badge {
-    width: 32px; height: 32px; background: var(--charcoal);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.72rem; color: var(--gold); font-weight: 500;
-    flex-shrink: 0;
-  }
-  .gie-stage-info { }
-  .gie-stage-days {
-    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.2rem;
-  }
-  .gie-stage-name { font-size: 0.9rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.2rem; }
-  .gie-stage-hint { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
-
-  /* Mailchimp signup */
-  .gie-signup-box {
-    background: var(--charcoal); padding: 2.5rem;
-    position: relative; overflow: hidden;
-  }
-  .gie-signup-box::before {
-    content: '';
-    position: absolute; top: 0; right: 0;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(200,150,60,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .gie-signup-eyebrow {
-    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.6rem;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .gie-signup-eyebrow::before {
-    content: ''; width: 16px; height: 1px; background: var(--gold); display: block;
-  }
-  .gie-signup-title {
-    font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 400;
-    color: var(--cream); margin-bottom: 0.75rem; line-height: 1.35;
-  }
-  .gie-signup-desc {
-    font-size: 0.88rem; color: #7A7060; line-height: 1.8; margin-bottom: 1.5rem;
-  }
-  .gie-signup-form { display: flex; flex-direction: column; gap: 0.75rem; }
-  .gie-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-  .gie-input {
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-    color: var(--cream); padding: 0.75rem 1rem;
-    font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
-    outline: none; width: 100%;
-    transition: border-color 0.2s;
-  }
-  .gie-input:focus { border-color: var(--gold); }
-  .gie-input::placeholder { color: #4A4438; }
-  .gie-submit {
-    background: var(--gold); color: var(--charcoal); border: none;
-    padding: 0.85rem 2rem; font-family: 'DM Sans', sans-serif;
-    font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em;
-    cursor: pointer; transition: background 0.2s;
-    align-self: flex-start;
-  }
-  .gie-submit:hover { background: #D8A84C; }
-  .gie-signup-privacy {
-    font-size: 0.72rem; color: #3A3020; line-height: 1.6; margin-top: 0.5rem;
-  }
-  .gie-confirm {
-    display: none; padding: 1rem 1.25rem;
-    background: rgba(200,150,60,0.1); border-left: 3px solid var(--gold);
-    font-size: 0.88rem; color: #A89E8C; line-height: 1.7;
-  }
-  .gie-what-you-get {
-    margin-top: 1.5rem; padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .gie-wgy-title {
-    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: #5A5040; margin-bottom: 0.75rem;
-  }
-  .gie-wgy-item {
-    display: flex; gap: 0.6rem; font-size: 0.82rem; color: #7A7060;
-    padding: 0.3rem 0; align-items: start;
-  }
-  .gie-wgy-check { color: var(--gold); flex-shrink: 0; font-size: 0.75rem; }
-
   @media (max-width: 900px) {
     .gie-teaser-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .gie-form-row { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -1300,9 +1208,9 @@
     <div class="pillar-header">
       <div>
         <div class="pillar-number-large">03</div>
-        <div class="section-label">Mind-Body Therapy · Free 30-Day Programme</div>
+        <div class="section-label">Mind-Body Therapy</div>
         <h2 class="section-title">Guided Imagery Programme</h2>
-        <p class="section-intro">What if your mind could play a role in healing your spinal cord? Not as wishful thinking — but as a deliberate, structured practice grounded in neuroscience and delivered to you over 30 days.</p>
+        <p class="section-intro">What if your mind could play a role in healing your spinal cord? Not as wishful thinking — but as a deliberate, structured practice grounded in neuroscience, available here as a self-directed set of guided imagery practices.</p>
       </div>
       <div style="padding-top:1.5rem;">
         <p style="font-size:1.05rem;color:var(--bark);font-family:'Lora',serif;font-style:italic;line-height:1.7;margin-bottom:1.25rem;">"After two decades of research in quality of life and rehabilitation psychology, this programme is my synthesis of what the evidence supports — and how I think it might be put into daily practice."</p>
@@ -1322,10 +1230,9 @@
       <p style="font-size:0.92rem;color:#5A5040;line-height:1.85;margin:0;font-style:italic;">If you only practise lying down at night, you'll often fall asleep without doing the visualisation work — your body and mind associate that posture with sleep. This is one of the real difficulties of the programme. The way around it is to practise during the day too, in a position your body associates with attention rather than rest. The five-minute returns to the breath that the closing of each practice describes — those are doing genuine work.</p>
     </div>
 
-    <!-- Personal teaser + signup -->
-    <div class="gie-teaser-grid">
-      <div class="gie-teaser-left">
-        <div class="section-label">What is this programme?</div>
+    <!-- Personal teaser -->
+    <div style="max-width:760px;">
+        <div class="section-label">What this is</div>
 
         <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.25rem;">Every 90 minutes or so, your body does something remarkable. It enters a natural window of deep rest — a state where your mind becomes quieter, your breath slows, and something shifts. Scientists call it the Basic Rest-Activity Cycle. Most people let these moments pass without noticing.</p>
 
@@ -1353,7 +1260,7 @@
 
         <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.25rem;">Is this proven? Not yet. I'll be honest with you about that. The outcome depends on the nature of your injury, your consistency, and your belief in the process. But the neuroscience of mind-body interaction is real. The placebo effect — the documented ability of belief and imagination to produce measurable physical change — is real. And after two decades of research into what helps people flourish after SCI, this is the most exciting thing I have found.</p>
 
-        <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.5rem;">The programme is free. It takes about 20 minutes a day. It arrives in your inbox over 30 days — ten stages, three days each. All I ask is that you keep a journal and let me know what you experience.</p>
+        <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.5rem;">Everything is free, and everything is here on the page. The longer practices each take about 20 minutes; the window practices take just a few breaths. There is no schedule and no enrolment — only the practices, and your own rhythm with them.</p>
 
         <div style="padding:1.5rem;border-left:3px solid var(--gold);background:rgba(200,150,60,0.04);margin-bottom:1.5rem;">
           <p style="font-size:0.9rem;color:var(--bark);font-family:'Lora',serif;font-style:italic;line-height:1.75;">"The imagination is one of humanity's oldest and greatest healing resources. Every cell in the body regenerates at least once every seven years. All impediments to spinal cord regeneration are only illusions."</p>
@@ -1370,7 +1277,7 @@
 
         <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.25rem;">Belief acts like the rudder on a large ship — small in itself, but able to steer a great deal. When you genuinely hold open the possibility that the imagination can influence the body, more of your nervous system engages with the practice. This is not magical thinking; it is simply how attention works. What you do not believe in, you cannot give your full attention to.</p>
 
-        <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1rem;">The programme draws on four ways of building these neuronal patterns, woven together across the 30 days:</p>
+        <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1rem;">The practices draw on four ways of building these neuronal patterns, woven together throughout the work:</p>
 
         <div style="display:grid;grid-template-columns:1fr;gap:0.6rem;margin-bottom:1.5rem;">
           <div style="display:flex;gap:0.85rem;padding:0.85rem 1rem;background:rgba(200,150,60,0.04);border-left:2px solid var(--gold);align-items:start;">
@@ -1393,25 +1300,12 @@
 
         <p style="font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:1.5rem;">Used together, these four create the broadest possible pattern of neuronal firing — which is, in the end, what gives the imagery its physical reach.</p>
 
-        <div class="section-label">The 10 stages — what arrives in your inbox</div>
-        <div class="gie-stage-preview">
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">1</div><div class="gie-stage-info"><div class="gie-stage-days">Days 1–3</div><div class="gie-stage-name">Introduction &amp; Orientation</div><div class="gie-stage-hint">What the programme is, the science behind it, what to expect, and the mindset that makes it work</div></div></div>
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">2</div><div class="gie-stage-info"><div class="gie-stage-days">Days 4–6</div><div class="gie-stage-name">Learning to Recognise Rest Phases</div><div class="gie-stage-hint">Identifying your BRAC windows and beginning daily breath meditation</div></div></div>
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">3</div><div class="gie-stage-info"><div class="gie-stage-days">Days 7–9</div><div class="gie-stage-name">Anatomy Study</div><div class="gie-stage-hint">Building vivid mental recall of your spine and nervous system using anatomy images</div></div></div>
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">4</div><div class="gie-stage-info"><div class="gie-stage-days">Days 10–12</div><div class="gie-stage-name">Bone and Nerve Visualisation</div><div class="gie-stage-hint">Your first full sessions — imagining perfect structure and new connections forming</div></div></div>
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">5</div><div class="gie-stage-info"><div class="gie-stage-days">Days 13–15</div><div class="gie-stage-name">Perfect Body Imagery</div><div class="gie-stage-hint">The superimposition technique — overlaying an ideal body image over your own</div></div></div>
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">6</div><div class="gie-stage-info"><div class="gie-stage-days">Days 16–18</div><div class="gie-stage-name">White Light Breathing</div><div class="gie-stage-hint">Inhaling light through nerve pathways, bridging across the injury site</div></div></div>
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">7</div><div class="gie-stage-info"><div class="gie-stage-days">Days 19–21</div><div class="gie-stage-name">Movement &amp; Sensation Awareness</div><div class="gie-stage-hint">Combining all three techniques with attempted movement. Awareness precedes sensation.</div></div></div>
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">8</div><div class="gie-stage-info"><div class="gie-stage-days">Days 22–24</div><div class="gie-stage-name">Dream Work &amp; Journalling</div><div class="gie-stage-hint">The conscious-subconscious feedback loop — recording and acting on what arises</div></div></div>
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">9</div><div class="gie-stage-info"><div class="gie-stage-days">Days 25–27</div><div class="gie-stage-name">Positive Suggestions &amp; Deepening</div><div class="gie-stage-hint">All 10 positive suggestions integrated into a single 20-minute daily practice</div></div></div>
-          <div class="gie-stage-row"><div class="gie-stage-num-badge">10</div><div class="gie-stage-info"><div class="gie-stage-days">Days 28–30</div><div class="gie-stage-name">Review &amp; Continuing</div><div class="gie-stage-hint">Reflecting on your experience and building a practice that continues beyond 30 days</div></div></div>
-        </div>
-
         <!-- Individual guided imagery practices -->
         <div style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);">
           <div class="section-label" style="margin-bottom:0.75rem;">Individual Practices</div>
           <h3 style="font-family:'Lora',serif;font-size:1.25rem;color:var(--charcoal);font-weight:400;margin-bottom:1rem;">Five guided practices to explore</h3>
-          <p style="font-size:0.95rem;color:#4A4438;line-height:1.85;margin-bottom:1.5rem;">Each practice uses the same three-phase method (Ideal Being &rarr; Anatomical Pathway &rarr; Breath and Light) applied to a different target. All five are free to use.</p>
+          <p style="font-size:0.95rem;color:#4A4438;line-height:1.85;margin-bottom:1rem;">Each practice uses the same three-phase method (Ideal Being &rarr; Anatomical Pathway &rarr; Breath and Light) applied to a different target. All five are free to use.</p>
+          <p style="font-size:0.95rem;color:#4A4438;line-height:1.85;margin-bottom:1.5rem;">Each can be used independently. The order is yours to choose, but if you'd like a starting point, the hand and grasp practice is a useful first encounter with the three-phase method — it's the most concrete of the five and the fastest to develop a vivid sense of.</p>
 
           <!-- Self-doubt passage -->
           <div style="margin:3rem auto;max-width:560px;text-align:center;padding:2rem 1.5rem;">
@@ -1453,65 +1347,19 @@
 
           </div>
         </div>
-      </div>
+    </div>
 
-      <div class="gie-teaser-right">
-        <!-- MAILCHIMP SIGNUP BOX -->
-        <div class="gie-signup-box">
-          <div class="gie-signup-eyebrow">Free 30-Day Programme</div>
-          <div class="gie-signup-title">Join the Guided Imagery Programme</div>
-          <div class="gie-signup-desc">Enter your name and email and I'll send you Stage 1 within 24 hours. Each stage arrives every three days — giving you time to practise before moving on. The course is entirely free. Your details are kept private and never shared.</div>
+    <!-- Science teaser (kept; programme references softened) -->
+    <div style="max-width:760px;margin-top:3rem;padding:1.75rem;border:1px solid var(--border);">
+      <div class="section-label" style="margin-bottom:0.75rem;">The science behind it</div>
+      <p style="font-size:0.92rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">When you think, neurons fire. When neurons fire, chemicals are released that affect other cells in your central nervous system. The imagination is not separate from the body — it is a biological event.</p>
+      <p style="font-size:0.92rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">Ernest Rossi's research <em>The Psychobiology of Mind-Body Healing</em> traces the precise biological pathways by which mental imagery during states of deep rest influences the immune and endocrine systems. The practices on this page build on that foundation.</p>
+      <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;border-left:2px solid var(--border);padding-left:1rem;font-style:italic;">The outcome is unknown. It depends on injury, belief, and consistency. But if there is any chance the mind can influence recovery — these practices are designed to give it every opportunity to do so.</p>
+    </div>
 
-          <!-- Replace this form action with your Mailchimp embed action URL -->
-          <!-- In Mailchimp: Audience → Signup Forms → Embedded Forms → copy the action URL from the <form> tag -->
-          <div class="gie-confirm" id="gie-confirm">
-            <strong style="color:var(--gold);">Welcome.</strong> Stage 1 is on its way to your inbox. Check your spam folder if you don't see it within 24 hours — and add Jeremy's email to your contacts so future stages arrive safely.
-          </div>
-          <div class="gie-signup-form" id="gie-form">
-            <div class="gie-form-row">
-              <input class="gie-input" type="text" name="FNAME" placeholder="First name" required>
-              <input class="gie-input" type="text" name="LNAME" placeholder="Last name">
-            </div>
-            <input class="gie-input" type="email" name="EMAIL" placeholder="Your email address" required>
-            <select class="gie-input" name="COUNTRY" style="cursor:pointer;appearance:none;">
-              <option value="">Country (optional)</option>
-              <option>Australia</option>
-              <option>New Zealand</option>
-              <option>United States</option>
-              <option>United Kingdom</option>
-              <option>Canada</option>
-              <option>South Africa</option>
-              <option>Other</option>
-            </select>
-            <!-- Replace onclick with Mailchimp form submission once connected -->
-            <button type="button" class="gie-submit" onclick="gieSignup()">Join the Programme — It's Free →</button>
-            <div class="gie-signup-privacy">Your email is used only to deliver the 10-stage programme via Mailchimp. You can unsubscribe at any time. This programme does not replace medical care.</div>
-          </div>
-
-          <div class="gie-what-you-get">
-            <div class="gie-wgy-title">What you receive</div>
-            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>10 emails delivered over 30 days</div>
-            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>Anatomy reference images for visualisation</div>
-            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>Full protocol with step-by-step guidance</div>
-            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>All 10 positive suggestions</div>
-            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>Journal prompts for each stage</div>
-            <div class="gie-wgy-item"><span class="gie-wgy-check">✓</span>Direct email access to Jeremy</div>
-          </div>
-        </div>
-
-        <!-- Science teaser -->
-        <div style="margin-top:1.5rem;padding:1.75rem;border:1px solid var(--border);">
-          <div class="section-label" style="margin-bottom:0.75rem;">The science behind it</div>
-          <p style="font-size:0.87rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">When you think, neurons fire. When neurons fire, chemicals are released that affect other cells in your central nervous system. The imagination is not separate from the body — it is a biological event.</p>
-          <p style="font-size:0.87rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">Ernest Rossi's research <em>The Psychobiology of Mind-Body Healing</em> traces the precise biological pathways by which mental imagery during states of deep rest influences the immune and endocrine systems. This programme builds on that foundation.</p>
-          <p style="font-size:0.85rem;color:var(--muted);line-height:1.75;border-left:2px solid var(--border);padding-left:1rem;font-style:italic;">The outcome of this intervention is unknown. It depends on injury, belief, and consistency. But if there is any chance the mind can influence recovery — this programme is designed to give it every opportunity to do so.</p>
-        </div>
-
-        <!-- Disclaimer -->
-        <div style="margin-top:1rem;padding:1rem 1.25rem;border-left:3px solid var(--rust);background:rgba(139,69,19,0.04);">
-          <p style="font-size:0.78rem;color:#6A4A3A;line-height:1.7;"><strong>Important:</strong> The Guided Imagery Programme is not a clinical intervention and does not replace medical care, medications, or professional advice. Please <a href="terms_imagery.html" style="color:var(--rust);text-decoration:none;border-bottom:1px solid rgba(139,69,19,0.3);">read the full notice about the practices</a> before beginning. You are free to stop at any time.</p>
-        </div>
-      </div>
+    <!-- Disclaimer -->
+    <div style="max-width:760px;margin-top:1rem;padding:1rem 1.25rem;border-left:3px solid var(--rust);background:rgba(139,69,19,0.04);">
+      <p style="font-size:0.82rem;color:#6A4A3A;line-height:1.7;"><strong>Important:</strong> These practices are not clinical interventions and do not replace medical care, medications, or professional advice. Please <a href="terms_imagery.html" style="color:var(--rust);text-decoration:none;border-bottom:1px solid rgba(139,69,19,0.3);">read the full notice about the practices</a> before beginning. You are free to stop at any time.</p>
     </div>
 
     <!-- Using the Three Windows: full-width integrative section -->
@@ -2337,17 +2185,6 @@ function loadYT(el, videoId) {
   iframe.allow = 'autoplay; encrypted-media';
   iframe.allowFullscreen = true;
   el.replaceWith(iframe);
-}
-function gieSignup() {
-  const form = document.getElementById('gie-form');
-  const confirm = document.getElementById('gie-confirm');
-  const email = form.querySelector('[name="EMAIL"]').value;
-  const fname = form.querySelector('[name="FNAME"]').value;
-  if (!email || !fname) { alert('Please enter your name and email to join.'); return; }
-  // TODO: Replace this with Mailchimp form POST action once your account is connected
-  // For now, shows confirmation message
-  form.style.display = 'none';
-  confirm.style.display = 'block';
 }
 function openLightbox(imgId, caption) {
   const img = document.getElementById(imgId);
