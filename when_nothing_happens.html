@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When Nothing Seems to Be Happening — Living Beyond SCI</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#F5F0E8;--warm-white:#FAF8F4;--charcoal:#2A2820;--bark:#5C4A2A;--rust:#8B4513;--gold:#C8963C;--muted:#7A7060;--border:#E0D8C8;}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--charcoal);font-size:16px;line-height:1.75;}
+  nav{position:sticky;top:0;z-index:100;background:var(--charcoal);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:2px solid var(--gold);}
+  .nav-brand{font-family:'Lora',serif;font-size:1.1rem;color:var(--cream);text-decoration:none;}.nav-brand span{color:var(--gold);}
+  .nav-back{font-size:0.8rem;color:#7A7060;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}.nav-back:hover{color:var(--gold);}
+  .page-hero{background:var(--charcoal);padding:4rem 0 3rem;border-bottom:1px solid rgba(200,150,60,0.2);}
+  .hero-inner{max-width:860px;margin:0 auto;padding:0 2.5rem;}
+  .breadcrumb{font-size:0.72rem;color:#5A5040;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;}
+  .breadcrumb a{color:#5A5040;text-decoration:none;}.breadcrumb a:hover{color:var(--gold);}
+  .article-eyebrow{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.6rem;}
+  .article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);display:block;}
+  .article-h1{font-family:'Lora',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.2;color:var(--cream);font-weight:400;margin-bottom:1rem;}
+  .article-standfirst{font-size:1.05rem;color:#8A8070;line-height:1.8;max-width:680px;margin-bottom:0;}
+  .article-body{max-width:760px;margin:0 auto;padding:4rem 2.5rem;}
+  h2.section-head{font-family:'Lora',serif;font-size:1.4rem;font-weight:400;color:var(--charcoal);margin:3rem 0 1.25rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border);}
+  h2.section-head:first-of-type{margin-top:0;}
+  p.body-text{font-size:0.97rem;color:#4A4438;line-height:1.9;margin-bottom:1.1rem;}
+  p.body-text strong{color:var(--bark);font-weight:500;}
+  .opening-block{margin-bottom:2rem;}
+  .opening-block p{font-size:1rem;color:#4A4438;line-height:1.9;margin-bottom:1rem;}
+  .opening-block p:last-child{margin-bottom:0;}
+  .what-to-do{background:rgba(200,150,60,0.05);border-left:3px solid var(--gold);padding:1.25rem 1.5rem;margin:1.5rem 0;}
+  .what-to-do p{font-size:0.95rem;color:#4A4438;line-height:1.85;margin:0;}
+  .what-to-do p+p{margin-top:0.85rem;}
+  .what-to-do strong{color:var(--bark);font-weight:500;}
+  .hard-truth{background:rgba(122,112,96,0.05);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 2rem;margin:3.5rem 0;}
+  .hard-truth h2{font-family:'Lora',serif;font-size:1.4rem;font-weight:400;color:var(--charcoal);margin-bottom:1.25rem;border-bottom:none;padding-bottom:0;font-style:italic;}
+  .hard-truth p{font-size:0.97rem;color:#4A4438;line-height:1.9;margin-bottom:1.1rem;}
+  .hard-truth p:last-child{margin-bottom:0;}
+  .closing-block{margin:3rem auto 0;max-width:560px;text-align:center;padding:2rem 1.5rem;}
+  .closing-block p{font-family:'Lora',serif;font-size:1.1rem;font-style:italic;color:var(--bark);line-height:1.8;margin:0;}
+  .return-link-block{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);text-align:center;}
+  .return-link{display:inline-block;font-size:0.85rem;color:var(--gold);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;padding:0.65rem 1.5rem;border:1px solid rgba(200,150,60,0.3);transition:background 0.2s,border-color 0.2s;}
+  .return-link:hover{background:rgba(200,150,60,0.06);border-color:var(--gold);}
+  footer{background:#1A1810;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:1rem;}
+  .footer-brand{font-family:'Lora',serif;font-size:0.9rem;color:#5A5040;text-decoration:none;}.footer-copy{font-size:0.75rem;color:#3A3020;}
+  @media(max-width:700px){.article-body{padding:2.5rem 1.5rem;}.hero-inner{padding:0 1.5rem;}.hard-truth{padding:1.75rem 1.25rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
+  <a href="index.html#gie" class="nav-back">← Back to Guided Imagery</a>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#gie">Guided Imagery Programme</a> › <span>When Nothing Seems to Be Happening</span></div>
+    <div class="article-eyebrow">Sustaining the Practice</div>
+    <h1 class="article-h1">When Nothing Seems to Be Happening</h1>
+    <p class="article-standfirst">A page for two kinds of moment — when you've been practising and feel nothing changing, and when you've stopped practising and aren't sure how to come back.</p>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="opening-block">
+    <p>This is one of the hardest moments in any practice. You've put in real effort. You've sat with the breath, the imagery, the long pauses. And nothing has measurably shifted. Or maybe you haven't been practising lately, and the gap has grown long enough that returning feels harder than continuing did.</p>
+    <p>Both moments are normal. Both are also where most people quietly stop. This page is for that.</p>
+  </div>
+
+  <h2 class="section-head">What the research actually says about timing</h2>
+
+  <p class="body-text">Most of the published studies on motor imagery in spinal cord injury used training periods of three to six weeks, with sessions three to five times a week. Measurable changes — in grasp function, in movement smoothness, in brain activity patterns — typically appeared somewhere between week three and week five. A handful of studies have shown effects earlier, but they are the exception.</p>
+
+  <p class="body-text">What this means in plain terms: if you've been practising for two weeks and feel nothing different, you are not failing. You are at the start of the period where studies haven't yet shown change. The literature doesn't expect change yet either.</p>
+
+  <p class="body-text">The honest version of this is: the first three weeks of any motor imagery practice often feel like nothing is happening. That's the territory.</p>
+
+  <h2 class="section-head">When you've been practising and feel nothing</h2>
+
+  <p class="body-text">If you've been doing the longer practices for a few weeks and haven't noticed change, here is what's likely happening underneath.</p>
+
+  <p class="body-text">Your brain is still building the imagery. Vivid, kinaesthetic imagery is a skill — most people start with imagery that feels thin or abstract, and by week three or four it becomes more textured and reliable. The neural changes that produce measurable effects tend to follow this deepening of the imagery, not precede it.</p>
+
+  <p class="body-text">Your nervous system is also adapting in ways you can't directly feel. Brain studies on motor imagery practice show changes in motor cortex activation patterns within weeks — but those changes are silent from inside the body. The first you feel of them is usually a small, surprising moment of changed function much later.</p>
+
+  <p class="body-text">Subjective change is rarely linear. People report long stretches of nothing, followed by a small but distinct shift — then another stretch of nothing. The pattern is more like a staircase than a slope.</p>
+
+  <div class="what-to-do">
+    <p><strong>What to do.</strong> Keep practising at whatever frequency you can sustain. If 13 minutes feels too long right now, drop to one of the shorter window practices: three breaths, returning to your familiar imagery. Consistency of relationship with the practice matters more than the duration of any single session.</p>
+    <p>If the feeling of nothing happening is becoming distressing, that itself is a signal worth noticing. The practice should not be a source of anxiety. If it has become one, take a few days off. The longer practices and the windows will both be there when you return.</p>
+  </div>
+
+  <h2 class="section-head">When you stopped, and you're thinking about coming back</h2>
+
+  <p class="body-text">If it's been a week, a month, or longer since you last practised — and you're reading this thinking about whether to start again — there are a few things worth knowing.</p>
+
+  <p class="body-text">You haven't lost what you built. The imagery vocabulary you developed earlier is still in your nervous system. Returning after a break is closer to remembering than to learning.</p>
+
+  <p class="body-text">You don't owe the practice anything. The break wasn't a moral failure. Many users have long gaps in their practice; some return to it years later. The work picks up where it picks up.</p>
+
+  <p class="body-text">There is no catch-up to do. You don't need to do extra sessions to make up for missed ones. You don't need to start again at week one.</p>
+
+  <div class="what-to-do">
+    <p><strong>What to do.</strong> Choose one practice — usually the one that meant the most to you before. Do it once, today or tomorrow, at whatever length feels possible. Five minutes is enough. If you only do that one session and don't return for another two weeks, that's still a return. Coming back at all is the work.</p>
+  </div>
+
+  <div class="hard-truth">
+    <h2>What might be true that's harder to say</h2>
+    <p>Some users will practise honestly for weeks or months and not feel measurable change in their bodies. The motor imagery research literature is honest about this — outcomes vary, and a minority of users in the published studies showed no benefit. We don't fully understand why some bodies respond and others don't.</p>
+    <p>If that ends up being your experience, the practice is still doing other things. Many users who don't notice motor change report calmer mornings, better sleep, gentler relationships with their bodies, or a sense of having done something for themselves. Whether those count as enough is a question only you can answer.</p>
+    <p>The honest position of this site is that the practice is worth doing because the evidence supports its potential, not because it guarantees an outcome. If you reach a point where it's clearly not for you, stopping is a real option. There is no failure in stopping.</p>
+  </div>
+
+  <h2 class="section-head">One last thing</h2>
+
+  <div class="closing-block">
+    <p>Most people who eventually report meaningful change describe a moment when they almost stopped. The middle weeks are often the hardest. If you're in those weeks now, you are exactly where the work is happening — even when it doesn't feel like it.</p>
+  </div>
+
+  <div class="return-link-block">
+    <a href="index.html#gie" class="return-link">← Return to the Guided Imagery Programme</a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="footer-brand">Living Beyond SCI — Jeremy Olson</a>
+  <div class="footer-copy">© 2011–2025 Jeremy Olson</div>
+</footer>
+
+</body>
+</html>
