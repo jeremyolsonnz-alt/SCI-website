@@ -720,8 +720,18 @@
   .article-link svg { width: 12px; height: 12px; fill: var(--gold); }
   @media (max-width: 700px) {
     .article-card { grid-template-columns: 40px 1fr; }
-    .article-link-col { display: none; }
     .article-num-col { font-size: 1.8rem; padding-right: 0.75rem; }
+    .article-link-col {
+      display: block;
+      grid-column: 1 / -1;
+      padding: 0 0 1.75rem 0;
+      align-items: stretch;
+    }
+    .article-link {
+      width: 100%;
+      justify-content: center;
+      padding: 0.7rem 0.8rem;
+    }
   }
 </style>
 
@@ -733,14 +743,6 @@
         <div class="section-label">Deakin University · Melbourne</div>
         <h2 class="section-title">Quality of Life Research</h2>
         <p class="section-intro">A graduate psychology study examining subjective quality of life and strategies of control in 78 people with SCI — supervised by Professor Robert Cummins. Five key publications from this body of work are summarised below.</p>
-      </div>
-      <div>
-        <div class="stat-row" style="margin: 0;">
-          <div class="stat-cell"><div class="stat-val">78</div><div class="stat-label">Participants</div></div>
-          <div class="stat-cell"><div class="stat-val">41</div><div class="stat-label">Surveys analysed</div></div>
-          <div class="stat-cell"><div class="stat-val">4,709</div><div class="stat-label">Total data points</div></div>
-          <div class="stat-cell"><div class="stat-val">18 yrs</div><div class="stat-label">Avg time post-injury</div></div>
-        </div>
       </div>
     </div>
 
@@ -755,7 +757,7 @@
         <div class="article-body">
           <div class="article-tag">Methodology · Quality of Life Measurement</div>
           <div class="article-title">How Do You Measure Whether Life Is Going Well?</div>
-          <div class="article-plain">When someone has a spinal cord injury, doctors often look at things like whether they can walk or work — but these don't tell the whole story. This paper argues that the most honest way to measure how life is going is simply to ask the person themselves. After all, two people with the same injury can feel very differently about their lives. It also examines the best way to design the questions — how many options to give, how to word them — so that people's answers truly reflect how they feel.</div>
+          <div class="article-plain">When someone has a spinal cord injury, doctors usually check things like whether they can walk or work. But that doesn't tell you how the person actually feels about their life. Two people with the same injury can feel completely differently. This paper says the most honest way to know how someone's life is going is simply to ask them. It also looks at how to write the questions well — how many choices to offer, and how to word them — so the answers really show how people feel.</div>
           <div class="article-academic">This paper examines the theoretical and methodological basis for using subjective rather than objective indicators in quality of life assessment following SCI. It argues that self-reported life satisfaction — assessed through bidimensional, end-defined, 10-point Likert scales — provides the most valid and culturally equitable measure of rehabilitation outcome, and presents the rationale for the Comprehensive Quality of Life Scale (ComQol) as the preferred instrument.</div>
           <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Chapter 1: Quality of Life Measurement</div>
         </div>
@@ -773,7 +775,7 @@
         <div class="article-body">
           <div class="article-tag">Meta-Analysis · 41 Studies · 4,709 People</div>
           <div class="article-title">How Satisfied Are People With SCI With Their Lives — Compared to Everyone Else?</div>
-          <div class="article-plain">This paper pulls together data from 41 different studies involving 4,709 people with spinal cord injuries, and compares their life satisfaction to people in the general population. The finding is clear: people with SCI report lower satisfaction across almost every area of life — work, relationships, health, money, and overall happiness. But the gap varies. Some areas are closer to normal than others, and the research points to specific places where rehabilitation could make the biggest difference.</div>
+          <div class="article-plain">This paper brings together 41 separate studies, covering 4,709 people with spinal cord injuries, and compares how satisfied they are with life to people without injuries. The result is clear: people with SCI report lower satisfaction in almost every part of life — work, relationships, health, money, and overall happiness. But the size of the gap changes from one area to the next. Some areas are close to normal; others are far below. Knowing which is which shows where extra help would make the biggest difference.</div>
           <div class="article-academic">A systematic meta-analysis of 41 published surveys of the SCI population (total N = 4,709) examining subjective quality of life across eight life domains. All data were converted to a common Percentage of Scale Maximum (%SM) metric and compared against general population norms. Statistically significant deficits were identified in the domains of material well-being, productivity, intimacy, place in community, spirituality, and life in general (p &lt; .001). Safety and emotional well-being did not reach significance.</div>
           <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Chapter 2: Reported Levels of SQOL after SCI</div>
         </div>
@@ -791,7 +793,7 @@
         <div class="article-body">
           <div class="article-tag">Domain Analysis · Eight Areas of Life</div>
           <div class="article-title">What Actually Affects Life Satisfaction After SCI — Area by Area</div>
-          <div class="article-plain">Life satisfaction isn't just one thing — it's made up of different areas: money, health, work, relationships, safety, community, emotional wellbeing, and spirituality. This paper looks at each one in detail for people living with SCI. It explains what the research says about why scores are low in some areas (like work and money) and why others (like close relationships and spirituality) tend to hold up better — and what can be done about the ones that are struggling.</div>
+          <div class="article-plain">Life satisfaction isn't one single thing. It is made up of separate areas: money, health, work, relationships, safety, community, feelings, and spirituality. This paper looks at each area on its own for people living with SCI. It explains why scores are low in some areas, like work and money, and why others, like close relationships and spirituality, usually hold up better. It then looks at what can be done to help the areas that are struggling.</div>
           <div class="article-academic">This chapter presents a domain-specific analysis of subjective quality of life across eight areas of life as defined by the ComQol framework. Drawing on both quantitative survey data and qualitative participant narratives, it examines the psychosocial, environmental, and structural determinants of satisfaction within each domain. Particular attention is given to the relationships between employment, independence, social support, physical health, and domain-specific life satisfaction in the SCI population.</div>
           <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Chapter 3: The Quality of Eight Domains of Life</div>
         </div>
@@ -809,7 +811,7 @@
         <div class="article-body">
           <div class="article-tag">Key Finding · Strategies of Control · Fatalism</div>
           <div class="article-title">The Surprising Mindset That Predicts a Better Quality of Life After SCI</div>
-          <div class="article-plain">You might think that people who try hardest to control their situation would be happiest — but this study found the opposite. Among 78 people with SCI, the only mental strategy consistently linked to higher life satisfaction was this: when something goes wrong and you can't change it, blaming bad luck rather than yourself. People who could let go of what wasn't in their control — and put it down to chance rather than personal failure — reported significantly better wellbeing across six areas of life. This finding suggests that a degree of fatalism, far from being negative, may be an important part of psychological resilience after SCI.</div>
+          <div class="article-plain">You might expect that the people who fight hardest to stay in control would be the happiest. This study of 78 people with SCI found the opposite. The one mental habit that went with higher life satisfaction was this: when something goes wrong that you cannot change, blaming bad luck instead of yourself. People who could let go of what wasn't in their control, and put it down to chance rather than personal failure, felt better across six areas of life. So a bit of "that's just how it went" thinking isn't weakness — it may be an important part of coping well after SCI.</div>
           <div class="article-academic">This empirical study investigated the relationship between five strategies of control — as measured by the Optimisation in Primary and Secondary Control Scale (OPS-Scale; Heckhausen &amp; Schulz, 1995) — and levels of subjective quality of life in 78 persons with SCI. Multiple regression analysis identified compensatory secondary control, specifically protective attribution to bad luck, as the sole significant predictor of total life satisfaction (β = .412, p &lt; .01), accounting for 12.3% of unique variance. Findings are discussed in relation to the role of external locus of control and fatalistic orientation as adaptive coping mechanisms in SCI rehabilitation.</div>
           <div class="article-meta">Olson, J. M. &amp; Cummins, R. A. — Deakin University, 1999 · Key empirical paper</div>
         </div>
@@ -827,31 +829,13 @@
         <div class="article-body">
           <div class="article-tag">Qualitative Research · 78 Voices · Coping</div>
           <div class="article-title">What Helped — and What Didn't — In the Words of 78 People Living With SCI</div>
-          <div class="article-plain">Instead of just using numbers and statistics, this part of the research simply asked 78 people with spinal cord injuries two questions: what has helped you cope most, and what has made it hardest? Their answers are honest, sometimes raw, and deeply human. Family, friends, faith, attitude, and humour came up again and again as sources of strength. Pain, loss of independence, physical barriers, financial stress, and other people's attitudes came up as the hardest things to deal with. No questionnaire could capture what these voices do.</div>
+          <div class="article-plain">Instead of only using numbers, this part of the research asked 78 people with spinal cord injuries two simple questions: what has helped you cope the most, and what has been the hardest? The answers are honest and very human. Family, friends, faith, attitude, and humour came up again and again as things that helped. Pain, losing independence, physical barriers, money worries, and other people's attitudes came up as the hardest. No survey of numbers could ever capture what these voices say.</div>
           <div class="article-academic">This paper presents a thematic qualitative analysis of open-ended survey responses from 78 individuals with SCI addressing the questions: "What has allowed you to cope best with your injury?" and "What has made coping most difficult?" Responses were coded and categorised according to the eight ComQol life domains. Beneficial factors were most frequently attributable to the domain of intimacy — particularly familial and social support networks. Factors impeding coping clustered predominantly within the domain of safety — specifically loss of independence and physical accessibility barriers. The absence of any spirituality-related statements in the negative coping category is a notable finding.</div>
           <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Qualitative component</div>
         </div>
         <div class="article-link-col">
           <a href="copingvoices.html" class="article-link">
             Read Article
-            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Article 6 -->
-      <div class="article-card">
-        <div class="article-num-col">06</div>
-        <div class="article-body">
-          <div class="article-tag">Interactive · Self-Reflection Tool</div>
-          <div class="article-title">Your Healing Style — A Questionnaire</div>
-          <div class="article-plain">Eleven questions that work out how you tend to cope, recover, and find your way through difficult days. The result identifies a primary healing style — Connected, Analytical, Autonomous, or Visionary — and possibly a secondary one, with practical suggestions for how that style can be supported in rehabilitation. A separate Research Background tab explains the academic foundations underneath each style.</div>
-          <div class="article-academic">Built on Lazarus &amp; Folkman's (1984) transactional model of stress and coping and SCI-specific research on social support, hope, self-efficacy, and autonomy as predictors of psychosocial adjustment. Drawn from the same evidence base as the articles above (Martz et al., Kennedy et al., Peter et al., Dorsett &amp; Geraghty, Krause &amp; Edles), but presented as a personal reflection tool. Not an independently validated clinical instrument; designed for self-reflection and conversation with a care team.</div>
-          <div class="article-meta">Self-Reflection Tool · Approximately 5 minutes</div>
-        </div>
-        <div class="article-link-col">
-          <a href="healingstyle.html" class="article-link">
-            Take questionnaire
             <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
           </a>
         </div>
@@ -867,6 +851,17 @@
     <div style="margin-top: 3rem; padding: 2rem 2.25rem; border: 1px solid var(--border); background: rgba(200,150,60,0.04);">
       <div class="section-label">Key Implication for Rehabilitation</div>
       <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.8; max-width: 700px;">People with SCI placed significantly greater importance than the general population on productivity, safety, and place in community — yet reported lower satisfaction in those same areas. These three domains may need greater emphasis in rehabilitation planning. Greater age and longer time since injury were both associated with higher life satisfaction, suggesting that adaptation deepens over time.</p>
+    </div>
+
+    <div style="margin-top: 3.5rem; padding: 2.5rem 2.5rem; border: 1px solid var(--border); border-left: 3px solid var(--gold); background: var(--warm-white);">
+      <div class="section-label">An Invitation</div>
+      <h3 style="font-family:'Lora',serif; font-size:1.3rem; font-weight:400; color:var(--charcoal); margin:0.4rem 0 0.9rem; line-height:1.35;">Your Healing Style — A Short Self-Reflection</h3>
+      <p style="font-size:0.92rem; color:#4A4438; line-height:1.8; max-width:700px; margin-bottom:0.75rem;">The research above describes how people, on average, cope and adjust after spinal cord injury. This is the part where you can turn it toward yourself. It is eleven short questions about how you tend to get through hard days. There are no right answers, and nothing is recorded.</p>
+      <p style="font-size:0.92rem; color:#4A4438; line-height:1.8; max-width:700px; margin-bottom:0.5rem;">At the end you receive a primary healing style — Connected, Analytical, Autonomous, or Visionary — and possibly a secondary one, with practical suggestions for how that style can be supported. A separate Research Background tab shows the studies each style is built on. It takes about five minutes, and it is best read as a starting point for a conversation with your care team — not a clinical test.</p>
+      <a href="healingstyle.html" class="article-link" style="margin-top:1rem;">
+        Take the questionnaire
+        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+      </a>
     </div>
   </div>
 </section>
