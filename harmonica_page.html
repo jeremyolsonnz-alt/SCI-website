@@ -215,23 +215,6 @@
   }
   .resp-figure-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
-  /* BENEFITS */
-  .benefits-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
-  .benefit-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem;
-  }
-  .benefit-card {
-    background: var(--warm-white); border: 1px solid var(--border);
-    padding: 1.75rem; transition: border-color 0.2s;
-  }
-  .benefit-card:hover { border-color: var(--gold); }
-  .benefit-num {
-    font-family: 'Lora', serif; font-size: 2rem;
-    color: rgba(200,150,60,0.2); line-height: 1; margin-bottom: 0.75rem;
-  }
-  .benefit-title { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.5rem; }
-  .benefit-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-
   /* SETUP */
   .setup-section { padding: 5rem 0; background: var(--cream); border-bottom: 1px solid var(--border); }
   .setup-grid {
@@ -485,7 +468,15 @@
     letter-spacing: 0.04em;
     text-align: center;
   }
-  .phrase-journal {
+  .phrase-key-label {
+    display: inline-block; font-size: 0.68rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--charcoal);
+    background: var(--gold); padding: 0.15rem 0.5rem;
+    margin-right: 0.4rem; margin-bottom: 0.3rem; vertical-align: middle;
+  }
+  .phrase-pattern-row { margin-bottom: 0.3rem; }
+
+
     margin-top: 2.5rem;
     background: var(--charcoal);
     padding: 2rem 2.25rem;
@@ -566,24 +557,6 @@
   }
   .yt-embed { width: 100%; height: 100%; border: none; }
 
-  /* ENDORSEMENTS */
-  .endorse-section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
-  .endorse-intro { max-width: 680px; margin-bottom: 2.5rem; }
-  .endorse-grid {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
-  }
-  .endorse-cell {
-    border: 1px solid var(--border); padding: 1.5rem 1rem;
-    text-align: center; background: var(--warm-white);
-  }
-  .endorse-country {
-    font-family: 'Lora', serif; font-size: 1rem; color: var(--charcoal);
-    font-weight: 400; margin-bottom: 0.35rem;
-  }
-  .endorse-org {
-    font-size: 0.72rem; color: var(--muted); line-height: 1.55;
-  }
-
   /* CTA */
   .cta-section {
     background: var(--charcoal); padding: 5rem 0;
@@ -624,7 +597,6 @@
   /* RESPONSIVE */
   @media (max-width: 900px) {
     .why-grid, .setup-grid, .resp-grid, .schedule-box { grid-template-columns: 1fr; gap: 2.5rem; }
-    .benefit-grid { grid-template-columns: 1fr 1fr; }
     .adapt-grid, .practice-grid, .masters-grid { grid-template-columns: 1fr; }
     .resp-figures { grid-template-columns: 1fr; }
     .schedule-box { padding: 2rem; }
@@ -634,14 +606,11 @@
     .video-row, .video-row.reverse { grid-template-columns: 1fr; gap: 1.5rem; }
     .video-row.reverse .video-text { order: 1; }
     .video-row.reverse .video-frame { order: 2; }
-    .endorse-grid { grid-template-columns: repeat(2, 1fr); }
     nav { padding: 0 1.25rem; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
   }
   @media (max-width: 600px) {
-    .benefit-grid { grid-template-columns: 1fr; }
-    .endorse-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 1.5rem; }
     .page-hero { padding: 3rem 0 2.5rem; }
   }
@@ -673,24 +642,6 @@
     <div class="hero-eyebrow">Pillar 02 — Hands-Free Programme</div>
     <h1>Hands-free harmonica after <em>high-level SCI</em></h1>
     <p class="hero-desc">A free course designed for people with quadriplegia who cannot use their hands. The harmonica is played through a neck-mounted rack, which makes it one of the few instruments accessible to high-level injuries — and one of the most effective respiratory exercises available.</p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-val">0</div>
-        <div class="hero-stat-label">Hand function required</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">~$40</div>
-        <div class="hero-stat-label">Total equipment cost</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">5</div>
-        <div class="hero-stat-label">Endorsing SCI associations</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">Free</div>
-        <div class="hero-stat-label">Cost of programme</div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -705,9 +656,10 @@
         <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">— Jeremy, on the standard respiratory exercise prescribed after high-level SCI</p>
       </div>
       <div class="why-text">
-        <p>A few years ago I realised something that could change the lives of many people for the better. Paralysis after high-level spinal cord injury is often associated with weakness of the diaphragm and intercostal muscles — the same muscles that drive the harmonica. That weakness creates a dangerous susceptibility to lung infections, which remain one of the leading causes of death in this population.</p>
-        <p>The harmonica is one of the very few musical instruments that can be played entirely hands-free, using a neck-mounted holder. It requires no prior musical knowledge to get started. The holes are numbered. You can play sitting, reclining, or lying flat. Unlike blowing through a straw, it is actually enjoyable — and the more enjoyable the exercise, the more often you do it.</p>
-        <p>With the help of expert harmonica players — including Ben Hewlett — and several people living with quadriplegia, I built a beginner course that has been endorsed by SCI associations in Australia, Canada, New Zealand, South Africa, and the USA.</p>
+        <p>A few years ago I realised something that could change a lot of lives for the better. After a high-level spinal cord injury, the muscles that drive your breathing — the diaphragm and the muscles between your ribs — get weak. Those are the exact same muscles that drive the harmonica. That weakness leaves you open to lung infections, which are still one of the leading causes of death after this kind of injury.</p>
+        <p>The harmonica is one of the very few instruments you can play entirely hands-free, in a neck-mounted holder. You need no musical knowledge to start. The holes are numbered. You can play sitting, reclining, or lying flat. And unlike blowing through a straw, it's actually enjoyable — and the more you enjoy it, the more you do it.</p>
+        <p>Here's the part nobody believes until they try it: you can sound good in days. Not years — days. And once you can make a sound, you've got back something this injury takes from a lot of people — a way to say the things that don't fit into words. Happy, angry, flat, fired up: it all comes out through the harp.</p>
+        <p>With the help of expert harmonica players — including Ben Hewlett — and people living with quadriplegia, I built a beginner course for anyone who wants to try.</p>
         <p>Strengthening the breath and living longer is a by-product of having a good old-fashioned blast on the harp.</p>
       </div>
     </div>
@@ -723,10 +675,10 @@
 
     <div class="resp-grid">
       <div class="resp-text">
-        <p>Respiratory complications remain the leading cause of death in people with cervical spinal cord injury. Weakness of the diaphragm, intercostal, and abdominal muscles reduces vital capacity, impairs the cough reflex, and allows secretions to pool — creating the conditions for pneumonia and atelectasis.</p>
-        <p>Playing the harmonica requires sustained, controlled inhalation (draw notes) and exhalation (blow notes), alternating in musical rhythm. Every phrase is a micro-workout for the same muscles that physiotherapists want you to train. A typical three-minute song delivers several hundred coordinated breath cycles of varying depth and force — far more engaging than counting repetitions on a spirometer.</p>
-        <p>Harmonica-based respiratory training has been studied in people with COPD and, more recently, in SCI. While the evidence base for SCI specifically is still developing, the theoretical rationale is strong: the instrument exercises exactly the muscles that need exercising, it creates inspiratory resistance through the reed plate, and it produces immediate acoustic feedback that rewards good breath control. Programmes such as <em>Harmonicas for Health</em> have brought this approach into pulmonary rehabilitation settings worldwide.</p>
-        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-top:1.25rem;"><em>This programme is not a replacement for respiratory physiotherapy. If you have a tracheostomy, phrenic nerve pacemaker, or a ventilator dependency that affects your ability to generate airflow at the mouth, speak with your respiratory team before starting.</em></p>
+        <p>Here is the hard truth, said plainly: after a high spinal injury, the muscles that power your breathing get weak. Weak breathing muscles mean a weak cough. A weak cough means your lungs cannot clear themselves out — and that is how chest infections start. Chest infections are the thing most likely to put you back in hospital. This is worth taking seriously.</p>
+        <p>Playing the harmonica means drawing air in (draw notes) and pushing it out (blow notes), over and over, in rhythm. Every phrase is a small workout for the exact muscles your physiotherapist wants you to train. A three-minute song is several hundred breaths of different sizes and strengths — far more interesting than counting reps on a breathing gadget.</p>
+        <p>Playing the harmonica to build breathing strength has been studied in people with lung disease, and more recently in spinal cord injury. The research on injury specifically is still growing, so I will not oversell it — but the logic is solid: it works the right muscles, it makes you pull against resistance, and it tells you instantly when your breath control is good, because it sounds good. Programmes such as <em>Harmonicas for Health</em> already use this in hospitals around the world.</p>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-top:1.25rem;"><strong>Important:</strong> this programme does not replace your breathing physiotherapy. If you have a tracheostomy, a phrenic nerve pacemaker, or you use a ventilator that affects how you move air at your mouth, talk to your respiratory team before you start. This one matters — please do not skip it.</p>
       </div>
       <div class="resp-callout">
         <div class="resp-callout-label">Why it works where straws fail</div>
@@ -740,57 +692,17 @@
       <div class="resp-figure">
         <div class="resp-figure-stat">Inspiratory</div>
         <div class="resp-figure-label">Draw notes</div>
-        <div class="resp-figure-desc">Drawing air through the reed creates measurable resistance — loading the diaphragm the same way an inspiratory muscle trainer does, but with a musical result.</div>
+        <div class="resp-figure-desc">Pulling air in through the harp pushes back against you — it loads up your breathing muscles the same way a breathing trainer does, but you get music out of it.</div>
       </div>
       <div class="resp-figure">
         <div class="resp-figure-stat">Expiratory</div>
         <div class="resp-figure-label">Blow notes</div>
-        <div class="resp-figure-desc">Sustained blow notes and chugging patterns strengthen the abdominal and accessory expiratory muscles that drive an effective cough.</div>
+        <div class="resp-figure-desc">Long blow notes and chugging rhythms strengthen the muscles that power a strong cough — the cough that keeps your lungs clear.</div>
       </div>
       <div class="resp-figure">
         <div class="resp-figure-stat">Coordinated</div>
         <div class="resp-figure-label">Breath control</div>
-        <div class="resp-figure-desc">Alternating inhalation and exhalation in rhythm trains the neuromuscular coordination that underpins speech, singing, and secretion clearance.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BENEFITS -->
-<section class="benefits-section">
-  <div class="container">
-    <div class="section-label">What you gain</div>
-    <h2 class="section-title">Six reasons to start</h2>
-    <div class="benefit-grid">
-      <div class="benefit-card">
-        <div class="benefit-num">01</div>
-        <div class="benefit-title">Respiratory strengthening</div>
-        <div class="benefit-desc">Every blow and draw works the diaphragm and respiratory muscles. Consistent practice can meaningfully improve vital capacity and cough strength — the two things most closely tied to infection risk after cervical SCI.</div>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">02</div>
-        <div class="benefit-title">Hands-free accessibility</div>
-        <div class="benefit-desc">A harmonica rack sits around your neck and holds the instrument at your mouth. No hand function needed. You can play sitting, reclining, in a tilt-in-space chair, or lying flat — whatever your posture allows.</div>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">03</div>
-        <div class="benefit-title">Emotional expression</div>
-        <div class="benefit-desc">The blues tradition was built on expressing what words cannot. Joy, grief, frustration, defiance, and hope all have a sound on the harp. After an injury that can strip away so many outlets, this is a direct one.</div>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">04</div>
-        <div class="benefit-title">Quick gratification</div>
-        <div class="benefit-desc">The harmonica is unique — you can sound good within days. The blues scale is only seven notes. Simple songs can be started in your first week, which matters enormously for motivation when rehabilitation already feels slow.</div>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">05</div>
-        <div class="benefit-title">Community and connection</div>
-        <div class="benefit-desc">Music creates social bonds. Learning the harp opens doors to online player communities, local jam sessions, and a rich musical lineage — and gives you something to offer back at family gatherings and hospital visits.</div>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">06</div>
-        <div class="benefit-title">Cognitive engagement</div>
-        <div class="benefit-desc">Learning music engages memory, attention, pattern recognition, and creative problem-solving. The self-directed practice methods taught here build metacognitive skills that transfer well beyond music.</div>
+        <div class="resp-figure-desc">Swapping between breathing in and out in rhythm trains the control behind talking, singing, and clearing your chest.</div>
       </div>
     </div>
   </div>
@@ -848,10 +760,142 @@
           <div class="tip-text">Many players practise in bed during the morning routine or before sleep. A rack works fine when reclining if you have the harmonica angled slightly downward. If you cannot wear the rack, ask a carer to place the harp on a folded towel on your chest, positioned so you can reach it with a small head movement.</div>
         </div>
         <div class="tip-box">
-          <div class="tip-label">The Bendometer app</div>
-          <div class="tip-text">Once you reach the bending stage, the Bendometer software at harpsoft.com is highly recommended. Play through your device microphone and it shows you exactly which note you are hitting — invaluable visual feedback for mastering bent notes without a teacher in the room.</div>
+          <div class="tip-label">Hearing your own bends</div>
+          <div class="tip-text">When you reach the bending stage, record yourself and listen back. A bend that sounds in tune while you are playing often sounds short or flat on the recording — your ear hears what you intended, not what you produced. Recording is the closest thing to having a teacher in the room, and it costs nothing.</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMONSTRATION VIDEOS -->
+<section class="videos-section">
+  <div class="container">
+    <div class="section-label">Demonstration videos</div>
+    <h2 class="section-title">Watch and play along</h2>
+    <p class="section-intro">Each video below walks you through one part of the hands-free method. Start with video one and work through them in order. All videos are hosted on YouTube — play them at full screen, rewind as often as you need, and try each step immediately with your own harp.</p>
+    <div class="video-list">
+
+      <div class="video-row">
+        <div class="video-text">
+          <div class="video-num">01</div>
+          <div class="video-eyebrow">Getting set up</div>
+          <div class="video-title">Rack setup for quadriplegia</div>
+          <div class="video-desc">How to position and tighten a neck rack so the harmonica stays exactly where you need it. Covers working with a carer, adjusting for different postures (upright, reclining, lying flat), and troubleshooting the most common setup problems.</div>
+          <div class="video-tags">
+            <span class="video-tag">Rack positioning</span>
+            <span class="video-tag">Carer setup</span>
+            <span class="video-tag">Posture</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_1')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Rack Setup Demonstration</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-row reverse">
+        <div class="video-text">
+          <div class="video-num">02</div>
+          <div class="video-eyebrow">Your first clean note</div>
+          <div class="video-title">Single notes using the puckering technique</div>
+          <div class="video-desc">Producing a clean, isolated note on a single hole — the foundation for everything that follows. Emphasis on the hands-free pucker: lips relaxed, harp deep enough in the mouth that the side holes are blocked, head movement to find each hole.</div>
+          <div class="video-tags">
+            <span class="video-tag">Puckering</span>
+            <span class="video-tag">Single notes</span>
+            <span class="video-tag">Head movement</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_2')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Puckering Technique</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-row">
+        <div class="video-text">
+          <div class="video-num">03</div>
+          <div class="video-eyebrow">Breath as rhythm</div>
+          <div class="video-title">Chugging — your first rhythmic pattern</div>
+          <div class="video-desc">Alternating blow and draw chords in rhythm to produce the chugging sound that drives train-beat blues. Chugging is also the single best respiratory exercise on the instrument — deep, sustained, coordinated breath work that sounds like music from day one.</div>
+          <div class="video-tags">
+            <span class="video-tag">Chugging</span>
+            <span class="video-tag">Breath control</span>
+            <span class="video-tag">Rhythm</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_3')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Chugging Rhythm</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-row reverse">
+        <div class="video-text">
+          <div class="video-num">04</div>
+          <div class="video-eyebrow">The blues sound</div>
+          <div class="video-title">Bending notes, hands-free</div>
+          <div class="video-desc">Bending is the sound most people associate with blues harmonica — a note that slides down in pitch and comes back up. This video shows how to produce it using only tongue and soft palate, with no hand-cupping required. Includes troubleshooting for the common squeaks and dead notes.</div>
+          <div class="video-tags">
+            <span class="video-tag">Bending</span>
+            <span class="video-tag">Tongue position</span>
+            <span class="video-tag">Troubleshooting</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_4')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Bending Notes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-row">
+        <div class="video-text">
+          <div class="video-num">05</div>
+          <div class="video-eyebrow">Expression without hands</div>
+          <div class="video-title">Vibrato, trills, and slides</div>
+          <div class="video-desc">The three effects that give a phrase its character — produced with throat, head, and lips rather than hands. Throat vibrato from the diaphragm, trills from gentle side-to-side head rocking, and slides from controlled lip movement across the fixed rack.</div>
+          <div class="video-tags">
+            <span class="video-tag">Throat vibrato</span>
+            <span class="video-tag">Trills</span>
+            <span class="video-tag">Slides</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_5')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">Expression Techniques</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-row reverse">
+        <div class="video-text">
+          <div class="video-num">06</div>
+          <div class="video-eyebrow">Putting it together</div>
+          <div class="video-title">Playing along with a 12-bar blues</div>
+          <div class="video-desc">A complete play-along over a slow blues backing track in G. Uses only the techniques from videos one through five. By the end of this video most viewers can produce a recognisably musical performance — which is the entire point.</div>
+          <div class="video-tags">
+            <span class="video-tag">12-bar blues</span>
+            <span class="video-tag">Backing tracks</span>
+            <span class="video-tag">First performance</span>
+          </div>
+        </div>
+        <div class="video-frame">
+          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_6')">
+            <div class="yt-play-btn"></div>
+            <div class="yt-placeholder-label">12-Bar Blues Play-Along</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -901,7 +945,7 @@
       </div>
       <div class="adapt-card">
         <div class="adapt-title"><div class="adapt-dot"></div>Bending with tongue and soft palate</div>
-        <div class="adapt-desc">Bending — the signature blues sound — is produced entirely inside the mouth, with or without hands. You lower the tongue, shape the soft palate, and slightly change the draw angle. Hands-free players learn bending exactly the same way hand players do. The Bendometer app is particularly useful here.</div>
+        <div class="adapt-desc">Bending — the signature blues sound — is produced entirely inside the mouth, with or without hands. You lower the tongue, shape the soft palate, and slightly change the draw angle. Hands-free players learn bending exactly the same way hand players do. Record yourself and listen back — your ear is the only feedback tool you need.</div>
         <ul class="adapt-tips">
           <li>Start with the 4-draw bend — the easiest to find</li>
           <li>Think "whistling low" inside your mouth</li>
@@ -1006,7 +1050,7 @@
   <div class="container">
     <div class="section-label">The hardest stage</div>
     <h2 class="section-title">Crossing the gap from notes to music</h2>
-    <p class="section-intro gap-intro">There is a stage every learner reaches where the notes come out clean, the breath is steady, the holes are in the right place — and it still does not sound like music. This is real. It has a name. It is the gap between producing notes and playing phrases, and it is where most adult learners stall. The two exercises below are designed to walk you across it. Neither requires hand function. Both work as well in bed as at a table.</p>
+    <p class="section-intro gap-intro">Every learner hits this wall: the notes are clean, your breath is steady, you are on the right holes — and it still does not sound like music. This is normal. It even has a name. It is the gap between playing notes and playing real phrases, and it is where most people get stuck and give up. These two exercises walk you across it. No hands needed. Works just as well lying in bed as sitting at a table.</p>
 
     <!-- CALL AND RESPONSE -->
     <div class="gap-subsection">
@@ -1105,91 +1149,92 @@
         <div class="phrase-item">
           <div class="phrase-num">02</div>
           <div>
-            <div class="phrase-source"><em>Phrase to be selected</em></div>
-            <div class="phrase-pattern">Hole pattern to be added</div>
-            <div class="phrase-oneliner">One-line description to be added</div>
+            <div class="phrase-source">Sonny Terry — <em>Cross harp rising question</em></div>
+            <div class="phrase-pattern">2-draw, 3-draw, 4-draw, 4-draw bent, 4-draw</div>
+            <div class="phrase-oneliner">Climbs up then curls back — a phrase that asks a question and almost answers it.</div>
           </div>
-          <!-- AUDIO TO BE RECORDED: phrase-02.mp3 -->
+          <!-- AUDIO TO BE RECORDED: phrase-02.mp3 — slow, looped 4-6 times -->
           <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
         <div class="phrase-item">
           <div class="phrase-num">03</div>
           <div>
-            <div class="phrase-source"><em>Phrase to be selected</em></div>
-            <div class="phrase-pattern">Hole pattern to be added</div>
-            <div class="phrase-oneliner">One-line description to be added</div>
+            <div class="phrase-source">Little Walter — <em>Juke</em></div>
+            <div class="phrase-pattern">6-draw, 5-draw, 4-draw, 3-draw bent, 2-draw</div>
+            <div class="phrase-oneliner">Tumbles down from the top. The bent 3-draw landing is where it gets dangerous.</div>
           </div>
-          <!-- AUDIO TO BE RECORDED: phrase-03.mp3 -->
+          <!-- AUDIO TO BE RECORDED: phrase-03.mp3 — slow, looped 4-6 times -->
           <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
         <div class="phrase-item">
           <div class="phrase-num">04</div>
           <div>
-            <div class="phrase-source"><em>Phrase to be selected</em></div>
-            <div class="phrase-pattern">Hole pattern to be added</div>
-            <div class="phrase-oneliner">One-line description to be added</div>
+            <div class="phrase-source">Big Walter Horton — <em>Turnaround</em></div>
+            <div class="phrase-pattern">2-draw, 3-draw bent, 2-draw, 1-draw, 2-blow</div>
+            <div class="phrase-oneliner">A classic blues turnaround. Lands on the 2-blow and sits there — sounds finished.</div>
           </div>
-          <!-- AUDIO TO BE RECORDED: phrase-04.mp3 -->
+          <!-- AUDIO TO BE RECORDED: phrase-04.mp3 — slow, looped 4-6 times -->
           <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
         <div class="phrase-item">
           <div class="phrase-num">05</div>
           <div>
-            <div class="phrase-source"><em>Phrase to be selected</em></div>
-            <div class="phrase-pattern">Hole pattern to be added</div>
-            <div class="phrase-oneliner">One-line description to be added</div>
+            <div class="phrase-source">Junior Wells — <em>Vamp</em></div>
+            <div class="phrase-pattern">2-draw, 3-blow, 2-draw</div>
+            <div class="phrase-oneliner">Three notes. Sounds like a whole mood. The 3-blow is a passing tone that makes it swing.</div>
           </div>
-          <!-- AUDIO TO BE RECORDED: phrase-05.mp3 -->
+          <!-- AUDIO TO BE RECORDED: phrase-05.mp3 — slow, looped 4-6 times -->
           <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
         <div class="phrase-item">
           <div class="phrase-num">06</div>
           <div>
-            <div class="phrase-source"><em>Phrase to be selected</em></div>
-            <div class="phrase-pattern">Hole pattern to be added</div>
-            <div class="phrase-oneliner">One-line description to be added</div>
+            <div class="phrase-source">Bob Dylan — <em>Blowin' in the Wind</em></div>
+            <div class="phrase-pattern-row"><span class="phrase-key-label">D harp · first position</span> 4-blow, 4-draw, 5-blow, 5-draw, 5-blow</div>
+            <div class="phrase-pattern-row"><span class="phrase-key-label">C harp · cross harp</span> 2-draw, 3-draw, 4-blow, 4-draw, 4-blow</div>
+            <div class="phrase-oneliner">Same phrase, two harps — this is why players carry more than one. The D harp version sits entirely on blow notes and is closer to the original recording.</div>
           </div>
-          <!-- AUDIO TO BE RECORDED: phrase-06.mp3 -->
-          <div class="phrase-audio-slot">Audio — to be recorded</div>
+          <!-- AUDIO TO BE RECORDED: phrase-06.mp3 — record both versions back to back, D harp first -->
+          <div class="phrase-audio-slot">Audio — to be recorded (both keys)</div>
         </div>
         <div class="phrase-item">
           <div class="phrase-num">07</div>
           <div>
-            <div class="phrase-source"><em>Phrase to be selected</em></div>
-            <div class="phrase-pattern">Hole pattern to be added</div>
-            <div class="phrase-oneliner">One-line description to be added</div>
+            <div class="phrase-source">Neil Young — <em>Heart of Gold</em></div>
+            <div class="phrase-pattern">4-draw, 4-blow, 3-draw, 2-draw, 2-blow</div>
+            <div class="phrase-oneliner">Gentle and melodic — no sharp bends, just steady cross harp feel. Good for warming up the ear.</div>
           </div>
-          <!-- AUDIO TO BE RECORDED: phrase-07.mp3 -->
+          <!-- AUDIO TO BE RECORDED: phrase-07.mp3 — slow, looped 4-6 times -->
           <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
         <div class="phrase-item">
           <div class="phrase-num">08</div>
           <div>
-            <div class="phrase-source"><em>Phrase to be selected</em></div>
-            <div class="phrase-pattern">Hole pattern to be added</div>
-            <div class="phrase-oneliner">One-line description to be added</div>
+            <div class="phrase-source">Charlie McCoy — <em>Ascending run</em></div>
+            <div class="phrase-pattern">2-draw, 3-draw, 4-draw, 5-draw, 6-draw, 6-blow</div>
+            <div class="phrase-oneliner">A straight run up the draw holes to the top. Clean, fast, useful for endings and fills.</div>
           </div>
-          <!-- AUDIO TO BE RECORDED: phrase-08.mp3 -->
+          <!-- AUDIO TO BE RECORDED: phrase-08.mp3 — slow, looped 4-6 times -->
           <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
         <div class="phrase-item">
           <div class="phrase-num">09</div>
           <div>
-            <div class="phrase-source"><em>Phrase to be selected</em></div>
-            <div class="phrase-pattern">Hole pattern to be added</div>
-            <div class="phrase-oneliner">One-line description to be added</div>
+            <div class="phrase-source">Charlie Musselwhite — <em>Slow bent phrase</em></div>
+            <div class="phrase-pattern">3-draw, 3-draw bent, 2-draw, 2-draw, 1-draw</div>
+            <div class="phrase-oneliner">Slow and heavy. The bent 3-draw held long is what gives it weight — don't rush it.</div>
           </div>
-          <!-- AUDIO TO BE RECORDED: phrase-09.mp3 -->
+          <!-- AUDIO TO BE RECORDED: phrase-09.mp3 — slow, looped 4-6 times -->
           <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
         <div class="phrase-item">
           <div class="phrase-num">10</div>
           <div>
-            <div class="phrase-source"><em>Phrase to be selected</em></div>
-            <div class="phrase-pattern">Hole pattern to be added</div>
-            <div class="phrase-oneliner">One-line description to be added</div>
+            <div class="phrase-source">Jimmie Rodgers — <em>Rockabilly hop</em></div>
+            <div class="phrase-pattern">2-draw, 3-blow, 3-draw, 4-blow, 4-draw, 3-draw</div>
+            <div class="phrase-oneliner">Skippy and rhythmic — feels different from the blues phrases. Shows the harp can swing too.</div>
           </div>
-          <!-- AUDIO TO BE RECORDED: phrase-10.mp3 -->
+          <!-- AUDIO TO BE RECORDED: phrase-10.mp3 — slow, looped 4-6 times -->
           <div class="phrase-audio-slot">Audio — to be recorded</div>
         </div>
       </div>
@@ -1199,169 +1244,6 @@
         <div class="phrase-journal-title">Keep a phrase journal</div>
         <p>One line per phrase, in a notebook, a phone note, a Google doc — the format does not matter. Write down what player it came from, when you learned it, and what feeling it carries for you. After ten phrases this becomes a personal artefact that proves you are a player. After fifty it is a record of how your ear has grown.</p>
         <p>The act of <em>naming</em> each phrase — "the falling Sonny Boy phrase," "the long Adam Gussow bend" — is what turns a row of notes into a musical object you own.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEMONSTRATION VIDEOS -->
-<section class="videos-section">
-  <div class="container">
-    <div class="section-label">Demonstration videos</div>
-    <h2 class="section-title">Watch and play along</h2>
-    <p class="section-intro">Each video below walks you through one part of the hands-free method. Start with video one and work through them in order. All videos are hosted on YouTube — play them at full screen, rewind as often as you need, and try each step immediately with your own harp.</p>
-    <div class="video-list">
-
-      <div class="video-row">
-        <div class="video-text">
-          <div class="video-num">01</div>
-          <div class="video-eyebrow">Getting set up</div>
-          <div class="video-title">Rack setup for quadriplegia</div>
-          <div class="video-desc">How to position and tighten a neck rack so the harmonica stays exactly where you need it. Covers working with a carer, adjusting for different postures (upright, reclining, lying flat), and troubleshooting the most common setup problems.</div>
-          <div class="video-tags">
-            <span class="video-tag">Rack positioning</span>
-            <span class="video-tag">Carer setup</span>
-            <span class="video-tag">Posture</span>
-          </div>
-        </div>
-        <div class="video-frame">
-          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_1')">
-            <div class="yt-play-btn"></div>
-            <div class="yt-placeholder-label">Rack Setup Demonstration</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="video-row reverse">
-        <div class="video-text">
-          <div class="video-num">02</div>
-          <div class="video-eyebrow">Your first clean note</div>
-          <div class="video-title">Single notes using the puckering technique</div>
-          <div class="video-desc">Producing a clean, isolated note on a single hole — the foundation for everything that follows. Emphasis on the hands-free pucker: lips relaxed, harp deep enough in the mouth that the side holes are blocked, head movement to find each hole.</div>
-          <div class="video-tags">
-            <span class="video-tag">Puckering</span>
-            <span class="video-tag">Single notes</span>
-            <span class="video-tag">Head movement</span>
-          </div>
-        </div>
-        <div class="video-frame">
-          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_2')">
-            <div class="yt-play-btn"></div>
-            <div class="yt-placeholder-label">Puckering Technique</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="video-row">
-        <div class="video-text">
-          <div class="video-num">03</div>
-          <div class="video-eyebrow">Breath as rhythm</div>
-          <div class="video-title">Chugging — your first rhythmic pattern</div>
-          <div class="video-desc">Alternating blow and draw chords in rhythm to produce the chugging sound that drives train-beat blues. Chugging is also the single best respiratory exercise on the instrument — deep, sustained, coordinated breath work that sounds like music from day one.</div>
-          <div class="video-tags">
-            <span class="video-tag">Chugging</span>
-            <span class="video-tag">Breath control</span>
-            <span class="video-tag">Rhythm</span>
-          </div>
-        </div>
-        <div class="video-frame">
-          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_3')">
-            <div class="yt-play-btn"></div>
-            <div class="yt-placeholder-label">Chugging Rhythm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="video-row reverse">
-        <div class="video-text">
-          <div class="video-num">04</div>
-          <div class="video-eyebrow">The blues sound</div>
-          <div class="video-title">Bending notes, hands-free</div>
-          <div class="video-desc">Bending is the sound most people associate with blues harmonica — a note that slides down in pitch and comes back up. This video shows how to produce it using only tongue and soft palate, with no hand-cupping required. Includes troubleshooting for the common squeaks and dead notes.</div>
-          <div class="video-tags">
-            <span class="video-tag">Bending</span>
-            <span class="video-tag">Tongue position</span>
-            <span class="video-tag">Bendometer</span>
-          </div>
-        </div>
-        <div class="video-frame">
-          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_4')">
-            <div class="yt-play-btn"></div>
-            <div class="yt-placeholder-label">Bending Notes</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="video-row">
-        <div class="video-text">
-          <div class="video-num">05</div>
-          <div class="video-eyebrow">Expression without hands</div>
-          <div class="video-title">Vibrato, trills, and slides</div>
-          <div class="video-desc">The three effects that give a phrase its character — produced with throat, head, and lips rather than hands. Throat vibrato from the diaphragm, trills from gentle side-to-side head rocking, and slides from controlled lip movement across the fixed rack.</div>
-          <div class="video-tags">
-            <span class="video-tag">Throat vibrato</span>
-            <span class="video-tag">Trills</span>
-            <span class="video-tag">Slides</span>
-          </div>
-        </div>
-        <div class="video-frame">
-          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_5')">
-            <div class="yt-play-btn"></div>
-            <div class="yt-placeholder-label">Expression Techniques</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="video-row reverse">
-        <div class="video-text">
-          <div class="video-num">06</div>
-          <div class="video-eyebrow">Putting it together</div>
-          <div class="video-title">Playing along with a 12-bar blues</div>
-          <div class="video-desc">A complete play-along over a slow blues backing track in G. Uses only the techniques from videos one through five. By the end of this video most viewers can produce a recognisably musical performance — which is the entire point.</div>
-          <div class="video-tags">
-            <span class="video-tag">12-bar blues</span>
-            <span class="video-tag">Backing tracks</span>
-            <span class="video-tag">First performance</span>
-          </div>
-        </div>
-        <div class="video-frame">
-          <div class="yt-placeholder" onclick="loadYT(this,'YOUR_YOUTUBE_ID_6')">
-            <div class="yt-play-btn"></div>
-            <div class="yt-placeholder-label">12-Bar Blues Play-Along</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ENDORSEMENTS -->
-<section class="endorse-section">
-  <div class="container">
-    <div class="section-label">Endorsed by</div>
-    <h2 class="section-title">SCI associations in five countries</h2>
-    <p class="section-intro endorse-intro">The programme has been promoted through the newsletters and member channels of spinal cord injury associations in Australia, Canada, New Zealand, South Africa, and the United States. It has been built with direct input from people living with quadriplegia and from the professional harmonica teacher Ben Hewlett.</p>
-    <div class="endorse-grid">
-      <div class="endorse-cell">
-        <div class="endorse-country">Australia</div>
-        <div class="endorse-org">SCI community networks</div>
-      </div>
-      <div class="endorse-cell">
-        <div class="endorse-country">Canada</div>
-        <div class="endorse-org">SCI community networks</div>
-      </div>
-      <div class="endorse-cell">
-        <div class="endorse-country">New Zealand</div>
-        <div class="endorse-org">SCI community networks</div>
-      </div>
-      <div class="endorse-cell">
-        <div class="endorse-country">South Africa</div>
-        <div class="endorse-org">SCI community networks</div>
-      </div>
-      <div class="endorse-cell">
-        <div class="endorse-country">United States</div>
-        <div class="endorse-org">SCI community networks</div>
       </div>
     </div>
   </div>
@@ -1455,7 +1337,7 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.08 });
-document.querySelectorAll('.benefit-card, .equip-item, .adapt-card, .practice-card, .resp-figure, .video-row, .endorse-cell, .master-card').forEach(el => {
+document.querySelectorAll('.equip-item, .adapt-card, .practice-card, .resp-figure, .video-row, .master-card').forEach(el => {
   el.style.cssText += 'opacity:0;transform:translateY(16px);transition:opacity 0.45s ease,transform 0.45s ease;';
   observer.observe(el);
 });
