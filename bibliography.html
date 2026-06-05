@@ -302,6 +302,40 @@
     color: #444030;
   }
 
+  /* JUMP NAV */
+  .jump-nav {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+  }
+  .jump-nav a {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,150,60,0.35);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .jump-nav a:hover {
+    color: var(--charcoal);
+    border-bottom-color: var(--charcoal);
+  }
+
+  /* PILLAR TITLE ANCHOR */
+  .pillar-anchor {
+    color: inherit;
+    text-decoration: none;
+  }
+  .pillar-anchor:hover {
+    color: var(--gold);
+    text-decoration: underline;
+    text-decoration-color: rgba(200,150,60,0.4);
+    text-underline-offset: 3px;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 0 1.25rem; }
@@ -365,6 +399,12 @@
     <h2 class="section-title">Bibliography</h2>
     <p class="section-intro">References are organised by pillar. Each pillar opens with a plain-language overview of the evidence, written for a general reader, followed by the full academic reference list in APA format.</p>
 
+    <nav class="jump-nav" aria-label="Jump to pillar">
+      <a href="#pillar1">Quality of Life Research</a>
+      <a href="#pillar2">Hands-Free Harmonica</a>
+      <a href="#pillar3">Guided Imagery Programme</a>
+    </nav>
+
     <!-- ============================================================ -->
     <!-- PILLAR 1 — QUALITY OF LIFE RESEARCH                         -->
     <!-- ============================================================ -->
@@ -372,7 +412,7 @@
       <div class="pillar-header-bar">
         <div class="pillar-num">01</div>
         <div class="pillar-header-text">
-          <div class="section-label">Pillar 1 — Quality of Life Research</div>
+          <div class="section-label"><a href="#pillar1" class="pillar-anchor">Pillar 1 — Quality of Life Research</a></div>
           <h3>Graduate research supervised by Professor Robert Cummins, Deakin University, Melbourne</h3>
         </div>
       </div>
@@ -540,7 +580,7 @@
       <div class="pillar-header-bar">
         <div class="pillar-num">02</div>
         <div class="pillar-header-text">
-          <div class="section-label">Pillar 2 — Hands-Free Harmonica Programme</div>
+          <div class="section-label"><a href="#pillar2" class="pillar-anchor">Pillar 2 — Hands-Free Harmonica Programme</a></div>
           <h3>Respiratory and music therapy research supporting blues harmonica for people with quadriplegia</h3>
         </div>
       </div>
@@ -605,7 +645,7 @@
       <div class="pillar-header-bar">
         <div class="pillar-num">03</div>
         <div class="pillar-header-text">
-          <div class="section-label">Pillar 3 — Guided Imagery Programme</div>
+          <div class="section-label"><a href="#pillar3" class="pillar-anchor">Pillar 3 — Guided Imagery Programme</a></div>
           <h3>Motor imagery, neuroplasticity, and mind-body practice in spinal cord injury rehabilitation</h3>
         </div>
       </div>
