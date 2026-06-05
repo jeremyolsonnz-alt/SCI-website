@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bibliography — Living Beyond SCI</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #2A2820;
+    --bark: #5C4A2A;
+    --rust: #8B4513;
+    --gold: #C8963C;
+    --muted: #7A7060;
+    --border: #E0D8C8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--charcoal);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: #C8C0B0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
+  .mobile-menu {
+    display: none;
+    background: var(--charcoal);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: #C8C0B0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover, .mobile-menu a.active { color: var(--gold); }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--charcoal);
+    padding: 5rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(200,150,60,0.04) 40px,
+      rgba(200,150,60,0.04) 41px
+    );
+  }
+  .page-hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .page-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    position: relative; z-index: 2;
+  }
+  .page-hero-desc {
+    font-size: 1.05rem;
+    color: #A09880;
+    max-width: 620px;
+    line-height: 1.8;
+    position: relative; z-index: 2;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: #A09880;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative; z-index: 2;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 14px; height: 14px; fill: currentColor; }
+
+  /* CONTAINER */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+  .section-intro {
+    font-size: 1rem;
+    color: #4A4438;
+    max-width: 680px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* BIBLIOGRAPHY PAGE */
+  .bib-page {
+    padding: 5rem 0 6rem;
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+  }
+  .bib-note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    max-width: 640px;
+    font-style: italic;
+  }
+
+  /* PILLAR SECTION BLOCKS */
+  .pillar-block {
+    margin-bottom: 5rem;
+  }
+  .pillar-block:last-child {
+    margin-bottom: 0;
+  }
+  .pillar-header-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pillar-num {
+    font-family: 'Lora', serif;
+    font-size: 3rem;
+    color: rgba(200,150,60,0.18);
+    font-weight: 400;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .pillar-header-text .section-label { margin-bottom: 0.25rem; }
+  .pillar-header-text h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--charcoal);
+  }
+
+  /* PLAIN-LANGUAGE SUMMARY */
+  .bib-summary {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .bib-summary-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .bib-summary h4 {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin: 1.25rem 0 0.5rem;
+    line-height: 1.35;
+  }
+  .bib-summary h4:first-of-type { margin-top: 0; }
+  .bib-summary p {
+    font-size: 0.92rem;
+    color: #4A4438;
+    line-height: 1.85;
+    margin-bottom: 0.75rem;
+  }
+  .bib-summary p:last-child { margin-bottom: 0; }
+
+  /* REFERENCE LIST */
+  .bib-columns {
+    columns: 2;
+    column-gap: 3rem;
+    margin-top: 1.5rem;
+  }
+  .bib-entry {
+    font-size: 0.82rem;
+    color: #4A4438;
+    line-height: 1.8;
+    margin-bottom: 0.85rem;
+    break-inside: avoid;
+  }
+  .bib-subhead {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 1.5rem 0 1rem;
+    break-inside: avoid;
+  }
+  .bib-subhead:first-child { margin-top: 0; }
+  .bib-link {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,150,60,0.3);
+  }
+  .bib-link:hover { border-bottom-color: var(--gold); }
+  .ref-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.5rem 0 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1A1810;
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    color: #5A5040;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: #444030;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .bib-columns { columns: 1; }
+    .pillar-header-bar { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .pillar-num { font-size: 2rem; }
+  }
+  @media (max-width: 600px) {
+    .page-hero { padding: 3rem 0 2.5rem; }
+    .container { padding: 0 1.25rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .bib-summary { padding: 1.5rem; }
+    .bib-page { padding: 3rem 0 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
+  <ul class="nav-links">
+    <li><a href="research_page.html">Research</a></li>
+    <li><a href="harmonica_page.html">Harmonica</a></li>
+    <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
+    <li><a href="bibliography.html" class="active">Bibliography</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="this.setAttribute('aria-expanded', document.querySelector('.mobile-menu').classList.toggle('open')); return false;" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="research_page.html">Research</a>
+  <a href="harmonica_page.html">Harmonica</a>
+  <a href="guided_imagery_page.html">Guided Imagery</a>
+  <a href="bibliography.html" class="active">Bibliography</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a href="index.html" class="back-link" style="margin-bottom:2rem; display:inline-flex;">
+      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Back to home
+    </a>
+    <div class="page-hero-eyebrow">Living Beyond SCI — References</div>
+    <h1>Bibliography</h1>
+    <p class="page-hero-desc">References cited across the three pillars of Living Beyond SCI — quality of life research, hands-free harmonica, and the Guided Imagery Programme. Each section opens with a plain-language summary of the evidence.</p>
+  </div>
+</section>
+
+<!-- BIBLIOGRAPHY -->
+<section class="bib-page">
+  <div class="container">
+
+    <div class="section-label">References</div>
+    <h2 class="section-title">Bibliography</h2>
+    <p class="section-intro">References are organised by pillar. Each pillar opens with a plain-language overview of the evidence, written for a general reader, followed by the full academic reference list in APA format.</p>
+
+    <!-- ============================================================ -->
+    <!-- PILLAR 1 — QUALITY OF LIFE RESEARCH                         -->
+    <!-- ============================================================ -->
+    <div class="pillar-block" id="pillar1">
+      <div class="pillar-header-bar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-header-text">
+          <div class="section-label">Pillar 1 — Quality of Life Research</div>
+          <h3>Graduate research supervised by Professor Robert Cummins, Deakin University, Melbourne</h3>
+        </div>
+      </div>
+
+      <!-- Plain-language summary -->
+      <div class="bib-summary">
+        <div class="bib-summary-label">Plain-language overview</div>
+
+        <h4>What the research is about</h4>
+        <p>For a long time, doctors and researchers measured how well a rehabilitation programme was working by looking at things like whether a person could get a job, how well they could move, or what their medical condition was like. These are called objective measures — anyone looking from the outside can observe and count them.</p>
+        <p>The problem is that two people with the exact same injury, the same level of mobility, and the same employment status can feel very differently about their lives. One might feel grateful and content. The other might feel trapped and hopeless. An objective measure cannot tell you which is which.</p>
+        <p>This body of research argues that the only way to really know how life feels after a spinal cord injury is to ask the people living it. It also asks a harder question: what specifically makes life better or worse for people with SCI, and what can they — and the people helping them — actually do about it?</p>
+
+        <h4>What the studies found</h4>
+        <p>Drawing on data from 41 studies involving 4,709 people with spinal cord injuries from countries including the USA, Australia, Canada, Sweden, and Japan, the research found that people with SCI report lower life satisfaction across almost every major area — money, work, health, relationships, and community involvement — compared to the general population. The overall average score was about 61 out of 100, against a general population norm of around 74.</p>
+        <p>The lowest scores were in material wellbeing (money and finances) and productivity (work, roles, contribution). The highest scores — and the closest to general population levels — were in close relationships and emotional wellbeing. People with SCI reported their relationships with family and friends as their greatest source of strength, and safety and emotional wellbeing as the two areas where they were closest to the general population average.</p>
+        <p>A separate study of 78 people from six countries found that one psychological strategy was consistently linked to higher life satisfaction: when something goes wrong and you cannot change it, blaming bad luck rather than yourself. People who used this approach — placing the cause of their difficulties on circumstances beyond their control rather than on personal failure — reported significantly higher satisfaction across six different areas of life. The longer someone had been living with SCI and the older they were, the more naturally they tended to use this strategy. It appears to be something many people develop gradually — a kind of hard-won wisdom rather than giving up.</p>
+
+        <h4>What it means</h4>
+        <p>The finding that financial and work-related satisfaction is lowest — while emotional wellbeing is relatively intact — suggests that the barriers to a good life after SCI are often practical and structural, not just psychological. Access to money, employment, and the built environment matters as much as, or more than, psychological adjustment. At the same time, the strength of relationships as a source of satisfaction is a consistent finding: protecting and building close connections is one of the most effective things a person can do for their own wellbeing after injury.</p>
+        <p>The research was conducted under the supervision of Professor Robert Cummins at Deakin University, Melbourne.</p>
+      </div>
+
+      <div class="ref-label">References — Pillar 1</div>
+      <div class="bib-columns">
+
+        <p class="bib-entry">Abramson, L. Y., Seligman, M. E., &amp; Teasdale, J. D. (1978). Learned helplessness in humans: Critique and reformulation. <em>Journal of Abnormal Psychology, 87</em>, 49–74.</p>
+
+        <p class="bib-entry">Andrews, F., &amp; Withey, S. (1976). <em>Social Indicators of Well-being.</em> Plenum Press, New York.</p>
+
+        <p class="bib-entry">Bach, J. R., &amp; Tilton, M. C. (1994). Satisfaction and well-being measures in ventilator assisted individuals with traumatic tetraplegia. <em>Archives of Physical Medicine and Rehabilitation, 73</em>, 627–632.</p>
+
+        <p class="bib-entry">Baltes, P. B., &amp; Baltes, M. M. (1990). Psychological perspectives on successful aging: The model of selective optimization. In P. B. Baltes &amp; M. M. Baltes (Eds.), <em>Successful Aging: Perspectives from the Behavioural Sciences</em> (pp. 1–34). Cambridge University Press, New York.</p>
+
+        <p class="bib-entry">Barone, S. H. (1993). Adaptation to spinal cord injury. <em>Dissertation Abstracts International, 54–07B</em>, 3547.</p>
+
+        <p class="bib-entry">Best, C. (1996). <em>The quality of rural and metropolitan life.</em> Unpublished Thesis, Deakin University, Melbourne.</p>
+
+        <p class="bib-entry">Bodenhamer, E., Achterberg-Lawlis, J., Kevorkian, G., Belanus, A., &amp; Cofer, J. (1983). Staff and patient perceptions of the psychosocial concerns of spinal cord injured persons. <em>American Journal of Physical Medicine, 62</em>(4), 182–193.</p>
+
+        <p class="bib-entry">Boschen, K. A. (1990). Life satisfaction, housing satisfaction, and locus of control: A comparison between spinal cord injured and non-disabled individuals. <em>Canadian Journal of Rehabilitation, 4</em>(2), 75–85.</p>
+
+        <p class="bib-entry">Boschen, K. A. (1996). Correlates of life satisfaction, residential satisfaction, and locus of control among adults with spinal cord injuries. <em>Rehabilitation Counseling Bulletin, 39</em>(4), 230–243.</p>
+
+        <p class="bib-entry">Boswell, B., Dawson, M., &amp; Heininger, E. (1998). Quality of life as defined by adults with spinal cord injuries. <em>Journal of Rehabilitation, 64</em>, 27–32.</p>
+
+        <p class="bib-entry">Bracken, M. B., &amp; Shepard, M. (1980). Coping and adaptation following acute spinal cord injury: A theoretical analysis. <em>Paraplegia, 18</em>, 74–85.</p>
+
+        <p class="bib-entry">Bracken, M. B., Shepard, M. J., &amp; Webb, S. B. (1981). Psychological response to acute spinal cord injury: An epidemiological study. <em>Paraplegia, 19</em>, 271–283.</p>
+
+        <p class="bib-entry">Buckelew, S. P., Baumstark, K. E., Frank, R. G., &amp; Hewett, J. E. (1990). Adjustment following spinal cord injury. <em>Rehabilitation Psychology, 35</em>(2), 101–109.</p>
+
+        <p class="bib-entry">Bulman, R. J., &amp; Wortman, C. B. (1977). Attributions of blame and coping in the "Real World": Severe accident victims react to their lot. <em>Journal of Personality and Social Psychology, 35</em>(5), 351–363.</p>
+
+        <p class="bib-entry">Carlson, C. E. (1979). Conceptual style and life satisfaction following spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 60</em>, 346–352.</p>
+
+        <p class="bib-entry">Charlifue, S. W., &amp; Gerhart, K. A. (1991). Behavioural and demographic predictors of suicide after traumatic spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 72</em>, 488–492.</p>
+
+        <p class="bib-entry">Chwalisz, K., Diener, E., &amp; Gallagher, D. (1988). Autonomic arousal feedback and emotional experience: Evidence from the spinal cord injured. <em>Journal of Personality and Social Psychology, 54</em>(5), 820–828.</p>
+
+        <p class="bib-entry">Clayton, K. S., &amp; Chubon, R. A. (1994). Factors associated with the quality of life of long-term spinal cord injured persons. <em>Archives of Physical Medicine and Rehabilitation, 73</em>, 633–638.</p>
+
+        <p class="bib-entry">Craig, A. R., Hancock, K., &amp; Dickson, H. (1994a). Spinal cord injury: A search for determinants of depression two years after the event. <em>British Journal of Clinical Psychology, 33</em>, 221–230.</p>
+
+        <p class="bib-entry">Craig, A. R., Hancock, K., Dickson, H., &amp; Chang, E. (1997). Long-term psychological outcomes in spinal cord injured persons: Results of a controlled trial using cognitive behavior therapy. <em>Archives of Physical Medicine and Rehabilitation, 78</em>, 33–38.</p>
+
+        <p class="bib-entry">Crisp, R. (1992). The long-term adjustment of 60 persons with spinal cord injury. <em>Australian Psychologist, 27</em>, 43–47.</p>
+
+        <p class="bib-entry">Cummins, R. A. (1995). On the trail of the gold standard for subjective well-being. <em>Social Indicators Research, 35</em>, 179–200.</p>
+
+        <p class="bib-entry">Cummins, R. A. (1996). Assessing quality of life. In R. Brown (Ed.), <em>Quality of Life for Handicapped People.</em> Chapman and Hall, London.</p>
+
+        <p class="bib-entry">Cummins, R. A. (1997). <em>Comprehensive Quality of Life Scale — Adult (ComQol-A5)</em> (5th ed.). Deakin University, School of Psychology, Melbourne.</p>
+
+        <p class="bib-entry">Cummins, R. A. (1998). Normative life satisfaction: Measurement issues and a homeostatic model. <em>Draft Paper</em>, Deakin University, Melbourne.</p>
+
+        <p class="bib-entry">Cummins, R., McCabe, M. P., Romeo, Y., &amp; Gullone, E. (1994). The Comprehensive Quality of Life Scale (ComQol): Instrument development and psychometric evaluation on tertiary staff and students. <em>Educational and Psychological Measurement, 54</em>, 372–382.</p>
+
+        <p class="bib-entry">Cushman, L. A., &amp; Hassett, J. (1992). Spinal cord injury: 10 and 15 years after. <em>Paraplegia, 30</em>, 690–696.</p>
+
+        <p class="bib-entry">Decker, S. D., &amp; Schulz, R. (1985). Correlates of life satisfaction and depression in middle-aged and elderly spinal cord injured persons. <em>American Journal of Occupational Therapy, 39</em>(11), 740–745.</p>
+
+        <p class="bib-entry">Dew, M. A., Lynch, K., Ernst, J., &amp; Rosenthal, R. (1983). Reaction and adjustment to spinal cord injury. <em>Journal of Applied Rehabilitation Counseling, 14</em>, 32–39.</p>
+
+        <p class="bib-entry">Elliott, T. R., &amp; Frank, R. G. (1996). Depression following spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 77</em>, 816–823.</p>
+
+        <p class="bib-entry">Folkman, S., &amp; Lazarus, R. S. (1980). An analysis of coping in a middle-aged community sample. <em>Journal of Health and Social Behavior, 21</em>, 219–239.</p>
+
+        <p class="bib-entry">Foroughi, E. (1995). <em>Cross-cultural quality of life among Persians.</em> Unpublished Thesis, Deakin University, Melbourne.</p>
+
+        <p class="bib-entry">Fuhrer, M., Rintala, D., Hart, K., Clearman, R., &amp; Young, M. (1992). Relationship of life satisfaction to impairment, disability, and handicap among persons with spinal cord injury living in the community. <em>Archives of Physical Medicine and Rehabilitation, 74</em>, 552–557.</p>
+
+        <p class="bib-entry">Gagnon, L., Noreau, L., &amp; Laramee, M. (1997). Quality of life in individuals with spinal cord injury. <em>The Journal of Spinal Cord Medicine, 20</em>(1), 168.</p>
+
+        <p class="bib-entry">Gerhart, K. A., Bergstrom, E., Charlifue, S. W., Menter, R. R., &amp; Whiteneck, G. G. (1993). Long-term spinal cord injury: Functional changes over time. <em>Archives of Physical Medicine and Rehabilitation, 74</em>, 1030–1034.</p>
+
+        <p class="bib-entry">Golding, D., &amp; Cummins, R. A. (1997). <em>Spirituality and Quality of Life.</em> Deakin University, Melbourne.</p>
+
+        <p class="bib-entry">Hanson, S., Buckelew, S. P., Hewett, J., &amp; O'Neal, G. (1993). The relationship between coping and adjustment after spinal cord injury. <em>Rehabilitation Psychology, 38</em>, 41–54.</p>
+
+        <p class="bib-entry">Heckhausen, J., &amp; Schulz, R. (1995). A life-span theory of control. <em>Psychological Review, 102</em>(2), 284–304.</p>
+
+        <p class="bib-entry">Heckhausen, J., Schulz, R., &amp; Wrosch, C. (1997). <em>Optimisation in Primary and Secondary Control Scale (OPS-Scale).</em> Unpublished manuscript, Max Planck Institute.</p>
+
+        <p class="bib-entry">Heinemann, A. W., Bulka, M., &amp; Smetak, S. (1988). Attributions and disability acceptance following traumatic injury: A replication and extension. <em>Rehabilitation Psychology, 33</em>(4), 195–206.</p>
+
+        <p class="bib-entry">Kennedy, P., Marsh, N., Lowe, R., Grey, N., Short, E., &amp; Rogers, B. (2000). A randomized controlled trial of a brief psychological intervention after spinal cord injury. <em>Rehabilitation Psychology, 45</em>(2), 143–154.</p>
+
+        <p class="bib-entry">Krause, J. S. (1992). Life satisfaction after spinal cord injury: A descriptive study. <em>Rehabilitation Psychology, 37</em>, 61–70.</p>
+
+        <p class="bib-entry">Krause, J. S. (1998). Subjective well-being after spinal cord injury: Relationship to gender, race-ethnicity, and chronologic age. <em>Rehabilitation Psychology, 43</em>(4), 282–296.</p>
+
+        <p class="bib-entry">Krause, J. S., &amp; Crewe, N. M. (1991). Chronologic age, time since injury, and time of measurement: Effect on adjustment after spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 72</em>, 91–100.</p>
+
+        <p class="bib-entry">Lazarus, R. S., &amp; Folkman, S. (1984). <em>Stress, Appraisal, and Coping.</em> Springer, New York.</p>
+
+        <p class="bib-entry">Lin, K., Chuang, C., Kao, M., Lien, I., &amp; Tsauo, J. (1997). Quality of life of spinal cord injured patients in Taiwan: A subgroup study. <em>Spinal Cord, 35</em>, 841–849.</p>
+
+        <p class="bib-entry">Lundquist, C., Siosteen, A., Blomstrand, C., Lind, B., &amp; Sullivan, M. (1990). Spinal cord injuries: Clinical, functional, and emotional status. <em>Spine, 16</em>, 78–83.</p>
+
+        <p class="bib-entry">Matheis, E. N., Tulsky, D. S., &amp; Matheis, R. J. (2006). The relation between spirituality and quality of life among individuals with spinal cord injury. <em>Rehabilitation Psychology, 51</em>(3), 265–271.</p>
+
+        <p class="bib-entry">McColl, M. A., &amp; Rosenthal, C. (1994). A model of resource needs of aging spinal cord injured men. <em>Paraplegia, 32</em>, 261–270.</p>
+
+        <p class="bib-entry">McMillen, J. C., &amp; Cook, C. L. (2003). The positive by-products of spinal cord injury and their correlates. <em>Rehabilitation Psychology, 48</em>(2), 77–85.</p>
+
+        <p class="bib-entry">Nieves, C. C., Charter, R. A., &amp; Aspinall, M. J. (1991). Relationship between effective coping and perceived quality of life in spinal cord injured patients. <em>Rehabilitation Nursing, 16</em>(3), 129–132.</p>
+
+        <p class="bib-entry">Olson, J. M., &amp; Cummins, R. A. (1999). The relationship between strategies of control and levels of subjective quality of life after spinal cord injury. <em>Unpublished Manuscript</em>, Deakin University, Australia.</p>
+
+        <p class="bib-entry">Post, M. W., de Witte, L. P., van Asbeck, F. W., van Dijk, A. J., &amp; Schrijvers, A. J. (1998). Predictors of health status and life satisfaction in spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 79</em>, 395–401.</p>
+
+        <p class="bib-entry">Putzke, J. D., Richards, J. S., &amp; Dowler, R. N. (2000). The impact of pain in spinal cord injury: A case-control study. <em>Rehabilitation Psychology, 45</em>(4), 386–401.</p>
+
+        <p class="bib-entry">Richards, J. S., Elliott, T. R., Shewchuk, R. M., &amp; Fine, P. R. (1997). Attribution of responsibility for onset of spinal cord injury and psychosocial outcomes in the first year post-injury. <em>Rehabilitation Psychology, 42</em>(2), 115–124.</p>
+
+        <p class="bib-entry">Rintala, D. H., Loubser, P. G., Castro, J., Hart, K. A., &amp; Fuhrer, M. J. (1998). Chronic pain in a community-based sample of men with spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 79</em>, 604–614.</p>
+
+        <p class="bib-entry">Rothbaum, F., Weisz, J. R., &amp; Snyder, S. S. (1982). Changing the world and changing the self: A two-process model of perceived control. <em>Journal of Personality and Social Psychology, 42</em>(1), 5–37.</p>
+
+        <p class="bib-entry">Schulz, R., &amp; Decker, S. (1985). Long-term adjustment to physical disability: The role of social support, perceived control, and self-blame. <em>Journal of Personality and Social Psychology, 48</em>(5), 1162–1172.</p>
+
+        <p class="bib-entry">Sherman, J. E., DeVinney, D. J., &amp; Sperling, K. B. (2004). Social support and adjustment after spinal cord injury: Influence of past peer-mentoring experiences and current live-in partner. <em>Rehabilitation Psychology, 49</em>(2), 140–149.</p>
+
+        <p class="bib-entry">Siosteen, A., Lundqvist, C., Blomstrand, C., Sullivan, L., &amp; Sullivan, M. (1990). The quality of life of three functional spinal cord injury subgroups in a Swedish community. <em>Paraplegia, 28</em>, 476–488.</p>
+
+        <p class="bib-entry">Ville, I., &amp; Ravaud, J. (1996). Work, non-work and consequent satisfaction after spinal cord injury. <em>International Journal of Rehabilitation Research, 19</em>, 241–252.</p>
+
+        <p class="bib-entry">Watson, D., Clark, L. A., &amp; Tellegen, A. (1988). Development and validation of brief measures of positive and negative affect: The PANAS scales. <em>Journal of Personality and Social Psychology, 54</em>(6), 1063–1070.</p>
+
+        <p class="bib-entry">Whiteneck, G. G., Charlifue, S. W., Gerhart, K. A., Lammertse, D. P., Manley, S., Menter, R. R., &amp; Seedroff, K. R. (Eds.). (1992). <em>Aging with Spinal Cord Injury.</em> Demos, New York.</p>
+
+        <p class="bib-entry">Yerxa, E. J., &amp; Baum, S. (1998). Engagement in daily occupations and life satisfaction among people with spinal cord injuries. <em>The Occupational Therapy Journal of Research, 6</em>(5), 271–283.</p>
+
+        <p class="bib-entry">Young, M. E., Rintala, D. H., Rossi, C. D., Hart, K. A., &amp; Fuhrer, M. J. (1995). Alcohol and marijuana use in a community-based sample of persons with spinal cord injury. <em>Archives of Physical Medicine and Rehabilitation, 76</em>, 525–532.</p>
+
+      </div><!-- end Pillar 1 bib columns -->
+    </div><!-- end Pillar 1 block -->
+
+
+    <!-- ============================================================ -->
+    <!-- PILLAR 2 — HANDS-FREE HARMONICA PROGRAMME                   -->
+    <!-- ============================================================ -->
+    <div class="pillar-block" id="pillar2">
+      <div class="pillar-header-bar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-header-text">
+          <div class="section-label">Pillar 2 — Hands-Free Harmonica Programme</div>
+          <h3>Respiratory and music therapy research supporting blues harmonica for people with quadriplegia</h3>
+        </div>
+      </div>
+
+      <!-- Plain-language summary -->
+      <div class="bib-summary">
+        <div class="bib-summary-label">Plain-language overview</div>
+
+        <h4>Why breathing matters so much after a high spinal injury</h4>
+        <p>After a spinal cord injury at a high level, the muscles that power your breathing — the diaphragm and the muscles between your ribs — stop working properly. That makes breathing shallower, coughing weaker, and clearing your lungs harder. Several large reviews of the medical literature have confirmed that chest infections are one of the most common and serious complications after this kind of injury, and one of the leading causes of death. Keeping the breathing muscles as strong as possible matters enormously for staying well.</p>
+
+        <h4>What music does to the breathing muscles</h4>
+        <p>In 2013, a team of researchers in Melbourne ran a proper randomised controlled trial — the gold standard in medical research — with 24 people with quadriplegia. One group did group singing training three times a week for twelve weeks. The other group did music listening and relaxation. The singers showed improvements in breathing muscle strength, mood, and voice quality that the listening group did not. A follow-up study in 2024 looked at which muscles people with spinal cord injuries actually use when they sing songs with different rhythms and tempos, and found that music actively recruits the same accessory muscles that physiotherapists are trying to strengthen through exercise.</p>
+
+        <h4>The only study to use a harmonica specifically with SCI patients</h4>
+        <p>In 2018, a South Korean research team ran a ten-session harmonica programme with eight patients who had spinal cord injuries and could not breathe with their abdomens on their own. For patients who couldn't use their hands, a harmonica holder was provided — exactly the same approach used in this course. At the end of the programme, all eight patients had measurable increases in both breathing volume and the depth of air they could draw in. They also reported less sadness, more life satisfaction, and practical physical benefits like being better at clearing phlegm. The study was small, which means its findings need to be treated carefully — but it is the closest piece of evidence to what this course actually does.</p>
+
+        <h4>Music for anxiety and mood</h4>
+        <p>A 2021 pilot study found that even two sessions of music therapy reduced anxiety and pain scores in people recovering from spinal cord injury. A 2022 scoping review covering 43 studies across the full range of music-based interventions in SCI found that mood was the most commonly reported benefit.</p>
+
+        <h4>What the research doesn't yet prove</h4>
+        <p>To be straight about it: there are no large, long-term randomised controlled trials specifically on harmonica playing for people with high-level spinal cord injuries. The evidence base is growing, not settled. The case for this programme rests on solid logic — it works the right muscles, it creates respiratory resistance, and people actually stick to it — rather than on definitive proof. That is why the harmonica page is careful not to make promises. The science supports the approach. It doesn't yet confirm the size of the benefit.</p>
+      </div>
+
+      <p class="bib-note">Note: The Korean study (Kim et al., 2018) uses a translation of the journal name 인간행동과 음악연구. The English-language title <em>Journal of Music and Human Behavior</em> is the working translation used here. Verify the official English title before citing independently.</p>
+
+      <div class="ref-label">References — Pillar 2</div>
+      <div class="bib-columns">
+
+        <p class="bib-entry">Berlowitz, D. J., Hopman, M. T. E., Schubert, M., Mueller, G., Brinkhof, M. W. G., Jordan, X., Raab, A. M., Postma, K., Gobets, D., Hirschfeld, S., Huber, B., Hund-Georgiadis, M., &amp; Wildburger, R. (2020). Respiratory function and respiratory complications in spinal cord injury: Protocol for a prospective, multicentre cohort study in high-income countries. <em>BMJ Open, 10</em>(11), e038204.</p>
+
+        <p class="bib-entry">Berney, S., Bragge, P., Granger, C., Opdam, H., &amp; Denehy, L. (2011). The acute respiratory management of cervical spinal cord injury in the first 6 weeks after injury: A systematic review. <em>Spinal Cord, 49</em>(1), 17–29.</p>
+
+        <p class="bib-entry">Kim, H., Shin, W., Kim, M., Lim, H., &amp; Jeong, S. (2018). Effects of respiratory rehabilitation training using harmonica on the respiratory function of patients with spinal cord injury [하모니카를 활용한 호흡재활 훈련이 척수손상환자의 호흡기능에 미치는 영향]. <em>Journal of Music and Human Behavior, 15</em>(2), 23–39. <a href="https://doi.org/10.21187/jmhb.2018.15.2.023" class="bib-link">https://doi.org/10.21187/jmhb.2018.15.2.023</a></p>
+
+        <p class="bib-entry">Liu, Z., Tan, J., Song, X., Zhang, Z., Wang, Y., Tao, Y., Chen, S., Zhuo, F., Wu, Z., Zhang, Z., &amp; Li, H. (2026). Effectiveness of respiratory rehabilitation in cervicothoracic spinal cord injury: A systematic review and network meta-analysis. <em>Frontiers in Neurology, 16</em>, 1732353.</p>
+
+        <p class="bib-entry">Mercier, G., Brickell, M., Huang, E., Wan, B., Baker, F., &amp; Tamplin, J. (2022). Scoping review of music therapy and music interventions in spinal cord injury. <em>Disability and Rehabilitation, 45</em>(10), 1654–1666.</p>
+
+        <p class="bib-entry">Ramli, M. I., Hamzaid, N. A., Engkasan, J. P., Usman, J., Salleh, M., Hueh, W. D., &amp; Anwar, S. (2024). Accessory respiratory muscles performance among people with spinal cord injury while singing songs with different musical parameters. <em>PLOS ONE, 19</em>(7), e0305940.</p>
+
+        <p class="bib-entry">Tamplin, J., Baker, F. A., Brazzale, D. J., Pretto, J. J., Ruehland, W. R., Buttifant, M., Brown, D. J., &amp; Berlowitz, D. J. (2011). Assessment of breathing patterns and respiratory muscle recruitment during singing and speech in quadriplegia. <em>Archives of Physical Medicine and Rehabilitation, 92</em>(2), 250–256.</p>
+
+        <p class="bib-entry">Tamplin, J., Baker, F. A., Grocke, D., Brazzale, D. J., Pretto, J. J., Ruehland, W. R., Buttifant, M., Brown, D. J., &amp; Berlowitz, D. J. (2013). Effect of singing on respiratory function, voice, and mood after quadriplegia: A randomized controlled trial. <em>Archives of Physical Medicine and Rehabilitation, 94</em>(3), 426–434.</p>
+
+        <p class="bib-entry">Tamplin, J., Baker, F. A., Buttifant, M., &amp; Berlowitz, D. J. (2014). The effect of singing training on voice quality and intensity for people with quadriplegia. <em>Journal of Voice, 28</em>(1), 128.e19–128.e26.</p>
+
+        <p class="bib-entry">Wang, L., Liu, Y., Liu, Z., Zhang, W., &amp; Li, J. (2025). Effectiveness of a harmonica-integrated, tele-supervised home-based pulmonary rehabilitation program on lung function and comprehensive health outcomes in patients with chronic obstructive pulmonary disease: A randomized controlled trial protocol. <em>Frontiers in Public Health, 13</em>, 1541866.</p>
+
+        <p class="bib-entry">Wood, C., Cutshall, S. M., Lawson, D. K., Ochtrup, H. M., Henning, N. B., Larsen, B. E., Bauer, B. A., Mahapatra, S., &amp; Wahner-Roedler, D. L. (2021). Music therapy for anxiety and pain after spinal cord injury: A pilot study. <em>Rehabilitation Process and Outcome, 10</em>, 1–7.</p>
+
+        <p class="bib-entry">Yao, S., Guo, H., Ma, F., &amp; Chi, A. (2025). Effectiveness of respiratory muscle training on pulmonary function recovery in patients with spinal cord injury: A systematic review and meta-analysis. <em>PeerJ, 13</em>, e20373.</p>
+
+      </div><!-- end Pillar 2 bib columns -->
+    </div><!-- end Pillar 2 block -->
+
+
+    <!-- ============================================================ -->
+    <!-- PILLAR 3 — GUIDED IMAGERY PROGRAMME                         -->
+    <!-- ============================================================ -->
+    <div class="pillar-block" id="pillar3">
+      <div class="pillar-header-bar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-header-text">
+          <div class="section-label">Pillar 3 — Guided Imagery Programme</div>
+          <h3>Motor imagery, neuroplasticity, and mind-body practice in spinal cord injury rehabilitation</h3>
+        </div>
+      </div>
+
+      <!-- Plain-language summary -->
+      <div class="bib-summary">
+        <div class="bib-summary-label">Plain-language overview</div>
+
+        <h4>What the research is about</h4>
+        <p>When you imagine moving a part of your body, something real happens in your brain. The same motor regions that light up when you physically move also activate — at a reduced level — when you vividly imagine the movement. This is called motor imagery, and it has been studied as a rehabilitation tool for people with neurological injuries including stroke and spinal cord injury.</p>
+        <p>The basic idea is that the brain retains some of the wiring for movement even after the spinal cord is injured. By repeatedly imagining movement, a person may be able to keep that wiring active, slow down the process by which unused pathways shrink, and potentially stimulate the kind of slow, gradual reorganisation that underlies recovery after neurological injury.</p>
+
+        <h4>What the studies found</h4>
+        <p>A 2019 systematic review of motor imagery in spinal cord injury found evidence that imagined movement activates brain motor networks and can promote motor learning, even when physical movement is not possible. Brain imaging studies have shown measurable changes in how the motor cortex is organised following consistent motor imagery practice, including in people with cervical SCI.</p>
+        <p>The research is most developed in stroke rehabilitation, where motor imagery has shown improvements in motor function in randomised controlled trials. The same principles are being applied to SCI, though the SCI-specific evidence base is newer and smaller. Brain-computer interface studies — where participants imagine movement and a device detects the brain signal in real time — have shown that people with SCI can produce measurable motor imagery signals, and that pairing those signals with physical feedback may accelerate cortical reorganisation.</p>
+
+        <h4>One finding worth stating honestly</h4>
+        <p>A 2008 study by Gustin and colleagues found that motor imagery sometimes increased neuropathic pain in some participants with SCI. This is not a reason to avoid the practice, but it is a reason to monitor your own experience and stop if pain increases. The Guided Imagery Programme discloses this finding directly rather than softening it.</p>
+
+        <h4>What it means</h4>
+        <p>The research supports the idea that a mind-body practice involving vivid, consistent mental imagery of movement is worth doing after SCI — not because it guarantees recovery, but because it engages the nervous system in a way that passive rest does not. The honest position of this programme is that outcomes vary between individuals, the evidence base is still growing, and the practice is offered as a serious complement to physical rehabilitation, not a replacement for it.</p>
+      </div>
+
+      <div class="ref-label">References — Pillar 3</div>
+      <div class="bib-columns">
+
+        <div class="bib-subhead">SCI functional priorities</div>
+
+        <p class="bib-entry">Anderson, K. D. (2004). Targeting recovery: Priorities of the spinal cord-injured population. <em>Journal of Neurotrauma, 21</em>(10), 1371–1383. <a href="https://doi.org/10.1089/neu.2004.21.1371" class="bib-link">https://doi.org/10.1089/neu.2004.21.1371</a></p>
+
+        <p class="bib-entry">Snoek, G. J., IJzerman, M. J., Hermens, H. J., Maxwell, D., &amp; Biering-Sorensen, F. (2004). Survey of the needs of patients with spinal cord injury: Impact and priority for improvement in hand function in tetraplegics. <em>Spinal Cord, 42</em>(9), 526–532. <a href="https://doi.org/10.1038/sj.sc.3101638" class="bib-link">https://doi.org/10.1038/sj.sc.3101638</a></p>
+
+        <p class="bib-entry">Ditunno, P. L., Patrick, M., Stineman, M., &amp; Ditunno, J. F. (2008). Who wants to walk? Preferences for recovery after SCI: A longitudinal and cross-sectional study. <em>Spinal Cord, 46</em>(7), 500–506. <a href="https://doi.org/10.1038/sj.sc.3102172" class="bib-link">https://doi.org/10.1038/sj.sc.3102172</a></p>
+
+        <p class="bib-entry">Collinger, J. L., Boninger, M. L., Bruns, T. M., Curley, K., Wang, W., &amp; Weber, D. J. (2013). Functional priorities, assistive technology, and brain-computer interfaces after spinal cord injury. <em>Journal of Rehabilitation Research and Development, 50</em>(2), 145–160. <a href="https://doi.org/10.1682/JRRD.2011.11.0213" class="bib-link">https://doi.org/10.1682/JRRD.2011.11.0213</a></p>
+
+        <p class="bib-entry">Lo, C., Tran, Y., Anderson, K., Craig, A., &amp; Middleton, J. (2016). Functional priorities in persons with spinal cord injury: Using discrete choice experiments to determine preferences. <em>Journal of Neurotrauma, 33</em>(21), 1958–1968. <a href="https://doi.org/10.1089/neu.2016.4423" class="bib-link">https://doi.org/10.1089/neu.2016.4423</a></p>
+
+        <div class="bib-subhead">Bladder and bowel function</div>
+
+        <p class="bib-entry">Bourbeau, D., Bolon, A., Creasey, G., Dai, W., Fertig, B., French, J., et al. (2020). Needs, priorities, and attitudes of individuals with spinal cord injury toward nerve stimulation devices for bladder and bowel function: A survey. <em>Spinal Cord, 58</em>(11), 1216–1226. <a href="https://doi.org/10.1038/s41393-020-00545-w" class="bib-link">https://doi.org/10.1038/s41393-020-00545-w</a></p>
+
+        <p class="bib-entry">Krogh, K., Christensen, P., Sabroe, S., &amp; Laurberg, S. (2006). Neurogenic bowel dysfunction score. <em>Spinal Cord, 44</em>(10), 625–631. <a href="https://doi.org/10.1038/sj.sc.3101887" class="bib-link">https://doi.org/10.1038/sj.sc.3101887</a></p>
+
+        <p class="bib-entry">Bryce, T. N., Tsai, C.-y., Wecht, J. M., &amp; Spielman, L. (2025). Development and testing of the Spinal Cord Injury Bladder and Bowel Control Questionnaire (SCI-BBC-Q). <em>Neurourology and Urodynamics, 44</em>, 109–116. <a href="https://doi.org/10.1002/nau.25589" class="bib-link">https://doi.org/10.1002/nau.25589</a></p>
+
+        <div class="bib-subhead">Motor imagery — clinical evidence in SCI</div>
+
+        <p class="bib-entry">Mateo, S., Di Rienzo, F., Bergeron, V., Guillot, A., Collet, C., &amp; Rode, G. (2015). Motor imagery reinforces brain compensation of reach-to-grasp movement after cervical spinal cord injury. <em>Frontiers in Behavioral Neuroscience, 9</em>, 234. <a href="https://doi.org/10.3389/fnbeh.2015.00234" class="bib-link">https://doi.org/10.3389/fnbeh.2015.00234</a></p>
+
+        <p class="bib-entry">Mateo, S., Di Rienzo, F., Reilly, K. T., Revol, P., Delpuech, C., Daligault, S., Guillot, A., Jacquin-Courtois, S., Luauté, J., Rossetti, Y., Collet, C., &amp; Rode, G. (2015). Improvement of grasping after motor imagery in C6-C7 tetraplegia: A kinematic and MEG pilot study. <em>Restorative Neurology and Neuroscience, 33</em>(4), 543–555. <a href="https://doi.org/10.3233/RNN-140466" class="bib-link">https://doi.org/10.3233/RNN-140466</a></p>
+
+        <p class="bib-entry">Grangeon, M., Revol, P., Guillot, A., Rode, G., &amp; Collet, C. (2012). Could motor imagery be effective in upper limb rehabilitation of individuals with spinal cord injury? A case study. <em>Spinal Cord, 50</em>(10), 766–771. <a href="https://doi.org/10.1038/sc.2012.41" class="bib-link">https://doi.org/10.1038/sc.2012.41</a></p>
+
+        <p class="bib-entry">Cramer, S. C., Orr, E. L., Cohen, M. J., &amp; Lacourse, M. G. (2007). Effects of motor imagery training after chronic, complete spinal cord injury. <em>Experimental Brain Research, 177</em>(2), 233–242. <a href="https://doi.org/10.1007/s00221-006-0662-9" class="bib-link">https://doi.org/10.1007/s00221-006-0662-9</a></p>
+
+        <p class="bib-entry">Decety, J., &amp; Boisson, D. (1990). Effect of brain and spinal cord injuries on motor imagery. <em>European Archives of Psychiatry and Clinical Neuroscience, 240</em>(1), 39–43.</p>
+
+        <p class="bib-entry">Di Rienzo, F., Collet, C., Hoyek, N., &amp; Guillot, A. (2014). Impact of neurologic deficits on motor imagery: A systematic review of clinical evaluations. <em>Neuropsychology Review, 24</em>(2), 116–147. <a href="https://doi.org/10.1007/s11065-014-9257-6" class="bib-link">https://doi.org/10.1007/s11065-014-9257-6</a></p>
+
+        <p class="bib-entry">Aikat, R., &amp; Dua, V. (2016). Mental imagery in spinal cord injury: A systematic review. <em>Journal of Spine, 5</em>(4), 310. <a href="https://doi.org/10.4172/2165-7939.1000310" class="bib-link">https://doi.org/10.4172/2165-7939.1000310</a></p>
+
+        <p class="bib-entry">López-Larraz, E., Antelis, J. M., Montesano, L., Gil-Agudo, Á., &amp; Minguez, J. (2012). Continuous decoding of motor attempt and motor imagery from EEG activity in spinal cord injury patients. <em>Annual International Conference of the IEEE Engineering in Medicine and Biology Society, 2012</em>, 1798–1801. <a href="https://doi.org/10.1109/EMBC.2012.6346299" class="bib-link">https://doi.org/10.1109/EMBC.2012.6346299</a></p>
+
+        <div class="bib-subhead">Motor imagery — safety and honest framing</div>
+
+        <p class="bib-entry">Gustin, S. M., Wrigley, P. J., Gandevia, S. C., Middleton, J. W., Henderson, L. A., &amp; Siddall, P. J. (2008). Movement imagery increases pain in people with neuropathic pain following complete thoracic spinal cord injury. <em>Pain, 137</em>(2), 237–244. <a href="https://doi.org/10.1016/j.pain.2007.08.032" class="bib-link">https://doi.org/10.1016/j.pain.2007.08.032</a></p>
+
+        <p class="bib-entry">Opsommer, E., Chevalley, O., &amp; Korogod, N. (2020). Motor imagery for pain and motor function after spinal cord injury: A systematic review. <em>Spinal Cord, 58</em>(3), 262–274. <a href="https://doi.org/10.1038/s41393-019-0390-1" class="bib-link">https://doi.org/10.1038/s41393-019-0390-1</a></p>
+
+        <div class="bib-subhead">Motor imagery — foundational theory</div>
+
+        <p class="bib-entry">Jeannerod, M. (1994). The representing brain: Neural correlates of motor intention and imagery. <em>Behavioral and Brain Sciences, 17</em>(2), 187–245.</p>
+
+        <p class="bib-entry">Decety, J., &amp; Grèzes, J. (1999). Neural mechanisms subserving the perception of human actions. <em>Trends in Cognitive Sciences, 3</em>(5), 172–178.</p>
+
+        <p class="bib-entry">Lotze, M., &amp; Halsband, U. (2006). Motor imagery. <em>Journal of Physiology-Paris, 99</em>(4–6), 386–395. <a href="https://doi.org/10.1016/j.jphysparis.2006.03.012" class="bib-link">https://doi.org/10.1016/j.jphysparis.2006.03.012</a></p>
+
+        <p class="bib-entry">Mulder, T. (2007). Motor imagery and action observation: Cognitive tools for rehabilitation. <em>Journal of Neural Transmission, 114</em>(10), 1265–1278.</p>
+
+        <p class="bib-entry">Malouin, F., &amp; Richards, C. L. (2010). Mental practice for relearning locomotor skills. <em>Physical Therapy, 90</em>(2), 240–251. <a href="https://doi.org/10.2522/ptj.20090029" class="bib-link">https://doi.org/10.2522/ptj.20090029</a></p>
+
+        <div class="bib-subhead">Kinesthetic vs. visual motor imagery</div>
+
+        <p class="bib-entry">Stinear, C. M., Byblow, W. D., Steyvers, M., Levin, O., &amp; Swinnen, S. P. (2006). Kinesthetic, but not visual, motor imagery modulates corticomotor excitability. <em>Experimental Brain Research, 168</em>(1–2), 157–164. <a href="https://doi.org/10.1007/s00221-005-0078-y" class="bib-link">https://doi.org/10.1007/s00221-005-0078-y</a></p>
+
+        <p class="bib-entry">Malouin, F., Richards, C. L., Jackson, P. L., Lafleur, M. F., Durand, A., &amp; Doyon, J. (2007). The Kinesthetic and Visual Imagery Questionnaire (KVIQ) for assessing motor imagery in persons with physical disabilities. <em>Journal of Neurologic Physical Therapy, 31</em>(1), 20–29. <a href="https://doi.org/10.1097/01.NPT.0000260567.24122.64" class="bib-link">https://doi.org/10.1097/01.NPT.0000260567.24122.64</a></p>
+
+        <div class="bib-subhead">Action observation combined with motor imagery</div>
+
+        <p class="bib-entry">Eaves, D. L., Riach, M., Holmes, P. S., &amp; Wright, D. J. (2016). Motor imagery during action observation: A brief review of evidence, theory and future research opportunities. <em>Frontiers in Neuroscience, 10</em>, 514. <a href="https://doi.org/10.3389/fnins.2016.00514" class="bib-link">https://doi.org/10.3389/fnins.2016.00514</a></p>
+
+        <p class="bib-entry">Vogt, S., Di Rienzo, F., Collet, C., Collins, A., &amp; Guillot, A. (2013). Multiple roles of motor imagery during action observation. <em>Frontiers in Human Neuroscience, 7</em>, 807. <a href="https://doi.org/10.3389/fnhum.2013.00807" class="bib-link">https://doi.org/10.3389/fnhum.2013.00807</a></p>
+
+        <p class="bib-entry">Small, S. L., Buccino, G., &amp; Solodkin, A. (2012). The mirror neuron system and treatment of stroke. <em>Developmental Psychobiology, 54</em>(3), 293–310. <a href="https://doi.org/10.1002/dev.20504" class="bib-link">https://doi.org/10.1002/dev.20504</a></p>
+
+        <div class="bib-subhead">Mental chronometry and timing</div>
+
+        <p class="bib-entry">Guillot, A., &amp; Collet, C. (2005). Duration of mentally simulated movement: A review. <em>Journal of Motor Behavior, 37</em>(1), 10–20. <a href="https://doi.org/10.3200/JMBR.37.1.10-20" class="bib-link">https://doi.org/10.3200/JMBR.37.1.10-20</a></p>
+
+        <p class="bib-entry">Decety, J., &amp; Michel, F. (1989). Comparative analysis of actual and mental movement times in two graphic tasks. <em>Brain and Cognition, 11</em>(1), 87–97. <a href="https://doi.org/10.1016/0278-2626(89)90007-9" class="bib-link">https://doi.org/10.1016/0278-2626(89)90007-9</a></p>
+
+        <div class="bib-subhead">PETTLEP framework and best practice</div>
+
+        <p class="bib-entry">Holmes, P. S., &amp; Collins, D. J. (2001). The PETTLEP approach to motor imagery: A functional equivalence model for sport psychologists. <em>Journal of Applied Sport Psychology, 13</em>(1), 60–83. <a href="https://doi.org/10.1080/10413200109339004" class="bib-link">https://doi.org/10.1080/10413200109339004</a></p>
+
+        <p class="bib-entry">Wright, D. J., Wakefield, C. J., &amp; Smith, D. (2014). Using PETTLEP imagery to improve music performance: A review. <em>Musicae Scientiae, 18</em>(4), 448–463. <a href="https://doi.org/10.1177/1029864914537668" class="bib-link">https://doi.org/10.1177/1029864914537668</a></p>
+
+        <p class="bib-entry">Schuster, C., Hilfiker, R., Amft, O., Scheidhauer, A., Andrews, B., Butler, J., Kischka, U., &amp; Ettlin, T. (2011). Best practice for motor imagery: A systematic literature review on motor imagery training elements in five different disciplines. <em>BMC Medicine, 9</em>, 75. <a href="https://doi.org/10.1186/1741-7015-9-75" class="bib-link">https://doi.org/10.1186/1741-7015-9-75</a></p>
+
+        <div class="bib-subhead">Ultradian rhythms</div>
+
+        <p class="bib-entry">Kleitman, N. (1963). <em>Sleep and wakefulness</em> (Revised ed.). University of Chicago Press.</p>
+
+        <p class="bib-entry">Rossi, E. L., &amp; Nimmons, D. (1991). <em>The 20-minute break: Reduce stress, maximize performance, and improve health and emotional well-being using the new science of ultradian rhythms.</em> Jeremy P. Tarcher.</p>
+
+        <p class="bib-entry">Rossi, E. L. (1991). The wave nature of consciousness: A new direction for the evolution of psychotherapy. <em>American Journal of Clinical Hypnosis, 32</em>(3), 178–206.</p>
+
+        <div class="bib-subhead">Hypnagogic state</div>
+
+        <p class="bib-entry">Mavromatis, A. (1987). <em>Hypnagogia: The unique state of consciousness between wakefulness and sleep.</em> Routledge &amp; Kegan Paul.</p>
+
+        <p class="bib-entry">Schacter, D. L. (1976). The hypnagogic state: A critical review of the literature. <em>Psychological Bulletin, 83</em>(3), 452–481. <a href="https://doi.org/10.1037/0033-2909.83.3.452" class="bib-link">https://doi.org/10.1037/0033-2909.83.3.452</a></p>
+
+        <p class="bib-entry">Ghibellini, R., &amp; Meier, B. (2023). The hypnagogic state: A brief update. <em>Journal of Sleep Research, 32</em>(1), e13719. <a href="https://doi.org/10.1111/jsr.13719" class="bib-link">https://doi.org/10.1111/jsr.13719</a></p>
+
+        <div class="bib-subhead">Sleep-dependent motor consolidation</div>
+
+        <p class="bib-entry">Walker, M. P., Brakefield, T., Morgan, A., Hobson, J. A., &amp; Stickgold, R. (2002). Practice with sleep makes perfect: Sleep-dependent motor skill learning. <em>Neuron, 35</em>(1), 205–211. <a href="https://doi.org/10.1016/S0896-6273(02)00746-8" class="bib-link">https://doi.org/10.1016/S0896-6273(02)00746-8</a></p>
+
+        <p class="bib-entry">Walker, M. P., Brakefield, T., Seidman, J., Morgan, A., Hobson, J. A., &amp; Stickgold, R. (2003). Sleep and the time course of motor skill learning. <em>Learning &amp; Memory, 10</em>(4), 275–284. <a href="https://doi.org/10.1101/lm.58503" class="bib-link">https://doi.org/10.1101/lm.58503</a></p>
+
+        <p class="bib-entry">Stickgold, R., &amp; Walker, M. P. (2007). Sleep-dependent memory consolidation and reconsolidation. <em>Sleep Medicine, 8</em>(4), 331–343. <a href="https://doi.org/10.1016/j.sleep.2007.03.011" class="bib-link">https://doi.org/10.1016/j.sleep.2007.03.011</a></p>
+
+        <div class="bib-subhead">Clinical classification</div>
+
+        <p class="bib-entry">American Spinal Injury Association. (2019). <em>International Standards for Neurological Classification of Spinal Cord Injury (ISNCSCI).</em> ASIA. <a href="https://asia-spinalinjury.org/" class="bib-link">https://asia-spinalinjury.org/</a></p>
+
+      </div><!-- end Pillar 3 bib columns -->
+    </div><!-- end Pillar 3 block -->
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Living Beyond SCI — Jeremy Olson</div>
+  <div class="footer-copy">Waikato University · Deakin University Graduate Research · Auckland, New Zealand</div>
+</footer>
+
+</body>
+</html>
