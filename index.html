@@ -603,6 +603,65 @@
     .finding-box { padding: 1.75rem 1.5rem; }
     .hero h1 { font-size: 2rem; }
   }
+
+  /* LIVING RESEARCH STRIP */
+  .living-research-strip {
+    background: var(--charcoal);
+    padding: 2.5rem 0;
+    border-top: 2px solid rgba(200,150,60,0.2);
+  }
+  .living-research-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 2.5rem;
+    border: 1px solid rgba(200,150,60,0.25);
+    text-decoration: none;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .living-research-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%; height: 100%;
+    background: repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(200,150,60,0.03) 30px,rgba(200,150,60,0.03) 31px);
+  }
+  .living-research-card:hover { border-color: rgba(200,150,60,0.6); }
+  .lr-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .lr-live-dot {
+    width: 5px; height: 5px;
+    background: var(--gold); border-radius: 50%;
+    animation: lrpulse 2s infinite;
+  }
+  @keyframes lrpulse { 0%,100%{opacity:1;}50%{opacity:0.3;} }
+  .lr-title {
+    font-family: 'Lora', serif;
+    font-size: 1.3rem; font-weight: 400;
+    color: var(--cream); line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .lr-desc { font-size: 0.88rem; color: #7A7060; line-height: 1.75; max-width: 600px; }
+  .lr-cta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--gold); color: var(--charcoal);
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.8rem 1.5rem; white-space: nowrap;
+    flex-shrink: 0; position: relative; z-index: 2;
+    transition: opacity 0.2s; text-decoration: none;
+  }
+  .lr-cta:hover { opacity: 0.85; }
+  @media (max-width: 700px) {
+    .living-research-card { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -614,6 +673,7 @@
     <li><a href="research_page.html">Research</a></li>
     <li><a href="harmonica_page.html">Harmonica</a></li>
     <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
+    <li><a href="living-research.html">Living Research</a></li>
     <li><a href="bibliography.html">Bibliography</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -637,7 +697,7 @@
     <a href="research_page.html" class="pillar-card">
       <div class="pillar-num">Pillar 01 — Deakin University</div>
       <div class="pillar-title">Quality of Life Research</div>
-      <div class="pillar-sub">Subjective wellbeing · Eight life domains · Deakin University research</div>
+      <div class="pillar-sub">Graduate psychology research into quality of life and coping after SCI, drawn from the voices of 78 people across six countries.</div>
     </a>
     <a href="harmonica_page.html" class="pillar-card">
       <div class="pillar-num">Pillar 02 — Hands-Free Programme</div>
@@ -648,6 +708,23 @@
       <div class="pillar-num">Pillar 03 — Mind-Body Therapy</div>
       <div class="pillar-title">Guided Imagery Programme</div>
       <div class="pillar-sub">Five guided practices · Three-phase method · Research-grounded</div>
+    </a>
+  </div>
+</section>
+
+<!-- LIVING RESEARCH -->
+<section class="living-research-strip">
+  <div class="container">
+    <a href="living-research.html" class="living-research-card">
+      <div style="position:relative; z-index:2;">
+        <div class="lr-eyebrow"><div class="lr-live-dot"></div> Community · Anonymous · Ongoing</div>
+        <div class="lr-title">Living Research</div>
+        <div class="lr-desc">Two self-reflection tools grounded in published SCI research. See your own results, then add your voice to a growing community picture of coping and quality of life after injury.</div>
+      </div>
+      <span class="lr-cta">
+        Take part
+        <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+      </span>
     </a>
   </div>
 </section>
