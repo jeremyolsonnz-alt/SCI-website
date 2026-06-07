@@ -3,119 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Share What You've Noticed — Living Beyond SCI</title>
+<title>Share Your Experience — Living Beyond SCI</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{--cream:#F5F0E8;--warm-white:#FAF8F4;--charcoal:#2A2820;--bark:#5C4A2A;--rust:#8B4513;--gold:#C8963C;--muted:#7A7060;--border:#E0D8C8;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
   body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--charcoal);font-size:16px;line-height:1.75;}
-
   nav{position:sticky;top:0;z-index:100;background:var(--charcoal);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:2px solid var(--gold);}
-  .nav-brand{font-family:'Lora',serif;font-size:1.1rem;color:var(--cream);text-decoration:none;}
-  .nav-brand span{color:var(--gold);}
-  .nav-back{font-size:0.8rem;color:#7A7060;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
-  .nav-back:hover{color:var(--gold);}
-
-  .page-hero{background:var(--charcoal);padding:3.5rem 0 2.5rem;border-bottom:1px solid rgba(200,150,60,0.2);}
-  .hero-inner{max-width:760px;margin:0 auto;padding:0 2.5rem;}
-  .breadcrumb{font-size:0.72rem;color:#5A5040;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem;}
-  .breadcrumb a{color:#5A5040;text-decoration:none;}
-  .breadcrumb a:hover{color:var(--gold);}
+  .nav-brand{font-family:'Lora',serif;font-size:1.1rem;color:var(--cream);text-decoration:none;}.nav-brand span{color:var(--gold);}
+  .nav-back{font-size:0.8rem;color:#7A7060;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}.nav-back:hover{color:var(--gold);}
+  .page-hero{background:var(--charcoal);padding:4rem 0 3rem;border-bottom:1px solid rgba(200,150,60,0.2);}
+  .hero-inner{max-width:860px;margin:0 auto;padding:0 2.5rem;}
+  .breadcrumb{font-size:0.72rem;color:#5A5040;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;}
+  .breadcrumb a{color:#5A5040;text-decoration:none;}.breadcrumb a:hover{color:var(--gold);}
   .article-eyebrow{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.6rem;}
   .article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);display:block;}
-  .article-h1{font-family:'Lora',serif;font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.2;color:var(--cream);font-weight:400;margin-bottom:1rem;}
-  .article-standfirst{font-size:1rem;color:#8A8070;line-height:1.8;max-width:620px;}
-
-  .article-body{max-width:760px;margin:0 auto;padding:3rem 2.5rem 5rem;}
-
-  p.body-text{font-size:0.95rem;color:#4A4438;line-height:1.9;margin-bottom:1.25rem;}
-  a.inline-link{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);}
-  a.inline-link:hover{border-bottom-color:var(--gold);}
-
-  /* Download block */
-  .download-block{background:rgba(200,150,60,0.06);border-left:3px solid var(--gold);padding:1.5rem 1.75rem;margin:2rem 0 2.5rem;}
-  .download-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
-  .download-block p{font-size:0.92rem;color:#4A4438;line-height:1.8;margin-bottom:1rem;}
-  .download-btn{display:inline-block;padding:0.6rem 1.25rem;background:var(--gold);color:var(--charcoal);font-size:0.82rem;font-weight:500;letter-spacing:0.04em;text-decoration:none;font-family:'DM Sans',sans-serif;transition:opacity 0.2s;}
-  .download-btn:hover{opacity:0.85;}
-
-  /* Form */
-  .form-section{margin-top:2.5rem;}
-  h2.form-head{font-family:'Lora',serif;font-size:1.35rem;font-weight:400;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border);}
-
-  .field-group{margin-bottom:2rem;}
-  label.field-label{display:block;font-size:0.82rem;font-weight:500;color:var(--bark);letter-spacing:0.04em;margin-bottom:0.5rem;}
-  label.field-label span{display:block;font-weight:400;font-style:italic;color:var(--muted);font-size:0.8rem;margin-top:0.2rem;letter-spacing:0;}
-
-  input[type="text"],
-  textarea{
-    width:100%;
-    background:var(--cream);
-    border:1px solid var(--border);
-    border-radius:0;
-    padding:0.75rem 1rem;
-    font-family:'DM Sans',sans-serif;
-    font-size:0.92rem;
-    color:var(--charcoal);
-    line-height:1.6;
-    outline:none;
-    transition:border-color 0.2s;
-    -webkit-appearance:none;
-  }
-  input[type="text"]:focus,
-  textarea:focus{border-color:var(--gold);}
-  textarea{resize:vertical;min-height:120px;}
-
-  .submit-row{margin-top:2.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
-  button[type="submit"]{
-    padding:0.75rem 2rem;
-    background:var(--gold);
-    color:var(--charcoal);
-    border:none;
-    font-family:'DM Sans',sans-serif;
-    font-size:0.9rem;
-    font-weight:500;
-    letter-spacing:0.04em;
-    cursor:pointer;
-    transition:opacity 0.2s;
-  }
-  button[type="submit"]:hover{opacity:0.85;}
-  .submit-note{font-size:0.8rem;color:var(--muted);font-style:italic;}
-
-  /* Success state */
-  .success-block{display:none;background:rgba(200,150,60,0.06);border-left:3px solid var(--gold);padding:1.5rem 1.75rem;margin-top:2rem;}
-  .success-block p{font-size:0.95rem;color:#4A4438;line-height:1.85;}
-
-  /* Privacy note */
-  .privacy-note{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);}
-  .privacy-note p{font-size:0.82rem;color:var(--muted);line-height:1.8;font-style:italic;margin-bottom:0.6rem;}
-
-  footer{background:#1A1810;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);}
-  .footer-brand{font-family:'Lora',serif;font-size:0.9rem;color:#5A5040;text-decoration:none;}
-  .footer-copy{font-size:0.75rem;color:#3A3020;}
-  .footer-copy a{color:#5A5040;text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.15);}
-
-  @media(max-width:780px){
-    .article-body{padding:2.5rem 1.5rem 4rem;}
-    .hero-inner{padding:0 1.5rem;}
-  }
+  .article-h1{font-family:'Lora',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.2;color:var(--cream);font-weight:400;margin-bottom:1rem;}
+  .article-standfirst{font-size:1.05rem;color:#8A8070;line-height:1.8;max-width:680px;margin-bottom:0;}
+  .article-body{max-width:760px;margin:0 auto;padding:4rem 2.5rem;}
+  p.body-text{font-size:0.97rem;color:#4A4438;line-height:1.9;margin-bottom:1.1rem;}
+  .questions-block{margin:2.5rem 0;}
+  .question{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+  .question:last-child{border-bottom:none;}
+  .question-label{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;display:block;}
+  .question-text{font-family:'Lora',serif;font-size:1.05rem;color:var(--charcoal);font-weight:400;line-height:1.5;margin-bottom:0.4rem;}
+  .question-note{font-size:0.85rem;color:var(--muted);line-height:1.7;font-style:italic;}
+  .email-cta{margin:3rem 0;padding:2rem 2rem;background:rgba(200,150,60,0.05);border-left:3px solid var(--gold);}
+  .email-cta p{font-size:0.95rem;color:#4A4438;line-height:1.85;margin-bottom:1rem;}
+  .email-cta p:last-child{margin-bottom:0;}
+  .email-link{display:inline-block;margin-top:1.25rem;font-size:0.95rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.4);padding-bottom:0.1rem;transition:border-color 0.2s;font-family:'Lora',serif;font-style:italic;}
+  .email-link:hover{border-color:var(--gold);}
+  .honest-note{margin-top:2.5rem;padding:1.5rem 1.75rem;background:rgba(122,112,96,0.05);border-left:3px solid var(--muted);}
+  .honest-note p{font-size:0.88rem;color:#5A5040;line-height:1.85;margin:0;}
+  .honest-note p+p{margin-top:0.75rem;}
+  .return-link-block{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);text-align:center;}
+  .return-link{display:inline-block;font-size:0.85rem;color:var(--gold);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;padding:0.65rem 1.5rem;border:1px solid rgba(200,150,60,0.3);transition:background 0.2s,border-color 0.2s;}
+  .return-link:hover{background:rgba(200,150,60,0.06);border-color:var(--gold);}
+  footer{background:#1A1810;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:1rem;}
+  .footer-brand{font-family:'Lora',serif;font-size:0.9rem;color:#5A5040;text-decoration:none;}.footer-copy{font-size:0.75rem;color:#3A3020;}
+  @media(max-width:700px){.article-body{padding:2.5rem 1.5rem;}.hero-inner{padding:0 1.5rem;}}
 </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
-  <a href="index.html#gie" class="nav-back">← Back to Guided Imagery</a>
+  <a href="guided_imagery_page.html" class="nav-back">← Back to Guided Imagery</a>
 </nav>
 
 <div class="page-hero">
   <div class="hero-inner">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a> <span>·</span>
-      <a href="index.html#gie">Guided Imagery Programme</a> <span>·</span>
-      Your Experience
-    </div>
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="guided_imagery_page.html">Guided Imagery Programme</a> › <span>Share Your Experience</span></div>
     <div class="article-eyebrow">Your Experience</div>
     <h1 class="article-h1">Share What You've Noticed</h1>
     <p class="article-standfirst">If you've been using the Guided Imagery Programme, I'd genuinely like to hear how it's been. There are no right answers. A few sentences is enough — or as much as you want to write.</p>
@@ -126,126 +64,60 @@
 
   <p class="body-text">This page is for anyone who's spent time with the practices — whether that's a few days or several months, whether something shifted or nothing did. Honest feedback is the only kind that helps the programme improve. You don't have to have had a positive experience to make it worth writing in.</p>
 
-  <p class="body-text">If you'd rather write directly, you can reach me at <a href="mailto:jeremy@livingbeyondsci.com" class="inline-link">jeremy@livingbeyondsci.com</a>.</p>
+  <p class="body-text">Below are four questions worth reflecting on. Copy them into an email, answer as much or as little as you like, and send it through. There's no form to fill in — just your own words.</p>
 
-  <!-- Self-reflection journal download -->
-  <div class="download-block">
-    <div class="download-label">Also available</div>
-    <p>If you'd prefer to track your own experience privately — without sharing anything — there's a self-reflection journal you can download and fill in at your own pace. It's for your use only; nothing is submitted anywhere.</p>
-    <a href="guided_imagery_journal.pdf" class="download-btn" download>Download the reflection journal (PDF)</a>
-  </div>
+  <!-- Questions -->
+  <div class="questions-block">
 
-  <!-- Form -->
-  <div class="form-section">
-    <h2 class="form-head">Send feedback</h2>
+    <div class="question">
+      <span class="question-label">Question one</span>
+      <div class="question-text">Which practice or practices have you been using?</div>
+    </div>
 
-    <!-- Netlify Forms: the data-netlify attribute registers this form with Netlify on deploy -->
-    <form
-      name="guided-imagery-feedback"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      id="feedbackForm"
-    >
-      <!-- Netlify hidden fields -->
-      <input type="hidden" name="form-name" value="guided-imagery-feedback">
-      <p style="display:none;">
-        <label>Don't fill this in if you're human: <input name="bot-field"></label>
-      </p>
+    <div class="question">
+      <span class="question-label">Question two</span>
+      <div class="question-text">What have you noticed — in your body, in your practice, or in your daily life?</div>
+      <div class="question-note">This can be anything: changes you expected, changes you didn't expect, or the absence of change.</div>
+    </div>
 
-      <div class="field-group">
-        <label class="field-label" for="practice">
-          Which practice or practices have you been using?
-        </label>
-        <input type="text" id="practice" name="practice" placeholder="e.g. hand and grasp, bladder awareness">
-      </div>
+    <div class="question">
+      <span class="question-label">Question three</span>
+      <div class="question-text">Was there anything that felt wrong, unhelpful, or that increased your discomfort?</div>
+      <div class="question-note">This is just as important as positive feedback. If something made things worse, I want to know.</div>
+    </div>
 
-      <div class="field-group">
-        <label class="field-label" for="noticed">
-          What have you noticed — in your body, in your practice, or in your daily life?
-          <span>This can be anything — changes you expected, changes you didn't expect, or the absence of change.</span>
-        </label>
-        <textarea id="noticed" name="noticed" rows="6"></textarea>
-      </div>
-
-      <div class="field-group">
-        <label class="field-label" for="adverse">
-          Was there anything that felt wrong, unhelpful, or that increased your discomfort?
-          <span>This is just as important as positive feedback. If something made things worse, I want to know.</span>
-        </label>
-        <textarea id="adverse" name="adverse" rows="5"></textarea>
-      </div>
-
-      <div class="field-group">
-        <label class="field-label" for="suggestions">
-          Anything you'd change, add, or remove?
-          <span>Optional. Skip if nothing comes to mind.</span>
-        </label>
-        <textarea id="suggestions" name="suggestions" rows="4"></textarea>
-      </div>
-
-      <div class="field-group">
-        <label class="field-label" for="contact">
-          Your email address — if you'd like a reply
-          <span>Optional. Nothing is sent to you automatically. Include this only if you'd like me to write back.</span>
-        </label>
-        <input type="text" id="contact" name="contact" placeholder="optional">
-      </div>
-
-      <div class="submit-row">
-        <button type="submit">Send feedback</button>
-        <span class="submit-note">Your response goes directly to Jeremy. It isn't shared or published without your consent.</span>
-      </div>
-
-    </form>
-
-    <div class="success-block" id="successBlock">
-      <p>Thank you — your feedback has been received. I read every response personally. If you included your email address, I'll write back when I can.</p>
+    <div class="question">
+      <span class="question-label">Question four</span>
+      <div class="question-text">Anything you'd change, add, or remove?</div>
+      <div class="question-note">Optional. Skip if nothing comes to mind.</div>
     </div>
 
   </div>
 
-  <!-- Privacy note -->
-  <div class="privacy-note">
+  <!-- Email CTA -->
+  <div class="email-cta">
+    <p>When you're ready, send your answers — or just write in your own way, without the questions — to:</p>
+    <a href="mailto:jeremy@livingbeyondsci.com?subject=Guided Imagery Programme — my experience" class="email-link">jeremy@livingbeyondsci.com</a>
+    <p style="margin-top:1.25rem;font-size:0.9rem;color:#5A5040;line-height:1.85;">The subject line "Guided Imagery Programme — my experience" will be pre-filled if you click the link above. Feel free to change it to anything that fits.</p>
+  </div>
+
+  <!-- Honest note -->
+  <div class="honest-note">
     <p>Your feedback is read by Jeremy directly. It isn't shared, published, or used for research without your explicit consent.</p>
-    <p>If your experience included a significant increase in pain or any adverse effect, please do mention it — and if you'd like to talk it through, include your email address and I'll write back.</p>
+    <p>If your experience included a significant increase in pain or any adverse effect, please do mention it. If you'd like a response, just say so in your email and I'll write back.</p>
+    <p>You're also welcome to write anonymously — create a temporary email address if you'd prefer I have no way to identify you. What matters is that I hear what actually happened.</p>
+  </div>
+
+  <div class="return-link-block">
+    <a href="guided_imagery_page.html" class="return-link">← Return to the Guided Imagery Programme</a>
   </div>
 
 </div>
 
 <footer>
   <a href="index.html" class="footer-brand">Living Beyond SCI</a>
-  <div class="footer-copy">© Jeremy Olson · <a href="terms_sitewide.html">Terms of Use</a></div>
+  <div class="footer-copy">© 2011–2026 Living Beyond SCI</div>
 </footer>
-
-<script>
-  // Handle form submission with fetch so the page doesn't navigate away
-  const form = document.getElementById('feedbackForm');
-  const successBlock = document.getElementById('successBlock');
-
-  if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const data = new FormData(form);
-      try {
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(data).toString(),
-        });
-        if (response.ok) {
-          form.style.display = 'none';
-          successBlock.style.display = 'block';
-          successBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          alert('Something went wrong — please try emailing jeremy@livingbeyondsci.com directly.');
-        }
-      } catch (err) {
-        alert('Something went wrong — please try emailing jeremy@livingbeyondsci.com directly.');
-      }
-    });
-  }
-</script>
 
 </body>
 </html>
