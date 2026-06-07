@@ -302,26 +302,15 @@
     color: #444030;
   }
 
-  /* JUMP NAV */
-  .jump-nav {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 3.5rem;
-    flex-wrap: wrap;
-  }
-  .jump-nav a {
-    font-family: 'Lora', serif;
-    font-size: 1rem;
-    font-style: italic;
+  /* HERO ANCHOR LINKS */
+  .hero-anchor {
     color: var(--gold);
     text-decoration: none;
-    border-bottom: 1px solid rgba(200,150,60,0.35);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    border-bottom: 1px solid rgba(200,150,60,0.4);
+    transition: border-color 0.2s;
   }
-  .jump-nav a:hover {
-    color: var(--charcoal);
-    border-bottom-color: var(--charcoal);
+  .hero-anchor:hover {
+    border-bottom-color: var(--gold);
   }
 
   /* PILLAR TITLE ANCHOR */
@@ -387,7 +376,7 @@
     </a>
     <div class="page-hero-eyebrow">Living Beyond SCI — References</div>
     <h1>Bibliography</h1>
-    <p class="page-hero-desc">References cited across the three pillars of Living Beyond SCI — quality of life research, hands-free harmonica, and the Guided Imagery Programme. Each section opens with a plain-language summary of the evidence.</p>
+    <p class="page-hero-desc">References cited across the three pillars of Living Beyond SCI — <a href="#pillar1" class="hero-anchor">quality of life research</a>, <a href="#pillar2" class="hero-anchor">hands-free harmonica</a>, and the <a href="#pillar3" class="hero-anchor">Guided Imagery Programme</a>. Each section opens with a plain-language summary of the evidence.</p>
   </div>
 </section>
 
@@ -399,11 +388,7 @@
     <h2 class="section-title">Bibliography</h2>
     <p class="section-intro">References are organised by pillar. Each pillar opens with a plain-language overview of the evidence, written for a general reader, followed by the full academic reference list in APA format.</p>
 
-    <nav class="jump-nav" aria-label="Jump to pillar">
-      <a href="#pillar1">Quality of Life Research</a>
-      <a href="#pillar2">Hands-Free Harmonica</a>
-      <a href="#pillar3">Guided Imagery Programme</a>
-    </nav>
+
 
     <!-- ============================================================ -->
     <!-- PILLAR 1 — QUALITY OF LIFE RESEARCH                         -->
