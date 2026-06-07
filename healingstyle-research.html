@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coping &amp; Quality of Life Self-Reflection — Living Beyond SCI</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #2A2820;
+    --bark: #5C4A2A;
+    --rust: #8B4513;
+    --gold: #C8963C;
+    --muted: #7A7060;
+    --border: #E0D8C8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    position: fixed; top: 0; left: 0; z-index: 200;
+    height: 3px; background: var(--gold);
+    transition: width 0.4s ease;
+  }
+
+  /* NAV */
+  .top-bar {
+    background: var(--charcoal);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 50px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .top-bar-brand {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .top-bar-brand span { color: var(--gold); }
+  .top-bar-back {
+    font-size: 0.75rem;
+    color: #7A7060;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .top-bar-back:hover { color: var(--gold); }
+  .top-bar-back svg { width: 12px; height: 12px; fill: currentColor; }
+
+  /* CONTAINER */
+  .app-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* SCREEN */
+  .screen {
+    display: none;
+    animation: fadeIn 0.35s ease;
+  }
+  .screen.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* WELCOME */
+  .welcome-screen {
+    padding: 5rem 0 4rem;
+    text-align: center;
+  }
+  .welcome-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+  .welcome-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+  }
+  .welcome-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.85;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    text-align: left;
+  }
+
+  /* MODE SELECTOR */
+  .mode-selector {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+  .mode-btn {
+    flex: 1;
+    max-width: 240px;
+    padding: 1.5rem 1.25rem;
+    border: 1px solid var(--border);
+    background: var(--warm-white);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+  }
+  .mode-btn:hover { border-color: var(--gold); }
+  .mode-btn.selected {
+    border-color: var(--gold);
+    background: rgba(200,150,60,0.06);
+    box-shadow: inset 3px 0 0 var(--gold);
+  }
+  .mode-btn-label {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.35rem;
+  }
+  .mode-btn-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* BEGIN BUTTON */
+  .btn-begin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-begin:hover { opacity: 0.85; }
+  .btn-begin:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  /* QUESTION SCREENS */
+  .question-screen { padding: 3.5rem 0; }
+  .q-part-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .q-counter {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .q-context {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border);
+    line-height: 1.7;
+  }
+  .q-statement {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.45;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  /* LIKERT SCALE */
+  .likert-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 2.5rem;
+  }
+  .likert-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .likert-option:first-child { border-radius: 3px 3px 0 0; }
+  .likert-option:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 3px 3px; }
+  .likert-option:hover { background: rgba(200,150,60,0.04); }
+  .likert-option.selected {
+    background: rgba(200,150,60,0.08);
+    border-color: var(--gold);
+  }
+  .likert-option.selected + .likert-option { border-top-color: var(--gold); }
+  .likert-radio {
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.15s;
+  }
+  .likert-option.selected .likert-radio {
+    border-color: var(--gold);
+  }
+  .likert-option.selected .likert-radio::after {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .likert-label {
+    font-size: 0.88rem;
+    color: var(--charcoal);
+  }
+
+  /* DOMAIN RATING SCREEN */
+  .domain-screen { padding: 3.5rem 0; }
+  .domain-intro {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 580px;
+  }
+  .domain-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .domain-row {
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .domain-row:hover { border-color: rgba(200,150,60,0.4); }
+  .domain-name {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.15rem;
+  }
+  .domain-hint {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .domain-scale {
+    display: flex;
+    gap: 0;
+    width: 100%;
+  }
+  .domain-scale-btn {
+    flex: 1;
+    padding: 0.5rem 0;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--border);
+    border-right: none;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .domain-scale-btn:last-child { border-right: 1px solid var(--border); }
+  .domain-scale-btn:hover { background: rgba(200,150,60,0.06); }
+  .domain-scale-btn.selected {
+    background: var(--gold);
+    color: var(--charcoal);
+    font-weight: 500;
+    border-color: var(--gold);
+  }
+  .domain-scale-btn.selected + .domain-scale-btn { border-left-color: var(--gold); }
+  .domain-scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+  }
+  .domain-scale-anchor {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* NAV BUTTONS */
+  .q-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .btn-back {
+    font-size: 0.78rem;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.6rem 0;
+    transition: color 0.2s;
+  }
+  .btn-back:hover { color: var(--charcoal); }
+  .btn-next {
+    font-size: 0.78rem;
+    color: var(--charcoal);
+    background: var(--gold);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    transition: opacity 0.2s;
+  }
+  .btn-next:hover { opacity: 0.85; }
+  .btn-next:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* RESULTS */
+  .results-screen { padding: 4rem 0 3rem; }
+  .results-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .results-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.25;
+    margin-bottom: 2rem;
+  }
+  .results-section {
+    margin-bottom: 3rem;
+  }
+  .results-section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .results-section-label::before {
+    content: '';
+    width: 18px; height: 1px;
+    background: var(--gold);
+  }
+
+  /* STRATEGY BARS */
+  .strategy-bar-group {
+    margin-bottom: 1.75rem;
+  }
+  .strategy-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.2rem;
+  }
+  .strategy-bar-name {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--charcoal);
+  }
+  .strategy-bar-name .primary-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+  .strategy-bar-score {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .strategy-bar-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  .strategy-bar-track {
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    position: relative;
+  }
+  .strategy-bar-fill {
+    height: 100%;
+    background: var(--gold);
+    transition: width 0.6s ease;
+  }
+  .strategy-bar-fill.warning {
+    background: var(--rust);
+  }
+
+  /* DOMAIN GAP */
+  .domain-gap-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(224,216,200,0.5);
+  }
+  .domain-gap-row:last-child { border-bottom: none; }
+  .domain-gap-label {
+    font-size: 0.85rem;
+    color: var(--charcoal);
+  }
+  .domain-gap-bars {
+    position: relative;
+    height: 28px;
+  }
+  .domain-gap-bar {
+    position: absolute;
+    height: 12px;
+    border-radius: 1px;
+    transition: width 0.6s ease;
+  }
+  .domain-gap-bar.importance {
+    top: 0;
+    background: rgba(200,150,60,0.35);
+  }
+  .domain-gap-bar.satisfaction {
+    top: 16px;
+    background: var(--gold);
+  }
+  .domain-gap-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .domain-gap-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .domain-gap-legend-swatch {
+    width: 14px; height: 8px;
+    border-radius: 1px;
+  }
+
+  /* KEY FINDING BOX */
+  .key-finding {
+    background: var(--charcoal);
+    padding: 2.25rem 2.5rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .key-finding::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(200,150,60,0.03) 40px,rgba(200,150,60,0.03) 41px);
+  }
+  .key-finding-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    position: relative; z-index: 2;
+  }
+  .key-finding-text {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--cream);
+    max-width: 580px;
+    position: relative; z-index: 2;
+  }
+  .key-finding-text strong {
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* IMPLICATIONS */
+  .implication-card {
+    padding: 1.5rem 1.75rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    margin-bottom: 1rem;
+  }
+  .implication-card h4 {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.4rem;
+  }
+  .implication-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* RESEARCH TAB */
+  .research-tab {
+    margin-top: 3rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+  }
+  .research-toggle {
+    font-size: 0.78rem;
+    color: var(--gold);
+    background: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: opacity 0.2s;
+  }
+  .research-toggle:hover { opacity: 0.7; }
+  .research-toggle svg {
+    width: 10px; height: 10px;
+    fill: var(--gold);
+    transition: transform 0.2s;
+  }
+  .research-toggle.open svg { transform: rotate(180deg); }
+  .research-content {
+    display: none;
+    margin-top: 1.25rem;
+  }
+  .research-content.open { display: block; }
+  .research-content p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+  .research-content em { color: #5C4A2A; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: rgba(200,150,60,0.04);
+    border: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* OPEN-ENDED QUESTIONS */
+  .voice-screen { padding: 3.5rem 0; }
+  .voice-intro {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 580px;
+  }
+  .voice-question {
+    margin-bottom: 2rem;
+  }
+  .voice-q-label {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+  }
+  .voice-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--charcoal);
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    resize: vertical;
+    transition: border-color 0.2s;
+  }
+  .voice-textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+  .voice-textarea::placeholder {
+    color: #B0A898;
+  }
+  .voice-hint {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+  }
+
+  /* OPT-IN */
+  .optin-screen { padding: 3.5rem 0; }
+  .optin-box {
+    max-width: 600px;
+    background: var(--charcoal);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .optin-box::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(200,150,60,0.03) 40px,rgba(200,150,60,0.03) 41px);
+  }
+  .optin-inner { position: relative; z-index: 2; }
+  .optin-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .optin-title {
+    font-family: 'Lora', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .optin-text {
+    font-size: 0.88rem;
+    color: #9A9080;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+  .optin-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 1.5rem;
+  }
+  .optin-list li {
+    font-size: 0.82rem;
+    color: #9A9080;
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    position: relative;
+    margin-bottom: 0.25rem;
+  }
+  .optin-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.72rem;
+  }
+  .optin-btns {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .optin-yes {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .optin-yes:hover { opacity: 0.85; }
+  .optin-no {
+    display: inline-flex;
+    font-size: 0.75rem;
+    color: #7A7060;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(122,112,96,0.3);
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .optin-no:hover { border-color: rgba(122,112,96,0.6); }
+
+  /* RESTART */
+  .btn-restart {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--gold);
+    background: none;
+    border: 1px solid rgba(200,150,60,0.3);
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.25rem;
+    margin-top: 2rem;
+    transition: background 0.2s;
+  }
+  .btn-restart:hover { background: rgba(200,150,60,0.06); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .app-container { padding: 0 1.25rem; }
+    .mode-selector { flex-direction: column; align-items: stretch; }
+    .mode-btn { max-width: none; }
+    .domain-gap-row { grid-template-columns: 90px 1fr; }
+    .key-finding { padding: 1.5rem; }
+    .welcome-screen { padding: 3rem 0 2rem; }
+    .top-bar { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+
+<div class="top-bar">
+  <a href="research_page.html" class="top-bar-brand">Living Beyond <span>SCI</span></a>
+  <a href="research_page.html" class="top-bar-back">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Back to research
+  </a>
+</div>
+
+<div class="app-container">
+
+  <!-- WELCOME SCREEN -->
+  <div class="screen active" id="screen-welcome">
+    <div class="welcome-screen">
+      <div class="welcome-eyebrow">Based on Quality of Life Research · Deakin University</div>
+      <h1 class="welcome-title">Coping Strategies &amp; Quality of Life</h1>
+      <div class="welcome-desc">
+        <p style="margin-bottom:1rem;">This self-reflection draws directly from graduate research conducted at Deakin University, Melbourne, which examined how 78 people with spinal cord injury across six countries coped with their injury and how satisfied they were with their lives.</p>
+        <p style="margin-bottom:1rem;">It has two parts. The first asks about your <strong>coping strategies</strong> — the ways you manage things you can and cannot control — based on the Optimisation in Primary and Secondary Control framework (Heckhausen &amp; Schulz, 1995) used in the original study. The second asks how <strong>important</strong> and how <strong>satisfied</strong> you are across eight areas of life, mirroring the Comprehensive Quality of Life Scale (ComQol; Cummins, 1997).</p>
+        <p>At the end, you receive a personal profile showing which coping strategies you rely on most, where the gaps between what matters and how things are going are largest, and how your results connect to the key finding from the research. Nothing is recorded. It takes about seven minutes.</p>
+      </div>
+
+      <p style="font-size:0.85rem; color:var(--charcoal); margin-bottom:0.75rem; font-weight:500;">Which best describes your situation?</p>
+      <div class="mode-selector">
+        <div class="mode-btn" data-mode="acute" onclick="selectMode(this)">
+          <div class="mode-btn-label">Earlier stages</div>
+          <div class="mode-btn-desc">Injured within the last two years, or still in active rehabilitation.</div>
+        </div>
+        <div class="mode-btn" data-mode="chronic" onclick="selectMode(this)">
+          <div class="mode-btn-label">Long-term</div>
+          <div class="mode-btn-desc">Living with SCI for more than two years; past the initial adjustment period.</div>
+        </div>
+      </div>
+
+      <button class="btn-begin" id="btnBegin" disabled onclick="beginQuestions()">
+        Begin
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- COPING QUESTIONS (generated by JS) -->
+  <div class="screen" id="screen-coping"></div>
+
+  <!-- DOMAIN IMPORTANCE -->
+  <div class="screen" id="screen-importance"></div>
+
+  <!-- DOMAIN SATISFACTION -->
+  <div class="screen" id="screen-satisfaction"></div>
+
+  <!-- COPING VOICES (open-ended questions) -->
+  <div class="screen" id="screen-voices"></div>
+
+  <!-- RESULTS -->
+  <div class="screen" id="screen-results"></div>
+
+  <!-- OPT-IN -->
+  <div class="screen" id="screen-optin"></div>
+
+</div>
+
+<script>
+(function() {
+
+// ————— DATA —————
+
+const STRATEGIES = {
+  spc: {
+    name: 'Selective Primary Control',
+    short: 'Direct effort toward goals you can influence',
+    desc: 'You invest personal energy, time, and persistence into achieving goals directly. When something matters, you work at it.'
+  },
+  cpc: {
+    name: 'Compensatory Primary Control',
+    short: 'Finding alternative paths when the direct route is blocked',
+    desc: 'When your usual approach is no longer available, you look for workarounds — other people, tools, techniques, or routes to the same destination.'
+  },
+  ssc: {
+    name: 'Selective Secondary Control',
+    short: 'Staying committed to what matters most',
+    desc: 'You protect your motivation by reminding yourself why your goals matter, drawing on past successes, and keeping your focus through difficulty.'
+  },
+  csc: {
+    name: 'Compensatory Secondary Control',
+    short: 'Letting go of what you cannot control',
+    desc: 'When something goes wrong that is outside your control, you attribute it to circumstance or bad luck rather than blaming yourself. You protect your wellbeing by accepting what cannot be changed.'
+  },
+  iof: {
+    name: 'Internalisation of Failure',
+    short: 'Turning setbacks inward as self-blame',
+    desc: 'When things go wrong, you tend to hold yourself responsible — even for outcomes that may have been beyond your control. This pattern was associated with lower life satisfaction in the research.'
+  }
+};
+
+const COPING_QUESTIONS = {
+  acute: [
+    { id: 'spc1', strategy: 'spc', text: 'When I face a new challenge because of my injury, I put all my energy into solving it directly.' },
+    { id: 'spc2', strategy: 'spc', text: 'If something is important to me, I keep working at it — even when progress is slow.' },
+    { id: 'cpc1', strategy: 'cpc', text: 'When my usual way of doing something no longer works, I look for a completely different approach.' },
+    { id: 'cpc2', strategy: 'cpc', text: 'I am willing to ask others for help or use new tools to get things done.' },
+    { id: 'ssc1', strategy: 'ssc', text: 'When rehabilitation feels overwhelming, I remind myself why my goals still matter.' },
+    { id: 'ssc2', strategy: 'ssc', text: 'I try to focus on what is most important and not get derailed by setbacks.' },
+    { id: 'csc1', strategy: 'csc', text: 'When something goes wrong that I cannot change, I put it down to bad luck rather than blaming myself.' },
+    { id: 'csc2', strategy: 'csc', text: 'I find it easier to cope when I accept that some things are simply out of my hands.' },
+    { id: 'csc3', strategy: 'csc', text: 'I try not to take it personally when things do not work out as I had hoped.' },
+    { id: 'iof1', strategy: 'iof', text: 'When things go badly, I tend to think it is my own fault.' },
+    { id: 'iof2', strategy: 'iof', text: 'I often feel I should have done more to prevent problems.' },
+    { id: 'iof3', strategy: 'iof', text: 'I find it hard to forgive myself when I cannot achieve what I set out to do.' }
+  ],
+  chronic: [
+    { id: 'spc1', strategy: 'spc', text: 'When I face a problem in my day-to-day life, I focus my energy on solving it directly.' },
+    { id: 'spc2', strategy: 'spc', text: 'If something matters to me, I keep working toward it — however long it takes.' },
+    { id: 'cpc1', strategy: 'cpc', text: 'When one approach to a problem does not work, I find a different path to the same goal.' },
+    { id: 'cpc2', strategy: 'cpc', text: 'I am comfortable asking for help or using assistive tools to achieve what I want.' },
+    { id: 'ssc1', strategy: 'ssc', text: 'When things feel difficult, I remind myself why my goals are worth pursuing.' },
+    { id: 'ssc2', strategy: 'ssc', text: 'I keep my focus on what is most important and try not to be distracted by things I cannot control.' },
+    { id: 'csc1', strategy: 'csc', text: 'When something goes wrong that I cannot change, I put it down to bad luck rather than blaming myself.' },
+    { id: 'csc2', strategy: 'csc', text: 'I cope better when I accept that some things in life are just the way they are.' },
+    { id: 'csc3', strategy: 'csc', text: 'I try not to take it personally when things do not go my way.' },
+    { id: 'iof1', strategy: 'iof', text: 'When things go badly, my first thought is that it is my own fault.' },
+    { id: 'iof2', strategy: 'iof', text: 'I often feel I should have tried harder to prevent problems.' },
+    { id: 'iof3', strategy: 'iof', text: 'I struggle to let go of mistakes I have made.' }
+  ]
+};
+
+const LIKERT_OPTIONS = [
+  { value: 1, label: 'Strongly disagree' },
+  { value: 2, label: 'Disagree' },
+  { value: 3, label: 'Neutral' },
+  { value: 4, label: 'Agree' },
+  { value: 5, label: 'Strongly agree' }
+];
+
+const DOMAINS = [
+  { id: 'material', name: 'Material Wellbeing', hint: 'Money, housing, possessions, financial security' },
+  { id: 'health', name: 'Health', hint: 'Physical health, energy, pain, medical care' },
+  { id: 'productivity', name: 'Productivity', hint: 'Work, study, volunteering, meaningful activity' },
+  { id: 'intimacy', name: 'Intimacy', hint: 'Close relationships, love, family, companionship' },
+  { id: 'safety', name: 'Safety', hint: 'Personal safety, independence, autonomy, accessibility' },
+  { id: 'community', name: 'Place in Community', hint: 'Social belonging, friendships, feeling included' },
+  { id: 'emotional', name: 'Emotional Wellbeing', hint: 'Mood, self-esteem, resilience, mental health' },
+  { id: 'spiritual', name: 'Spirituality', hint: 'Faith, meaning, purpose, inner peace' }
+];
+
+// Research norms from Article 2 (meta-analysis) — domains where SCI population
+// showed significantly lower satisfaction than general population
+const DEFICIT_DOMAINS = ['material', 'productivity', 'intimacy', 'community', 'spiritual'];
+// Domains where SCI population placed GREATER importance than general population
+const HIGH_IMPORTANCE_DOMAINS = ['productivity', 'safety', 'community'];
+
+// ————— STATE —————
+
+let mode = null;
+let copingAnswers = {};
+let importanceAnswers = {};
+let satisfactionAnswers = {};
+let voiceAnswers = { helped: '', hardest: '' };
+let currentCopingQ = 0;
+const totalSteps = 18; // 12 coping + 2 domain screens + voices + welcome + results + optin
+
+// ————— FUNCTIONS —————
+
+window.selectMode = function(el) {
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  mode = el.dataset.mode;
+  document.getElementById('btnBegin').disabled = false;
+};
+
+window.beginQuestions = function() {
+  if (!mode) return;
+  currentCopingQ = 0;
+  renderCopingQuestion();
+  showScreen('screen-coping');
+  updateProgress(1);
+};
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  el.classList.add('active');
+  // Re-trigger animation
+  el.style.animation = 'none';
+  el.offsetHeight; // reflow
+  el.style.animation = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress(step) {
+  const pct = Math.round((step / totalSteps) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+// ————— COPING QUESTIONS —————
+
+function renderCopingQuestion() {
+  const questions = COPING_QUESTIONS[mode];
+  const q = questions[currentCopingQ];
+  const container = document.getElementById('screen-coping');
+
+  const contextText = mode === 'acute'
+    ? 'Think about how you have been coping since your injury — the habits and instincts you have relied on during this early period.'
+    : 'Think about how you cope now, in your everyday life — the habits and instincts you have settled into over time.';
+
+  let html = '<div class="question-screen">';
+  html += '<div class="q-part-label">Part 1 — Coping Strategies</div>';
+  html += '<div class="q-counter">Question ' + (currentCopingQ + 1) + ' of ' + questions.length + '</div>';
+  if (currentCopingQ === 0) {
+    html += '<div class="q-context">' + contextText + '</div>';
+  }
+  html += '<div class="q-statement">' + q.text + '</div>';
+  html += '<div class="likert-group">';
+  LIKERT_OPTIONS.forEach(opt => {
+    const sel = copingAnswers[q.id] === opt.value ? ' selected' : '';
+    html += '<div class="likert-option' + sel + '" onclick="selectCoping(\'' + q.id + '\',' + opt.value + ')">';
+    html += '<div class="likert-radio"></div>';
+    html += '<div class="likert-label">' + opt.label + '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  html += '<div class="q-nav">';
+  if (currentCopingQ > 0) {
+    html += '<button class="btn-back" onclick="prevCoping()">← Back</button>';
+  } else {
+    html += '<button class="btn-back" onclick="backToWelcome()">← Back</button>';
+  }
+  const nextDisabled = !copingAnswers[q.id] ? ' disabled' : '';
+  if (currentCopingQ < questions.length - 1) {
+    html += '<button class="btn-next"' + nextDisabled + ' onclick="nextCoping()">Next →</button>';
+  } else {
+    html += '<button class="btn-next"' + nextDisabled + ' onclick="goToDomains()">Continue to Part 2 →</button>';
+  }
+  html += '</div></div>';
+  container.innerHTML = html;
+}
+
+window.selectCoping = function(id, val) {
+  copingAnswers[id] = val;
+  renderCopingQuestion();
+};
+
+window.nextCoping = function() {
+  currentCopingQ++;
+  updateProgress(1 + currentCopingQ);
+  renderCopingQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+window.prevCoping = function() {
+  currentCopingQ--;
+  updateProgress(1 + currentCopingQ);
+  renderCopingQuestion();
+};
+
+window.backToWelcome = function() {
+  showScreen('screen-welcome');
+  updateProgress(0);
+};
+
+// ————— DOMAIN SCREENS —————
+
+window.goToDomains = function() {
+  renderDomainScreen('importance');
+  showScreen('screen-importance');
+  updateProgress(13);
+};
+
+function renderDomainScreen(type) {
+  const isImportance = type === 'importance';
+  const container = document.getElementById(isImportance ? 'screen-importance' : 'screen-satisfaction');
+  const answers = isImportance ? importanceAnswers : satisfactionAnswers;
+  const scaleLabels = isImportance
+    ? { low: 'Not important', high: 'Extremely important' }
+    : { low: 'Very dissatisfied', high: 'Very satisfied' };
+
+  let html = '<div class="domain-screen">';
+  html += '<div class="q-part-label">Part 2 — Quality of Life Domains</div>';
+  html += '<div class="q-counter">' + (isImportance ? 'Step 1 of 2 — Importance' : 'Step 2 of 2 — Satisfaction') + '</div>';
+
+  if (isImportance) {
+    html += '<div class="domain-intro">For each area of life below, rate <strong>how important</strong> it is to you personally right now — not how satisfied you are with it, just how much it matters.</div>';
+  } else {
+    html += '<div class="domain-intro">Now rate <strong>how satisfied</strong> you are with each area of life right now — not how important it is, just how things are actually going.</div>';
+  }
+
+  html += '<div class="domain-grid">';
+  DOMAINS.forEach(d => {
+    html += '<div class="domain-row">';
+    html += '<div class="domain-name">' + d.name + '</div>';
+    html += '<div class="domain-hint">' + d.hint + '</div>';
+    html += '<div class="domain-scale">';
+    for (let i = 1; i <= 7; i++) {
+      const sel = answers[d.id] === i ? ' selected' : '';
+      html += '<button class="domain-scale-btn' + sel + '" onclick="selectDomain(\'' + type + '\',\'' + d.id + '\',' + i + ')">' + i + '</button>';
+    }
+    html += '</div>';
+    html += '<div class="domain-scale-labels">';
+    html += '<span class="domain-scale-anchor">' + scaleLabels.low + '</span>';
+    html += '<span class="domain-scale-anchor">' + scaleLabels.high + '</span>';
+    html += '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+
+  html += '<div class="q-nav">';
+  if (isImportance) {
+    html += '<button class="btn-back" onclick="backToLastCoping()">← Back</button>';
+    const allDone = DOMAINS.every(d => answers[d.id]);
+    html += '<button class="btn-next"' + (allDone ? '' : ' disabled') + ' onclick="goToSatisfaction()">Next →</button>';
+  } else {
+    html += '<button class="btn-back" onclick="backToImportance()">← Back</button>';
+    const allDone = DOMAINS.every(d => answers[d.id]);
+    html += '<button class="btn-next"' + (allDone ? '' : ' disabled') + ' onclick="goToVoices()">Continue →</button>';
+  }
+  html += '</div></div>';
+  container.innerHTML = html;
+}
+
+window.selectDomain = function(type, domainId, val) {
+  if (type === 'importance') {
+    importanceAnswers[domainId] = val;
+    renderDomainScreen('importance');
+  } else {
+    satisfactionAnswers[domainId] = val;
+    renderDomainScreen('satisfaction');
+  }
+};
+
+window.backToLastCoping = function() {
+  currentCopingQ = COPING_QUESTIONS[mode].length - 1;
+  renderCopingQuestion();
+  showScreen('screen-coping');
+  updateProgress(12);
+};
+
+window.goToSatisfaction = function() {
+  renderDomainScreen('satisfaction');
+  showScreen('screen-satisfaction');
+  updateProgress(14);
+};
+
+window.backToImportance = function() {
+  renderDomainScreen('importance');
+  showScreen('screen-importance');
+  updateProgress(13);
+};
+
+// ————— VOICES SCREEN —————
+
+window.goToVoices = function() {
+  renderVoicesScreen();
+  showScreen('screen-voices');
+  updateProgress(15);
+};
+
+function renderVoicesScreen() {
+  const container = document.getElementById('screen-voices');
+  let html = '<div class="voice-screen">';
+  html += '<div class="q-part-label">Part 3 — Your Voice</div>';
+  html += '<div class="voice-intro">These are the same two questions asked in the original Deakin University research (Olson, 2001). There are no right answers. Write as much or as little as you like — or skip them entirely and go straight to your results.</div>';
+
+  html += '<div class="voice-question">';
+  html += '<div class="voice-q-label">What has helped you cope most with your injury?</div>';
+  html += '<textarea class="voice-textarea" id="voiceHelped" placeholder="Family, friends, faith, attitude, a specific person, a way of thinking, something practical..." maxlength="1000" oninput="voiceAnswers.helped = this.value">' + (voiceAnswers.helped || '') + '</textarea>';
+  html += '<div class="voice-hint">Optional · up to 200 words · anonymous if you contribute</div>';
+  html += '</div>';
+
+  html += '<div class="voice-question">';
+  html += '<div class="voice-q-label">What has been the hardest thing about coping?</div>';
+  html += '<textarea class="voice-textarea" id="voiceHardest" placeholder="Pain, loss of independence, other people\'s attitudes, physical barriers, financial pressures, something else..." maxlength="1000" oninput="voiceAnswers.hardest = this.value">' + (voiceAnswers.hardest || '') + '</textarea>';
+  html += '<div class="voice-hint">Optional · up to 200 words · anonymous if you contribute</div>';
+  html += '</div>';
+
+  html += '<div class="q-nav">';
+  html += '<button class="btn-back" onclick="backToSatisfaction()">← Back</button>';
+  html += '<button class="btn-next" onclick="showResults()">See your results →</button>';
+  html += '</div>';
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+window.backToSatisfaction = function() {
+  renderDomainScreen('satisfaction');
+  showScreen('screen-satisfaction');
+  updateProgress(14);
+};
+
+// ————— RESULTS —————
+
+window.showResults = function() {
+  updateProgress(16);
+  const results = calculateResults();
+  renderResults(results);
+  showScreen('screen-results');
+};
+
+function calculateResults() {
+  // Calculate strategy scores
+  const strategyScores = {};
+  const strategyCounts = {};
+  Object.keys(STRATEGIES).forEach(s => { strategyScores[s] = 0; strategyCounts[s] = 0; });
+
+  const questions = COPING_QUESTIONS[mode];
+  questions.forEach(q => {
+    if (copingAnswers[q.id] !== undefined) {
+      strategyScores[q.strategy] += copingAnswers[q.id];
+      strategyCounts[q.strategy]++;
+    }
+  });
+
+  // Average scores
+  const strategyAverages = {};
+  Object.keys(STRATEGIES).forEach(s => {
+    strategyAverages[s] = strategyCounts[s] > 0 ? strategyScores[s] / strategyCounts[s] : 0;
+  });
+
+  // Find primary and secondary (excluding iof)
+  const positiveStrategies = ['spc', 'cpc', 'ssc', 'csc'];
+  const sorted = positiveStrategies.slice().sort((a, b) => strategyAverages[b] - strategyAverages[a]);
+  const primary = sorted[0];
+  const secondary = sorted[1];
+
+  // Domain gaps
+  const domainGaps = {};
+  DOMAINS.forEach(d => {
+    domainGaps[d.id] = {
+      importance: importanceAnswers[d.id] || 0,
+      satisfaction: satisfactionAnswers[d.id] || 0,
+      gap: (importanceAnswers[d.id] || 0) - (satisfactionAnswers[d.id] || 0)
+    };
+  });
+
+  // Sort domains by gap (largest first)
+  const sortedDomains = DOMAINS.slice().sort((a, b) => domainGaps[b.id].gap - domainGaps[a.id].gap);
+
+  return { strategyAverages, primary, secondary, domainGaps, sortedDomains };
+}
+
+function renderResults(r) {
+  const container = document.getElementById('screen-results');
+  let html = '<div class="results-screen">';
+
+  html += '<div class="results-eyebrow">Your Results</div>';
+  html += '<h1 class="results-title">Coping Profile &amp; Quality of Life</h1>';
+
+  // ——— STRATEGY PROFILE ———
+  html += '<div class="results-section">';
+  html += '<div class="results-section-label">Your Coping Strategies</div>';
+
+  // Render bars in order: primary, secondary, then rest, then iof
+  const order = [r.primary, r.secondary];
+  ['spc','cpc','ssc','csc'].forEach(s => { if (!order.includes(s)) order.push(s); });
+  order.push('iof');
+
+  order.forEach(s => {
+    const avg = r.strategyAverages[s];
+    const pct = (avg / 5) * 100;
+    const isPrimary = s === r.primary;
+    const isSecondary = s === r.secondary;
+    const isIof = s === 'iof';
+
+    html += '<div class="strategy-bar-group">';
+    html += '<div class="strategy-bar-header">';
+    html += '<div class="strategy-bar-name">' + STRATEGIES[s].name;
+    if (isPrimary) html += '<span class="primary-tag">Primary</span>';
+    if (isSecondary) html += '<span class="primary-tag">Secondary</span>';
+    html += '</div>';
+    html += '<div class="strategy-bar-score">' + avg.toFixed(1) + ' / 5</div>';
+    html += '</div>';
+    html += '<div class="strategy-bar-desc">' + STRATEGIES[s].short + '</div>';
+    html += '<div class="strategy-bar-track"><div class="strategy-bar-fill' + (isIof ? ' warning' : '') + '" style="width:' + pct + '%"></div></div>';
+    html += '</div>';
+  });
+
+  html += '</div>';
+
+  // ——— KEY FINDING ———
+  html += '<div class="key-finding">';
+  html += '<div class="key-finding-label">Key Finding from the Research</div>';
+
+  const cscScore = r.strategyAverages.csc;
+  let findingText;
+  if (r.primary === 'csc') {
+    findingText = 'Your strongest coping strategy is <strong>Compensatory Secondary Control</strong> — the ability to attribute setbacks to circumstance rather than self-blame. In the original study of 78 people with SCI, this was the <strong>only</strong> strategy significantly associated with higher life satisfaction across six domains (β = .412, p < .01). It is not passivity; it is a form of psychological protection that frees energy for the things you can control.';
+  } else if (cscScore >= 3.5) {
+    findingText = 'You score relatively well on <strong>Compensatory Secondary Control</strong> — the ability to let go of what you cannot change. In the original study of 78 people with SCI, this was the <strong>only</strong> strategy significantly associated with higher life satisfaction (β = .412, p < .01). Your capacity for this kind of protective reframing is a genuine strength, even though your primary strategy is ' + STRATEGIES[r.primary].name + '.';
+  } else {
+    findingText = 'In the original study of 78 people with SCI, <strong>Compensatory Secondary Control</strong> — attributing setbacks to bad luck rather than self-blame — was the <strong>only</strong> strategy significantly associated with higher life satisfaction across six domains (β = .412, p < .01). Your score in this area is lower than average. This is not a deficit — it simply means your coping style leans more toward active control. But the research suggests that developing some capacity to let go of what cannot be changed may support wellbeing over time.';
+  }
+  html += '<p class="key-finding-text">' + findingText + '</p>';
+  html += '</div>';
+
+  // IOF warning if high
+  if (r.strategyAverages.iof >= 3.5) {
+    html += '<div class="implication-card" style="border-left-color: var(--rust);">';
+    html += '<h4>A Note on Self-Blame</h4>';
+    html += '<p>Your score on Internalisation of Failure is relatively high. In the research, this pattern — holding yourself responsible for outcomes beyond your control — was associated with lower life satisfaction. This is worth noticing, not as a judgement, but as something that might be worth discussing with a psychologist or counsellor. Self-blame after SCI is common, and it can be shifted.</p>';
+    html += '</div>';
+  }
+
+  // ——— DOMAIN GAPS ———
+  html += '<div class="results-section">';
+  html += '<div class="results-section-label">Quality of Life — Importance vs. Satisfaction</div>';
+
+  html += '<div class="domain-gap-legend">';
+  html += '<div class="domain-gap-legend-item"><div class="domain-gap-legend-swatch" style="background: rgba(200,150,60,0.35);"></div> How important it is to you</div>';
+  html += '<div class="domain-gap-legend-item"><div class="domain-gap-legend-swatch" style="background: var(--gold);"></div> How satisfied you are</div>';
+  html += '</div>';
+
+  r.sortedDomains.forEach(d => {
+    const data = r.domainGaps[d.id];
+    const impPct = (data.importance / 7) * 100;
+    const satPct = (data.satisfaction / 7) * 100;
+    html += '<div class="domain-gap-row">';
+    html += '<div class="domain-gap-label">' + d.name + '</div>';
+    html += '<div class="domain-gap-bars">';
+    html += '<div class="domain-gap-bar importance" style="width:' + impPct + '%"></div>';
+    html += '<div class="domain-gap-bar satisfaction" style="width:' + satPct + '%"></div>';
+    html += '</div>';
+    html += '</div>';
+  });
+
+  html += '</div>';
+
+  // ——— IMPLICATIONS ———
+  html += '<div class="results-section">';
+  html += '<div class="results-section-label">What This Might Mean</div>';
+
+  // Find largest gaps
+  const bigGaps = r.sortedDomains.filter(d => r.domainGaps[d.id].gap >= 2);
+  if (bigGaps.length > 0) {
+    html += '<div class="implication-card">';
+    html += '<h4>Where the Gap Is Largest</h4>';
+    html += '<p>The areas where importance most exceeds satisfaction for you are: <strong>' + bigGaps.map(d => d.name.toLowerCase()).join('</strong>, <strong>') + '</strong>. ';
+    // Cross-reference with research norms
+    const matchesResearch = bigGaps.filter(d => DEFICIT_DOMAINS.includes(d.id));
+    if (matchesResearch.length > 0) {
+      html += 'Notably, <strong>' + matchesResearch.map(d => d.name.toLowerCase()).join('</strong> and <strong>') + '</strong> also showed significant deficits in the broader SCI population across 41 studies. This pattern is not unique to you — but knowing it is there gives you and your support team something specific to work with.';
+    }
+    html += '</p></div>';
+  }
+
+  // High-importance domains that match research
+  const highImpMatch = DOMAINS.filter(d =>
+    importanceAnswers[d.id] >= 5 && HIGH_IMPORTANCE_DOMAINS.includes(d.id)
+  );
+  if (highImpMatch.length > 0) {
+    html += '<div class="implication-card">';
+    html += '<h4>Priorities You Share With the Research Population</h4>';
+    html += '<p>You rate <strong>' + highImpMatch.map(d => d.name.toLowerCase()).join('</strong> and <strong>') + '</strong> as highly important. In the research, people with SCI placed significantly greater importance on these same domains than the general population — yet often reported lower satisfaction. The mismatch between caring deeply and feeling dissatisfied in these areas is one of the central challenges the research identified.</p>';
+    html += '</div>';
+  }
+
+  // Strength areas
+  const strengthAreas = r.sortedDomains.filter(d => r.domainGaps[d.id].gap <= 0 && r.domainGaps[d.id].satisfaction >= 4);
+  if (strengthAreas.length > 0) {
+    html += '<div class="implication-card">';
+    html += '<h4>Where Things Are Going Well</h4>';
+    html += '<p>In <strong>' + strengthAreas.map(d => d.name.toLowerCase()).join('</strong> and <strong>') + '</strong>, your satisfaction meets or exceeds the importance you place on ' + (strengthAreas.length === 1 ? 'it' : 'them') + '. These are areas of life that are working for you — worth recognising and protecting.</p>';
+    html += '</div>';
+  }
+
+  html += '</div>';
+
+  // ——— RESEARCH BACKGROUND ———
+  html += '<div class="research-tab">';
+  html += '<button class="research-toggle" onclick="toggleResearch(this)">Research background <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>';
+  html += '<div class="research-content" id="researchContent">';
+  html += '<p>This self-reflection is grounded in two bodies of work from graduate research conducted at Deakin University, Melbourne, supervised by Professor Robert Cummins.</p>';
+  html += '<p><em>Coping strategies</em> are based on the Optimisation in Primary and Secondary Control framework (Heckhausen &amp; Schulz, 1995), which distinguishes between strategies aimed at changing the environment (primary control) and strategies aimed at changing oneself to accommodate what cannot be changed (secondary control). The original study measured these five strategies in 78 people with SCI using the OPS-Scale.</p>';
+  html += '<p><em>Quality of life domains</em> are based on the Comprehensive Quality of Life Scale (ComQol-A5; Cummins, 1997), which assesses both the objective conditions and subjective satisfaction across eight areas of life. The original study compared SCI population scores against general population norms established across multiple cultures.</p>';
+  html += '<p>The key empirical finding — that compensatory secondary control (specifically, attributing the inability to achieve a goal to bad luck) was the only strategy significantly predicting total life satisfaction (β = .412, p &lt; .01, accounting for 12.3% of unique variance) — is reported in Olson &amp; Cummins (1999).</p>';
+  html += '<p>The meta-analysis of 41 studies (total N = 4,709) establishing domain-specific deficits in the SCI population is reported in Olson (2001), Chapter 2.</p>';
+  html += '<p style="margin-top:1rem; font-size:0.78rem; color: rgba(122,112,96,0.7);"><strong>References:</strong> Cummins, R. A. (1997). <em>Comprehensive Quality of Life Scale — Adult (ComQol-A5)</em>, 5th ed., Deakin University. · Heckhausen, J. &amp; Schulz, R. (1995). A life-span theory of control. <em>Psychological Review, 102</em>(2), 284–304. · Olson, J. M. &amp; Cummins, R. A. (1999). The relationship between strategies of control and levels of subjective quality of life after spinal cord injury. Unpublished manuscript, Deakin University.</p>';
+  html += '</div></div>';
+
+  // ——— DISCLAIMER ———
+  html += '<div class="disclaimer">This is a self-reflection tool, not a clinical assessment. It is designed to help you think about your own patterns and to connect those patterns to published research. It does not diagnose anything, and it should not replace professional advice. If the results raise questions or concerns, consider sharing them with your psychologist, counsellor, or rehabilitation team.</div>';
+
+  // ——— CONTINUE TO OPT-IN ———
+  html += '<div style="margin-top:2rem; text-align:center;">';
+  html += '<button class="btn-next" onclick="goToOptin()" style="padding:0.85rem 2rem;">Continue →</button>';
+  html += '</div>';
+
+  html += '</div>';
+  container.innerHTML = html;
+
+  // Animate bars after render
+  setTimeout(() => {
+    container.querySelectorAll('.strategy-bar-fill, .domain-gap-bar').forEach(bar => {
+      const w = bar.style.width;
+      bar.style.width = '0%';
+      setTimeout(() => { bar.style.width = w; }, 50);
+    });
+  }, 100);
+}
+
+// ————— OPT-IN —————
+
+window.goToOptin = function() {
+  updateProgress(17);
+  renderOptin();
+  showScreen('screen-optin');
+};
+
+function renderOptin() {
+  const container = document.getElementById('screen-optin');
+  let html = '<div class="optin-screen">';
+
+  html += '<div class="optin-box">';
+  html += '<div class="optin-inner" id="optinInner">';
+  html += '<div class="optin-eyebrow">One More Thing</div>';
+  html += '<div class="optin-title">Would you like to contribute your results anonymously?</div>';
+  html += '<p class="optin-text">Your answers can help build a living picture of how people with SCI cope and where quality of life gaps are widest. If you choose to contribute, only your scores are shared — never anything that could identify you.</p>';
+
+  html += '<ul class="optin-list">';
+  html += '<li>No names, emails, or identifying information collected</li>';
+  html += '<li>Only aggregated scores: strategy averages, domain ratings, stage (earlier/long-term)</li>';
+  html += '<li>Your IP address is not recorded</li>';
+  html += '<li>Open-ended responses are reviewed manually before appearing publicly</li>';
+  html += '<li>Results appear on the <a href="living-research.html" style="color:var(--gold);">Living Research</a> community dashboard — patterns, not people</li>';
+  html += '<li>You can skip this entirely — your personal results are still yours either way</li>';
+  html += '</ul>';
+
+  html += '<div class="optin-btns">';
+  html += '<button class="optin-yes" onclick="submitContribution()">Yes, contribute anonymously</button>';
+  html += '<button class="optin-no" onclick="skipContribution()">No thanks</button>';
+  html += '</div>';
+  html += '</div>';
+  html += '</div>';
+
+  // Nav links (always visible below opt-in box)
+  html += '<div style="margin-top:2.5rem; display:flex; gap:1.5rem; flex-wrap:wrap; align-items:center;">';
+  html += '<button class="btn-restart" onclick="restart()">Start again</button>';
+  html += '<a href="living-research.html" style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.78rem; color:var(--gold); text-decoration:none; letter-spacing:0.06em; text-transform:uppercase; transition:opacity 0.2s;" onmouseover="this.style.opacity=\'0.7\'" onmouseout="this.style.opacity=\'1\'">View community results</a>';
+  html += '<a href="research_page.html" style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.78rem; color:var(--muted); text-decoration:none; letter-spacing:0.06em; text-transform:uppercase; transition:color 0.2s;" onmouseover="this.style.color=\'var(--gold)\'" onmouseout="this.style.color=\'var(--muted)\'">Back to research</a>';
+  html += '<a href="index.html" style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.78rem; color:var(--muted); text-decoration:none; letter-spacing:0.06em; text-transform:uppercase; transition:color 0.2s;" onmouseover="this.style.color=\'var(--gold)\'" onmouseout="this.style.color=\'var(--muted)\'">Home</a>';
+  html += '</div>';
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+window.submitContribution = function() {
+  // TODO: Wire to Firebase — send anonymous data:
+  // { mode, strategyScores, domainImportance, domainSatisfaction, voiceHelped, voiceHardest, timestamp }
+  updateProgress(18);
+  const inner = document.getElementById('optinInner');
+  inner.innerHTML = '<div style="text-align:center; padding:1.5rem 0;"><p style="font-family:Lora,serif; font-size:1.1rem; color:var(--cream); font-style:italic;">Thank you — your anonymous results have been added.</p><p style="font-size:0.82rem; color:#7A7060; font-style:normal; margin-top:0.75rem;">You can see the community patterns on the <a href="living-research.html" style="color:var(--gold);">Living Research dashboard</a>.</p></div>';
+};
+
+window.skipContribution = function() {
+  updateProgress(18);
+  const inner = document.getElementById('optinInner');
+  inner.innerHTML = '<div style="text-align:center; padding:1.5rem 0;"><p style="font-family:Lora,serif; font-size:1rem; color:var(--cream); font-style:italic;">No problem — your results are still yours.</p><p style="font-size:0.82rem; color:#7A7060; font-style:normal; margin-top:0.5rem;">You can always come back and contribute later.</p></div>';
+};
+
+window.toggleResearch = function(btn) {
+  btn.classList.toggle('open');
+  document.getElementById('researchContent').classList.toggle('open');
+};
+
+window.restart = function() {
+  copingAnswers = {};
+  importanceAnswers = {};
+  satisfactionAnswers = {};
+  voiceAnswers = { helped: '', hardest: '' };
+  currentCopingQ = 0;
+  mode = null;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('btnBegin').disabled = true;
+  showScreen('screen-welcome');
+  updateProgress(0);
+};
+
+})();
+</script>
+
+</body>
+</html>
