@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Beyond SCI — Rehabilitation Centre Tour</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #2A2820;
+    --bark: #5C4A2A;
+    --gold: #C8963C;
+    --muted: #7A7060;
+    --border: #E0D8C8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  .toc {
+    background: var(--charcoal);
+    padding: 0.75rem 2.5rem;
+    display: flex; gap: 2rem; flex-wrap: wrap;
+    border-bottom: 1px solid rgba(200,150,60,0.3);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toc a {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .toc a:hover { color: var(--gold); }
+
+  /* HERO */
+  .page-hero {
+    background: var(--charcoal);
+    padding: 4rem 0 3rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; padding: 0 2.5rem; }
+  .eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+  .page-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.2; color: var(--cream); font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold); }
+  .standfirst { font-size: 1rem; color: #8A8070; line-height: 1.8; max-width: 640px; }
+
+  /* BODY */
+  .body-inner { max-width: 860px; margin: 0 auto; padding: 4rem 2.5rem; }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none; border-top: 2px solid var(--gold);
+    margin: 4rem 0 3rem; opacity: 0.25;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+
+  /* SECTION HEADING */
+  .section-heading {
+    font-family: 'Lora', serif; font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 400; color: var(--charcoal);
+    margin-bottom: 1.5rem; line-height: 1.3;
+  }
+  .section-heading em { font-style: italic; color: var(--gold); }
+
+  /* QUICK FACTS */
+  .quick-facts {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border);
+    margin-bottom: 3.5rem; border: 1px solid var(--border);
+  }
+  .fact-cell { background: var(--cream); padding: 1.25rem 1.5rem; }
+  .fact-label {
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.4rem;
+  }
+  .fact-val {
+    font-family: 'Lora', serif; font-size: 1rem;
+    color: var(--charcoal); font-weight: 400; line-height: 1.4;
+  }
+
+  /* AUDIENCE BOX */
+  .audience-box {
+    border-left: 3px solid var(--gold);
+    background: rgba(200,150,60,0.05);
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 3rem;
+  }
+  .audience-box p { font-size: 0.92rem; color: #4A4438; line-height: 1.85; }
+
+  /* SEGMENT CARDS */
+  .segments { display: flex; flex-direction: column; gap: 0; margin-bottom: 3.5rem; }
+  .segment {
+    display: grid; grid-template-columns: 80px 1fr;
+    border: 1px solid var(--border); border-bottom: none;
+    background: var(--warm-white);
+  }
+  .segment:last-child { border-bottom: 1px solid var(--border); }
+  .segment:nth-child(even) { background: var(--cream); }
+  .seg-num {
+    background: var(--charcoal);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.25rem; padding: 1.5rem 0.75rem;
+  }
+  .seg-num-val {
+    font-family: 'Lora', serif; font-size: 1.8rem;
+    color: var(--gold); font-weight: 400; line-height: 1;
+  }
+  .seg-time {
+    font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #5A5040; text-align: center;
+  }
+  .seg-body { padding: 1.5rem 2rem; }
+  .seg-title {
+    font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 400;
+    color: var(--charcoal); margin-bottom: 0.2rem;
+  }
+  .seg-subtitle {
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.85rem;
+  }
+  .seg-desc { font-size: 0.9rem; color: #4A4438; line-height: 1.8; margin-bottom: 0.85rem; }
+  .seg-desc:last-child { margin-bottom: 0; }
+  .seg-steps {
+    list-style: none; padding: 0;
+    display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.85rem;
+  }
+  .seg-steps li {
+    font-size: 0.88rem; color: #4A4438; line-height: 1.7;
+    display: flex; gap: 0.75rem; align-items: start;
+  }
+  .seg-steps li::before {
+    content: '→'; color: var(--gold); flex-shrink: 0;
+    font-size: 0.8rem; margin-top: 0.15rem;
+  }
+  .seg-tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--border);
+    padding: 0.25rem 0.65rem; margin-right: 0.4rem; margin-top: 0.25rem;
+  }
+  .seg-tag.no-backing::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--muted); border-radius: 50%; display: block;
+  }
+  .seg-tag.with-backing::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%; display: block;
+  }
+
+  /* SPOKEN TRANSITION */
+  .spoken-box {
+    background: var(--charcoal); padding: 2rem 2.5rem;
+    margin-bottom: 3.5rem; position: relative; overflow: hidden;
+  }
+  .spoken-box::before {
+    content: '"';
+    font-family: 'Lora', serif; font-size: 8rem; line-height: 1;
+    color: rgba(200,150,60,0.08); position: absolute;
+    top: -1rem; left: 1rem; pointer-events: none;
+  }
+  .spoken-label {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.85rem; position: relative; z-index: 2;
+  }
+  .spoken-text {
+    font-family: 'Lora', serif; font-size: 1.2rem; line-height: 1.65;
+    color: var(--cream); font-style: italic; font-weight: 400;
+    position: relative; z-index: 2; margin-bottom: 0.75rem;
+  }
+  .spoken-note {
+    font-size: 0.82rem; color: #7A7060; position: relative; z-index: 2; line-height: 1.7;
+  }
+
+  /* CHECKLIST */
+  .checklist-section { margin-bottom: 3.5rem; }
+  .checklist { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); }
+  .check-item {
+    display: flex; gap: 1.25rem; padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border); align-items: start;
+    background: var(--warm-white);
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-item:nth-child(even) { background: var(--cream); }
+  .check-box {
+    width: 20px; height: 20px; border: 1px solid var(--border);
+    flex-shrink: 0; margin-top: 0.2rem; background: white;
+  }
+  .check-text { font-size: 0.9rem; color: #4A4438; line-height: 1.7; }
+  .check-text strong { font-weight: 500; color: var(--charcoal); }
+
+  /* TIMING TABLE */
+  .timing-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 3.5rem; font-size: 0.88rem;
+  }
+  .timing-table th {
+    background: var(--charcoal); color: var(--cream);
+    padding: 0.65rem 1rem; text-align: left;
+    font-size: 0.72rem; letter-spacing: 0.06em; font-weight: 500;
+  }
+  .timing-table td {
+    padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);
+    color: #4A4438; vertical-align: top;
+  }
+  .timing-table tr:last-child td { border-bottom: none; }
+  .timing-table tr:nth-child(even) td { background: var(--cream); }
+  .dot-gold { color: var(--gold); font-size: 1rem; }
+  .dot-muted { color: var(--muted); font-size: 1rem; }
+
+  /* GI SCRIPT */
+  .gi-script {
+    background: var(--cream); border: 1px solid var(--border);
+    padding: 2rem 2.5rem; margin-bottom: 3rem;
+    border-left: 3px solid var(--gold);
+  }
+  .gi-script p {
+    font-size: 0.95rem; color: #3A3428; line-height: 1.9;
+    margin-bottom: 1.1rem;
+  }
+  .gi-script p:last-child { margin-bottom: 0; }
+  .gi-script .gi-note {
+    font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border);
+    padding-top: 1rem; margin-top: 1.5rem; line-height: 1.7;
+  }
+
+  /* CENTRE CARDS */
+  .city-block { margin-bottom: 3rem; }
+  .city-name {
+    font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 400;
+    color: var(--charcoal); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  }
+  .centre-cards { display: flex; flex-direction: column; gap: 0; }
+  .centre-card {
+    border: 1px solid var(--border); border-bottom: none;
+    background: var(--warm-white); padding: 1.5rem 2rem;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 1rem; align-items: start;
+  }
+  .centre-card:last-child { border-bottom: 1px solid var(--border); }
+  .centre-card:nth-child(even) { background: var(--cream); }
+  .centre-name {
+    font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 400;
+    color: var(--charcoal); margin-bottom: 0.25rem;
+  }
+  .centre-address {
+    font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.5rem;
+  }
+  .centre-phone {
+    font-size: 0.82rem; color: var(--bark);
+  }
+  .centre-note {
+    font-size: 0.82rem; color: #5A5040; line-height: 1.65;
+    border-left: 2px solid var(--gold); padding-left: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .centre-rating {
+    font-size: 0.78rem; color: var(--muted); text-align: right;
+    white-space: nowrap;
+  }
+  .centre-rating strong { color: var(--gold); font-size: 1rem; font-weight: 500; }
+
+  /* EMAIL */
+  .email-block {
+    background: var(--charcoal); padding: 2.5rem;
+    margin-bottom: 3rem; position: relative; overflow: hidden;
+  }
+  .email-meta {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 0.4rem 1.25rem; margin-bottom: 1.5rem;
+    font-size: 0.82rem;
+  }
+  .email-meta-label {
+    color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase;
+    font-size: 0.7rem; padding-top: 0.1rem;
+  }
+  .email-meta-val { color: #8A8070; }
+  .email-subject {
+    font-family: 'Lora', serif; font-size: 1.1rem; color: var(--cream);
+    font-style: italic; margin-bottom: 1.5rem;
+    padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .email-body {
+    font-size: 0.9rem; color: #9A9080; line-height: 1.9;
+  }
+  .email-body p { margin-bottom: 1rem; }
+  .email-body p:last-child { margin-bottom: 0; }
+  .email-placeholder {
+    background: rgba(200,150,60,0.12); color: var(--gold);
+    padding: 0.1rem 0.4rem; font-size: 0.85em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1A1810; padding: 1.5rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand { font-family: 'Lora', serif; font-size: 0.9rem; color: #5A5040; }
+  .footer-copy { font-size: 0.75rem; color: #3A3020; }
+
+  /* PRINT */
+  @media print {
+    .toc { display: none; }
+    .page-hero { background: #2A2820 !important; -webkit-print-color-adjust: exact; }
+    .seg-num { background: #2A2820 !important; -webkit-print-color-adjust: exact; }
+    .spoken-box { background: #2A2820 !important; -webkit-print-color-adjust: exact; }
+    .email-block { background: #2A2820 !important; -webkit-print-color-adjust: exact; }
+    footer { background: #1A1810 !important; -webkit-print-color-adjust: exact; }
+    body { font-size: 13px; }
+    .body-inner { padding: 2rem 2.5rem; }
+  }
+
+  @media (max-width: 700px) {
+    .quick-facts { grid-template-columns: 1fr 1fr; }
+    .segment { grid-template-columns: 60px 1fr; }
+    .seg-num-val { font-size: 1.4rem; }
+    .seg-body { padding: 1.25rem; }
+    .body-inner { padding: 2.5rem 1.5rem; }
+    .hero-inner { padding: 0 1.5rem; }
+    .toc { padding: 0.75rem 1.5rem; gap: 1rem; }
+    .centre-card { grid-template-columns: 1fr; }
+    .email-block { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="toc">
+  <a href="#performance">Performance</a>
+  <a href="#guided-imagery">Guided Imagery</a>
+  <a href="#centres">Rehab Centres</a>
+  <a href="#email">Outreach Email</a>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Living Beyond SCI · Tour Document</div>
+    <h1>Rehabilitation centre tour<br><em>visit schedule</em></h1>
+    <p class="standfirst">A complete guide to each visit — harmonica performance, Guided Imagery Programme overview, rehabilitation centre contacts across Auckland, Brisbane, Sydney, and Melbourne, and the outreach email template.</p>
+  </div>
+</div>
+
+<div class="body-inner">
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- PART 1: PERFORMANCE                            -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div id="performance">
+    <div class="section-label">Part One</div>
+    <h2 class="section-heading">Hands-free harmonica<br><em>performance — 15 minutes</em></h2>
+
+    <div class="section-label" style="margin-bottom:1.25rem;">At a glance</div>
+    <div class="quick-facts">
+      <div class="fact-cell">
+        <div class="fact-label">Duration</div>
+        <div class="fact-val">15 minutes</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Setup</div>
+        <div class="fact-val">Neck rack · mic · portable PA</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Instrument</div>
+        <div class="fact-val">C harp · second position · key of G</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Follows into</div>
+        <div class="fact-val">Guided Imagery Programme overview</div>
+      </div>
+    </div>
+
+    <div class="section-label">Audience</div>
+    <div class="audience-box">
+      <p>Inpatients at spinal cord injury rehabilitation centres, including people with quadriplegia. Some participants may be early in their rehabilitation journey. The tone is warm, accessible, and demonstration-focused — not performative. The performance is designed to make the barrier to entry feel real and low, and to connect the act of playing to the respiratory benefit that underpins the whole programme.</p>
+    </div>
+
+    <div class="section-label">Set structure</div>
+    <div class="segments">
+
+      <div class="segment">
+        <div class="seg-num">
+          <div class="seg-num-val">01</div>
+          <div class="seg-time">3 min</div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-subtitle">Open</div>
+          <div class="seg-title">One recognisable song — no introduction</div>
+          <p class="seg-desc">Played straight, without preamble. Either <em>Blowin' in the Wind</em> (Dylan) or <em>Heart of Gold</em> (Neil Young) — played as a slow blues in G on single notes, melodic and unhurried. No talking. The neck rack is visible from the start; the absence of hand function is immediately apparent. Let the room adjust to what they are watching before speaking a word.</p>
+          <span class="seg-tag no-backing">No backing track</span>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="seg-num">
+          <div class="seg-num-val">02</div>
+          <div class="seg-time">5–6 min</div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-subtitle">Demonstration</div>
+          <div class="seg-title">Slow 12-bar blues — technique made visible</div>
+          <p class="seg-desc">One sentence before the music starts: <em>"Everything you just heard was breath, a small movement of the head, and the mouth. That's it — no hands. Let me show you what that actually looks like up close."</em></p>
+          <p class="seg-desc">Backing track on. Slow 12-bar in G. Three techniques introduced in sequence:</p>
+          <ul class="seg-steps">
+            <li>Chugging — breath as rhythm, the train beat. Establishes the idea that breath drives the music.</li>
+            <li>Single notes with visible head movement between holes — slightly exaggerated so it reads from across the room.</li>
+            <li>Bending and throat vibrato — the emotional peak of the demonstration. Let the sound change. This is the sound people associate with blues harmonica.</li>
+          </ul>
+          <span class="seg-tag with-backing">Backing track on</span>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="seg-num">
+          <div class="seg-num-val">03</div>
+          <div class="seg-time">2–3 min</div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-subtitle">Teach-back</div>
+          <div class="seg-title">Three notes — the beginning of the blues scale</div>
+          <p class="seg-desc">Stop the backing track. Pause. Play holes 2-draw, 3-draw, 4-draw slowly. Three notes, rising. Pause. Play again.</p>
+          <p class="seg-desc"><em>"That's three notes. It's the beginning of the blues scale. It sounds like music immediately, because it is. You don't need to learn anything else to make that sound. You just need to draw breath in."</em></p>
+          <p class="seg-desc">If any patient in the room already has a harmonica, invite them to try it. If not, the verbal description is enough. The goal is to make the barrier feel real and low — not aspirational and distant.</p>
+          <span class="seg-tag no-backing">Backing track off</span>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="seg-num">
+          <div class="seg-num-val">04</div>
+          <div class="seg-time">3 min</div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-subtitle">Close</div>
+          <div class="seg-title">Slow improvised blues — quiet ending</div>
+          <p class="seg-desc">One final piece, no preamble. Slower and more introspective than the demonstration segment. Ends with a resolved, quiet phrase. Allow the last note to decay fully before speaking. Full silence. Then the transition line.</p>
+          <span class="seg-tag no-backing">No backing track</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-label">Spoken transition into Living Beyond SCI</div>
+    <div class="spoken-box">
+      <div class="spoken-label">Said into the silence after the closing note</div>
+      <div class="spoken-text">"Strengthening the breath and living longer is a by-product of having a good old-fashioned blast on the harp."</div>
+      <div class="spoken-note">One beat of silence. Then: <em>"That's from the website. The website is called Living Beyond SCI. Let me tell you what else is on it."</em> — and into the Guided Imagery Programme overview below.</div>
+    </div>
+
+    <div class="section-label">Timing at a glance</div>
+    <table class="timing-table">
+      <thead>
+        <tr>
+          <th>#</th><th>Segment</th><th>Content</th><th>Backing track</th><th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td>Open</td>
+          <td>Blowin' in the Wind or Heart of Gold — single notes, melodic</td>
+          <td><span class="dot-muted">●</span> None</td>
+          <td>3 min</td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>Demonstration</td>
+          <td>Slow 12-bar blues in G — chugging → single notes → bending / vibrato</td>
+          <td><span class="dot-gold">●</span> Yes</td>
+          <td>5–6 min</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Teach-back</td>
+          <td>Holes 2-draw, 3-draw, 4-draw — named and explained</td>
+          <td><span class="dot-muted">●</span> Off</td>
+          <td>2–3 min</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Close</td>
+          <td>Slow improvised blues — quiet, resolved ending</td>
+          <td><span class="dot-muted">●</span> None</td>
+          <td>3 min</td>
+        </tr>
+        <tr>
+          <td style="border-top:2px solid var(--border);"></td>
+          <td style="border-top:2px solid var(--border);font-weight:500;">Total</td>
+          <td style="border-top:2px solid var(--border);"></td>
+          <td style="border-top:2px solid var(--border);"></td>
+          <td style="border-top:2px solid var(--border);font-weight:500;">13–15 min</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-label">Before each centre visit</div>
+    <div class="checklist-section">
+      <div class="checklist">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Contact the centre in advance.</strong> Ask whether any current inpatients already have a harmonica — if so, the teach-back segment can become interactive.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Check the room acoustics.</strong> Hard floors and low ceilings affect PA placement. Err on the side of quieter rather than louder — the intimacy of the instrument is a feature, not a problem.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Run a full sound check before the audience arrives.</strong> The harmonica through a mic can sound enormous in a small room. Set levels in the empty space.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Rehearse the full 15 minutes as a single run-through</strong>, including the spoken transitions at the exact words you plan to use. The silence after the closing note must feel comfortable, not like dead air.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Load the backing track on a device that can be controlled hands-free</strong> or by a support person — you'll need to start and stop it mid-performance.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Tone note:</strong> Some people in the room may be very early in their injury. Play to the room, not at any individual. Make eye contact broadly, not pointedly.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">The thread running through the visit</div>
+    <div class="audience-box" style="margin-bottom:0;">
+      <p>Breath trains the muscles. Motor imagery trains the brain. Both are things a person can do from a bed, with no equipment, with no hand function. That is the through-line connecting the harmonica performance to the Guided Imagery Programme segment that follows — and to why this visit matters clinically for the people watching. Hold it in mind during the performance and it will come through without needing to be stated explicitly until the spoken segment.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- PART 2: GUIDED IMAGERY OVERVIEW                -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div id="guided-imagery">
+    <div class="section-label">Part Two</div>
+    <h2 class="section-heading">Guided Imagery Programme<br><em>spoken overview — 2–3 minutes</em></h2>
+
+    <div class="audience-box">
+      <p>Spoken casually after the performance and transition line. Not read aloud — said in your own voice, at a relaxed pace. The script below is a guide, not a script to memorise word for word.</p>
+    </div>
+
+    <div class="section-label">Spoken overview</div>
+    <div class="gi-script">
+      <p>"So the harmonica grew out of something bigger that I've been working on — a website called Living Beyond SCI, which is basically a free resource for people with spinal cord injury.</p>
+      <p>One of the things on the site is a Guided Imagery Programme. It's a mind-body practice — you use mental rehearsal to imagine movement in parts of the body that may not be moving physically. There's a reasonable body of research behind it, particularly around neuroplasticity — the idea that the brain continues to respond to imagined movement even after injury.</p>
+      <p>The way I've set it up, it works with something called the Basic Rest-Activity Cycle — your brain naturally shifts into a more receptive, restful state roughly every 90 minutes. The programme is designed to sit inside that window, when the mind is already quieter and more open to this kind of practice.</p>
+      <p>Each session is an audio guide. I had them recorded using a voice clone of my own voice — which I disclose on the site, I think that's important to be upfront about.</p>
+      <p>I should be honest that it's not for everyone. There's one study that found motor imagery can occasionally increase neuropathic pain in some people, so we're clear about that on the site. It's not a treatment, it's a practice — and it's completely free.</p>
+      <p>If any of that sounds interesting, the website has everything on it — livingbeyondsci.com — and I've left a card with a QR code if you want to find it easily."</p>
+      <p class="gi-note">Runs approximately 2–3 minutes spoken at a relaxed pace. Leave a natural pause after the website address before inviting questions. Leave printed QR cards where patients and staff can take one.</p>
+    </div>
+
+    <div class="section-label">Equipment for this visit</div>
+    <div class="checklist-section" style="margin-bottom:0;">
+      <div class="checklist">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Harmonica rack</strong> (neck-mounted)</div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Selection of harmonicas</strong> — including a few spare C harps for patients to try</div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Portable PA</strong> — compact unit such as a Bose S1 Pro or Roland Cube Street</div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Dynamic microphone</strong> — Shure SM58 or similar, feedback-resistant</div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Short XLR cable · power board · extension cord</strong></div>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <div class="check-text"><strong>Printed QR cards</strong> linking to livingbeyondsci.com — leave a stack with the coordinator</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- PART 3: REHAB CENTRES                          -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div id="centres">
+    <div class="section-label">Part Three</div>
+    <h2 class="section-heading">Rehabilitation centres<br><em>contact directory</em></h2>
+
+    <div class="audience-box">
+      <p>Contact the Allied Health coordinator or Recreation Therapy team at each centre — not general reception. Explain the visit is a no-cost educational demonstration. A few weeks' lead time is usually sufficient.</p>
+    </div>
+
+    <!-- AUCKLAND -->
+    <div class="city-block">
+      <div class="city-name">Auckland — New Zealand</div>
+      <div class="centre-cards">
+        <div class="centre-card">
+          <div>
+            <div class="centre-name">Auckland Spinal Rehab Unit</div>
+            <div class="centre-address">30 Bairds Road, Papatoetoe, Auckland 2025</div>
+            <div class="centre-phone">+64 9 270 9000</div>
+            <div class="centre-note">New Zealand's dedicated national spinal rehabilitation unit — the most relevant venue for a trial run before the Australian tour. Strong patient reviews. Start here.</div>
+          </div>
+          <div class="centre-rating"><strong>4.6</strong><br>★★★★☆</div>
+        </div>
+        <div class="centre-card">
+          <div>
+            <div class="centre-name">Burwood Spinal Unit (Canterbury)</div>
+            <div class="centre-address">Burwood Hospital, Christchurch — secondary option if Auckland is unavailable</div>
+            <div class="centre-phone">+64 3 383 6833</div>
+            <div class="centre-note">New Zealand's second major SCI rehabilitation centre. Worth keeping in mind for a future South Island visit.</div>
+          </div>
+          <div class="centre-rating">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRISBANE -->
+    <div class="city-block">
+      <div class="city-name">Brisbane — Queensland</div>
+      <div class="centre-cards">
+        <div class="centre-card">
+          <div>
+            <div class="centre-name">Spinal Life Healthy Living Centre</div>
+            <div class="centre-address">109 Logan Road, Woolloongabba QLD 4102</div>
+            <div class="centre-phone">+61 1300 774 625</div>
+            <div class="centre-note">Queensland's principal SCI advocacy and peer support organisation. Good first stop for connecting with the local SCI community.</div>
+          </div>
+          <div class="centre-rating"><strong>4.4</strong><br>★★★★☆</div>
+        </div>
+        <div class="centre-card">
+          <div>
+            <div class="centre-name">Spinal Outreach Team</div>
+            <div class="centre-address">198 Ipswich Road, Woolloongabba QLD 4102</div>
+            <div class="centre-phone">+61 7 3176 9507</div>
+            <div class="centre-note">Queensland Health's clinical SCI outreach team. Arrange separately from Spinal Life — a different conversation with a clinical team.</div>
+          </div>
+          <div class="centre-rating"><strong>5.0</strong><br>★★★★★</div>
+        </div>
+        <div class="centre-card">
+          <div>
+            <div class="centre-name">BackSpace</div>
+            <div class="centre-address">Level 1, Suite 4/259 Wickham Terrace, Spring Hill QLD 4000</div>
+            <div class="centre-phone">+61 1300 222 577</div>
+            <div class="centre-note">Specialist spinal allied health clinic. Lower acuity than the inpatient units but worth contacting for a community-based demonstration.</div>
+          </div>
+          <div class="centre-rating"><strong>4.7</strong><br>★★★★☆</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYDNEY -->
+    <div class="city-block">
+      <div class="city-name">Sydney — New South Wales</div>
+      <div class="centre-cards">
+        <div class="centre-card">
+          <div>
+            <div class="centre-name">Royal Rehab</div>
+            <div class="centre-address">235 Morrison Road, Putney NSW 2112</div>
+            <div class="centre-phone">+61 2 9808 9222</div>
+            <div class="centre-note">The standout Sydney venue. Has a strong spinal inpatient unit and patient reviews that specifically praise the rehabilitation team. Ask for the Allied Health coordinator in the spinal ward.</div>
+          </div>
+          <div class="centre-rating"><strong>4.4</strong><br>★★★★☆</div>
+        </div>
+        <div class="centre-card">
+          <div>
+            <div class="centre-name">Spinal Cord Injuries Australia (SCIA)</div>
+            <div class="centre-address">1 Jennifer Street, Little Bay NSW 2036</div>
+            <div class="centre-phone">+61 1800 819 775</div>
+            <div class="centre-note">National SCI peer support and advocacy body. Useful for connecting with community members rather than inpatients — a different but complementary audience.</div>
+          </div>
+          <div class="centre-rating"><strong>5.0</strong><br>★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MELBOURNE -->
+    <div class="city-block">
+      <div class="city-name">Melbourne — Victoria</div>
+      <div class="centre-cards">
+        <div class="centre-card">
+          <div>
+            <div class="centre-name">The Royal Talbot Rehabilitation Centre</div>
+            <div class="centre-address">1 Yarra Boulevard, Kew VIC 3101</div>
+            <div class="centre-phone">+61 3 9490 7500</div>
+            <div class="centre-note">Victoria's principal spinal rehabilitation centre. Long-stay inpatients make this the right audience for both the harmonica demonstration and the Guided Imagery Programme. Contact the Recreation Therapy or Allied Health team.</div>
+          </div>
+          <div class="centre-rating"><strong>3.4</strong><br>★★★☆☆</div>
+        </div>
+        <div class="centre-card">
+          <div>
+            <div class="centre-name">The Next Step Recovery &amp; Wellness Centre</div>
+            <div class="centre-address">U5/119 Miller Street, Epping VIC 3076</div>
+            <div class="centre-phone">+61 3 9408 4871</div>
+            <div class="centre-note">Exclusively SCI-focused. Rated 4.9 — the most directly aligned venue of the entire tour. The team here will understand the programme immediately without much preamble.</div>
+          </div>
+          <div class="centre-rating"><strong>4.9</strong><br>★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- PART 4: OUTREACH EMAIL                         -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div id="email">
+    <div class="section-label">Part Four</div>
+    <h2 class="section-heading">Outreach email<br><em>template — personalise before sending</em></h2>
+
+    <div class="audience-box">
+      <p>Send to the Allied Health coordinator or Recreation Therapy team at each centre. Personalise the opening with the coordinator's name. The subject line is deliberately plain — it should read as an individual enquiry, not a bulk pitch.</p>
+    </div>
+
+    <div class="email-block">
+      <div class="email-meta">
+        <span class="email-meta-label">To</span>
+        <span class="email-meta-val"><span class="email-placeholder">[Allied Health / Recreation Therapy coordinator name]</span></span>
+        <span class="email-meta-label">From</span>
+        <span class="email-meta-val">jeremy@livingbeyondsci.com</span>
+        <span class="email-meta-label">Subject</span>
+        <span class="email-meta-val">Visit enquiry — hands-free harmonica and guided imagery for people with SCI</span>
+      </div>
+      <div class="email-subject">Visit enquiry — hands-free harmonica and guided imagery for people with SCI</div>
+      <div class="email-body">
+        <p>Hi <span class="email-placeholder">[Name]</span>,</p>
+        <p>I'm writing to introduce Living Beyond SCI (livingbeyondsci.com), a free educational website I've developed for people living with spinal cord injury. The site brings together three areas: quality-of-life research, a hands-free blues harmonica course designed for people with quadriplegia, and a guided imagery programme drawing on motor imagery research.</p>
+        <p>I'm planning a trip through <span class="email-placeholder">[city/cities]</span> and would love the opportunity to visit your facility — either to give a short informal demonstration with patients, or simply to connect with your Allied Health or Recreation Therapy team to explore whether any of this might be useful to the people you work with.</p>
+        <p>The harmonica course uses a standard neck-mounted rack and is specifically designed for people who have limited or no hand function. The guided imagery programme is built around the Basic Rest-Activity Cycle and is freely available online with no cost to participants.</p>
+        <p>I hold a Masters of Social Sciences majoring in Psychology, and the quality-of-life research underpinning the site was conducted at Deakin University under Professor Robert Cummins. Everything on the site is free — there's nothing to sell.</p>
+        <p>I'm flexible on timing and happy to work around whatever suits your team and your patients. If it would help, I'm glad to send through more information about any of the three programmes before we commit to anything.</p>
+        <p>Would you be open to a brief conversation?</p>
+        <p>Warm regards,<br>Jeremy<br>Living Beyond SCI<br>jeremy@livingbeyondsci.com<br>livingbeyondsci.com</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /body-inner -->
+
+<footer>
+  <span class="footer-brand">Living Beyond SCI — Jeremy Olson</span>
+  <span class="footer-copy">Tour document · Not for publication</span>
+</footer>
+
+</body>
+</html>
