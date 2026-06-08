@@ -31,13 +31,34 @@
   footer{background:#1A1810;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:1rem;}
   .footer-brand{font-family:'Lora',serif;font-size:0.9rem;color:#5A5040;text-decoration:none;}.footer-copy{font-size:0.75rem;color:#3A3020;}
   @media(max-width:700px){.article-body{padding:2.5rem 1.5rem;}.hero-inner{padding:0 1.5rem;}}
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8070; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
-  <a href="index.html" class="nav-back">← Back to Home</a>
+    <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research_page.html">Research</a></li>
+    <li><a href="harmonica_page.html">Harmonica</a></li>
+    <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
+    <li><a href="living-research.html">Living Research</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <div class="page-hero">
@@ -251,8 +272,6 @@
     </div>
 
     <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:1.75rem;font-style:italic;">If you've been practising for a few weeks and feel that nothing is changing — or you've stopped and are thinking about coming back — there is a separate page for that. It addresses both moments honestly: <a href="when_nothing_happens.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);font-style:normal;">When Nothing Seems to Be Happening</a>.</p>
-
-    <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:1.25rem;font-style:italic;">If you'd like to track your own experience privately as you practise, there's a <a href="guided_imagery_journal.pdf" download style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);font-style:normal;">downloadable reflection journal</a> — a short PDF you keep yourself, nothing is sent anywhere. And if you'd like to share what you've noticed, there's a <a href="feedback.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);font-style:normal;">feedback page</a>.</p>
   </div>
 
   <div class="return-link-block">
