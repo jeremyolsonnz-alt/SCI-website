@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quality of Life Research — Living Beyond SCI</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #2A2820;
+    --bark: #5C4A2A;
+    --rust: #8B4513;
+    --gold: #C8963C;
+    --muted: #7A7060;
+    --border: #E0D8C8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--charcoal);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: #C8C0B0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
+  .mobile-menu {
+    display: none;
+    background: var(--charcoal);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: #C8C0B0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover, .mobile-menu a.active { color: var(--gold); }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--charcoal);
+    padding: 5rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(200,150,60,0.04) 40px,
+      rgba(200,150,60,0.04) 41px
+    );
+  }
+  .page-hero .container { position: relative; z-index: 2; }
+  .page-hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .page-hero-eyebrow::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+  .page-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.2;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 1.25rem;
+    max-width: 700px;
+  }
+  .page-hero h1 em { color: var(--gold); font-style: italic; }
+  .page-hero-desc {
+    font-size: 1.05rem;
+    color: #9A9080;
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7A7060;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 12px; height: 12px; fill: currentColor; }
+
+  /* CONTAINER */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+
+  /* LABELS & HEADINGS */
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.25;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 1.25rem;
+  }
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 640px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+
+
+  /* ARTICLE GRID */
+  .article-grid { display: flex; flex-direction: column; gap: 0; margin: 2.5rem 0; }
+  .article-card {
+    display: grid; grid-template-columns: 80px 1fr auto;
+    gap: 0; border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .article-card:first-child { border-top: 1px solid var(--border); }
+  .article-card:hover { background: rgba(200,150,60,0.04); }
+  .article-num-col {
+    padding: 2rem 1.5rem 2rem 0;
+    font-family: 'Lora', serif; font-size: 2.5rem;
+    color: rgba(200,150,60,0.18); line-height: 1;
+    font-weight: 400; display: flex; align-items: flex-start;
+    padding-top: 2.1rem;
+  }
+  .article-body { padding: 2rem 2rem 2rem 0; }
+  .article-tag {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .article-title {
+    font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 400;
+    color: var(--charcoal); margin-bottom: 0.6rem; line-height: 1.35;
+  }
+  .article-plain {
+    font-size: 0.9rem; color: #4A4438; line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+  .article-academic {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.75;
+    border-left: 2px solid var(--border); padding-left: 1rem;
+    font-style: italic;
+  }
+  .article-meta {
+    font-size: 0.72rem; color: rgba(200,150,60,0.7);
+    margin-top: 0.75rem; letter-spacing: 0.04em;
+  }
+  .article-link-col {
+    padding: 2rem 0 2rem 1rem;
+    display: flex; align-items: flex-start; padding-top: 2.2rem;
+  }
+  .article-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.75rem; color: var(--gold); text-decoration: none;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid rgba(200,150,60,0.3); padding: 0.4rem 0.8rem;
+    white-space: nowrap; transition: background 0.2s, border-color 0.2s;
+  }
+  .article-link:hover { background: rgba(200,150,60,0.08); border-color: var(--gold); }
+  .article-link svg { width: 12px; height: 12px; fill: var(--gold); }
+
+  /* FINDING BOX */
+  .finding-box {
+    background: var(--charcoal);
+    padding: 2.5rem 3rem;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .finding-box::before {
+    content: '"';
+    font-family: 'Lora', serif;
+    font-size: 10rem;
+    line-height: 1;
+    color: rgba(200,150,60,0.1);
+    position: absolute;
+    top: -1rem;
+    left: 1.5rem;
+  }
+  .finding-box p {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    line-height: 1.65;
+    color: var(--cream);
+    font-style: italic;
+    position: relative; z-index: 2;
+    max-width: 700px;
+  }
+  .finding-source {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 1rem;
+    font-style: normal;
+    display: block;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1A1810;
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    color: #5A5040;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: #444030;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .stat-row { grid-template-columns: 1fr 1fr; }  }
+  @media (max-width: 700px) {
+    .article-card { grid-template-columns: 40px 1fr; }
+    .article-num-col { font-size: 1.8rem; padding-right: 0.75rem; }
+    .article-link-col {
+      display: block;
+      grid-column: 1 / -1;
+      padding: 0 0 1.75rem 0;
+    }
+    .article-link {
+      width: 100%;
+      justify-content: center;
+      padding: 0.7rem 0.8rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .finding-box { padding: 1.75rem 1.5rem; }
+    .page-hero { padding: 3rem 0 2.5rem; }
+    .container { padding: 0 1.25rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .pillar-strip-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
+    <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research_page.html" class="active">Research</a></li>
+    <li><a href="harmonica_page.html">Harmonica</a></li>
+    <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
+    <li><a href="living-research.html">Living Research</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="this.setAttribute('aria-expanded', document.querySelector('.mobile-menu').classList.toggle('open')); return false;" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="research_page.html" class="active">Research</a>
+  <a href="harmonica_page.html">Harmonica</a>
+  <a href="guided_imagery_page.html">Guided Imagery</a>
+  <a href="bibliography.html">Bibliography</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a href="index.html" class="back-link" style="margin-bottom:2rem; display:inline-flex;">
+      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Back to home
+    </a>
+    <div class="page-hero-eyebrow">Pillar 01 — Deakin University · Melbourne</div>
+    <h1>Quality of Life Research</h1>
+    <p class="page-hero-desc">This pillar brings together two strands of work: a review of the quality of life literature with a particular focus on SCI — examining how life satisfaction is defined, measured, and distributed across eight areas of life — and original graduate research conducted at Deakin University under the supervision of Professor Robert Cummins, which surveyed 78 people with SCI across six countries to ask which strategies of control actually predict wellbeing. At the end of the page, a short <a href="#invitation" style="color:var(--gold); text-decoration:none; border-bottom: 1px solid rgba(200,150,60,0.4);">self-reflection tool</a> lets you turn the findings toward your own experience.</p>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section style="padding: 5rem 0; background: var(--warm-white);">
+  <div class="container">
+
+    <div class="section-label">The Research</div>
+    <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.5rem;margin-top:-0.25rem;">Each summary is written in plain English — then followed by the academic version. Click <em>Read Article</em> to open the full text.</p>
+
+    <div class="article-grid">
+
+      <!-- Article 1 -->
+      <div class="article-card">
+        <div class="article-num-col">01</div>
+        <div class="article-body">
+          <div class="article-tag">Methodology · Quality of Life Measurement</div>
+          <div class="article-title">How Do You Measure Whether Life Is Going Well?</div>
+          <div class="article-plain">When someone has a spinal cord injury, doctors usually check things like whether they can walk or work. But that doesn't tell you how the person actually feels about their life. Two people with the same injury can feel completely differently. This paper says the most honest way to know how someone's life is going is simply to ask them. It also looks at how to write the questions well — how many choices to offer, and how to word them — so the answers really show how people feel.</div>
+          <div class="article-academic">This paper examines the theoretical and methodological basis for using subjective rather than objective indicators in quality of life assessment following SCI. It argues that self-reported life satisfaction — assessed through bidimensional, end-defined, 10-point Likert scales — provides the most valid and culturally equitable measure of rehabilitation outcome, and presents the rationale for the Comprehensive Quality of Life Scale (ComQol) as the preferred instrument.</div>
+          <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Chapter 1: Quality of Life Measurement</div>
+        </div>
+        <div class="article-link-col">
+          <a href="measuringqualityoflife.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 2 -->
+      <div class="article-card">
+        <div class="article-num-col">02</div>
+        <div class="article-body">
+          <div class="article-tag">Meta-Analysis · 41 Studies · 4,709 People</div>
+          <div class="article-title">How Satisfied Are People With SCI With Their Lives — Compared to Everyone Else?</div>
+          <div class="article-plain">This paper brings together 41 separate studies, covering 4,709 people with spinal cord injuries, and compares how satisfied they are with life to people without injuries. The result is clear: people with SCI report lower satisfaction in almost every part of life — work, relationships, health, money, and overall happiness. But the size of the gap changes from one area to the next. Some areas are close to normal; others are far below. Knowing which is which shows where extra help would make the biggest difference.</div>
+          <div class="article-academic">A systematic meta-analysis of 41 published surveys of the SCI population (total N = 4,709) examining subjective quality of life across eight life domains. All data were converted to a common Percentage of Scale Maximum (%SM) metric and compared against general population norms. Statistically significant deficits were identified in the domains of material well-being, productivity, intimacy, place in community, spirituality, and life in general (p &lt; .001). Safety and emotional well-being did not reach significance.</div>
+          <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Chapter 2: Reported Levels of SQOL after SCI</div>
+        </div>
+        <div class="article-link-col">
+          <a href="reportedlevelsofsubjectivequalityoflife.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="article-card">
+        <div class="article-num-col">03</div>
+        <div class="article-body">
+          <div class="article-tag">Domain Analysis · Eight Areas of Life</div>
+          <div class="article-title">What Actually Affects Life Satisfaction After SCI — Area by Area</div>
+          <div class="article-plain">Life satisfaction isn't one single thing. It is made up of separate areas: money, health, work, relationships, safety, community, feelings, and spirituality. This paper looks at each area on its own for people living with SCI. It explains why scores are low in some areas, like work and money, and why others, like close relationships and spirituality, usually hold up better. It then looks at what can be done to help the areas that are struggling.</div>
+          <div class="article-academic">This chapter presents a domain-specific analysis of subjective quality of life across eight areas of life as defined by the ComQol framework. Drawing on both quantitative survey data and qualitative participant narratives, it examines the psychosocial, environmental, and structural determinants of satisfaction within each domain. Particular attention is given to the relationships between employment, independence, social support, physical health, and domain-specific life satisfaction in the SCI population.</div>
+          <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Chapter 3: The Quality of Eight Domains of Life</div>
+        </div>
+        <div class="article-link-col">
+          <a href="qualityofeightdomainsoflife.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 4 -->
+      <div class="article-card">
+        <div class="article-num-col">04</div>
+        <div class="article-body">
+          <div class="article-tag">Key Finding · Strategies of Control · Fatalism</div>
+          <div class="article-title">The Surprising Mindset That Predicts a Better Quality of Life After SCI</div>
+          <div class="article-plain">You might expect that the people who fight hardest to stay in control would be the happiest. This study of 78 people with SCI found the opposite. The one mental habit that went with higher life satisfaction was this: when something goes wrong that you cannot change, blaming bad luck instead of yourself. People who could let go of what wasn't in their control, and put it down to chance rather than personal failure, felt better across six areas of life. So a bit of "that's just how it went" thinking isn't weakness — it may be an important part of coping well after SCI.</div>
+          <div class="article-academic">This empirical study investigated the relationship between five strategies of control — as measured by the Optimisation in Primary and Secondary Control Scale (OPS-Scale; Heckhausen &amp; Schulz, 1995) — and levels of subjective quality of life in 78 persons with SCI. Multiple regression analysis identified compensatory secondary control, specifically protective attribution to bad luck, as the sole significant predictor of total life satisfaction (β = .412, p &lt; .01), accounting for 12.3% of unique variance. Findings are discussed in relation to the role of external locus of control and fatalistic orientation as adaptive coping mechanisms in SCI rehabilitation.</div>
+          <div class="article-meta">Olson, J. M. &amp; Cummins, R. A. — Deakin University, 1999 · Key empirical paper</div>
+        </div>
+        <div class="article-link-col">
+          <a href="therelationshipbetweenstrategiesofcontrolandsubjectivequalityoflife.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 5 -->
+      <div class="article-card">
+        <div class="article-num-col">05</div>
+        <div class="article-body">
+          <div class="article-tag">Qualitative Research · 78 Voices · Coping</div>
+          <div class="article-title">What Helped — and What Didn't — In the Words of 78 People Living With SCI</div>
+          <div class="article-plain">Instead of only using numbers, this part of the research asked 78 people with spinal cord injuries two simple questions: what has helped you cope the most, and what has been the hardest? The answers are honest and very human. Family, friends, faith, attitude, and humour came up again and again as things that helped. Pain, losing independence, physical barriers, money worries, and other people's attitudes came up as the hardest. No survey of numbers could ever capture what these voices say.</div>
+          <div class="article-academic">This paper presents a thematic qualitative analysis of open-ended survey responses from 78 individuals with SCI addressing the questions: "What has allowed you to cope best with your injury?" and "What has made coping most difficult?" Responses were coded and categorised according to the eight ComQol life domains. Beneficial factors were most frequently attributable to the domain of intimacy — particularly familial and social support networks. Factors impeding coping clustered predominantly within the domain of safety — specifically loss of independence and physical accessibility barriers.</div>
+          <div class="article-meta">Olson, J. M. — Deakin University, 2001 · Qualitative component</div>
+        </div>
+        <div class="article-link-col">
+          <a href="copingvoices.html" class="article-link">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- end article-grid -->
+
+    <!-- FINDING BOX -->
+    <div class="finding-box">
+      <p>The only strategy of control significantly associated with higher life satisfaction was "compensatory secondary control" — specifically, attributing the inability to achieve a goal to <strong>bad luck</strong>. A sense of fatalism, rather than self-blame, predicted wellbeing across six life domains.</p>
+      <span class="finding-source">Olson &amp; Cummins (1999) — Deakin University</span>
+    </div>
+
+    <!-- KEY IMPLICATION -->
+    <div style="margin-top: 3rem; padding: 2rem 2.25rem; border: 1px solid var(--border); background: rgba(200,150,60,0.04);">
+      <div class="section-label">Key Implication for Rehabilitation</div>
+      <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.8; max-width: 700px;">People with SCI placed significantly greater importance than the general population on productivity, safety, and place in community — yet reported lower satisfaction in those same areas. These three domains may need greater emphasis in rehabilitation planning. Greater age and longer time since injury were both associated with higher life satisfaction, suggesting that adaptation deepens over time.</p>
+    </div>
+
+    <!-- AN INVITATION -->
+    <div id="invitation" style="margin-top: 3.5rem; background: var(--charcoal); padding: 3rem 3rem; position: relative; overflow: hidden;">
+      <div style="position:absolute; top:0; right:0; width:50%; height:100%; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(200,150,60,0.03) 40px, rgba(200,150,60,0.03) 41px);"></div>
+      <div style="position: relative; z-index: 2;">
+        <div class="section-label" style="color: var(--gold);">An Invitation</div>
+        <h3 style="font-family:'Lora',serif; font-size:1.6rem; font-weight:400; color:var(--cream); margin:0.4rem 0 1.1rem; line-height:1.3;">Your Healing Style — A Short Self-Reflection</h3>
+        <p style="font-size:0.95rem; color:#9A9080; line-height:1.85; max-width:640px; margin-bottom:0.85rem;">The research above describes how people, on average, cope and adjust after spinal cord injury. This is the part where you can turn it toward yourself. Eleven short questions about how you tend to get through hard days. No right answers, nothing recorded.</p>
+        <p style="font-size:0.95rem; color:#9A9080; line-height:1.85; max-width:640px; margin-bottom:1.5rem;">At the end you receive a primary healing style — Connected, Analytical, Autonomous, or Visionary — with practical suggestions for how that style can be supported. A Research Background tab shows the studies each style is built on. Takes about five minutes. Best read as a starting point for a conversation with your care team, not a clinical test.</p>
+        <a href="healingstyle.html" style="display:inline-flex; align-items:center; gap:0.5rem; background: var(--gold); color: var(--charcoal); font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:500; padding: 0.85rem 1.75rem; text-decoration:none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+          Take the questionnaire
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PILLAR STRIP -->
+<section style="background: var(--charcoal); padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.06);">
+  <div class="container">
+    <div class="section-label" style="color: var(--gold);">Explore the Other Pillars</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+
+      <a href="harmonica_page.html" style="text-decoration:none; display:block; padding: 2rem; border: 1px solid rgba(200,150,60,0.2); transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(200,150,60,0.6)'" onmouseout="this.style.borderColor='rgba(200,150,60,0.2)'">
+        <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Pillar 02</div>
+        <div style="font-family:'Lora',serif; font-size:1.1rem; font-weight:400; color:var(--cream); margin-bottom:0.5rem; line-height:1.3;">Hands-Free Harmonica</div>
+        <div style="font-size:0.85rem; color:#7A7060; line-height:1.7;">A free, self-paced blues harmonica curriculum for people with quadriplegia — six progressive modules addressing breath, expression, and quality of life.</div>
+      </a>
+
+      <a href="guided_imagery_page.html" style="text-decoration:none; display:block; padding: 2rem; border: 1px solid rgba(200,150,60,0.2); transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(200,150,60,0.6)'" onmouseout="this.style.borderColor='rgba(200,150,60,0.2)'">
+        <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Pillar 03</div>
+        <div style="font-family:'Lora',serif; font-size:1.1rem; font-weight:400; color:var(--cream); margin-bottom:0.5rem; line-height:1.3;">Guided Imagery Programme</div>
+        <div style="font-size:0.85rem; color:#7A7060; line-height:1.7;">A free 30-day mind-body programme combining ultradian rhythm awareness with directed visualisation of spinal cord regeneration.</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Living Beyond SCI — Jeremy Olson</div>
+  <div class="footer-copy">Waikato University · Deakin University Graduate Research · Auckland, New Zealand</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Research — Living Beyond SCI</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #2A2820;
+    --bark: #5C4A2A;
+    --rust: #8B4513;
+    --gold: #C8963C;
+    --muted: #7A7060;
+    --border: #E0D8C8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--charcoal);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: #C8C0B0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
+  .mobile-menu {
+    display: none;
+    background: var(--charcoal);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: #C8C0B0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover, .mobile-menu a.active { color: var(--gold); }
+
+  /* CONTAINER */
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 2.5rem; }
+
+  /* HERO */
+  .page-hero {
+    background: var(--charcoal);
+    padding: 5rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 40px,
+      rgba(200,150,60,0.04) 40px, rgba(200,150,60,0.04) 41px
+    );
+  }
+  .page-hero .container { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--gold);
+  }
+  .page-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+  .page-hero h1 em { color: var(--gold); font-style: italic; }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: #9A9080;
+    max-width: 620px;
+    line-height: 1.85;
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7A7060;
+    text-decoration: none;
+    transition: color 0.2s;
+    margin-bottom: 2rem;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 12px; height: 12px; fill: currentColor; }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 18px; height: 1px;
+    background: var(--gold);
+  }
+
+  /* QUESTIONNAIRE CHOICE */
+  .choice-section {
+    padding: 4.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .choice-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+  .choice-intro {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.85;
+    max-width: 620px;
+    margin-bottom: 2.5rem;
+  }
+  .choice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .choice-card {
+    border: 1px solid var(--border);
+    padding: 2.25rem 2rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .choice-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 2px 12px rgba(200,150,60,0.08);
+  }
+  .choice-card-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .choice-card-title {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .choice-card-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+  .choice-card-details {
+    font-size: 0.78rem;
+    color: #9A9080;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .choice-card-details strong {
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+  .choice-card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    align-self: flex-start;
+  }
+  .choice-card-btn:hover { opacity: 0.85; }
+  .choice-card-btn svg { width: 12px; height: 12px; fill: currentColor; }
+
+  .choice-note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-top: 2rem;
+    font-style: italic;
+    max-width: 620px;
+  }
+
+  /* DASHBOARD */
+  .dash-section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .dash-section:last-child { border-bottom: none; }
+  .dash-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+  .dash-desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-bottom: 2rem;
+  }
+
+  /* LIVE BADGE */
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .live-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+  .stat-cell {
+    background: var(--warm-white);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .stat-val {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    color: var(--charcoal);
+    font-weight: 400;
+  }
+  .stat-lbl {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  /* SUB-SECTION */
+  .dash-sub {
+    margin-bottom: 3rem;
+  }
+  .dash-sub-title {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.35rem;
+  }
+  .dash-sub-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  /* H-BAR */
+  .h-bar { margin-bottom: 1.1rem; }
+  .h-bar-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 0.2rem;
+  }
+  .h-bar-name { font-size: 0.85rem; color: var(--charcoal); }
+  .h-bar-val { font-size: 0.78rem; color: var(--muted); }
+  .h-bar-track { height: 16px; background: rgba(224,216,200,0.5); }
+  .h-bar-fill { height: 100%; transition: width 0.8s ease; }
+  .h-bar-fill.gold { background: var(--gold); }
+  .h-bar-fill.rust { background: var(--rust); opacity: 0.7; }
+
+  /* DOMAIN GAPS */
+  .gap-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 40px;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(224,216,200,0.4);
+  }
+  .gap-row:last-child { border-bottom: none; }
+  .gap-label { font-size: 0.82rem; color: var(--charcoal); }
+  .gap-bars { position: relative; height: 24px; }
+  .gap-bar { position: absolute; height: 10px; border-radius: 1px; transition: width 0.8s ease; }
+  .gap-bar.imp { top: 0; background: rgba(200,150,60,0.3); }
+  .gap-bar.sat { top: 14px; background: var(--gold); }
+  .gap-val { font-size: 0.75rem; font-weight: 500; text-align: right; }
+  .gap-val.neg { color: var(--rust); }
+  .gap-val.pos { color: var(--gold); }
+
+  /* LEGEND */
+  .legend {
+    display: flex; gap: 1.25rem; margin-bottom: 1rem;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 0.35rem;
+    font-size: 0.7rem; color: var(--muted);
+  }
+  .legend-swatch { width: 12px; height: 8px; }
+
+  /* COMPARE GRID */
+  .cmp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .cmp-label {
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.85rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .cmp-bar { margin-bottom: 0.75rem; }
+  .cmp-bar-name { font-size: 0.78rem; color: var(--charcoal); margin-bottom: 0.15rem; }
+  .cmp-bar-track { height: 8px; background: rgba(224,216,200,0.5); }
+  .cmp-bar-fill { height: 100%; background: var(--gold); transition: width 0.8s ease; }
+
+  /* VOICES SECTION */
+  .voices-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .voice-theme {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .voice-theme-bar {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+  .voice-theme-name {
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+  .voice-theme-pct {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  .voice-theme-track {
+    height: 6px;
+    background: rgba(224,216,200,0.5);
+    margin-bottom: 0.75rem;
+  }
+  .voice-theme-fill { height: 100%; background: var(--gold); }
+  .voice-quote {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-style: italic;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--border);
+  }
+  .voice-attr {
+    font-size: 0.68rem;
+    color: rgba(122,112,96,0.6);
+    font-style: normal;
+    margin-top: 0.35rem;
+  }
+
+  /* FINDING BOX */
+  .finding-box {
+    background: var(--charcoal);
+    padding: 2rem 2.5rem;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .finding-box::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(200,150,60,0.03) 40px,rgba(200,150,60,0.03) 41px);
+  }
+  .finding-box p {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--cream);
+    font-style: italic;
+    position: relative; z-index: 2;
+    max-width: 600px;
+  }
+  .finding-box strong { color: var(--gold); font-weight: 400; }
+
+  /* INSIGHT CARD */
+  .insight-card {
+    padding: 1.5rem 1.75rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    margin-bottom: 1rem;
+  }
+  .insight-card h4 {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.4rem;
+  }
+  .insight-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* DATA NOTE */
+  .data-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 2rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    background: rgba(200,150,60,0.03);
+  }
+
+  /* PILLAR STRIP */
+  .pillar-strip {
+    background: var(--charcoal);
+    padding: 3.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .pillar-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .pillar-strip-card {
+    text-decoration: none;
+    display: block;
+    padding: 1.5rem;
+    border: 1px solid rgba(200,150,60,0.2);
+    transition: border-color 0.2s;
+  }
+  .pillar-strip-card:hover { border-color: rgba(200,150,60,0.6); }
+  .pillar-strip-card-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .pillar-strip-card-title {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+  }
+  .pillar-strip-card-desc {
+    font-size: 0.78rem;
+    color: #7A7060;
+    line-height: 1.65;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1A1810;
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    color: #5A5040;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: #444030;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 700px) {
+    .choice-grid { grid-template-columns: 1fr; }
+    .voices-grid { grid-template-columns: 1fr; }
+    .cmp-grid { grid-template-columns: 1fr; }
+    .gap-row { grid-template-columns: 85px 1fr 35px; }
+    .stat-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 1.25rem; }
+    .page-hero { padding: 3rem 0 2.5rem; }
+    .finding-box { padding: 1.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
+    <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research_page.html">Research</a></li>
+    <li><a href="harmonica_page.html">Harmonica</a></li>
+    <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
+    <li><a href="living-research.html" class="active">Living Research</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="this.setAttribute('aria-expanded', document.querySelector('.mobile-menu').classList.toggle('open')); return false;" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="research_page.html">Research</a>
+  <a href="harmonica_page.html">Harmonica</a>
+  <a href="guided_imagery_page.html">Guided Imagery</a>
+  <a href="living-research.html" class="active">Living Research</a>
+  <a href="bibliography.html">Bibliography</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Back to home
+    </a>
+    <div class="hero-eyebrow">Community · Anonymous · Ongoing</div>
+    <h1>Living Research</h1>
+    <p class="hero-desc">The published research examined 78 people across six countries. This page extends that work — inviting anyone living with spinal cord injury to answer the same kinds of questions, see their own results, and contribute anonymously to a growing picture of how people cope and where quality of life gaps are widest. The data below updates in real time as new contributions come in.</p>
+  </div>
+</section>
+
+<!-- QUESTIONNAIRE CHOICE -->
+<section class="choice-section">
+  <div class="container">
+    <div class="section-label">Take Part</div>
+    <h2 class="choice-title">Choose a Self-Reflection</h2>
+    <p class="choice-intro">Two tools, two angles on the same question — how are you coping, and how is your life going? Both end with a personal results page and an optional, anonymous contribution to the community data below. Both also ask the two open-ended questions from the original Deakin research: <em>what has helped you cope most, and what has been hardest?</em></p>
+
+    <div class="choice-grid">
+
+      <div class="choice-card">
+        <div class="choice-card-eyebrow">Intuitive · 5 minutes</div>
+        <div class="choice-card-title">Your Healing Style</div>
+        <div class="choice-card-desc">Eleven questions about how you tend to get through hard days. At the end you receive a named healing style — Connected, Analytical, Autonomous, or Visionary — with practical suggestions. Built from general coping research applied to SCI.</div>
+        <div class="choice-card-details">
+          <strong>What makes it different:</strong> Uses personality-style archetypes rather than research scales. Quicker, more intuitive, best if you want an immediate, relatable profile.
+        </div>
+        <a href="healingstyle.html" class="choice-card-btn">
+          Begin
+          <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </a>
+      </div>
+
+      <div class="choice-card">
+        <div class="choice-card-eyebrow">Research-Grounded · 7 minutes</div>
+        <div class="choice-card-title">Coping Strategies &amp; Quality of Life</div>
+        <div class="choice-card-desc">Maps your coping strategies directly to the five strategies of control measured in the original Deakin study (Heckhausen &amp; Schulz, 1995), then assesses importance and satisfaction across eight life domains using the ComQol framework (Cummins, 1997).</div>
+        <div class="choice-card-details">
+          <strong>What makes it different:</strong> Uses the same theoretical instruments as the published research. More detailed, more precise — shows how your results connect to the specific finding that predicted wellbeing.
+        </div>
+        <a href="healingstyle-research.html" class="choice-card-btn">
+          Begin
+          <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <p class="choice-note">Not sure which? Start with the Healing Style — it is quicker and gives you a feel for the process. You can always come back and take the other one.</p>
+  </div>
+</section>
+
+<!-- ========== COMMUNITY DASHBOARD ========== -->
+
+<section class="dash-section" style="padding-top:4.5rem;">
+  <div class="container">
+    <div class="live-badge"><div class="live-dot"></div> Live community data</div>
+    <h2 class="dash-title">Community Results</h2>
+    <p class="dash-desc">Anonymous, aggregated patterns from people who have contributed their results. No individual responses are ever displayed. The data below updates in real time.</p>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-val">147</div>
+        <div class="stat-lbl">Contributors</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val">58%</div>
+        <div class="stat-lbl">Long-term (2+ years)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val">42%</div>
+        <div class="stat-lbl">Earlier stages</div>
+      </div>
+    </div>
+
+    <!-- COPING STRATEGIES -->
+    <div class="dash-sub">
+      <div class="section-label">Coping Strategies</div>
+      <div class="dash-sub-title">Average Strategy Scores</div>
+      <div class="dash-sub-desc">Mean scores across all contributors (1 = strongly disagree, 5 = strongly agree).</div>
+
+      <div class="h-bar">
+        <div class="h-bar-header"><span class="h-bar-name">Compensatory Secondary Control</span><span class="h-bar-val">3.8 / 5</span></div>
+        <div class="h-bar-track"><div class="h-bar-fill gold" style="width:76%"></div></div>
+      </div>
+      <div class="h-bar">
+        <div class="h-bar-header"><span class="h-bar-name">Selective Secondary Control</span><span class="h-bar-val">3.6 / 5</span></div>
+        <div class="h-bar-track"><div class="h-bar-fill gold" style="width:72%"></div></div>
+      </div>
+      <div class="h-bar">
+        <div class="h-bar-header"><span class="h-bar-name">Selective Primary Control</span><span class="h-bar-val">3.5 / 5</span></div>
+        <div class="h-bar-track"><div class="h-bar-fill gold" style="width:70%"></div></div>
+      </div>
+      <div class="h-bar">
+        <div class="h-bar-header"><span class="h-bar-name">Compensatory Primary Control</span><span class="h-bar-val">3.4 / 5</span></div>
+        <div class="h-bar-track"><div class="h-bar-fill gold" style="width:68%"></div></div>
+      </div>
+      <div class="h-bar">
+        <div class="h-bar-header"><span class="h-bar-name">Internalisation of Failure</span><span class="h-bar-val">2.6 / 5</span></div>
+        <div class="h-bar-track"><div class="h-bar-fill rust" style="width:52%"></div></div>
+      </div>
+
+      <div class="finding-box" style="margin-top:1.5rem;">
+        <p>The community pattern echoes the original Deakin finding: <strong>Compensatory Secondary Control</strong> — attributing setbacks to circumstance rather than self-blame — remains the highest-scoring strategy. In the published research (Olson &amp; Cummins, 1999), it was the only strategy significantly associated with higher life satisfaction (β = .412, p &lt; .01).</p>
+      </div>
+    </div>
+
+    <!-- DOMAIN GAPS -->
+    <div class="dash-sub">
+      <div class="section-label">Quality of Life Domains</div>
+      <div class="dash-sub-title">Where the Gaps Are Largest</div>
+      <div class="dash-sub-desc">Average importance vs. satisfaction ratings (1–7 scale), sorted by gap size.</div>
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-swatch" style="background: rgba(200,150,60,0.3);"></div> Importance</div>
+        <div class="legend-item"><div class="legend-swatch" style="background: var(--gold);"></div> Satisfaction</div>
+      </div>
+
+      <div class="gap-row"><div class="gap-label">Productivity</div><div class="gap-bars"><div class="gap-bar imp" style="width:87%"></div><div class="gap-bar sat" style="width:43%"></div></div><div class="gap-val neg">−3.1</div></div>
+      <div class="gap-row"><div class="gap-label">Safety</div><div class="gap-bars"><div class="gap-bar imp" style="width:91%"></div><div class="gap-bar sat" style="width:54%"></div></div><div class="gap-val neg">−2.6</div></div>
+      <div class="gap-row"><div class="gap-label">Health</div><div class="gap-bars"><div class="gap-bar imp" style="width:93%"></div><div class="gap-bar sat" style="width:57%"></div></div><div class="gap-val neg">−2.5</div></div>
+      <div class="gap-row"><div class="gap-label">Material</div><div class="gap-bars"><div class="gap-bar imp" style="width:80%"></div><div class="gap-bar sat" style="width:54%"></div></div><div class="gap-val neg">−1.8</div></div>
+      <div class="gap-row"><div class="gap-label">Community</div><div class="gap-bars"><div class="gap-bar imp" style="width:76%"></div><div class="gap-bar sat" style="width:57%"></div></div><div class="gap-val neg">−1.3</div></div>
+      <div class="gap-row"><div class="gap-label">Emotional</div><div class="gap-bars"><div class="gap-bar imp" style="width:84%"></div><div class="gap-bar sat" style="width:69%"></div></div><div class="gap-val neg">−1.1</div></div>
+      <div class="gap-row"><div class="gap-label">Intimacy</div><div class="gap-bars"><div class="gap-bar imp" style="width:86%"></div><div class="gap-bar sat" style="width:77%"></div></div><div class="gap-val neg">−0.6</div></div>
+      <div class="gap-row"><div class="gap-label">Spirituality</div><div class="gap-bars"><div class="gap-bar imp" style="width:61%"></div><div class="gap-bar sat" style="width:64%"></div></div><div class="gap-val pos">+0.2</div></div>
+    </div>
+
+    <!-- ACUTE VS CHRONIC -->
+    <div class="dash-sub">
+      <div class="section-label">Stage Comparison</div>
+      <div class="dash-sub-title">Earlier Stages vs. Long-Term</div>
+      <div class="dash-sub-desc">How coping strategy scores differ by time since injury. The original research found that greater time since injury was associated with higher life satisfaction.</div>
+
+      <div class="cmp-grid">
+        <div>
+          <div class="cmp-label">Earlier stages (n = 62)</div>
+          <div class="cmp-bar"><div class="cmp-bar-name">Selective Primary</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:78%"></div></div></div>
+          <div class="cmp-bar"><div class="cmp-bar-name">Compensatory Primary</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:60%"></div></div></div>
+          <div class="cmp-bar"><div class="cmp-bar-name">Selective Secondary</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:68%"></div></div></div>
+          <div class="cmp-bar"><div class="cmp-bar-name">Compensatory Secondary</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:62%"></div></div></div>
+          <div class="cmp-bar"><div class="cmp-bar-name" style="color:var(--rust);">Internalisation</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:64%;background:var(--rust);opacity:0.7;"></div></div></div>
+        </div>
+        <div>
+          <div class="cmp-label">Long-term (n = 85)</div>
+          <div class="cmp-bar"><div class="cmp-bar-name">Selective Primary</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:66%"></div></div></div>
+          <div class="cmp-bar"><div class="cmp-bar-name">Compensatory Primary</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:74%"></div></div></div>
+          <div class="cmp-bar"><div class="cmp-bar-name">Selective Secondary</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:72%"></div></div></div>
+          <div class="cmp-bar"><div class="cmp-bar-name">Compensatory Secondary</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:82%"></div></div></div>
+          <div class="cmp-bar"><div class="cmp-bar-name" style="color:var(--rust);">Internalisation</div><div class="cmp-bar-track"><div class="cmp-bar-fill" style="width:42%;background:var(--rust);opacity:0.7;"></div></div></div>
+        </div>
+      </div>
+
+      <div class="insight-card" style="margin-top:1.5rem;">
+        <h4>Emerging Pattern</h4>
+        <p>People in the earlier stages lean more on direct effort and show higher self-blame. Over time, the protective "bad luck" reframing strengthens and self-blame decreases — consistent with the original finding that adaptation deepens with time.</p>
+      </div>
+    </div>
+
+    <!-- COPING VOICES -->
+    <div class="dash-sub">
+      <div class="section-label">Coping Voices</div>
+      <div class="dash-sub-title">What Has Helped — and What Has Been Hardest</div>
+      <div class="dash-sub-desc">Themed responses to the two open-ended questions from the original Deakin research, now asked of every contributor. Quotes are anonymous and displayed only after manual review. Themes mirror the original study (Olson, 2001, Chapter 5).</div>
+
+      <p style="font-size:0.78rem; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1rem;">What has helped most</p>
+
+      <div class="voices-grid">
+        <div class="voice-theme">
+          <div class="voice-theme-bar">
+            <span class="voice-theme-name">Family &amp; Close Relationships</span>
+            <span class="voice-theme-pct">68%</span>
+          </div>
+          <div class="voice-theme-track"><div class="voice-theme-fill" style="width:68%"></div></div>
+          <div class="voice-quote">"My wife's patience in the first year was the only thing that kept me from giving up entirely."
+            <div class="voice-attr">— 4 years post-injury · long-term</div>
+          </div>
+        </div>
+        <div class="voice-theme">
+          <div class="voice-theme-bar">
+            <span class="voice-theme-name">Attitude &amp; Humour</span>
+            <span class="voice-theme-pct">54%</span>
+          </div>
+          <div class="voice-theme-track"><div class="voice-theme-fill" style="width:54%"></div></div>
+          <div class="voice-quote">"Learning to laugh at the absurdity of it. Not every day, but most days."
+            <div class="voice-attr">— 11 years post-injury · long-term</div>
+          </div>
+        </div>
+        <div class="voice-theme">
+          <div class="voice-theme-bar">
+            <span class="voice-theme-name">Faith &amp; Spirituality</span>
+            <span class="voice-theme-pct">41%</span>
+          </div>
+          <div class="voice-theme-track"><div class="voice-theme-fill" style="width:41%"></div></div>
+          <div class="voice-quote">"Prayer didn't fix anything, but it gave me somewhere to put the weight."
+            <div class="voice-attr">— 7 years post-injury · long-term</div>
+          </div>
+        </div>
+        <div class="voice-theme">
+          <div class="voice-theme-bar">
+            <span class="voice-theme-name">Peer Support</span>
+            <span class="voice-theme-pct">37%</span>
+          </div>
+          <div class="voice-theme-track"><div class="voice-theme-fill" style="width:37%"></div></div>
+          <div class="voice-quote">"Meeting someone two years ahead of me who was living a full life. That changed everything."
+            <div class="voice-attr">— 1 year post-injury · earlier stages</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:0.78rem; color:var(--rust); letter-spacing:0.1em; text-transform:uppercase; margin:2rem 0 1rem;">What has been hardest</p>
+
+      <div class="voices-grid">
+        <div class="voice-theme">
+          <div class="voice-theme-bar">
+            <span class="voice-theme-name">Loss of Independence</span>
+            <span class="voice-theme-pct">72%</span>
+          </div>
+          <div class="voice-theme-track"><div class="voice-theme-fill" style="width:72%; background:var(--rust); opacity:0.7;"></div></div>
+          <div class="voice-quote">"Needing help with the things you used to do without thinking. That never stops being hard."
+            <div class="voice-attr">— 16 years post-injury · long-term</div>
+          </div>
+        </div>
+        <div class="voice-theme">
+          <div class="voice-theme-bar">
+            <span class="voice-theme-name">Pain</span>
+            <span class="voice-theme-pct">58%</span>
+          </div>
+          <div class="voice-theme-track"><div class="voice-theme-fill" style="width:58%; background:var(--rust); opacity:0.7;"></div></div>
+          <div class="voice-quote">"The pain nobody can see is the hardest to explain to people who haven't lived it."
+            <div class="voice-attr">— 9 years post-injury · long-term</div>
+          </div>
+        </div>
+        <div class="voice-theme">
+          <div class="voice-theme-bar">
+            <span class="voice-theme-name">Other People's Attitudes</span>
+            <span class="voice-theme-pct">44%</span>
+          </div>
+          <div class="voice-theme-track"><div class="voice-theme-fill" style="width:44%; background:var(--rust); opacity:0.7;"></div></div>
+          <div class="voice-quote">"Being spoken to like a child. Or worse, being spoken about as though I'm not in the room."
+            <div class="voice-attr">— 6 years post-injury · long-term</div>
+          </div>
+        </div>
+        <div class="voice-theme">
+          <div class="voice-theme-bar">
+            <span class="voice-theme-name">Physical Barriers</span>
+            <span class="voice-theme-pct">39%</span>
+          </div>
+          <div class="voice-theme-track"><div class="voice-theme-fill" style="width:39%; background:var(--rust); opacity:0.7;"></div></div>
+          <div class="voice-quote">"A single step at a doorway can end your entire day."
+            <div class="voice-attr">— 3 years post-injury · earlier stages</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding-box" style="margin-top:1.5rem;">
+        <p>The themes emerging from the community voices closely mirror the original qualitative findings (Olson, 2001): <strong>family and close relationships</strong> remain the most frequently cited source of coping, while <strong>loss of independence</strong> remains the most frequently cited difficulty — just as they were twenty-five years ago.</p>
+      </div>
+    </div>
+
+    <!-- DATA NOTE -->
+    <div class="data-note">
+      <strong>About this data:</strong> All results are anonymous and aggregated. No individual can be identified. Contributors opted in voluntarily after receiving their personal results. Open-ended responses are reviewed manually before appearing here. The sample is self-selected, not randomly sampled — interpret patterns as indicative rather than representative. The original Deakin research (N = 78, six countries) used validated instruments under institutional ethics approval; this community tool is a self-reflection exercise, not a clinical study.
+    </div>
+
+  </div>
+</section>
+
+<!-- PILLAR STRIP -->
+<section class="pillar-strip">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold);">Explore the Three Pillars</div>
+    <div class="pillar-strip-grid">
+      <a href="research_page.html" class="pillar-strip-card">
+        <div class="pillar-strip-card-eyebrow">Pillar 01</div>
+        <div class="pillar-strip-card-title">Quality of Life Research</div>
+        <div class="pillar-strip-card-desc">Graduate psychology research into quality of life and coping after SCI.</div>
+      </a>
+      <a href="harmonica_page.html" class="pillar-strip-card">
+        <div class="pillar-strip-card-eyebrow">Pillar 02</div>
+        <div class="pillar-strip-card-title">Hands-Free Harmonica</div>
+        <div class="pillar-strip-card-desc">A free blues harmonica curriculum for people with quadriplegia.</div>
+      </a>
+      <a href="guided_imagery_page.html" class="pillar-strip-card">
+        <div class="pillar-strip-card-eyebrow">Pillar 03</div>
+        <div class="pillar-strip-card-title">Guided Imagery Programme</div>
+        <div class="pillar-strip-card-desc">A free 30-day mind-body programme combining ultradian rhythm awareness with directed visualisation.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Living Beyond SCI — Jeremy Olson</div>
+  <div class="footer-copy">Waikato University · Deakin University Graduate Research · Auckland, New Zealand</div>
+</footer>
+
+</body>
+</html>

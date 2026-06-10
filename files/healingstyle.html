@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Healing Style — A Self-Reflection Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #2A2820;
+    --bark: #5C4A2A;
+    --rust: #8B4513;
+    --gold: #C8963C;
+    --muted: #7A7060;
+    --border: #E0D8C8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--charcoal);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand { font-family: 'Lora', serif; font-size: 1.1rem; color: var(--cream); text-decoration: none; letter-spacing: 0.03em; }
+  .nav-brand span { color: var(--gold); }
+  .nav-back { font-size: 0.8rem; color: #7A7060; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-back:hover { color: var(--gold); }
+
+  /* HERO */
+  .page-hero {
+    background: var(--charcoal);
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid rgba(200, 150, 60, 0.2);
+  }
+  .hero-inner { max-width: 760px; margin: 0 auto; padding: 0 2.5rem; }
+  .breadcrumb {
+    font-size: 0.72rem; color: #5A5040; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .breadcrumb a { color: #5A5040; text-decoration: none; transition: color 0.2s; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+  .hero-h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.2; color: var(--cream);
+    font-weight: 400; margin-bottom: 1rem;
+  }
+  .hero-standfirst {
+    font-size: 1.05rem; color: #8A8070; line-height: 1.8;
+    max-width: 600px; margin-bottom: 1.5rem;
+  }
+
+  /* TABS */
+  .tab-row {
+    display: flex; gap: 0.6rem; margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: transparent;
+    color: #A89E8C;
+    border: 1px solid rgba(200, 150, 60, 0.3);
+    padding: 0.5rem 1.1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .tab-btn:hover { color: var(--cream); border-color: var(--gold); }
+  .tab-btn.active { background: rgba(200, 150, 60, 0.15); color: var(--gold); border-color: var(--gold); }
+
+  /* BODY */
+  .body-inner { max-width: 760px; margin: 0 auto; padding: 4rem 2.5rem; }
+
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.85rem;
+  }
+
+  .prose { font-size: 1rem; color: #4A4438; line-height: 1.9; margin-bottom: 1.25rem; }
+  .prose em { color: var(--bark); }
+  .opening-pull {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--bark);
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.75rem;
+    background: rgba(200, 150, 60, 0.05);
+    margin: 0 0 2rem;
+  }
+
+  /* TAGS / META PILLS */
+  .meta-pills {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .meta-pill {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: #5A5040;
+    background: rgba(200, 150, 60, 0.08);
+    border: 1px solid rgba(200, 150, 60, 0.2);
+    padding: 0.4rem 0.85rem;
+  }
+
+  .italic-note {
+    font-size: 0.92rem; color: var(--muted);
+    line-height: 1.85; font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  /* VOICE QUESTIONS */
+  .voice-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--charcoal);
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    resize: vertical;
+    transition: border-color 0.2s;
+    margin-bottom: 0.25rem;
+  }
+  .voice-textarea:focus { outline: none; border-color: var(--gold); }
+  .voice-textarea::placeholder { color: #B0A898; }
+  .voice-hint { font-size: 0.72rem; color: var(--muted); margin-bottom: 2rem; }
+  .voice-q-label {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem; font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem; line-height: 1.35;
+  }
+
+  /* OPT-IN */
+  .optin-box {
+    background: var(--charcoal);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .optin-box::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(200,150,60,0.03) 40px,rgba(200,150,60,0.03) 41px);
+  }
+  .optin-inner { position: relative; z-index: 2; }
+  .optin-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .optin-title {
+    font-family: 'Lora', serif;
+    font-size: 1.3rem; font-weight: 400;
+    color: var(--cream); line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .optin-text {
+    font-size: 0.88rem; color: #9A9080;
+    line-height: 1.8; margin-bottom: 0.75rem;
+  }
+  .optin-list {
+    list-style: none; padding: 0; margin: 1rem 0 1.5rem;
+  }
+  .optin-list li {
+    font-size: 0.82rem; color: #9A9080;
+    line-height: 1.7; padding-left: 1.25rem;
+    position: relative; margin-bottom: 0.25rem;
+  }
+  .optin-list li::before {
+    content: '\2713'; position: absolute; left: 0;
+    color: var(--gold); font-size: 0.72rem;
+  }
+  .optin-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .optin-yes {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--gold); color: var(--charcoal);
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.75rem 1.5rem; border: none;
+    cursor: pointer; transition: opacity 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .optin-yes:hover { opacity: 0.85; }
+  .optin-no {
+    display: inline-flex; font-size: 0.75rem;
+    color: #7A7060; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(122,112,96,0.3);
+    background: none; cursor: pointer;
+    transition: border-color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .optin-no:hover { border-color: rgba(122,112,96,0.6); }
+  .nav-links-row {
+    margin-top: 2rem; display: flex; gap: 1.25rem;
+    flex-wrap: wrap; align-items: center;
+  }
+  .nav-links-row a {
+    font-size: 0.78rem; text-decoration: none;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    background: var(--charcoal);
+    color: var(--cream);
+    border: none;
+    padding: 1rem 1.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--bark); }
+  .btn-primary:disabled { background: #999; cursor: not-allowed; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--charcoal);
+    border: 1px solid var(--charcoal);
+    padding: 1rem 1.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--charcoal); color: var(--cream); }
+
+  .btn-text {
+    background: transparent; border: none; color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; padding: 0.4rem 0;
+    transition: color 0.2s;
+  }
+  .btn-text:hover { color: var(--bark); }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+
+  /* PROGRESS */
+  .progress-wrap { margin-bottom: 2.5rem; }
+  .progress-meta {
+    display: flex; justify-content: space-between;
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.6rem;
+  }
+  .progress-meta .pct { color: var(--gold); }
+  .progress-track {
+    height: 2px; background: var(--border); overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: var(--gold);
+    transition: width 0.4s ease;
+  }
+
+  /* QUESTION + OPTIONS */
+  .question-text {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    line-height: 1.55;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+  }
+  .options { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2.5rem; }
+  .option-btn {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    color: #4A4438;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .option-btn:hover {
+    border-color: var(--gold);
+    background: rgba(200, 150, 60, 0.04);
+  }
+  .option-btn.selected {
+    border-color: var(--gold);
+    background: rgba(200, 150, 60, 0.08);
+    color: var(--charcoal);
+    border-left-width: 3px;
+    padding-left: calc(1.25rem - 2px);
+  }
+
+  /* RESULTS */
+  .result-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 2rem 2.25rem;
+    margin-bottom: 2rem;
+  }
+  .result-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .result-style-name {
+    font-family: 'Lora', serif;
+    font-size: 2rem; font-weight: 400;
+    color: var(--charcoal); margin-bottom: 0.85rem;
+  }
+  .result-short {
+    font-style: italic; color: var(--bark);
+    font-size: 1.05rem; line-height: 1.7;
+  }
+
+  .secondary-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .secondary-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.4rem;
+  }
+  .secondary-name {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem; color: var(--charcoal); margin-bottom: 0.3rem;
+  }
+  .secondary-short {
+    font-size: 0.92rem; color: var(--muted); font-style: italic;
+  }
+
+  /* BREAKDOWN */
+  .breakdown { margin-bottom: 2.5rem; }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 40px;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.7rem;
+  }
+  .bar-label { font-size: 0.88rem; color: #4A4438; }
+  .bar-track { height: 4px; background: var(--border); overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--gold); transition: width 1s ease; }
+  .bar-pct { font-size: 0.85rem; color: var(--bark); text-align: right; }
+
+  /* DESCRIPTION + TIPS */
+  .description-prose {
+    font-size: 1rem; color: #3A332A; line-height: 1.95;
+    margin-bottom: 2.25rem;
+  }
+
+  .tips-list { margin-bottom: 2.5rem; }
+  .tip-item {
+    background: rgba(200, 150, 60, 0.04);
+    border-left: 2px solid var(--gold);
+    padding: 0.85rem 1.1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #4A4438;
+    line-height: 1.7;
+  }
+
+  /* SUMMARY */
+  .summary-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .summary-header {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 1.75rem 2rem;
+    border-left: 3px solid var(--gold);
+    margin-left: -3px;
+  }
+  .summary-header-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .summary-header-name {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem; font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+  .summary-header-person {
+    font-size: 0.9rem;
+    color: rgba(245, 240, 232, 0.7);
+    font-style: italic;
+  }
+  .summary-body { padding: 1.75rem 2rem; }
+  .care-box {
+    background: var(--warm-white);
+    border: 1px dashed var(--border);
+    padding: 1rem 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .care-box-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.4rem;
+  }
+  .care-box p {
+    font-size: 0.92rem; color: #4A4438; line-height: 1.8;
+  }
+  .summary-footnote {
+    text-align: center; font-size: 0.75rem; color: var(--muted);
+    font-style: italic; margin-top: 1.5rem;
+  }
+
+  /* NAME INPUT */
+  .name-input-row { margin-bottom: 1.5rem; }
+  .name-input-label {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.5rem; display: block;
+  }
+  .name-input {
+    width: 100%; padding: 0.75rem 1rem;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    transition: border-color 0.2s;
+  }
+  .name-input:focus { outline: none; border-color: var(--gold); }
+
+  .summary-bar-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 36px;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.45rem;
+  }
+  .summary-bar-label { font-size: 0.78rem; color: #5A5040; }
+  .summary-bar-track { height: 3px; background: var(--border); overflow: hidden; }
+  .summary-bar-pct { font-size: 0.75rem; color: var(--bark); text-align: right; }
+
+  hr.summary-divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 1.25rem 0;
+  }
+
+  /* RESEARCH PAGE */
+  .research-intro {
+    background: rgba(200, 150, 60, 0.06);
+    border-left: 3px solid var(--gold);
+    padding: 1.75rem 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .research-intro p {
+    font-size: 1rem; color: #4A4438; line-height: 1.85;
+    margin-bottom: 0.85rem;
+  }
+  .research-intro p:last-child { margin-bottom: 0; }
+
+  .style-research {
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+  .style-research-header {
+    background: var(--cream);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .style-research-name {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    color: var(--charcoal);
+    font-weight: 400;
+  }
+  .style-research-body { padding: 1.25rem 1.5rem; background: var(--warm-white); }
+  .style-research-body p {
+    font-size: 0.95rem; color: #4A4438; line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .ref-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.6rem;
+  }
+  .ref-item {
+    font-size: 0.85rem; color: #5A5040; line-height: 1.7;
+    border-left: 2px solid var(--gold);
+    padding-left: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .limitations-block {
+    background: rgba(140, 100, 60, 0.05);
+    border-left: 3px solid var(--bark);
+    padding: 1.5rem 1.75rem;
+    margin-top: 2.5rem;
+  }
+  .limitations-block p {
+    font-size: 0.95rem; color: #4A4438; line-height: 1.8;
+    margin-bottom: 0.85rem;
+  }
+  .limitations-block ul { list-style: none; padding: 0; }
+  .limitations-block li {
+    padding-left: 1.25rem; position: relative;
+    margin-bottom: 0.5rem; font-size: 0.9rem;
+    color: #4A4438; line-height: 1.7;
+  }
+  .limitations-block li::before {
+    content: '·'; color: var(--bark);
+    position: absolute; left: 0;
+    font-size: 1.4rem; line-height: 1; top: 0.15rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1A1810;
+    padding: 1.5rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand {
+    font-family: 'Lora', serif; font-size: 0.9rem;
+    color: #5A5040; text-decoration: none;
+  }
+  .footer-brand span { color: var(--gold); }
+  .footer-copy { font-size: 0.75rem; color: #3A3020; }
+
+  @media (max-width: 700px) {
+    .body-inner { padding: 2.5rem 1.5rem; }
+    .hero-inner { padding: 0 1.5rem; }
+    .page-hero { padding: 2.5rem 0 2rem; }
+    .question-text { font-size: 1.25rem; }
+    .bar-row, .summary-bar-row { grid-template-columns: 110px 1fr 36px; }
+  }
+
+  @media print {
+    body * { visibility: hidden; }
+    .summary-card, .summary-card * { visibility: visible; }
+    .summary-card { position: fixed; top: 0; left: 0; width: 100%; }
+    .no-print { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
+    <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research_page.html">Research</a></li>
+    <li><a href="harmonica_page.html">Harmonica</a></li>
+    <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
+    <li><a href="living-research.html">Living Research</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <a href="research_page.html">Research</a> › Self-Reflection Tool
+    </div>
+    <div class="hero-eyebrow">Interactive · Self-Reflection Tool</div>
+    <h1 class="hero-h1">Your Healing Style</h1>
+    <p class="hero-standfirst">Eleven questions to help you work out how you actually cope, recover, and find your way through difficult days.</p>
+    <div class="tab-row">
+      <button class="tab-btn active" id="tab-quiz" onclick="showTab('quiz')">Questionnaire</button>
+      <button class="tab-btn" id="tab-research" onclick="showTab('research')">Research Background</button>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<div class="body-inner" id="main-body"></div>
+
+<footer>
+  <a href="index.html" class="footer-brand">Living Beyond <span>SCI</span></a>
+  <div class="footer-copy">© 2011–2025 Living Beyond SCI</div>
+</footer>
+
+<script>
+const questions = [
+  { text: "On a difficult day, what actually helps?", options: [
+    { label: "Talking with someone who truly understands what you are going through", type: "A" },
+    { label: "Looking at the concrete signs of progress — your notes, your charts, your goals", type: "B" },
+    { label: "Quiet time alone to settle and let the day pass", type: "C" },
+    { label: "Reminding yourself of where you are heading and why it matters", type: "D" },
+  ]},
+  { text: "When you need help with personal care or daily tasks, how does that sit with you?", options: [
+    { label: "It is hard, but the closeness it brings has its own meaning", type: "A" },
+    { label: "It is easier when I understand what is happening and can guide it myself", type: "B" },
+    { label: "It is one of the most difficult parts — I want to do as much as I can on my own", type: "C" },
+    { label: "I struggle, but I keep telling myself it does not have to be forever", type: "D" },
+  ]},
+  { text: "When your body does not respond the way you hoped, what is your honest first reaction?", options: [
+    { label: "I want to talk to someone about it straight away", type: "A" },
+    { label: "I want to understand exactly why, and what to try next", type: "B" },
+    { label: "I need to be left alone with it for a while before I do anything", type: "C" },
+    { label: "I get afraid, but I try not to let it shake my belief in what is possible", type: "D" },
+  ]},
+  { text: "Since the injury, how has your sense of who you are shifted?", options: [
+    { label: "My relationships have become my anchor more than ever", type: "A" },
+    { label: "I am focused on rebuilding what I can do — that is who I am now", type: "B" },
+    { label: "I am still working it out quietly, on my own time", type: "C" },
+    { label: "I am holding on to who I was, and finding my way back toward that", type: "D" },
+  ]},
+  { text: "If you could tell your care team one thing about how you work best, what would it be?", options: [
+    { label: "That I need emotional connection, not only physical milestones", type: "A" },
+    { label: "That I want full honesty about where I am and where things might go", type: "B" },
+    { label: "That I need to set my own pace, without being pushed", type: "C" },
+    { label: "That I do better when they speak about possibility, not limitation", type: "D" },
+  ]},
+  { text: "When you imagine the life ahead of you, what mostly comes up?", options: [
+    { label: "Hope, when I picture the people who will be in it", type: "A" },
+    { label: "Readiness, when I have a plan I can actually work with", type: "B" },
+    { label: "Uncertainty — I need to know who I am in this body before I can picture forward", type: "C" },
+    { label: "Determination — I can already see what I am working toward", type: "D" },
+  ]},
+  { text: "What is the heaviest thing on your mind right now?", options: [
+    { label: "A loneliness, like nobody quite reaches what I am going through", type: "A" },
+    { label: "Not knowing what is possible, or what the limits really are", type: "B" },
+    { label: "The loss of privacy and being able to take care of myself", type: "C" },
+    { label: "A fear of not finding my way back to the life I had", type: "D" },
+  ]},
+  { text: "When the people supporting you give you feedback, what helps you take it in?", options: [
+    { label: "Warmth and encouragement, with attention to how I am actually feeling", type: "A" },
+    { label: "Honesty and detail, even when the news is hard", type: "B" },
+    { label: "Brevity and respect for my space", type: "C" },
+    { label: "A focus on what I can move toward, not what I cannot do", type: "D" },
+  ]},
+  { text: "On a day when none of it feels worth it, what tends to bring you back?", options: [
+    { label: "A conversation with someone who reminds me I am not alone", type: "A" },
+    { label: "Looking back at evidence of progress, however small", type: "B" },
+    { label: "Letting myself rest, without arguing with the need for it", type: "C" },
+    { label: "Reconnecting with a goal or vision that still matters to me", type: "D" },
+  ]},
+  { text: "When grief about the injury hits, how do you handle it?", options: [
+    { label: "By talking it through with people I trust", type: "A" },
+    { label: "By trying to understand what happened and make sense of it", type: "B" },
+    { label: "Quietly — I need to sit with it before I can share it", type: "C" },
+    { label: "By looking forward — staying with it too long does not feel right for me", type: "D" },
+  ]},
+  { text: "Which of these feels closest to true, right now?", options: [
+    { label: "I do better when I feel loved and supported", type: "A" },
+    { label: "I do better when I understand what is actually happening", type: "B" },
+    { label: "I do better when I have space and a pace that is mine", type: "C" },
+    { label: "I do better when I believe in where I am going", type: "D" },
+  ]},
+];
+
+const profiles = {
+  A: {
+    style: "The Connected",
+    color: "#5C4A2A",
+    short: "You cope through human connection and being actually understood.",
+    description: "For you, relationships do the work. You cope through being seen — not just your body, but you. The presence of someone who actually understands what you are going through can shift more in an hour than a week of measurable progress on its own. Isolation hits you hard, and feeling emotionally met by your care team and the people close to you is not a comfort on the side. It is part of the recovery itself.",
+    tips: [
+      "Ask your care team to make space for emotional check-ins, not only physical ones",
+      "Look into peer support — someone who has lived through SCI before you",
+      "Be honest with the people closest to you about what kind of support actually helps",
+      "Consider an SCI support group, in person or online, where shared experience is the point",
+      "If you work with a psychologist, prioritise the relationship itself, not only the technique",
+    ],
+  },
+  B: {
+    style: "The Analytical",
+    color: "#5C4A2A",
+    short: "You cope through understanding, clarity, and seeing what is real.",
+    description: "For you, knowledge settles things in a way reassurance cannot. You do best when you understand your injury, your treatment, and your progress in concrete terms. Vague comfort tends to slide off you. Honest information, measurable goals, and an active role in the decisions about your own care are where you find your footing. Uncertainty is the harder ground for you. The more you know, the more able you feel.",
+    tips: [
+      "Ask your team for detailed progress notes and goal breakdowns after each session",
+      "Keep a simple journal of sessions, sensations, and changes you notice over time",
+      "Read about your level of injury through trustworthy SCI organisations and peer-reviewed sources",
+      "Bring a short list of questions to every appointment — do not leave without answers",
+      "Ask for honest conversations about prognosis, even if the answers carry uncertainty",
+    ],
+  },
+  C: {
+    style: "The Autonomous",
+    color: "#5C4A2A",
+    short: "You cope through agency, quiet, and a pace that is your own.",
+    description: "Independence and self-direction are not preferences for you. They are part of how you cope. Losing them is one of the deeper wounds of the injury, and getting back even small areas of choice carries real weight. You do best when you can set your own pace, direct your own care where possible, and work things out in your own time. Being hovered over, however well-meant, slows you down. Space is not a luxury for you. It is part of the work.",
+    tips: [
+      "Find places in your care plan where you can take the lead, however small",
+      "Communicate clearly when you need quiet — it is a real and valid need",
+      "Build small daily routines that are yours to shape",
+      "Consider journaling or quiet reflection as a way of processing on your own terms",
+      "Set gentle, clear boundaries with well-meaning visitors when you need to",
+    ],
+  },
+  D: {
+    style: "The Visionary",
+    color: "#5C4A2A",
+    short: "You cope through hope, vision, and belief in what is still possible.",
+    description: "What pulls you forward is the picture of where you are going. You are moved by what is possible more than you are defined by what has been lost. The harder days come when that vision falters — when fear or grief blocks the view. What brings you back is reconnecting with the future you can still see. You do best with people who can speak in possibilities, who can hold the long view alongside you, and who treat your future as something worth building toward.",
+    tips: [
+      "Work with a psychologist or counsellor to build a vivid, realistic vision of life ahead",
+      "Find SCI athletes, professionals, or creators whose lives expand what feels possible",
+      "Break long goals into small, visible markers so you can keep seeing forward motion",
+      "When fear takes over, return to your why — write it somewhere you can find again",
+      "Ask your team to frame progress in terms of what you are moving toward, not away from",
+    ],
+  },
+};
+
+const styleOrder = ["A", "B", "C", "D"];
+
+let step = "intro";
+let current = 0;
+let answers = [];
+let selected = null;
+let scores = null;
+let patientName = "";
+let voiceAnswers = { helped: '', hardest: '' };
+
+function computeScores(ans) {
+  const counts = { A: 0, B: 0, C: 0, D: 0 };
+  ans.forEach(a => counts[a]++);
+  const total = ans.length;
+  const pct = {};
+  Object.keys(counts).forEach(k => pct[k] = Math.round(counts[k] / total * 100));
+  const sorted = Object.entries(counts).sort((x, y) => y[1] - x[1]);
+  const primary = sorted[0][0];
+  const secondary = sorted[1][1] >= 2 ? sorted[1][0] : null;
+  return { counts, pct, primary, secondary };
+}
+
+function showTab(tab) {
+  document.getElementById('tab-quiz').classList.toggle('active', tab === 'quiz');
+  document.getElementById('tab-research').classList.toggle('active', tab === 'research');
+  if (tab === 'research') render('research');
+  else render(step === 'research' ? 'intro' : step);
+}
+
+function render(s) {
+  if (s) step = s;
+  const body = document.getElementById('main-body');
+  if (step === 'research') { renderResearch(body); return; }
+  if (step === 'intro') { renderIntro(body); return; }
+  if (step === 'quiz') { renderQuiz(body); return; }
+  if (step === 'voices') { renderVoices(body); return; }
+  if (step === 'result') { renderResult(body); return; }
+  if (step === 'summary') { renderSummary(body); return; }
+  if (step === 'optin') { renderOptin(body); return; }
+}
+
+function renderIntro(body) {
+  body.innerHTML = `
+    <div class="opening-pull">"There is no right or wrong way to go about this. The way I cope in my own life may be quite different from the way you find yours."</div>
+    <p class="prose">Recovery from spinal cord injury is one of the most demanding things a person can go through. How you cope — what gives you strength, what wears you down, what you reach for on the difficult days — is your own.</p>
+    <p class="prose">This questionnaire works out how you tend to heal. It will identify a primary style, and possibly a secondary one, so you can recognise what already works for you and bring that into how you are supported by others.</p>
+    <p class="prose">Eleven questions. No right answers. Five minutes. Do it once, sit with it, come back to it later if something shifts.</p>
+    <div class="meta-pills">
+      <span class="meta-pill">11 questions</span>
+      <span class="meta-pill">About 5 minutes</span>
+      <span class="meta-pill">Designed for SCI</span>
+      <span class="meta-pill">Shareable summary</span>
+    </div>
+    <p class="italic-note">This is a self-reflection tool, not a clinical assessment. If something here is useful, share it with your care team. If something does not fit, that is information too.</p>
+    <button class="btn-primary" onclick="startQuiz()">Begin →</button>
+  `;
+}
+
+function startQuiz() {
+  current = 0; answers = []; selected = null; scores = null;
+  render('quiz');
+}
+
+function renderQuiz(body) {
+  const q = questions[current];
+  const progress = (current / questions.length) * 100;
+  const isLast = current + 1 === questions.length;
+  body.innerHTML = `
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span>Question ${current + 1} of ${questions.length}</span>
+        <span class="pct">${Math.round(progress)}% complete</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" style="width:${progress}%"></div></div>
+    </div>
+    <h2 class="question-text">${q.text}</h2>
+    <div class="options">
+      ${q.options.map(opt => `
+        <button class="option-btn${selected === opt.type ? ' selected' : ''}" onclick="selectOption('${opt.type}')">${opt.label}</button>
+      `).join('')}
+    </div>
+    <button class="btn-primary" onclick="nextQuestion()" ${selected ? '' : 'disabled'}>
+      ${isLast ? 'Continue →' : 'Next →'}
+    </button>
+  `;
+}
+
+function selectOption(type) {
+  selected = type;
+  renderQuiz(document.getElementById('main-body'));
+}
+
+function nextQuestion() {
+  if (!selected) return;
+  answers.push(selected);
+  if (current + 1 >= questions.length) {
+    scores = computeScores(answers);
+    render('voices');
+  } else {
+    current++;
+    selected = null;
+    renderQuiz(document.getElementById('main-body'));
+  }
+}
+
+function renderResult(body) {
+  const primary = profiles[scores.primary];
+  const secondary = scores.secondary ? profiles[scores.secondary] : null;
+
+  const barsHTML = styleOrder.map(key => {
+    const p = profiles[key];
+    const pct = scores.pct[key];
+    return `<div class="bar-row">
+      <span class="bar-label">${p.style}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+      <span class="bar-pct">${pct}%</span>
+    </div>`;
+  }).join('');
+
+  const secondaryHTML = secondary ? `
+    <div class="secondary-card">
+      <div class="secondary-eyebrow">Secondary tendency</div>
+      <div class="secondary-name">${secondary.style}</div>
+      <div class="secondary-short">${secondary.short}</div>
+    </div>` : '';
+
+  const tipsHTML = primary.tips.map(tip => `<div class="tip-item">${tip}</div>`).join('');
+
+  body.innerHTML = `
+    <div class="result-card">
+      <div class="result-eyebrow">Your primary healing style</div>
+      <div class="result-style-name">${primary.style}</div>
+      <div class="result-short">${primary.short}</div>
+    </div>
+    ${secondaryHTML}
+    <div class="breakdown">
+      <div class="section-label">Your full breakdown</div>
+      ${barsHTML}
+    </div>
+    <div class="description-prose">${primary.description}</div>
+    <div class="section-label">What this means for you</div>
+    <div class="tips-list">${tipsHTML}</div>
+    <p class="italic-note">If any of this rings true, share it with someone in your care team. If it does not, that is information too.</p>
+    <div class="btn-row">
+      <button class="btn-primary" onclick="render('summary')">View shareable summary →</button>
+      <button class="btn-primary" onclick="render('optin')" style="background:var(--gold); color:var(--charcoal);">Continue →</button>
+    </div>
+  `;
+}
+
+function renderSummary(body) {
+  const primary = profiles[scores.primary];
+  const secondary = scores.secondary ? profiles[scores.secondary] : null;
+  const name = patientName;
+
+  const barsHTML = styleOrder.map(key => {
+    const p = profiles[key];
+    const pct = scores.pct[key];
+    return `<div class="summary-bar-row">
+      <span class="summary-bar-label">${p.style}</span>
+      <div class="summary-bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+      <span class="summary-bar-pct">${pct}%</span>
+    </div>`;
+  }).join('');
+
+  const tipsHTML = primary.tips.map((tip, i) => `<div class="tip-item">${tip}</div>`).join('');
+
+  const secondaryLine = secondary ? `<p style="margin-top:0.5rem;font-size:0.82rem;color:rgba(245,240,232,0.7);">Secondary tendency: ${secondary.style}</p>` : '';
+
+  const careText = name
+    ? `${name} has completed the Healing Style questionnaire. Their primary style is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for them.`
+    : `I have completed the Healing Style questionnaire. My primary style is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for me.`;
+
+  body.innerHTML = `
+    <div class="no-print" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.75rem;">
+      <button class="btn-text" onclick="render('result')">← Back to results</button>
+      <div class="btn-row">
+        <button class="btn-outline" id="copy-btn" onclick="copyText()">Copy</button>
+        <button class="btn-outline" onclick="window.print()">Print</button>
+      </div>
+    </div>
+    <div class="no-print name-input-row">
+      <label class="name-input-label">Your name (optional — appears on the summary)</label>
+      <input class="name-input" type="text" placeholder="e.g. Alex Johnson" value="${name}" oninput="patientName=this.value;updateSummaryCard()" />
+    </div>
+    <div class="summary-card" id="summary-card">
+      <div class="summary-header">
+        <div class="summary-header-eyebrow">Healing Style — SCI Self-Reflection</div>
+        <div class="summary-header-name" id="card-style-line">Primary style — ${primary.style}</div>
+        <div class="summary-header-person" id="card-name">${name ? name : ''}</div>
+        ${secondaryLine}
+      </div>
+      <div class="summary-body">
+        <div class="section-label">Style breakdown</div>
+        ${barsHTML}
+        <hr class="summary-divider" />
+        <p class="description-prose" style="font-size:0.95rem;margin-bottom:1.5rem;">${primary.description}</p>
+        <div class="section-label">What tends to help</div>
+        ${tipsHTML}
+        <div class="care-box">
+          <div class="care-box-eyebrow">For my care team</div>
+          <p id="care-text">${careText}</p>
+        </div>
+        <p class="summary-footnote">Your Healing Style · A self-reflection tool from Living Beyond SCI · Not a clinical assessment</p>
+      </div>
+    </div>
+    <p class="italic-note no-print" style="text-align:center;margin-top:1rem;">Screenshot, print, or copy this summary if you want to share it.</p>
+  `;
+}
+
+function updateSummaryCard() {
+  const nameEl = document.getElementById('card-name');
+  const careEl = document.getElementById('care-text');
+  const primary = profiles[scores.primary];
+  const secondary = scores.secondary ? profiles[scores.secondary] : null;
+  const name = patientName;
+  if (nameEl) nameEl.textContent = name;
+  if (careEl) {
+    careEl.innerHTML = name
+      ? `${name} has completed the Healing Style questionnaire. Their primary style is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for them.`
+      : `I have completed the Healing Style questionnaire. My primary style is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for me.`;
+  }
+}
+
+function copyText() {
+  const primary = profiles[scores.primary];
+  const secondary = scores.secondary ? profiles[scores.secondary] : null;
+  const name = patientName;
+  const nameLine = name ? `Name: ${name}\n` : '';
+  const secLine = secondary ? `\nSecondary tendency: ${secondary.style}\n${secondary.short}\n` : '';
+  const breakdown = `Style breakdown:\n${styleOrder.map(k => `  ${profiles[k].style}: ${scores.pct[k]}%`).join('\n')}`;
+  const text = [
+    'My Healing Style — SCI Self-Reflection',
+    nameLine,
+    `Primary style: ${primary.style}`,
+    '',
+    primary.description,
+    secLine,
+    breakdown,
+    '',
+    'What tends to help:',
+    ...primary.tips.map((t, i) => `${i + 1}. ${t}`),
+    '',
+    '— A self-reflection tool from Living Beyond SCI · Not a clinical assessment',
+  ].join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copy-btn');
+    if (btn) { btn.textContent = '✓ Copied'; }
+    setTimeout(() => { if (btn) btn.textContent = 'Copy'; }, 2500);
+  });
+}
+
+function renderResearch(body) {
+  const researchData = [
+    {
+      key: 'A',
+      basis: "The Connected style reflects the social support coping dimension. Research with SCI populations consistently finds that seeking social support is linked to psychosocial adaptation, and that feeling emotionally understood is a meaningful predictor of rehabilitation engagement.",
+      refs: [
+        "Martz et al. (2005). Coping strategies and resources as predictors of psychosocial adaptation among people with SCI. <em>Archives of Physical Medicine and Rehabilitation</em>.",
+        "Kennedy et al. (2003). Coping effectiveness training reduces depression and anxiety following traumatic SCI. <em>British Journal of Clinical Psychology</em>.",
+      ]
+    },
+    {
+      key: 'B',
+      basis: "The Analytical style maps onto problem-focused coping — Lazarus & Folkman's category for efforts directed at understanding and managing the stressor itself. In SCI rehabilitation, active information-seeking and goal-setting are associated with higher self-efficacy and more sustained participation.",
+      refs: [
+        "Lazarus, R. S., & Folkman, S. (1984). <em>Stress, Appraisal, and Coping</em>. New York: Springer.",
+        "Peter et al. (2014). Psychological resources, appraisals, and coping and their relationship to participation in SCI. <em>Archives of Physical Medicine and Rehabilitation</em>.",
+      ]
+    },
+    {
+      key: 'C',
+      basis: "The Autonomous style is grounded in self-determination theory (Deci & Ryan) and SCI research showing that perceived control and general self-efficacy are significant predictors of participation outcomes. Loss of autonomy is consistently reported as one of the deeper psychological challenges following SCI.",
+      refs: [
+        "Peter et al. (2014). Psychological resources, appraisals, and coping and their relationship to participation in SCI. <em>Archives of Physical Medicine and Rehabilitation</em>.",
+        "Deci, E. L., & Ryan, R. M. (1985). <em>Intrinsic Motivation and Self-Determination in Human Behavior</em>. New York: Plenum.",
+      ]
+    },
+    {
+      key: 'D',
+      basis: "The Visionary style has the strongest SCI-specific research support. Hope is consistently identified as a significant predictor of psychosocial adjustment, life satisfaction, and adaptive coping after SCI, and is positively correlated with planning, acceptance, and fighting-spirit coping styles.",
+      refs: [
+        "Dorsett & Geraghty (2017). Hope, coping and psychosocial adjustment after spinal cord injury. <em>Spinal Cord Series and Cases</em>.",
+        "Krause & Edles (2014). Injury perceptions, hope for recovery, and psychological status after SCI. <em>Rehabilitation Psychology</em>.",
+      ]
+    },
+  ];
+
+  const styleCardsHTML = researchData.map(({ key, basis, refs }) => {
+    const p = profiles[key];
+    return `<div class="style-research">
+      <div class="style-research-header">
+        <div class="style-research-name">${p.style}</div>
+      </div>
+      <div class="style-research-body">
+        <p>${basis}</p>
+        <div class="ref-eyebrow">Key references</div>
+        ${refs.map(r => `<div class="ref-item">${r}</div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  body.innerHTML = `
+    <div class="section-label">Research Background</div>
+    <h2 class="question-text" style="margin-bottom:1rem;">The foundations underneath the questionnaire</h2>
+    <div class="research-intro">
+      <p>This tool draws on established frameworks in rehabilitation psychology. The four styles reflect well-documented coping dimensions, but the specific format and scoring presented here have not been independently validated as a clinical instrument. It is intended for personal reflection.</p>
+      <p>The four styles are grounded in Lazarus & Folkman's (1984) transactional model of stress and coping — the foundational framework in rehabilitation psychology — combined with SCI-specific research on social support, hope, self-efficacy, and autonomy as predictors of adjustment.</p>
+    </div>
+    ${styleCardsHTML}
+    <div class="limitations-block">
+      <div class="section-label" style="color:var(--bark);margin-bottom:1rem;">Important limitations</div>
+      <p>While the four styles draw on validated constructs, this specific taxonomy has not been independently validated as a clinical instrument. The following should be noted:</p>
+      <ul>
+        <li>Coping styles in the research literature are not fixed types — they are fluid processes that vary by situation and time post-injury.</li>
+        <li>The research cited above validates the underlying constructs, not this specific questionnaire format or scoring approach.</li>
+        <li>Individual variation in SCI coping is high. No typology fully captures the complexity of a person's experience.</li>
+        <li>This tool has not been reviewed or endorsed by a rehabilitation psychologist or clinical body.</li>
+      </ul>
+    </div>
+    <div style="margin-top:2.5rem;">
+      <button class="btn-primary" onclick="showTab('quiz')">← Back to questionnaire</button>
+    </div>
+  `;
+}
+
+function renderVoices(body) {
+  body.innerHTML = `
+    <div class="section-label">Your Voice</div>
+    <p class="prose">These are the same two questions asked in the original Deakin University research. There are no right answers. Write as much or as little as you like — or skip them entirely and go straight to your results.</p>
+
+    <div style="margin-bottom:2rem;">
+      <div class="voice-q-label">What has helped you cope most with your injury?</div>
+      <textarea class="voice-textarea" id="voiceHelped" placeholder="Family, friends, faith, attitude, a specific person, a way of thinking, something practical..." maxlength="1000" oninput="voiceAnswers.helped = this.value">${voiceAnswers.helped || ''}</textarea>
+      <div class="voice-hint">Optional · up to 200 words · anonymous if you contribute</div>
+    </div>
+
+    <div style="margin-bottom:2rem;">
+      <div class="voice-q-label">What has been the hardest thing about coping?</div>
+      <textarea class="voice-textarea" id="voiceHardest" placeholder="Pain, loss of independence, other people's attitudes, physical barriers, financial pressures, something else..." maxlength="1000" oninput="voiceAnswers.hardest = this.value">${voiceAnswers.hardest || ''}</textarea>
+      <div class="voice-hint">Optional · up to 200 words · anonymous if you contribute</div>
+    </div>
+
+    <button class="btn-primary" onclick="render('result')">See your healing style →</button>
+  `;
+}
+
+function renderOptin(body) {
+  body.innerHTML = `
+    <div class="optin-box">
+      <div class="optin-inner" id="optinInner">
+        <div class="optin-eyebrow">One More Thing</div>
+        <div class="optin-title">Would you like to contribute your results anonymously?</div>
+        <p class="optin-text">Your answers can help build a living picture of how people with SCI cope and where quality of life gaps are widest. If you choose to contribute, only your scores are shared — never anything that could identify you.</p>
+        <ul class="optin-list">
+          <li>No names, emails, or identifying information collected</li>
+          <li>Only your healing style scores and open-ended responses</li>
+          <li>Your IP address is not recorded</li>
+          <li>Open-ended responses are reviewed manually before appearing publicly</li>
+          <li>Results appear on the <a href="living-research.html" style="color:var(--gold);">Living Research</a> community dashboard</li>
+          <li>You can skip this — your personal results are still yours either way</li>
+        </ul>
+        <div class="optin-btns">
+          <button class="optin-yes" onclick="submitHealingContribution()">Yes, contribute anonymously</button>
+          <button class="optin-no" onclick="skipHealingContribution()">No thanks</button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-links-row">
+      <button class="btn-text" onclick="restart()">↩ Take it again</button>
+      <a href="living-research.html" style="color:var(--gold);">View community results</a>
+      <a href="research_page.html" style="color:var(--muted);">Back to research</a>
+      <a href="index.html" style="color:var(--muted);">Home</a>
+    </div>
+  `;
+}
+
+function submitHealingContribution() {
+  // TODO: Wire to Firebase — send anonymous data:
+  // { healingStyle: scores, voiceHelped, voiceHardest, timestamp }
+  const inner = document.getElementById('optinInner');
+  inner.innerHTML = `
+    <div style="text-align:center; padding:1.5rem 0;">
+      <p style="font-family:Lora,serif; font-size:1.1rem; color:var(--cream); font-style:italic;">Thank you — your anonymous results have been added.</p>
+      <p style="font-size:0.82rem; color:#7A7060; margin-top:0.75rem;">You can see the community patterns on the <a href="living-research.html" style="color:var(--gold);">Living Research dashboard</a>.</p>
+    </div>
+  `;
+}
+
+function skipHealingContribution() {
+  const inner = document.getElementById('optinInner');
+  inner.innerHTML = `
+    <div style="text-align:center; padding:1.5rem 0;">
+      <p style="font-family:Lora,serif; font-size:1rem; color:var(--cream); font-style:italic;">No problem — your results are still yours.</p>
+      <p style="font-size:0.82rem; color:#7A7060; margin-top:0.5rem;">You can always come back and contribute later.</p>
+    </div>
+  `;
+}
+
+function restart() {
+  current = 0; answers = []; selected = null; scores = null; patientName = '';
+  voiceAnswers = { helped: '', hardest: '' };
+  render('intro');
+}
+
+render('intro');
+</script>
+</body>
+</html>
