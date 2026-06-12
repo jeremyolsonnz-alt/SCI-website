@@ -39,6 +39,25 @@
   .nav-brand span { color: var(--gold); }
   .nav-back { font-size: 0.8rem; color: #7A7060; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
   .nav-back:hover { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    color: #C8C0B0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:visited { color: #C8C0B0; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
+  @media (max-width: 900px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
 
   /* HERO */
   .page-hero {
@@ -130,103 +149,6 @@
     margin-bottom: 2rem;
   }
 
-  /* VOICE QUESTIONS */
-  .voice-textarea {
-    width: 100%;
-    min-height: 120px;
-    padding: 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: var(--charcoal);
-    background: var(--warm-white);
-    border: 1px solid var(--border);
-    resize: vertical;
-    transition: border-color 0.2s;
-    margin-bottom: 0.25rem;
-  }
-  .voice-textarea:focus { outline: none; border-color: var(--gold); }
-  .voice-textarea::placeholder { color: #B0A898; }
-  .voice-hint { font-size: 0.72rem; color: var(--muted); margin-bottom: 2rem; }
-  .voice-q-label {
-    font-family: 'Lora', serif;
-    font-size: 1.1rem; font-weight: 400;
-    color: var(--charcoal);
-    margin-bottom: 0.75rem; line-height: 1.35;
-  }
-
-  /* OPT-IN */
-  .optin-box {
-    background: var(--charcoal);
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .optin-box::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 50%; height: 100%;
-    background: repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(200,150,60,0.03) 40px,rgba(200,150,60,0.03) 41px);
-  }
-  .optin-inner { position: relative; z-index: 2; }
-  .optin-eyebrow {
-    font-size: 0.65rem; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 0.75rem;
-  }
-  .optin-title {
-    font-family: 'Lora', serif;
-    font-size: 1.3rem; font-weight: 400;
-    color: var(--cream); line-height: 1.3;
-    margin-bottom: 1rem;
-  }
-  .optin-text {
-    font-size: 0.88rem; color: #9A9080;
-    line-height: 1.8; margin-bottom: 0.75rem;
-  }
-  .optin-list {
-    list-style: none; padding: 0; margin: 1rem 0 1.5rem;
-  }
-  .optin-list li {
-    font-size: 0.82rem; color: #9A9080;
-    line-height: 1.7; padding-left: 1.25rem;
-    position: relative; margin-bottom: 0.25rem;
-  }
-  .optin-list li::before {
-    content: '\2713'; position: absolute; left: 0;
-    color: var(--gold); font-size: 0.72rem;
-  }
-  .optin-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
-  .optin-yes {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    background: var(--gold); color: var(--charcoal);
-    font-size: 0.75rem; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 0.75rem 1.5rem; border: none;
-    cursor: pointer; transition: opacity 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .optin-yes:hover { opacity: 0.85; }
-  .optin-no {
-    display: inline-flex; font-size: 0.75rem;
-    color: #7A7060; letter-spacing: 0.06em;
-    text-transform: uppercase; padding: 0.75rem 1.5rem;
-    border: 1px solid rgba(122,112,96,0.3);
-    background: none; cursor: pointer;
-    transition: border-color 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .optin-no:hover { border-color: rgba(122,112,96,0.6); }
-  .nav-links-row {
-    margin-top: 2rem; display: flex; gap: 1.25rem;
-    flex-wrap: wrap; align-items: center;
-  }
-  .nav-links-row a {
-    font-size: 0.78rem; text-decoration: none;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    transition: color 0.2s;
-  }
 
   /* BUTTONS */
   .btn-primary {
@@ -572,7 +494,7 @@
     <li><a href="harmonica_page.html">Harmonica</a></li>
     <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
     <li><a href="bibliography.html">Bibliography</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -736,7 +658,6 @@ let answers = [];
 let selected = null;
 let scores = null;
 let patientName = "";
-let voiceAnswers = { helped: '', hardest: '' };
 
 function computeScores(ans) {
   const counts = { A: 0, B: 0, C: 0, D: 0 };
@@ -763,10 +684,8 @@ function render(s) {
   if (step === 'research') { renderResearch(body); return; }
   if (step === 'intro') { renderIntro(body); return; }
   if (step === 'quiz') { renderQuiz(body); return; }
-  if (step === 'voices') { renderVoices(body); return; }
   if (step === 'result') { renderResult(body); return; }
   if (step === 'summary') { renderSummary(body); return; }
-  if (step === 'optin') { renderOptin(body); return; }
 }
 
 function renderIntro(body) {
@@ -810,7 +729,7 @@ function renderQuiz(body) {
       `).join('')}
     </div>
     <button class="btn-primary" onclick="nextQuestion()" ${selected ? '' : 'disabled'}>
-      ${isLast ? 'Continue →' : 'Next →'}
+      ${isLast ? 'See your healing style →' : 'Next →'}
     </button>
   `;
 }
@@ -825,7 +744,7 @@ function nextQuestion() {
   answers.push(selected);
   if (current + 1 >= questions.length) {
     scores = computeScores(answers);
-    render('voices');
+    render('result');
   } else {
     current++;
     selected = null;
@@ -873,7 +792,7 @@ function renderResult(body) {
     <p class="italic-note">If any of this rings true, share it with someone in your care team. If it does not, that is information too.</p>
     <div class="btn-row">
       <button class="btn-primary" onclick="render('summary')">View shareable summary →</button>
-      <button class="btn-primary" onclick="render('optin')" style="background:var(--gold); color:var(--charcoal);">Continue →</button>
+      <button class="btn-text" onclick="restart()">↩ Take it again</button>
     </div>
   `;
 }
@@ -1054,83 +973,18 @@ function renderResearch(body) {
   `;
 }
 
-function renderVoices(body) {
-  body.innerHTML = `
-    <div class="section-label">Your Voice</div>
-    <p class="prose">These are the same two questions asked in the original Deakin University research. There are no right answers. Write as much or as little as you like — or skip them entirely and go straight to your results.</p>
-
-    <div style="margin-bottom:2rem;">
-      <div class="voice-q-label">What has helped you cope most with your injury?</div>
-      <textarea class="voice-textarea" id="voiceHelped" placeholder="Family, friends, faith, attitude, a specific person, a way of thinking, something practical..." maxlength="1000" oninput="voiceAnswers.helped = this.value">${voiceAnswers.helped || ''}</textarea>
-      <div class="voice-hint">Optional · up to 200 words · anonymous if you contribute</div>
-    </div>
-
-    <div style="margin-bottom:2rem;">
-      <div class="voice-q-label">What has been the hardest thing about coping?</div>
-      <textarea class="voice-textarea" id="voiceHardest" placeholder="Pain, loss of independence, other people's attitudes, physical barriers, financial pressures, something else..." maxlength="1000" oninput="voiceAnswers.hardest = this.value">${voiceAnswers.hardest || ''}</textarea>
-      <div class="voice-hint">Optional · up to 200 words · anonymous if you contribute</div>
-    </div>
-
-    <button class="btn-primary" onclick="render('result')">See your healing style →</button>
-  `;
-}
-
-function renderOptin(body) {
-  body.innerHTML = `
-    <div class="optin-box">
-      <div class="optin-inner" id="optinInner">
-        <div class="optin-eyebrow">One More Thing</div>
-        <div class="optin-title">Would you like to contribute your results anonymously?</div>
-        <p class="optin-text">Your answers can help build a living picture of how people with SCI cope and where quality of life gaps are widest. If you choose to contribute, only your scores are shared — never anything that could identify you.</p>
-        <ul class="optin-list">
-          <li>No names, emails, or identifying information collected</li>
-          <li>Only your healing style scores and open-ended responses</li>
-          <li>Your IP address is not recorded</li>
-          <li>Open-ended responses are reviewed manually before appearing publicly</li>
-          <li>Results appear on the <a href="living-research.html" style="color:var(--gold);">Living Research</a> community dashboard</li>
-          <li>You can skip this — your personal results are still yours either way</li>
-        </ul>
-        <div class="optin-btns">
-          <button class="optin-yes" onclick="submitHealingContribution()">Yes, contribute anonymously</button>
-          <button class="optin-no" onclick="skipHealingContribution()">No thanks</button>
-        </div>
-      </div>
-    </div>
-    <div class="nav-links-row">
-      <button class="btn-text" onclick="restart()">↩ Take it again</button>
-      <a href="living-research.html" style="color:var(--gold);">View community results</a>
-      <a href="research_page.html" style="color:var(--muted);">Back to research</a>
-      <a href="index.html" style="color:var(--muted);">Home</a>
-    </div>
-  `;
-}
-
-function submitHealingContribution() {
-  // TODO: Wire to Firebase — send anonymous data:
-  // { healingStyle: scores, voiceHelped, voiceHardest, timestamp }
-  const inner = document.getElementById('optinInner');
-  inner.innerHTML = `
-    <div style="text-align:center; padding:1.5rem 0;">
-      <p style="font-family:Lora,serif; font-size:1.1rem; color:var(--cream); font-style:italic;">Thank you — your anonymous results have been added.</p>
-      <p style="font-size:0.82rem; color:#7A7060; margin-top:0.75rem;">You can see the community patterns on the <a href="living-research.html" style="color:var(--gold);">Living Research dashboard</a>.</p>
-    </div>
-  `;
-}
-
-function skipHealingContribution() {
-  const inner = document.getElementById('optinInner');
-  inner.innerHTML = `
-    <div style="text-align:center; padding:1.5rem 0;">
-      <p style="font-family:Lora,serif; font-size:1rem; color:var(--cream); font-style:italic;">No problem — your results are still yours.</p>
-      <p style="font-size:0.82rem; color:#7A7060; margin-top:0.5rem;">You can always come back and contribute later.</p>
-    </div>
-  `;
-}
-
 function restart() {
   current = 0; answers = []; selected = null; scores = null; patientName = '';
-  voiceAnswers = { helped: '', hardest: '' };
   render('intro');
+}
+
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:#2A2820;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid #C8963C;z-index:99;';
+  }
 }
 
 render('intro');
