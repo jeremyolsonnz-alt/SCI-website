@@ -31,13 +31,33 @@
   footer{background:#1A1810;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:1rem;}
   .footer-brand{font-family:'Lora',serif;font-size:0.9rem;color:#5A5040;text-decoration:none;}.footer-copy{font-size:0.75rem;color:#3A3020;}
   @media(max-width:700px){.article-body{padding:2.5rem 1.5rem;}.hero-inner{padding:0 1.5rem;}}
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: #C8C0B0; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
-  <a href="index.html" class="nav-back">← Back to Home</a>
+    <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research_page.html">Research</a></li>
+    <li><a href="harmonica_page.html">Harmonica</a></li>
+    <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <div class="page-hero">
@@ -53,9 +73,7 @@
 
   <!-- Opening quote -->
   <div style="margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border);">
-    <p style="font-size:1.05rem;color:var(--bark);font-family:'Lora',serif;font-style:italic;line-height:1.7;margin-bottom:1.5rem;">"After two decades of research in quality of life and rehabilitation psychology, this programme is my synthesis of what the evidence supports — and how I think it might be put into daily practice."</p>
-    <p style="font-size:1rem;color:#4A4438;line-height:1.9;margin-bottom:1rem;">I built this because I went looking for it and couldn't find it. There is a great deal of research on motor imagery, on the rest cycles the body moves through, on what the mind can do during quiet states — but very little of it had been gathered into something a person could actually sit down and use. So I gathered it. Not as a clinician handing down a treatment, but as someone who has spent years reading this literature and wanted to put it within reach of the people it might matter to most.</p>
-    <p style="font-size:1rem;color:#4A4438;line-height:1.9;margin-bottom:1rem;">I won't promise you an outcome. I can't, and anyone who does is selling something. What I can tell you is that the practices here are built honestly on what the evidence supports, that they cost nothing, and that you can stop at any time. If they give you something — even just a calmer few minutes in a difficult day — that is worth having.</p>
+    <p style="font-size:1.05rem;color:var(--bark);font-family:'Lora',serif;font-style:italic;line-height:1.7;margin-bottom:1rem;">"After two decades of research in quality of life and rehabilitation psychology, this programme is my synthesis of what the evidence supports — and how I think it might be put into daily practice."</p>
     <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin:0;">— Jeremy, developer of the Guided Imagery Programme</p>
   </div>
 
@@ -147,30 +165,6 @@
     <p style="font-size:0.95rem;color:#4A4438;line-height:1.85;margin-bottom:1rem;">Each practice uses the same three-phase method (Ideal Being &rarr; Anatomical Pathway &rarr; Breath and Light) applied to a different target. All five are free to use.</p>
     <p style="font-size:0.95rem;color:#4A4438;line-height:1.85;margin-bottom:1.5rem;">Each can be used independently. The order is yours to choose, but if you'd like a starting point, the hand and grasp practice is a useful first encounter with the three-phase method — it's the most concrete of the five and the fastest to develop a vivid sense of.</p>
 
-    <!-- Taster practice -->
-    <div style="margin:2.5rem 0;padding:2rem 2rem;background:var(--cream);border:1px solid var(--border);border-top:3px solid var(--gold);">
-      <div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">Try it now &middot; about three minutes</div>
-      <h3 style="font-family:'Lora',serif;font-size:1.25rem;color:var(--charcoal);font-weight:400;margin-bottom:1rem;">A first taste of the practice</h3>
-      <p style="font-size:0.95rem;color:#4A4438;line-height:1.85;margin-bottom:1.25rem;">You don't have to commit to anything to begin. Here is a short version of the hand and grasp practice you can do right now, sitting where you are. There's no audio to start, nothing to download. Just read it through once, then let your eyes close and follow it from memory as best you can. It doesn't need to be perfect.</p>
-
-      <div style="margin-bottom:1rem;">
-        <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark);margin-bottom:0.4rem;">First — settle</div>
-        <p style="font-size:0.95rem;color:#4A4438;line-height:1.85;margin:0;">Let your body be held by whatever is supporting it. Take three slow breaths, and on each out-breath, let yourself settle a little more. There is nowhere to be for the next few minutes.</p>
-      </div>
-
-      <div style="margin-bottom:1rem;">
-        <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark);margin-bottom:0.4rem;">Then — picture the hand</div>
-        <p style="font-size:0.95rem;color:#4A4438;line-height:1.85;margin:0;">Bring to mind a hand — yours, or one you imagine — opening slowly, the fingers extending, and then closing into a gentle, easy grasp. Don't strain for a vivid picture. A felt sense of the movement is enough: the warmth in the palm, the slow curl of the fingers, the soft closing. Let it happen two or three times, unhurried.</p>
-      </div>
-
-      <div style="margin-bottom:1.25rem;">
-        <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark);margin-bottom:0.4rem;">Then — breath and light</div>
-        <p style="font-size:0.95rem;color:#4A4438;line-height:1.85;margin:0;">Now let the picture go. Imagine a soft warmth at the top of your head, like sun on your scalp, and with each slow breath let that warmth ease down through you. Three or four breaths. Then, when you're ready, open your eyes.</p>
-      </div>
-
-      <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;margin:0;font-style:italic;">That's the shape of the whole practice in miniature: settle, picture the movement, close with breath and warmth. The full hand and grasp practice below takes this further and slower — but what you just did is the real thing, not a demonstration of it.</p>
-    </div>
-
     <!-- Self-doubt -->
     <div style="margin:3rem auto;max-width:560px;text-align:center;padding:2rem 1.5rem;">
       <p style="font-family:'Lora',serif;font-size:1.05rem;font-style:italic;color:var(--bark);line-height:1.8;margin-bottom:1rem;">"Listen to your self-doubt. Hear the voice criticising yourself — the voice saying that what you are doing is a waste of time, or that your progress is too slow.</p>
@@ -179,10 +173,10 @@
 
     <div style="display:grid;grid-template-columns:1fr;gap:0.75rem;">
 
-      <a href="exercise_hand_grasp.html" class="practice-card" style="border-left-width:4px;background:rgba(200,150,60,0.08);">
-        <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Practice One &middot; Top-Priority Function &middot; <strong>Suggested starting point</strong></div>
+      <a href="exercise_hand_grasp.html" class="practice-card">
+        <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Practice One &middot; Top-Priority Function</div>
         <div style="font-family:'Lora',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:0.3rem;">Hand and Grasp</div>
-        <div style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Closing the hand &mdash; the movement most people with neck-level injuries say they would most want back. The most concrete of the five, and the easiest to develop a vivid sense of. If you're not sure where to begin, begin here.</div>
+        <div style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Closing the hand &mdash; the movement most people with neck-level injuries say they would most want back.</div>
       </a>
 
       <a href="exercise_bladder.html" class="practice-card">
@@ -216,9 +210,7 @@
   <div style="margin-top:3rem;padding:1.75rem;border:1px solid var(--border);">
     <div class="section-label" style="margin-bottom:0.75rem;">The science behind it</div>
     <p style="font-size:0.92rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">When you think, neurons fire. When neurons fire, chemicals are released that affect other cells in your central nervous system. The imagination is not separate from the body — it is a biological event.</p>
-    <p style="font-size:0.92rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">The central evidence comes from research on motor imagery — the practice of mentally rehearsing a movement without performing it. Studies of people with cervical spinal cord injury (Mateo and colleagues, 2015) have shown that imagined hand movements can improve real grasp performance and reshape activity in the brain's motor circuits, even where the muscles can't execute the movement. Earlier work established why: imagining a movement activates much of the same neural machinery as performing it (Jeannerod, 1994). Alongside this, Ernest Rossi's account of mind-body healing traces how mental imagery during states of deep rest reaches the body's regulatory systems — which is why the practices pair imagery with the rest cycles your body already moves through.</p>
-    <p style="font-size:0.92rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">An honest caveat sits alongside this. The same literature shows the effect isn't universal — for a minority of people, imagined movement can increase neuropathic pain (Gustin and colleagues, 2008). This is why the practices ask you to stop if discomfort rises, and why nothing here is presented as guaranteed.</p>
-    <p style="font-size:0.9rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">The full body of research behind the programme — what the practices target, why mental rehearsal works, and where caution is needed — is set out in the <a href="bibliography.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);">reference list</a>.</p>
+    <p style="font-size:0.92rem;color:#4A4438;line-height:1.8;margin-bottom:0.85rem;">Ernest Rossi's research <em>The Psychobiology of Mind-Body Healing</em> traces the precise biological pathways by which mental imagery during states of deep rest influences the immune and endocrine systems. The practices on this page build on that foundation.</p>
     <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;border-left:2px solid var(--border);padding-left:1rem;font-style:italic;">The outcome is unknown. It depends on injury, belief, and consistency. But if there is any chance the mind can influence recovery — these practices are designed to give it every opportunity to do so.</p>
   </div>
 
@@ -279,8 +271,6 @@
     </div>
 
     <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:1.75rem;font-style:italic;">If you've been practising for a few weeks and feel that nothing is changing — or you've stopped and are thinking about coming back — there is a separate page for that. It addresses both moments honestly: <a href="when_nothing_happens.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);font-style:normal;">When Nothing Seems to Be Happening</a>.</p>
-
-    <p style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-top:1.25rem;font-style:italic;">If you'd like to track your own experience privately as you practise, there's a <a href="guided_imagery_journal.pdf" download style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);font-style:normal;">downloadable reflection journal</a> — a short PDF you keep yourself, nothing is sent anywhere. And if you'd like to share what you've noticed, there's a <a href="feedback.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);font-style:normal;">feedback page</a>.</p>
   </div>
 
   <div class="return-link-block">
@@ -294,5 +284,11 @@
   <div class="footer-copy">© 2011–2026 Living Beyond SCI</div>
 </footer>
 
+<script>
+function toggleMenu() {
+  const nl = document.querySelector('.nav-links');
+  if (nl) { nl.style.display = nl.style.display === 'flex' ? 'none' : 'flex'; }
+}
+</script>
 </body>
 </html>
