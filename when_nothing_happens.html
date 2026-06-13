@@ -44,33 +44,13 @@
   footer{background:#1A1810;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:1rem;}
   .footer-brand{font-family:'Lora',serif;font-size:0.9rem;color:#5A5040;text-decoration:none;}.footer-copy{font-size:0.75rem;color:#3A3020;}
   @media(max-width:700px){.article-body{padding:2.5rem 1.5rem;}.hero-inner{padding:0 1.5rem;}.hard-truth{padding:1.75rem 1.25rem;}}
-
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: #C8C0B0; text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
-  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
-  @media (max-width: 700px) {
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-  }
 </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
-    <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="research_page.html">Research</a></li>
-    <li><a href="harmonica_page.html">Harmonica</a></li>
-    <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
-    <li><a href="bibliography.html">Bibliography</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+  <a href="guided_imagery_page.html" class="nav-back">← Back to Guided Imagery</a>
 </nav>
 
 <div class="page-hero">
@@ -145,10 +125,9 @@
 
 </div>
 
-<footer style="background: var(--warm-white); padding: 3rem 2rem; border-top: 1px solid var(--border); display: flex; justify-content: center; align-items: center;">
-  <a href="index.html" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; color:var(--gold); text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; padding:0.85rem 1.75rem; border:1px solid rgba(200,150,60,0.4); transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='rgba(200,150,60,0.06)'; this.style.borderColor='var(--gold)';" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(200,150,60,0.4)';">
-    &larr; Return to Living Beyond SCI
-  </a>
+<footer>
+  <a href="index.html" class="footer-brand">Living Beyond SCI</a>
+  <div class="footer-copy">© 2011–2026 Living Beyond SCI</div>
 </footer>
 
 </body>
