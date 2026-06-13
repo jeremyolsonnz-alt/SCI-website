@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spasticity Softening — Guided Imagery Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#F5F0E8;--warm-white:#FAF8F4;--charcoal:#2A2820;--bark:#5C4A2A;--rust:#8B4513;--gold:#C8963C;--muted:#7A7060;--border:#E0D8C8;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--charcoal);font-size:16px;line-height:1.75;}
+
+  nav{position:sticky;top:0;z-index:100;background:var(--charcoal);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:2px solid var(--gold);}
+  .nav-brand{font-family:'Lora',serif;font-size:1.1rem;color:var(--cream);text-decoration:none;}
+  .nav-brand span{color:var(--gold);}
+  .nav-back{font-size:0.8rem;color:#7A7060;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-back:hover{color:var(--gold);}
+
+  .page-hero{background:var(--charcoal);padding:4rem 0 3rem;border-bottom:1px solid rgba(200,150,60,0.2);}
+  .hero-inner{max-width:860px;margin:0 auto;padding:0 2.5rem;}
+  .breadcrumb{font-size:0.72rem;color:#5A5040;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem;}
+  .breadcrumb a{color:#5A5040;text-decoration:none;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .article-eyebrow{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.6rem;}
+  .article-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);display:block;}
+  .article-h1{font-family:'Lora',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.2;color:var(--cream);font-weight:400;margin-bottom:1rem;}
+  .article-standfirst{font-size:1.05rem;color:#8A8070;line-height:1.8;max-width:680px;margin-bottom:2rem;}
+  .article-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+  .meta-item{font-size:0.75rem;color:#5A5040;letter-spacing:0.06em;}
+  .meta-item strong{color:#A89E8C;font-weight:400;}
+
+  .article-body{max-width:860px;margin:0 auto;padding:3.5rem 2.5rem 5rem;}
+
+  .practice-console{background:var(--charcoal);padding:2.5rem 2.5rem 2rem;margin-bottom:3rem;border:1px solid rgba(200,150,60,0.15);}
+  .console-label{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.6rem;}
+  .console-label::before{content:'';width:18px;height:1px;background:var(--gold);display:block;}
+  .console-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;margin-bottom:1.5rem;}
+
+  .mirror-video{position:relative;aspect-ratio:1/1;background:#1A1810;overflow:hidden;border:1px solid rgba(200,150,60,0.1);}
+  .mirror-video video{width:100%;height:100%;object-fit:cover;display:block;}
+  .mirror-placeholder{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:#5A5040;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;line-height:1.6;padding:1rem;}
+  .mirror-placeholder span{display:block;color:var(--gold);font-size:1.6rem;margin-bottom:0.6rem;font-family:'Lora',serif;font-style:italic;text-transform:none;letter-spacing:0;}
+
+  .audio-block{display:flex;flex-direction:column;justify-content:center;}
+  .audio-target{font-family:'Lora',serif;font-size:1.4rem;color:var(--cream);font-weight:400;margin-bottom:0.4rem;}
+  .audio-duration{font-size:0.75rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;}
+  audio{width:100%;height:42px;}
+  audio::-webkit-media-controls-panel{background-color:#1A1810;}
+
+  .console-controls{display:flex;justify-content:space-between;align-items:center;padding-top:1.25rem;border-top:1px solid rgba(200,150,60,0.1);}
+  .toggle-video{font-size:0.72rem;color:#8A8070;letter-spacing:0.08em;text-transform:uppercase;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:color 0.2s;}
+  .toggle-video:hover{color:var(--gold);}
+  .console-note{font-size:0.72rem;color:#5A5040;letter-spacing:0.04em;font-style:italic;}
+
+  h2.section-head{font-family:'Lora',serif;font-size:1.4rem;font-weight:400;color:var(--charcoal);margin:3rem 0 1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border);}
+  h3.sub-head{font-size:0.95rem;font-weight:500;color:var(--bark);margin:1.75rem 0 0.6rem;}
+  p.body-text{font-size:0.95rem;color:#4A4438;line-height:1.9;margin-bottom:1rem;}
+
+  .phase-list{margin:1.5rem 0 2rem;}
+  .phase-card{border-left:3px solid var(--gold);padding:1.5rem 1.75rem;background:rgba(200,150,60,0.04);margin-bottom:1rem;}
+  .phase-eyebrow{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+  .phase-title{font-family:'Lora',serif;font-size:1.15rem;color:var(--charcoal);font-weight:400;margin-bottom:0.6rem;}
+  .phase-card p{font-size:0.92rem;color:#4A4438;line-height:1.85;margin-bottom:0.75rem;}
+  .phase-card p:last-child{margin-bottom:0;}
+
+  .plain-intro{background:rgba(200,150,60,0.06);border-left:3px solid var(--gold);padding:1.75rem 2rem;margin-bottom:2.5rem;}
+  .plain-intro-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+  .plain-intro p{font-size:1rem;color:#4A4438;line-height:1.85;margin-bottom:0.85rem;}
+  .plain-intro p:last-child{margin-bottom:0;}
+
+  .timing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0 2rem;}
+  .timing-card{padding:1.25rem 1.25rem;background:var(--cream);border:1px solid var(--border);}
+  .timing-card-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+  .timing-card-title{font-family:'Lora',serif;font-size:1rem;color:var(--charcoal);font-weight:400;margin-bottom:0.5rem;}
+  .timing-card p{font-size:0.85rem;color:#4A4438;line-height:1.7;}
+
+
+  .audio-disclosure{background:rgba(122,112,96,0.05);border-left:3px solid var(--muted);padding:1.5rem 1.75rem;margin-bottom:2.5rem;}
+  .audio-disclosure-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.6rem;}
+  .audio-disclosure p{font-size:0.92rem;color:#5A5040;line-height:1.85;margin-bottom:0.75rem;font-style:italic;}
+  .audio-disclosure p:last-child{margin-bottom:0;}
+
+  .academic-note{border-top:1px solid var(--border);margin-top:3rem;padding-top:2rem;}
+  .academic-note-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+  .academic-note p{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:0.75rem;font-style:italic;}
+
+  /* Special note box for the breath asymmetry instruction */
+  .special-note{background:rgba(107,124,94,0.08);border-left:3px solid #6B7C5E;padding:1.5rem 1.75rem;margin:1.5rem 0;}
+  .special-note-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#6B7C5E;margin-bottom:0.6rem;}
+  .special-note p{font-size:0.92rem;color:#4A4438;line-height:1.85;margin:0;}
+
+  footer{background:#1A1810;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);}
+  .footer-brand{font-family:'Lora',serif;font-size:0.9rem;color:#5A5040;text-decoration:none;}
+  .footer-copy{font-size:0.75rem;color:#3A3020;}
+
+  @media(max-width:780px){
+    .console-grid{grid-template-columns:1fr;}
+    .timing-grid{grid-template-columns:1fr;}
+    .article-body{padding:2.5rem 1.5rem 4rem;}
+    .hero-inner{padding:0 1.5rem;}
+    .practice-console{padding:1.75rem 1.5rem;}
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: #C8C0B0; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research_page.html">Research</a></li>
+    <li><a href="harmonica_page.html">Harmonica</a></li>
+    <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>·</span>
+      <a href="guided_imagery_page.html">Guided Imagery</a> <span>·</span>
+      Spasticity Softening
+    </div>
+    <div class="article-eyebrow">Practice Five · Sensory Target</div>
+    <h1 class="article-h1">Spasticity Softening</h1>
+    <p class="article-standfirst">A guided imagery practice for working with spasticity — the involuntary muscle tension, gripping, or movement that lives in the body after a spinal cord injury. The aim isn't to fight the tension but to soften, gradually, into a more rested state. Three phases. Thirteen minutes. Free to use.</p>
+    <div class="article-meta">
+      <div class="meta-item"><strong>Duration</strong> · 13 minutes</div>
+      <div class="meta-item"><strong>Phases</strong> · 3</div>
+      <div class="meta-item"><strong>Best practised</strong> · in calmer phases</div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="practice-console">
+    <div class="console-label">The Practice</div>
+    <div class="console-grid">
+      <div class="mirror-video">
+        <div class="mirror-placeholder">
+          <span>video placeholder</span>
+          looping clip · soft golden light<br>flowing slowly downward
+        </div>
+      </div>
+      <div class="audio-block">
+        <div class="audio-target">Softening</div>
+        <div class="audio-duration">13 minutes · audio</div>
+        <audio controls preload="metadata">
+          <source src="spasticity-softening-audio.mp3" type="audio/mpeg">
+          Your browser doesn't support the audio player. The script is provided below.
+        </audio>
+      </div>
+    </div>
+    <div class="console-controls">
+      <button class="toggle-video" id="toggleVideo">Hide video</button>
+      <div class="console-note">Watch and listen together · or audio only</div>
+    </div>
+  </div>
+
+  <div class="plain-intro">
+    <div class="plain-intro-label">Before You Begin</div>
+    <p>This practice works best when you're not in a high-spasm moment. If your spasticity is currently severe, wait until you're in a calmer phase to begin. Spasticity often gets worse when you're tired, stressed, in pain, or rushed — and gentler when you're warm, calm, and unhurried.</p>
+    <p>The practice doesn't try to fight the tension or push it away. It works by adding another signal to your nervous system — a signal of safety, gradually, without force.</p>
+    <p>If at any point a part of this practice increases discomfort, stop. Try a different practice, or come back another day.</p>
+  </div>
+
+  <div class="special-note">
+    <div class="special-note-label">A Note on the Breath</div>
+    <p>This practice uses an asymmetric breath: in through the nose, out slowly through the mouth, with the out-breath longer than the in-breath. This isn't decorative. Long out-breaths activate the vagus nerve — the body's main calming pathway, which remains intact after spinal cord injury. The breath itself is part of the work.</p>
+  </div>
+
+
+  <div class="audio-disclosure">
+    <div class="audio-disclosure-label">A Note on the Audio</div>
+    <p>The audio narration uses a voice clone trained on recordings of my own voice. This is a deliberate choice — it lets me maintain consistent pacing across all five practices and lets the library grow without scheduling fresh recording sessions for each new exercise.</p>
+    <p>The words are mine. The script is mine. The breath rhythm is mine. The voice is recognisably mine. Only the literal breath sounds are synthesised.</p>
+    <p>If this feels wrong to you — if hearing AI-generated audio interrupts the practice rather than supporting it — the full written script is available below. Many people find reading the script to themselves works just as well, or better.</p>
+  </div>
+
+  <h2 class="section-head">The Three Phases</h2>
+  <p class="body-text">This practice uses three different ways of working with your mind. It is structurally different from the motor practices on this site — the work is about <em>softening</em> rather than <em>activating</em>, and the script never asks you to fight or force anything.</p>
+
+  <div class="phase-list">
+
+    <div class="phase-card">
+      <div class="phase-eyebrow">Phase One · Watching and Becoming</div>
+      <h3 class="phase-title">The Ideal Being</h3>
+      <p>A figure appears in front of you. It might be Jesus. It might be the version of you who feels strong and whole. It might be a being made of light. Whoever feels right.</p>
+      <p>Unlike in the motor practices, this figure is not performing a movement. They are at rest. Undefended. Not trying to relax — simply not holding anything they don't need to hold. Their body is at peace with itself. You watch them at first. Then they step into you, and you become them.</p>
+      <p>The figure introduces a different signal alongside whatever your body is doing — not fighting your spasticity, just adding softness. The brain treats this introduced signal as data, gently, over time.</p>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-eyebrow">Phase Two · Following the Calm Pathway</div>
+      <h3 class="phase-title">The Vagus Nerve</h3>
+      <p>This phase traces a different anatomical pathway from the other practices. Spasticity comes from a particular pattern in the nervous system — when the spinal cord is injured, signals from the brain that normally tell the muscles to stay calm have trouble getting through.</p>
+      <p>The vagus nerve runs <em>outside</em> the spinal cord — from brain through neck, chest, and abdomen — carrying calming signals from your brain down through your body. It's intact in spinal cord injury. It's a different pathway. You follow it, breath by breath, sending signals of safety.</p>
+      <p>You then bring warmth and quiet attention to wherever your spasticity is most active. With each long out-breath, a quiet message: you are safe, you can soften, you don't need to grip right now.</p>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-eyebrow">Phase Three · Settling and Resting</div>
+      <h3 class="phase-title">Breath and Light</h3>
+      <p>You return to the breath — long out-breaths still doing their quiet work. The warm light continues moving slowly downward through you. The work is held, then released into the rest of your day.</p>
+      <p>This phase happens at the start (creating the calm state imagery needs) and at the end (allowing the practice to consolidate before you return to ordinary attention).</p>
+      <p>The practice continues beyond the formal session. Each long exhale during the day is a small message of safety to your nervous system. Especially around sleep.</p>
+    </div>
+
+  </div>
+
+  <h2 class="section-head">When to Practise</h2>
+  <p class="body-text">Spasticity often follows a daily pattern — gentler in the morning, often building through the day, sometimes dramatic at night. The morning waking window is the most precious for this work. The other moments below also help.</p>
+
+  <div class="timing-grid">
+    <div class="timing-card">
+      <div class="timing-card-label">On waking</div>
+      <h3 class="timing-card-title">Most precious window</h3>
+      <p>Spasticity is at its lowest immediately after waking, before muscle activity begins. A few long breaths and quiet attention here can shift the whole day's pattern.</p>
+    </div>
+    <div class="timing-card">
+      <div class="timing-card-label">Throughout the day</div>
+      <h3 class="timing-card-title">A few long breaths</h3>
+      <p>Each long exhale during the day sends a small signal of safety to your nervous system. You don't need to sit down. Just three long breaths, anywhere, can help.</p>
+    </div>
+    <div class="timing-card">
+      <div class="timing-card-label">Before sleep</div>
+      <h3 class="timing-card-title">As you drift off</h3>
+      <p>Your nervous system naturally moves toward calm in the minutes before sleep. A few long breaths with attention on warmth deepens that natural shift.</p>
+    </div>
+  </div>
+
+  <h2 class="section-head">The Full Script</h2>
+  <p class="body-text">If you want to read the script before practising, or use it without audio, the full text is here.</p>
+  <details style="margin:1rem 0 2rem;border:1px solid var(--border);padding:1.25rem 1.5rem;background:rgba(200,150,60,0.03);">
+    <summary style="cursor:pointer;font-size:0.85rem;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase;">Read the full script</summary>
+    <div style="margin-top:1.5rem;font-size:0.92rem;color:#4A4438;line-height:1.85;">
+      <p style="font-family:'Lora',serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Opening · Breath and Light · 3 minutes</p>
+      <p style="margin-bottom:1rem;">Find a comfortable position. This practice works with spasticity. The aim isn't to fight the tension — it's to soften gradually into a more rested state. Best practised when you're in a calmer phase, not during severe spasms.</p>
+      <p style="margin-bottom:1rem;">Take a slow breath in through your nose, and let it out through your mouth — slowly, with the out-breath longer than the in-breath. The longer out-breath quietens the nervous system. In. Out, longer. In. Out, longer still. Settle into this gentle pattern.</p>
+      <p style="margin-bottom:1rem;">Bring attention to the top of your head. The crown. Just above it, a soft point of light — felt, not pictured. Each in-breath, brighter. Each long out-breath, the light spreads gently downward — soft, slow, unforced.</p>
+
+      <p style="font-family:'Lora',serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Phase One · The Ideal Being · 3 minutes</p>
+      <p style="margin-bottom:1rem;">A figure begins to form in front of you. Whoever this figure is for you. This figure has a body that knows how to rest. Their muscles hold what they need to hold and release what they don't. Their body is undefended — no fight, no grip, no anticipation of attack.</p>
+      <p style="margin-bottom:1.5rem;">The figure isn't trying to relax — they're simply not holding anything they don't need to hold. The figure moves toward you. Steps into you. You aren't watching anymore — you are them. Their softness is yours. Whatever your body's pattern is right now, the figure's calm settles into it. Not fighting the spasticity. Not pushing it away. Just adding softness alongside it.</p>
+
+      <p style="font-family:'Lora',serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Phase Two · The Pathway · 3 minutes</p>
+      <p style="margin-bottom:1rem;">Spasticity comes from a particular pattern in the nervous system. When the spinal cord is injured, signals from the brain that normally tell the muscles to stay calm have trouble getting through. The work isn't to fight that firing. It's to add another signal — a signal of safety.</p>
+      <p style="margin-bottom:1rem;">Begin at the brain. The vagus nerve — long, wandering — carries calming signals from your brain down through your throat, chest, and belly. Even after spinal cord injury, the vagus nerve is intact. Each long exhale activates this calming system. Each long exhale tells your nervous system: you are safe. You can rest.</p>
+      <p style="margin-bottom:1.5rem;">Now bring awareness to wherever your spasticity is most active today. Don't try to force that area to relax — that tends to make spasticity worse. Just bring warmth there. The light from above. The breath from inside. Soft, friendly attention. With each long out-breath, send a quiet signal: you are safe. You can soften. You don't need to grip right now.</p>
+
+      <p style="font-family:'Lora',serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Closing · Breath and Light · 3 minutes</p>
+      <p style="margin-bottom:1rem;">Return to the breath. Long out-breaths. The vagus nerve doing its quiet work. The light still moving slowly downward. The signals of safety you sent are real.</p>
+      <p style="margin-bottom:1rem;">Spasticity often gets worse with stress and rushing, and gentler with calm and warmth. This practice is a way of nudging the nervous system toward the calmer state, on purpose. You can return many times during the day — not as a full practice, just as a few long out-breaths.</p>
+      <p style="margin-bottom:1rem;">At night, drifting toward sleep, your nervous system naturally moves toward this calm state. A few long breaths deepens that shift. When you first wake, your body is in its softest state — the most precious window for this work.</p>
+      <p style="margin-bottom:0;">Take one more slow breath in. Let it out, longer. Notice the room. The light is yours. The pathway of rest is yours. The practice continues. Thank you.</p>
+    </div>
+  </details>
+
+  <div class="academic-note">
+    <div class="academic-note-label">An Honest Note</div>
+    <p>This protocol draws on peer-reviewed research in motor imagery, mirror neuron activation, ultradian receptivity, and vagal regulation, integrated with contemplative visualisation traditions older than any of the science.</p>
+    <p>Each element has scientific support on its own. The integration — these three phases in this order, as a unified practice — is my own synthesis and has not been clinically tested.</p>
+    <p>This is not a treatment. It is not a substitute for medical care, rehabilitation, or spasticity medication. It is a practice, offered freely. Some people will find it helpful. Some will not.</p>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="footer-brand">Living Beyond SCI</a>
+  <div class="footer-copy">© Jeremy Olson · A free resource</div>
+</footer>
+
+<script>
+  const toggleBtn = document.getElementById('toggleVideo');
+  const videoBlock = document.querySelector('.mirror-video');
+  let videoVisible = true;
+  toggleBtn.addEventListener('click', () => {
+    videoVisible = !videoVisible;
+    if (videoVisible) {
+      videoBlock.style.display = 'block';
+      toggleBtn.textContent = 'Hide video';
+      document.querySelector('.console-grid').style.gridTemplateColumns = '1fr 1fr';
+    } else {
+      videoBlock.style.display = 'none';
+      toggleBtn.textContent = 'Show video';
+      document.querySelector('.console-grid').style.gridTemplateColumns = '1fr';
+    }
+  });
+</script>
+
+</body>
+</html>
