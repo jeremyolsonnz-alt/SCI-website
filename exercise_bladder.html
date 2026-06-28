@@ -168,13 +168,7 @@
 
   <div class="practice-console">
     <div class="console-label">The Practice</div>
-    <div class="console-grid">
-      <div class="mirror-video">
-        <div class="mirror-placeholder">
-          <span>video placeholder</span>
-          looping clip · slow breath rising<br>and falling in lower belly
-        </div>
-      </div>
+    <div class="console-grid" style="grid-template-columns:1fr;">
       <div class="audio-block">
         <div class="audio-target">Bladder awareness</div>
         <div class="audio-duration">13 minutes · audio</div>
@@ -184,16 +178,12 @@
         </audio>
       </div>
     </div>
-    <div class="console-controls">
-      <button class="toggle-video" id="toggleVideo">Hide video</button>
-      <div class="console-note">Watch and listen together · or audio only</div>
-    </div>
   </div>
 
   <div class="plain-intro">
     <div class="plain-intro-label">Before You Begin</div>
     <p>Find a comfortable, private position. If you can, do this practice after you've recently emptied your bladder — it lets you focus on the imagery rather than physical urgency. But there's no wrong time.</p>
-    <p>If you can, watch the looping clip while listening. Watching gentle movement while imagining it activates the brain more strongly than imagining alone. If you'd rather just listen, that works too.</p>
+    <p>Close your eyes if that helps you focus, or keep them open — whatever lets you settle into the imagery most easily.</p>
     <p>If at any point a part of this practice increases discomfort or feels wrong, stop. Try a different practice, or come back another day.</p>
   </div>
 
@@ -306,24 +296,6 @@
   <a href="index.html" class="footer-brand">Living Beyond SCI</a>
   <div class="footer-copy">© 2011–2026 Living Beyond SCI</div>
 </footer>
-
-<script>
-  const toggleBtn = document.getElementById('toggleVideo');
-  const videoBlock = document.querySelector('.mirror-video');
-  let videoVisible = true;
-  toggleBtn.addEventListener('click', () => {
-    videoVisible = !videoVisible;
-    if (videoVisible) {
-      videoBlock.style.display = 'block';
-      toggleBtn.textContent = 'Hide video';
-      document.querySelector('.console-grid').style.gridTemplateColumns = '1fr 1fr';
-    } else {
-      videoBlock.style.display = 'none';
-      toggleBtn.textContent = 'Show video';
-      document.querySelector('.console-grid').style.gridTemplateColumns = '1fr';
-    }
-  });
-</script>
 
 </body>
 </html>
