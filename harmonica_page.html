@@ -62,7 +62,7 @@
     transition: color 0.2s;
   }
   .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
   .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
 
   /* HERO */
@@ -551,7 +551,7 @@
 
 <nav>
   <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="research_page.html">Research</a></li>
     <li><a href="harmonica_page.html" class="active">Harmonica</a></li>
@@ -559,9 +559,9 @@
     <li><a href="bibliography.html">Bibliography</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleMenu()">
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1204,10 +1204,14 @@ function loadYT(el, videoId) {
 }
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
-  if (links.style.display === 'flex') {
+  const btn = document.querySelector('.hamburger');
+  const isOpen = links.style.display === 'flex';
+  if (isOpen) {
     links.style.display = 'none';
+    btn.setAttribute('aria-expanded', 'false');
   } else {
     links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:#2A2820;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid #C8963C;z-index:99;';
+    btn.setAttribute('aria-expanded', 'true');
   }
 }
 // Fade-in on scroll

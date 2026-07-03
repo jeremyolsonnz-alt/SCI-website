@@ -488,7 +488,7 @@
 
 <nav>
   <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="research_page.html">Research</a></li>
     <li><a href="harmonica_page.html">Harmonica</a></li>
@@ -496,9 +496,9 @@
     <li><a href="bibliography.html">Bibliography</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleMenu()">
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -980,10 +980,14 @@ function restart() {
 
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
-  if (links.style.display === 'flex') {
+  const btn = document.querySelector('.hamburger');
+  const isOpen = links.style.display === 'flex';
+  if (isOpen) {
     links.style.display = 'none';
+    btn.setAttribute('aria-expanded', 'false');
   } else {
     links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:#2A2820;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid #C8963C;z-index:99;';
+    btn.setAttribute('aria-expanded', 'true');
   }
 }
 

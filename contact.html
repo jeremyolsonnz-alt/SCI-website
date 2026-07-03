@@ -63,7 +63,7 @@
 
 <nav>
   <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="research_page.html">Research</a></li>
     <li><a href="harmonica_page.html">Harmonica</a></li>
@@ -71,9 +71,9 @@
     <li><a href="bibliography.html">Bibliography</a></li>
     <li><a href="contact.html" class="active">Contact</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleMenu()">
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 <section class="contact-section">
@@ -100,21 +100,21 @@
         <input type="hidden" name="form-name" value="contact">
         <div class="form-row">
           <div class="form-group">
-            <label>First name</label>
-            <input type="text" name="first-name" placeholder="Your first name" required>
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Your first name" required>
           </div>
           <div class="form-group">
-            <label>Last name</label>
-            <input type="text" name="last-name" placeholder="Your last name">
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Your last name">
           </div>
         </div>
         <div class="form-group">
-          <label>Email address</label>
-          <input type="email" name="email" placeholder="your@email.com" required>
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
         </div>
         <div class="form-group">
-          <label>I am interested in</label>
-          <select name="interest">
+          <label for="interest">I am interested in</label>
+          <select id="interest" name="interest">
             <option value="">Select a programme...</option>
             <option>Quality of Life Research (Deakin)</option>
             <option>Hands-Free Harmonica Programme</option>
@@ -124,12 +124,12 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Message</label>
-          <textarea name="message" placeholder="Tell me a little about yourself and what you're looking for..."></textarea>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me a little about yourself and what you're looking for..."></textarea>
         </div>
         <button type="submit" class="btn-primary" style="align-self:flex-start;">Send Message</button>
-        <div id="form-confirm" style="display:none;font-size:0.85rem;color:var(--gold);margin-top:0.5rem;">Thank you — I'll be in touch soon.</div>
-        <div id="form-error" style="display:none;font-size:0.85rem;color:#C97064;margin-top:0.5rem;">Something went wrong sending your message — please email jeremy@livingbeyondsci.com directly.</div>
+        <div id="form-confirm" role="status" style="display:none;font-size:0.85rem;color:var(--gold);margin-top:0.5rem;">Thank you — I'll be in touch soon.</div>
+        <div id="form-error" role="alert" style="display:none;font-size:0.85rem;color:#C97064;margin-top:0.5rem;">Something went wrong sending your message — please email jeremy@livingbeyondsci.com directly.</div>
       </form>
     </div>
   </div>
@@ -162,10 +162,14 @@ function handleSubmit(e) {
 }
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
-  if (links.style.display === 'flex') {
+  const btn = document.querySelector('.hamburger');
+  const isOpen = links.style.display === 'flex';
+  if (isOpen) {
     links.style.display = 'none';
+    btn.setAttribute('aria-expanded', 'false');
   } else {
     links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:#2A2820;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid #C8963C;z-index:99;';
+    btn.setAttribute('aria-expanded', 'true');
   }
 }
 </script>
