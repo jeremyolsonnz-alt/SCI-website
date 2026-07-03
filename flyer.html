@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Living Beyond SCI — Flyer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: #E8E4DC;
-      font-family: 'DM Sans', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
       padding: 40px 20px;
       display: flex;
       flex-direction: column;
@@ -27,7 +27,7 @@
       color: #4A4438;
       line-height: 1.8;
     }
-    .instructions h2 { font-family: 'Lora', serif; font-size: 16px; margin-bottom: 10px; color: #2A2820; }
+    .instructions h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 16px; margin-bottom: 10px; color: #2A2820; }
     .instructions ol { padding-left: 18px; }
     .bleed-note { margin-top: 10px; font-size: 11px; color: #A89E8C; }
 
@@ -60,23 +60,23 @@
 
     .header { display: flex; flex-direction: column; gap: 6px; }
     .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #A89E8C; }
-    .header h1 { font-family: 'Lora', serif; font-size: 34px; color: #F5F0E8; letter-spacing: 0.5px; line-height: 1.15; }
+    .header h1 { font-family: Georgia, 'Times New Roman', serif; font-size: 34px; color: #F5F0E8; letter-spacing: 0.5px; line-height: 1.15; }
     .header h1 span { color: #C8963C; }
 
-    .intro { font-size: 14px; color: #C8B99A; line-height: 1.8; border-left: 3px solid #C8963C; padding-left: 18px; font-family: 'Lora', serif; font-style: italic; }
+    .intro { font-size: 14px; color: #C8B99A; line-height: 1.8; border-left: 3px solid #C8963C; padding-left: 18px; font-family: Georgia, 'Times New Roman', serif; font-style: italic; }
 
     .pillars { display: flex; flex-direction: column; gap: 20px; }
     .pillar { display: flex; gap: 16px; align-items: flex-start; }
     .pillar-num { font-size: 10px; letter-spacing: 2px; color: #C8963C; text-transform: uppercase; font-weight: 500; padding-top: 3px; white-space: nowrap; }
-    .pillar-content h3 { font-family: 'Lora', serif; font-size: 17px; color: #F5F0E8; margin-bottom: 4px; }
+    .pillar-content h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 17px; color: #F5F0E8; margin-bottom: 4px; }
     .pillar-content p { font-size: 12px; color: #A89E8C; line-height: 1.7; }
 
     .thread { border-top: 1px solid rgba(200,150,60,0.25); padding-top: 20px; }
-    .thread p { font-family: 'Lora', serif; font-style: italic; font-size: 13px; color: #C8963C; line-height: 1.7; text-align: center; }
+    .thread p { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 13px; color: #C8963C; line-height: 1.7; text-align: center; }
 
     .footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; gap: 24px; }
     .footer-left { display: flex; flex-direction: column; gap: 6px; }
-    .footer-left .site-name { font-family: 'Lora', serif; font-size: 15px; color: #F5F0E8; }
+    .footer-left .site-name { font-family: Georgia, 'Times New Roman', serif; font-size: 15px; color: #F5F0E8; }
     .footer-left .site-url { font-size: 12px; color: #C8963C; letter-spacing: 0.5px; }
     .footer-left .free-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #A89E8C; margin-top: 4px; }
     .qr-block { display: flex; flex-direction: column; align-items: center; }
