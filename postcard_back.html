@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Postcard Back</title>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -29,10 +27,11 @@
       color: #4A4438;
       line-height: 1.8;
     }
-    .instructions h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 16px; margin-bottom: 10px; color: #2A2820; }
+    .instructions h2 { font-family: Georgia, serif; font-size: 16px; margin-bottom: 10px; color: #2A2820; }
     .instructions ol { padding-left: 18px; }
     .bleed-note { margin-top: 10px; font-size: 11px; color: #A89E8C; }
 
+    /* 598×406px with 3mm bleed */
     .card-outer {
       width: 598px;
       height: 406px;
@@ -54,30 +53,115 @@
     .card-inner {
       width: 576px;
       height: 384px;
-      padding: 28px 30px 24px;
-      display: grid;
-      grid-template-columns: 1fr 100px;
-      grid-template-rows: auto 1fr auto auto;
-      gap: 0 20px;
-      position: relative;
-      overflow: hidden;
+      padding: 28px 28px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .back-header { grid-column: 1 / 2; margin-bottom: 16px; }
-    .back-header h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 17px; color: #F5F0E8; letter-spacing: 1px; margin-bottom: 6px; }
-    .divider { width: 40px; height: 1px; background: #C8963C; }
-    .pillars { grid-column: 1 / 2; display: flex; flex-direction: column; gap: 13px; }
-    .pillar { display: flex; gap: 14px; align-items: flex-start; }
-    .pillar-num { font-size: 9px; letter-spacing: 2px; color: #C8963C; text-transform: uppercase; padding-top: 2px; white-space: nowrap; font-weight: 500; }
-    .pillar-content h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 12px; color: #F5F0E8; margin-bottom: 3px; }
-    .pillar-content p { font-size: 10px; color: #A89E8C; line-height: 1.6; }
-    .qr-column { grid-column: 2 / 3; grid-row: 1 / 4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-    .qr-wrapper { background: #F5F0E8; padding: 8px; border-radius: 4px; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; }
-    .qr-wrapper canvas, .qr-wrapper img { width: 74px !important; height: 74px !important; }
-    .scan-label { font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: #A89E8C; text-align: center; }
-    .thread { grid-column: 1 / 2; border-top: 1px solid rgba(200,150,60,0.3); padding-top: 12px; margin-top: 4px; }
-    .thread p { font-size: 10px; color: #C8963C; font-style: italic; text-align: left; line-height: 1.6; font-family: Georgia, 'Times New Roman', serif; }
-    .contact { grid-column: 1 / 3; display: flex; justify-content: center; gap: 24px; margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); }
-    .contact a { font-size: 10px; color: #A89E8C; text-decoration: none; letter-spacing: 0.5px; }
+
+    /* Header */
+    .back-header { margin-bottom: 14px; }
+    .back-header h2 {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      color: #F5F0E8;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .divider { width: 36px; height: 1px; background: #C8963C; }
+
+    /* Main body: pillars left, QR right */
+    .body-row {
+      display: flex;
+      gap: 20px;
+      flex: 1;
+      align-items: flex-start;
+    }
+
+    .pillars {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pillar { display: flex; gap: 10px; align-items: flex-start; }
+    .pillar-num {
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: #C8963C;
+      text-transform: uppercase;
+      padding-top: 2px;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    .pillar-content h3 {
+      font-family: Georgia, serif;
+      font-size: 11.5px;
+      color: #F5F0E8;
+      margin-bottom: 2px;
+    }
+    .pillar-content p {
+      font-size: 9.5px;
+      color: #A89E8C;
+      line-height: 1.6;
+    }
+
+    .qr-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .qr-wrapper {
+      background: #F5F0E8;
+      padding: 7px;
+      border-radius: 3px;
+      width: 88px;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-wrapper canvas,
+    .qr-wrapper img { width: 74px !important; height: 74px !important; }
+    .scan-label {
+      font-size: 7.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #A89E8C;
+      text-align: center;
+    }
+
+    /* Thread */
+    .thread {
+      border-top: 1px solid rgba(200,150,60,0.3);
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .thread p {
+      font-family: Georgia, serif;
+      font-size: 9.5px;
+      color: #C8963C;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* Contact */
+    .contact {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .contact a {
+      font-size: 9.5px;
+      color: #A89E8C;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
 
     @media print {
       body { background: white; padding: 10mm; min-height: unset; }
@@ -86,61 +170,70 @@
       .trim-line { border-color: rgba(200,150,60,0.2); }
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
+
   <div class="instructions">
     <h2>Postcard Back — with 3mm bleed</h2>
     <ol>
       <li>Press <strong>Ctrl+P</strong> → Destination: <strong>Save as PDF</strong></li>
       <li>Paper size: <strong>A4</strong>, Margins: <strong>None</strong>, Scale: <strong>100%</strong></li>
       <li>Tick <strong>Background graphics</strong></li>
-      <li>Save as <strong>postcard_back.pdf</strong></li>
-      <li>Upload to Vistaprint as the <strong>Back</strong></li>
+      <li>Save as <strong>postcard_back.pdf</strong> and upload to Vistaprint as the <strong>Back</strong></li>
     </ol>
-    <p class="bleed-note">The dashed line shows the trim edge. Background extends 3mm beyond for bleed.</p>
+    <p class="bleed-note">Dashed line = trim edge. Use this file only — not the old postcard.html.</p>
   </div>
 
   <div class="card-outer">
     <div class="trim-line"></div>
     <div class="card-inner">
+
       <div class="back-header">
         <h2>Three Pillars. One Path.</h2>
         <div class="divider"></div>
       </div>
-      <div class="qr-column">
-        <div class="qr-wrapper" id="qrcode"></div>
-        <p class="scan-label">Scan to visit</p>
+
+      <div class="body-row">
+        <div class="pillars">
+          <div class="pillar">
+            <span class="pillar-num">01</span>
+            <div class="pillar-content">
+              <h3>Hands-Free Harmonica</h3>
+              <p>Respiratory strengthening and musical expression for people with high-level spinal cord injury. Expression opens the door to deeper creativity and inner work.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-num">02</span>
+            <div class="pillar-content">
+              <h3>Guided Imagery Programme</h3>
+              <p>Directed mental practice to stimulate nerve pathways and support movement and sensation after SCI. Works with the body's natural rhythms of rest and receptivity.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-num">03</span>
+            <div class="pillar-content">
+              <h3>Quality of Life Research</h3>
+              <p>Twenty-five years of evidence on what actually helps people flourish after spinal cord injury. The foundation underneath everything.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="qr-block">
+          <div class="qr-wrapper" id="qrcode"></div>
+          <p class="scan-label">Scan to visit</p>
+        </div>
       </div>
-      <div class="pillars">
-        <div class="pillar">
-          <span class="pillar-num">01</span>
-          <div class="pillar-content">
-            <h3>Hands-Free Harmonica</h3>
-            <p>Respiratory strengthening and musical expression for people with high-level spinal cord injury. Expression opens the door to deeper creativity and inner work.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <span class="pillar-num">02</span>
-          <div class="pillar-content">
-            <h3>Guided Imagery Programme</h3>
-            <p>Directed mental practice to stimulate nerve pathways and support movement and sensation after SCI. Works with the body's natural rhythms of rest and receptivity.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <span class="pillar-num">03</span>
-          <div class="pillar-content">
-            <h3>Quality of Life Research</h3>
-            <p>Twenty-five years of evidence on what actually helps people flourish after spinal cord injury. The foundation underneath everything.</p>
-          </div>
-        </div>
-      </div>
+
       <div class="thread">
         <p>Harmonica trains the breath. Breath opens the door to imagery. Imagery changes the body and mind.</p>
       </div>
+
       <div class="contact">
         <a href="https://livingbeyondsci.com">livingbeyondsci.com</a>
         <a href="mailto:jeremy@livingbeyondsci.com">jeremy@livingbeyondsci.com</a>
       </div>
+
     </div>
   </div>
 
