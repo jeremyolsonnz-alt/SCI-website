@@ -219,7 +219,7 @@
         <div class="audio-target">Bowel awareness</div>
         <div class="audio-duration">4 minutes · audio</div>
         <div style="display:flex;align-items:center;gap:0.85rem;">
-          <button onclick="const a=this.nextElementSibling.querySelector('audio'); if(a.paused){a.play();this.querySelector('svg').innerHTML='<rect x=\'6\' y=\'5\' width=\'4\' height=\'14\'/><rect x=\'14\' y=\'5\' width=\'4\' height=\'14\'/>';}else{a.pause();this.querySelector('svg').innerHTML='<path d=\'M6 4l14 8-14 8z\'/>';}" style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:var(--gold);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+          <button onclick="const a=this.nextElementSibling.querySelector('audio'); if(a.paused){a.play();this.querySelector('svg').innerHTML='<rect x=\'6\' y=\'5\' width=\'4\' height=\'14\'/><rect x=\'14\' y=\'5\' width=\'4\' height=\'14\'/>';this.setAttribute('aria-label','Pause Bowel awareness audio');this.setAttribute('aria-pressed','true');}else{a.pause();this.querySelector('svg').innerHTML='<path d=\'M6 4l14 8-14 8z\'/>';this.setAttribute('aria-label','Play Bowel awareness audio');this.setAttribute('aria-pressed','false');}" aria-label="Play Bowel awareness audio" aria-pressed="false" style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:var(--gold);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--charcoal)"><path d="M6 4l14 8-14 8z"/></svg>
           </button>
           <div style="flex:1;">
