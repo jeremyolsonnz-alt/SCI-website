@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For the Newly Injured · Living Beyond SCI</title>
-<meta name="description" content="A starting point for people recently injured, and the family and friends around them — what the research actually says about life after SCI, and one small thing to try this week.">
+<title>For Family and Friends · Living Beyond SCI</title>
+<meta name="description" content="What the research says about the role of family and friends after spinal cord injury, and practical ways to help — from being present without fixing, to rack handovers and reading a script aloud.">
 <link rel="icon" type="image/png" href="favicon.png">
-<meta property="og:title" content="For the Newly Injured · Living Beyond SCI">
-<meta property="og:description" content="A starting point for people recently injured, and the family and friends around them — what the research actually says about life after SCI, and one small thing to try this week.">
+<meta property="og:title" content="For Family and Friends · Living Beyond SCI">
+<meta property="og:description" content="What the research says about the role of family and friends after spinal cord injury, and practical ways to help — from being present without fixing, to rack handovers and reading a script aloud.">
 <meta property="og:image" content="https://livingbeyondsci.com/Jeremy-and-Hands-Free-Harmonica-Student.jpg">
-<meta property="og:url" content="https://livingbeyondsci.com/for_the_newly_injured">
+<meta property="og:url" content="https://livingbeyondsci.com/for_family_and_friends">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -61,18 +61,20 @@
   .finding-source{font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:0.75rem;}
   .finding-source a{color:var(--muted);}
 
-  .step-card{background:var(--charcoal);padding:2.25rem 2.25rem 2rem;margin:1.5rem 0 2.5rem;border:1px solid rgba(200,150,60,0.15);}
-  .step-label{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem;}
-  .step-label::before{content:'';width:18px;height:1px;background:var(--gold);display:block;}
-  .step-title{font-family:'Lora',serif;font-size:1.35rem;color:var(--cream);font-weight:400;margin-bottom:0.75rem;}
-  .step-card p{font-size:0.95rem;color:#B8AE9C;line-height:1.85;margin-bottom:1.25rem;}
-  .step-cta{display:inline-flex;align-items:center;gap:0.6rem;background:var(--gold);color:var(--charcoal);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.04em;padding:0.85rem 1.75rem;transition:opacity 0.2s;}
-  .step-cta:hover{opacity:0.85;}
+  .voice-quote{font-family:'Lora',serif;font-style:italic;font-size:0.98rem;line-height:1.75;color:var(--bark);border-left:3px solid var(--border);padding-left:1.25rem;margin:1rem 0 1.5rem;}
 
-  .family-note{background:rgba(122,112,96,0.05);border-left:3px solid var(--muted);padding:1.75rem 2rem;margin:2.5rem 0;}
-  .family-note-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}
-  .family-note p{font-size:0.95rem;color:#4A4438;line-height:1.85;margin-bottom:0.85rem;}
-  .family-note p:last-child{margin-bottom:0;}
+  .help-card{background:var(--charcoal);padding:2.25rem 2.25rem 2rem;margin:1.5rem 0 2.5rem;border:1px solid rgba(200,150,60,0.15);}
+  .help-label{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem;}
+  .help-label::before{content:'';width:18px;height:1px;background:var(--gold);display:block;}
+  .help-title{font-family:'Lora',serif;font-size:1.35rem;color:var(--cream);font-weight:400;margin-bottom:0.75rem;}
+  .help-card p{font-size:0.95rem;color:#B8AE9C;line-height:1.85;margin-bottom:1.25rem;}
+  .help-card p:last-child{margin-bottom:0;}
+  .help-cta{display:inline-flex;align-items:center;gap:0.6rem;background:var(--gold);color:var(--charcoal);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.04em;padding:0.85rem 1.75rem;transition:opacity 0.2s;}
+  .help-cta:hover{opacity:0.85;}
+
+  .practical-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin:1rem 0 1.5rem;}
+  .practical-list li{font-size:0.95rem;color:#4A4438;line-height:1.7;padding-left:1.1rem;position:relative;}
+  .practical-list li::before{content:'—';position:absolute;left:0;color:var(--gold);}
 
   .next-links{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin:1.5rem 0 1rem;}
   .next-card{display:block;padding:1.5rem;background:var(--cream);border:1px solid var(--border);text-decoration:none;transition:border-color 0.2s;}
@@ -92,7 +94,7 @@
   @media(max-width:780px){
     .article-body{padding:2.5rem 1.5rem 4rem;}
     .hero-inner{padding:0 1.5rem;}
-    .step-card{padding:1.75rem 1.5rem;}
+    .help-card{padding:1.75rem 1.5rem;}
     .next-links{grid-template-columns:1fr;}
   }
   @media(max-width:900px){nav{padding:0 1.25rem;}.nav-links{display:none;}.hamburger{display:flex;}}
@@ -127,57 +129,70 @@
   <div class="hero-inner">
     <div class="breadcrumb">
       <a href="index.html">Home</a> <span>·</span>
-      For the Newly Injured
+      For Family and Friends
     </div>
     <div class="article-eyebrow">A Starting Point</div>
-    <h1 class="article-h1">For the Newly Injured</h1>
-    <p class="article-standfirst">If you or someone you love has recently sustained a spinal cord injury, you don't need everything on this site today. You need somewhere honest to start. This page is that starting point.</p>
+    <h1 class="article-h1">For Family and Friends</h1>
+    <p class="article-standfirst">Our own research keeps saying the same thing: the people around someone with a spinal cord injury matter more than almost anything else. This page is for you — what your role actually is, and practical ways to help.</p>
   </div>
 </div>
 
 <div class="article-body">
 
   <div class="plain-intro">
-    <div class="plain-intro-label">Before Anything Else</div>
-    <p>Whatever you're feeling right now, whether that's fear, numbness, anger, disbelief, or something you can't yet name, it makes sense. There's no correct way to feel in the early weeks after a spinal cord injury, and nothing on this page is asking you to feel differently.</p>
-    <p>This page exists to offer two things: what research actually shows about life after SCI, stated honestly, and one small, low-pressure thing you could try this week if you want to. Nothing here requires you to be ready for anything more than that.</p>
+    <div class="plain-intro-label">Why This Page Exists</div>
+    <p>You didn't sustain the injury, but your life changed too. That's real, and it's rarely acknowledged directly. This page exists to acknowledge it, and to tell you plainly what the research says your presence is actually worth, before it gets into anything practical.</p>
   </div>
 
-  <h2 class="section-head">What the Research Actually Shows</h2>
-  <p class="body-text">There is a lot of research on quality of life after spinal cord injury, some of it grim, some of it inflated. Here is what I can tell you honestly, drawn from graduate research conducted at Deakin University and the wider literature it reviewed.</p>
+  <h2 class="section-head">What the Research Actually Says About Your Role</h2>
+  <p class="body-text">In interviews with 78 people living with spinal cord injury, one finding stood out above everything else.</p>
 
   <div class="finding-card">
-    <div class="finding-eyebrow">The Honest Finding</div>
-    <p>People with SCI do, on average, report lower life satisfaction than the general population, particularly in the areas of productivity, safety, and place in community. That's real, and it would be dishonest of me to tell you otherwise.</p>
-    <p>But the same research found something else, something genuinely hopeful: <strong>greater age and longer time since injury were both associated with higher life satisfaction</strong>, suggesting that adaptation deepens over time. In plain terms: however you feel right now, in these early weeks, is not a fixed prediction of how you will feel in a year, or five years, or twenty. People generally find their way to more satisfaction, not less, the further they get from the point of injury.</p>
-    <div class="finding-source">From graduate research at Deakin University, supervised by Professor Robert Cummins. See the <a href="research_page.html">full research</a> for the complete findings.</div>
+    <div class="finding-eyebrow">The Clearest Finding in the Research</div>
+    <p>Close relationships were the most consistent source of positive coping across every single participant. Not medication, not equipment, not any particular mindset. Family members, partners, and friends were named more often than anything else as what made life liveable after SCI.</p>
+    <div class="finding-source">From qualitative interviews with 78 people with SCI. See the <a href="copingvoices.html">coping voices page</a> for the complete set of responses, in their own words.</div>
   </div>
 
-  <div class="finding-card">
-    <div class="finding-eyebrow">What Seemed to Help Most</div>
-    <p>In interviews with 78 people living with SCI, the people who coped best generally weren't the ones who fought hardest to control every outcome. They were the ones who could, at times, put a setback down to bad luck rather than turning it into evidence of personal failure. A small amount of "that's just how it went" thinking wasn't weakness; it appeared to be a genuine part of coping well.</p>
-    <div class="finding-source">You can read some of those 78 people's own words on the <a href="copingvoices.html">coping voices page</a>, in their own language, not mine.</div>
+  <p class="body-text">Here is some of what people actually said, unedited:</p>
+
+  <div class="voice-quote">"The love of my husband, grandchildren and friends. Also my son and his first wife, with whom we are still great friends."</div>
+  <div class="voice-quote">"But mainly the support of my wife and friends."</div>
+  <div class="voice-quote">"My belief in God, my spirituality, and support of friends and family has allowed me to cope best with my injury. Also having a very determined mind."</div>
+
+  <p class="body-text">If you're reading this because someone you love was recently injured, that research is about you. You are not a bystander in their recovery. You are, statistically, one of the biggest factors in how well they do.</p>
+
+  <h2 class="section-head">What Actually Helps</h2>
+  <p class="body-text">Being named as the most important factor doesn't mean you need to have the right words, or fix anything, or manage their emotional state for them. Based on what the people in that research described, the help that mattered most was steadier and less dramatic than that.</p>
+
+  <ul class="practical-list">
+    <li>Being present without rushing them toward optimism. Letting someone feel frustrated, angry, or flat without immediately trying to talk them out of it.</li>
+    <li>Trusting that adaptation comes on its own timeline, not on the timeline anyone else would prefer.</li>
+    <li>Showing up in ordinary, repeated ways rather than one big gesture. The research describes long relationships, not single rescues.</li>
+    <li>Letting a bit of "that's just how it went" thinking exist, rather than treating every setback as something that needed to be solved or someone's fault.</li>
+  </ul>
+
+  <p class="body-text">None of this requires training. It requires patience, and a willingness to stay present without an agenda.</p>
+
+  <h2 class="section-head">Two Practical Ways to Help, Right Now</h2>
+  <p class="body-text">Beyond presence, there are a couple of specific, concrete things you can do that make a real difference, drawn directly from the two hands-on programmes on this site.</p>
+
+  <div class="help-card">
+    <div class="help-label">From the Harmonica Programme</div>
+    <div class="help-title">Help with the neck rack setup</div>
+    <p>For someone with quadriplegia, getting the harmonica rack positioned correctly takes another pair of hands, at least for the first few sessions. The whole setup conversation is genuinely this simple: <em>"A little higher. A little to the left. Now tighten the right wing-nut. Good."</em> Most carers and family members get it right within two or three tries.</p>
+    <p>One trick that makes handovers between different helpers much easier: take a clear photo of the preferred setup once it's right, and keep it somewhere visible, like stuck on the wall near where practice happens. It saves re-explaining the same adjustments to whoever's helping that day.</p>
+    <a href="harmonica_page.html" class="help-cta">See the full harmonica programme &rarr;</a>
   </div>
 
-  <h2 class="section-head">One Small Thing, If You Want It</h2>
-  <p class="body-text">You don't need to explore this whole site today. If you'd like one low-pressure place to start, here it is.</p>
-
-  <div class="step-card">
-    <div class="step-label">Try This Week</div>
-    <div class="step-title">Bladder Awareness — a 5-minute guided practice</div>
-    <p>This is the shortest and most broadly relevant practice on the site: a five-minute guided imagery exercise for bladder signal recognition and pelvic floor coordination, one of the functions people with SCI most consistently want addressed. You listen, you don't have to do anything physical, and there's no equipment involved. If it isn't for you, that's completely fine; nothing else on this site requires you to have tried it.</p>
-    <a href="exercise_bladder.html" class="step-cta">Try the practice &rarr;</a>
-  </div>
-
-  <div class="family-note">
-    <div class="family-note-label">If You're a Family Member or Friend</div>
-    <p>You may be reading this page because someone you love was recently injured, not because you were. That's welcome too. Everything on this site is free, and there's no version of it that requires the person with SCI to be the one who found it first.</p>
-    <p>The single most useful thing you can do early on is probably not to fix anything. It's to be present, to let the person feel what they're feeling without rushing them toward optimism, and to trust that adaptation, when it comes, tends to come on its own timeline rather than on ours.</p>
-    <p><a href="for_family_and_friends.html" style="color:var(--muted);text-decoration:underline;text-decoration-color:rgba(122,112,96,0.4);">Read more, including what the research says and practical ways to help &rarr;</a></p>
+  <div class="help-card">
+    <div class="help-label">From the Guided Imagery Programme</div>
+    <div class="help-title">Read a script aloud</div>
+    <p>Each of the five guided imagery practices has a full written script available as a downloadable PDF, alongside the audio version. If someone prefers a familiar voice to a recording, or simply enjoys having company during the practice, reading the script aloud slowly, at whatever pace feels natural, is a real way to take part. There's no wrong way to do it, and no performance required.</p>
+    <a href="guided_imagery_page.html" class="help-cta">See the five practices &rarr;</a>
   </div>
 
   <h2 class="section-head">When You're Ready for More</h2>
-  <p class="body-text">There's no schedule here. When and if you want to go further, these are the three main starting points.</p>
+  <p class="body-text">There's no schedule here either. When and if you want to look further, these are the three main starting points on the site.</p>
 
   <div class="next-links">
     <a href="research_page.html" class="next-card">
@@ -193,13 +208,13 @@
     <a href="guided_imagery_page.html" class="next-card">
       <div class="next-card-label">Pillar Three</div>
       <div class="next-card-title">Guided Imagery</div>
-      <p>The full guided imagery programme, including four more practices beyond bladder awareness.</p>
+      <p>Five audio-guided practices, each with a downloadable script.</p>
     </a>
   </div>
 
   <div class="honest-note">
     <div class="honest-note-label">An Honest Note</div>
-    <p>Nothing on this page or this site claims to reverse or cure a spinal cord injury. The aim throughout is wellbeing: helping people not just survive SCI, but find a rich and meaningful life within whatever their body now is. If that's a different promise than you were hoping for, I understand, and I'd rather be honest with you now than oversell you later.</p>
+    <p>Nothing on this page suggests that supporting someone with SCI is simple, or that any of this removes the weight of what you're carrying too. The research says your presence matters enormously; it doesn't say the role is easy. If you're finding it hard, that's a normal response to something genuinely hard, not a sign you're doing it wrong.</p>
   </div>
 
 </div>

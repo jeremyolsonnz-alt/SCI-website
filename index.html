@@ -61,7 +61,7 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--gold); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
   .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
 
   /* HERO */
@@ -617,16 +617,16 @@
 <!-- NAV -->
 <nav>
   <div class="nav-brand">Living Beyond <span>SCI</span></div>
-  <ul class="nav-links" id="navLinks">
+  <ul class="nav-links">
     <li><a href="research_page.html">Research</a></li>
     <li><a href="harmonica_page.html">Harmonica</a></li>
     <li><a href="guided_imagery_page.html">Guided Imagery</a></li>
     <li><a href="bibliography.html">Bibliography</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+  <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
-  </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -678,6 +678,9 @@
     <div style="font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;">A Starting Point</div>
     <p style="font-family: 'Lora', serif; font-size: 1.15rem; color: var(--charcoal); font-weight: 400; line-height: 1.6; margin-bottom: 1rem;">If you or someone you love was recently injured, you don't need everything on this site today.</p>
     <a href="for_the_newly_injured.html" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:var(--gold); text-decoration:none; letter-spacing:0.06em; text-transform:uppercase; border-bottom: 1px solid rgba(200,150,60,0.4); padding-bottom: 0.2rem;">For the newly injured, start here &rarr;</a>
+    <div style="margin-top: 1rem;">
+      <a href="for_family_and_friends.html" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:var(--gold); text-decoration:none; letter-spacing:0.06em; text-transform:uppercase; border-bottom: 1px solid rgba(200,150,60,0.4); padding-bottom: 0.2rem;">For family and friends &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -699,14 +702,10 @@ function loadYT(el, videoId) {
 }
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
-  const btn = document.querySelector('.hamburger');
-  const isOpen = links.style.display === 'flex';
-  if (isOpen) {
+  if (links.style.display === 'flex') {
     links.style.display = 'none';
-    btn.setAttribute('aria-expanded', 'false');
   } else {
     links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:#2A2820;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid #C8963C;z-index:99;';
-    btn.setAttribute('aria-expanded', 'true');
   }
 }
 function handleSubmit(e) {
