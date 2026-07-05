@@ -39,6 +39,14 @@
   p.body-text{font-size:0.95rem;color:#4A4438;line-height:1.9;margin-bottom:1rem;}
   p.body-text:last-child{margin-bottom:0;}
 
+  .permission-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0 1.25rem;}
+  .permission-card{border:1px solid var(--border);padding:1.25rem 1.4rem;background:var(--warm-white);}
+  .permission-card .pc-label{font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem;}
+  .permission-card ul{list-style:none;margin:0;padding:0;}
+  .permission-card li{font-size:0.9rem;color:#4A4438;line-height:1.6;padding:0.3rem 0 0.3rem 1.1rem;position:relative;}
+  .permission-card li::before{content:'';position:absolute;left:0;top:0.72rem;width:6px;height:6px;background:var(--gold);border-radius:50%;}
+  @media(max-width:600px){.permission-grid{grid-template-columns:1fr;}}
+
   .section-link{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);transition:border-color 0.2s;}
   .section-link:hover{border-bottom-color:var(--gold);}
 
@@ -100,7 +108,8 @@
   <div class="plain-summary">
     <div class="plain-summary-label">The Plain Version</div>
     <p class="intro">This is a personal project, free to use, not commercial.</p>
-    <p>The site is offered in good faith and without warranty. You're welcome to read everything and share links freely. If something doesn't work or feels wrong, please get in touch.</p>
+    <p>The site is offered in good faith and without warranty. You're welcome to read everything and share links freely. Please share it; please don't sell it or charge others for access to it.</p>
+    <p>If something doesn't work or feels wrong, please get in touch.</p>
   </div>
 
   <h2 class="section-head">What this site is</h2>
@@ -109,8 +118,35 @@
   <p class="body-text">There are no subscriptions, no advertising, and no user accounts. The site does not collect personal information.</p>
 
   <h2 class="section-head">Using and sharing</h2>
-  <p class="body-text">You're welcome to use anything on this site for personal reading, learning, and practice. You may share links to the site freely. The written content, audio recordings, and original materials remain the author's work, and shouldn't be republished elsewhere without permission.</p>
-  <p class="body-text">If you're a clinician, researcher, educator, or community organiser who'd like to use any of the materials in your own work, please get in touch.</p>
+  <p class="body-text">You're welcome to use anything on this site for personal reading, learning, and practice. You may share links to the site freely, quote short passages with credit, and point anyone toward it who might benefit.</p>
+  <p class="body-text">This work is free, and it is meant to stay free. That's the whole intention behind it. So there is one clear limit: please don't sell it, place it behind a paywall, charge people for access to it, or repackage any of it as a paid product or service of your own. Put simply — share it, don't sell it.</p>
+
+  <div class="permission-grid">
+    <div class="permission-card">
+      <div class="pc-label">You're welcome to</div>
+      <ul>
+        <li>Read, use, and practise with everything here, for yourself</li>
+        <li>Share links to the site with anyone</li>
+        <li>Quote short passages, with credit to Living Beyond SCI</li>
+        <li>Print pages or scripts for your own personal use</li>
+      </ul>
+    </div>
+    <div class="permission-card">
+      <div class="pc-label">Please don't</div>
+      <ul>
+        <li>Sell the material or charge for access to it</li>
+        <li>Place any of it behind a paywall</li>
+        <li>Repackage it as a paid product, course, or service</li>
+        <li>Re-host the audio recordings or republish materials elsewhere</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="body-text">Where a licence label is helpful, the written content, audio, and original materials on this site are offered under a Creative Commons Attribution–NonCommercial–NoDerivatives licence (<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="section-link">CC BY-NC-ND 4.0</a>). In plainer words, that means you may share the material as it is, with credit, for non-commercial purposes. Any other use — selling it, charging for it, or reworking it into something new — needs written permission first.</p>
+
+  <p class="body-text">The Guided Imagery recordings are made in Jeremy's own voice and are part of the free programme. Please don't copy, re-host, or use them commercially elsewhere.</p>
+
+  <p class="body-text">If you're a clinician, researcher, educator, or community organiser who'd like to use any of the materials in your own work, please <a href="contact.html" class="section-link">get in touch</a>. Permission is usually easy to give — the point of the licence is to keep the work free for the people it's for, not to make it hard to reach.</p>
 
   <h2 class="section-head">No warranty</h2>
   <p class="body-text">The site is offered as-is. The author works to keep the content accurate and useful but cannot guarantee that everything is error-free or always available. To the extent permitted by law, the author accepts no liability for consequences arising from your use of the site.</p>
@@ -119,7 +155,7 @@
   <p class="body-text">For questions, feedback, corrections, or anything else, please use the <a href="contact.html" class="section-link">contact page</a>. The site is built by one person — replies may take a little while, but genuine messages are always welcome.</p>
 
   <div class="updated-block">
-    <p>Last updated: 12 June 2026</p>
+    <p>Last updated: 5 July 2026</p>
     <p>Living Beyond SCI · Jeremy Olson</p>
   </div>
 
@@ -127,7 +163,7 @@
 
 <footer>
   <a href="index.html" class="footer-brand">Living Beyond SCI</a>
-  <div class="footer-copy">© 2011–2025 Living Beyond SCI · <a href="terms_sitewide.html" style="color:#5A5040;text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.15);">Terms of Use</a></div>
+  <div class="footer-copy">© 2011–2026 Living Beyond SCI · <a href="terms_sitewide.html" style="color:#5A5040;text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.15);">Terms of Use</a></div>
 </footer>
 
 <script>
