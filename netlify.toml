@@ -1,0 +1,23 @@
+# Netlify configuration for livingbeyondsci.com
+# Static site — no build step. Only the public/ folder is served,
+# which keeps marketing materials, session PDFs, reference docs, and
+# print/business-card assets out of the published site automatically.
+
+[build]
+  publish = "public"
+  # No build command: the site is plain static HTML.
+
+# Sensible security headers for a static informational health site.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Long cache for the downloadable PDFs (scripts, journal, clinician overview).
+[[headers]]
+  for = "*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
