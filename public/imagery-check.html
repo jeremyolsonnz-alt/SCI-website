@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Do You Imagine? — A Self-Reflection Tool</title>
+<meta name="description" content="A short warm-up and self-check to find out how you imagine — and how to shape the guided imagery practices around the way your own mind works.">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #2A2820;
+    --bark: #5C4A2A;
+    --rust: #8B4513;
+    --gold: #C8963C;
+    --muted: #7A7060;
+    --border: #E0D8C8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--charcoal); font-size: 16px; line-height: 1.75; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--charcoal); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; border-bottom: 2px solid var(--gold); }
+  .nav-brand { font-family: 'Lora', serif; font-size: 1.1rem; color: var(--cream); text-decoration: none; letter-spacing: 0.03em; }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { color: #C8C0B0; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:visited { color: #C8C0B0; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
+  .mobile-menu { display: none; background: var(--charcoal); border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 1.5rem; flex-direction: column; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: #C8C0B0; text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--gold); }
+  @media (max-width: 900px) { nav { padding: 0 1.25rem; } .nav-links { display: none; } .hamburger { display: flex; } }
+
+  /* HERO */
+  .page-hero { background: var(--charcoal); padding: 3.5rem 0 0; border-bottom: 1px solid rgba(200,150,60,0.2); }
+  .hero-inner { max-width: 900px; margin: 0 auto; padding: 0 2.5rem; }
+  .breadcrumb { font-size: 0.72rem; color: #5A5040; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .breadcrumb a { color: #5A5040; text-decoration: none; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .hero-h1 { font-family: 'Lora', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.2; color: var(--cream); font-weight: 400; margin-bottom: 1rem; }
+  .hero-standfirst { font-size: 1.05rem; color: #8A8070; line-height: 1.8; max-width: 680px; margin-bottom: 2rem; }
+  .tab-row { display: flex; gap: 0; }
+  .tab-btn { background: none; border: none; border-bottom: 2px solid transparent; color: #7A7060; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 1.5rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+  .tab-btn:hover { color: var(--gold); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* BODY */
+  .body-inner { max-width: 900px; margin: 0 auto; padding: 3.5rem 2.5rem 5rem; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.85rem; }
+  h2.sec { font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 400; color: var(--charcoal); margin: 3rem 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+  h2.sec:first-of-type { margin-top: 0; }
+  p.body-text { font-size: 0.97rem; color: #4A4438; line-height: 1.9; margin-bottom: 1rem; }
+  .step-tag { display: inline-block; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,150,60,0.4); padding: 0.25rem 0.6rem; margin-bottom: 1rem; }
+
+  .card { border-left: 3px solid var(--gold); background: rgba(200,150,60,0.04); padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+  .card-eyebrow { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .card-title { font-family: 'Lora', serif; font-size: 1.1rem; color: var(--charcoal); font-weight: 400; margin-bottom: 0.6rem; }
+  .card p { font-size: 0.92rem; color: #4A4438; line-height: 1.85; margin-bottom: 0.6rem; }
+  .card p:last-child { margin-bottom: 0; }
+
+  .keystone { background: var(--charcoal); padding: 2rem 2.25rem; margin: 2rem 0; border-left: 3px solid var(--gold); }
+  .keystone-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .keystone p { font-size: 1rem; color: #C8C0B0; line-height: 1.85; margin-bottom: 0.75rem; }
+  .keystone p:last-child { margin-bottom: 0; }
+  .keystone strong { color: var(--cream); font-weight: 500; }
+
+  /* QUIZ */
+  .quiz-wrap { border: 1px solid var(--border); background: var(--cream); padding: 2rem; margin: 2rem 0; }
+  .quiz-instruction { font-size: 0.88rem; color: #5A5040; line-height: 1.8; margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+  .target-select { margin-bottom: 1.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+  .target-label { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  select { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); background: var(--warm-white); color: var(--charcoal); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7060' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+  select:focus { border-color: var(--gold); }
+  .quiz-group-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 1.75rem 0 0.5rem; }
+  .quiz-group-note { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+  .q-item { margin-bottom: 1.75rem; }
+  .q-text { font-size: 0.95rem; color: var(--charcoal); line-height: 1.7; margin-bottom: 0.75rem; }
+  .scale { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .scale label { flex: 1 1 0; min-width: 64px; cursor: pointer; }
+  .scale input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .scale span { display: block; text-align: center; font-size: 0.72rem; line-height: 1.4; padding: 0.6rem 0.3rem; border: 1px solid var(--border); background: var(--warm-white); color: var(--muted); transition: all 0.15s; }
+  .scale input:checked + span { background: var(--gold); border-color: var(--gold); color: #fff; }
+  .scale input:focus-visible + span { outline: 2px solid var(--charcoal); outline-offset: 2px; }
+  .scale label:hover span { border-color: var(--gold); }
+  .quiz-btn { background: var(--gold); color: #fff; border: none; padding: 0.85rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
+  .quiz-btn:hover { background: #B4842E; }
+  .quiz-btn.secondary { background: transparent; color: var(--gold); border: 1px solid rgba(200,150,60,0.4); margin-left: 0.5rem; }
+  .quiz-btn.secondary:hover { background: rgba(200,150,60,0.08); }
+  .quiz-error { font-size: 0.85rem; color: #8B4513; margin-top: 0.85rem; display: none; }
+
+  /* RESULT */
+  #result { display: none; margin-top: 2rem; }
+  .result-panel { border: 1px solid var(--gold); background: rgba(200,150,60,0.06); padding: 2rem; }
+  .result-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .result-title { font-family: 'Lora', serif; font-size: 1.5rem; color: var(--charcoal); font-weight: 400; margin-bottom: 1rem; line-height: 1.3; }
+  .result-panel p { font-size: 0.95rem; color: #4A4438; line-height: 1.85; margin-bottom: 1rem; }
+  .score-bars { margin: 1.5rem 0; }
+  .score-row { margin-bottom: 0.9rem; }
+  .score-head { display: flex; justify-content: space-between; font-size: 0.73rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem; }
+  .score-track { height: 8px; background: var(--border); overflow: hidden; }
+  .score-fill { height: 100%; background: var(--gold); width: 0; transition: width 0.6s ease; }
+  .score-fill.dim { background: var(--bark); }
+  .do-this { background: var(--warm-white); border-left: 3px solid var(--gold); padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
+  .do-this-label { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .do-this ul { list-style: none; margin: 0; padding: 0; }
+  .do-this li { font-size: 0.9rem; color: #4A4438; line-height: 1.8; padding: 0.3rem 0 0.3rem 1.25rem; position: relative; }
+  .do-this li::before { content: ''; position: absolute; left: 0; top: 0.95rem; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+
+  .academic-note { background: var(--cream); border: 1px solid var(--border); padding: 1.75rem 2rem; margin: 2.5rem 0; }
+  .academic-note-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .academic-note p { font-size: 0.88rem; color: #5A5040; line-height: 1.8; margin-bottom: 0.6rem; }
+  .academic-note p:last-child { margin-bottom: 0; }
+
+  .ref-item { padding: 1rem 0 1rem 1.25rem; border-bottom: 1px solid var(--border); position: relative; font-size: 0.88rem; color: #4A4438; line-height: 1.8; }
+  .ref-item::before { content: ''; position: absolute; left: 0; top: 1.5rem; width: 3px; height: 12px; background: var(--gold); }
+  .ref-item:last-child { border-bottom: none; }
+  .ref-journal { font-style: italic; color: #6A6050; }
+
+  .cta-row { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 3rem; gap: 1rem; flex-wrap: wrap; }
+  .cta-link { font-size: 0.8rem; color: var(--gold); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  footer { background: #1A1810; padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1rem; }
+  .footer-brand { font-family: 'Lora', serif; font-size: 0.9rem; color: #5A5040; text-decoration: none; }
+  .footer-copy { font-size: 0.75rem; color: #3A3020; }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  @media (max-width: 700px) {
+    .body-inner { padding: 2.5rem 1.5rem 4rem; }
+    .hero-inner { padding: 0 1.5rem; }
+    .quiz-wrap { padding: 1.5rem 1.25rem; }
+    .scale label { min-width: 52px; }
+    .scale span { font-size: 0.66rem; }
+    .tab-btn { padding: 0.85rem 1rem; font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Living Beyond <span>SCI</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="harmonica.html">Harmonica</a></li>
+    <li><a href="guided-imagery.html">Guided Imagery</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="research.html">Research</a>
+  <a href="harmonica.html">Harmonica</a>
+  <a href="guided-imagery.html">Guided Imagery</a>
+  <a href="bibliography.html">Bibliography</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="guided-imagery.html">Guided Imagery</a> &rsaquo; Self-Reflection Tool</div>
+    <div class="hero-eyebrow">Interactive &middot; Self-Reflection Tool</div>
+    <h1 class="hero-h1">How Do You Imagine?</h1>
+    <p class="hero-standfirst">People imagine in very different ways. Some see pictures. Some feel movement without seeing anything at all. This short tool helps you find your own way in &mdash; so the guided imagery practices fit how your mind actually works, instead of how someone guessed it would.</p>
+    <div class="tab-row">
+      <button class="tab-btn active" id="tab-btn-quiz" onclick="showTab('quiz')">The Tool</button>
+      <button class="tab-btn" id="tab-btn-research" onclick="showTab('research')">Research Background</button>
+    </div>
+  </div>
+</section>
+
+<div class="body-inner">
+
+<!-- ============ TAB: TOOL ============ -->
+<div class="tab-panel active" id="panel-quiz">
+
+  <div class="keystone">
+    <div class="keystone-label">Start here &mdash; this is the important part</div>
+    <p><strong>Imagining movement doesn't need feeling to work.</strong> It happens in your brain, in the parts that plan movement &mdash; the same parts that planned every move you have ever made. It doesn't depend on signals coming back up from your body.</p>
+    <p>That's why guided imagery can work after a spinal cord injury &mdash; whatever your level, whatever you can feel. The injury blocked the road. It didn't knock down the city the road came from.</p>
+    <p>What comes next is not a test of how much movement you have. It asks how your imagination works. That's a completely different thing.</p>
+  </div>
+
+  <h2 class="sec">Why This Matters</h2>
+  <p class="body-text">Guided imagery works by switching on the same brain networks that real movement uses. The clearer you can imagine, the more strongly those networks switch on &mdash; and the more the practice can do. Clear imagining is the engine of the whole programme.</p>
+  <p class="body-text">But people imagine in very different ways, and most programmes never check. They hand you a script that says <em>picture your hand closing</em>. Someone who can't picture anything decides they're doing it wrong, and stops. They weren't doing it wrong. They were just given the wrong instructions.</p>
+  <p class="body-text">There are two ways to imagine. You can be strong at one and weak at the other.</p>
+
+  <div class="card">
+    <div class="card-eyebrow">Way One</div>
+    <div class="card-title">Seeing</div>
+    <p>Seeing the movement in your mind, like watching it: the shape of the hand, where the arm is, the room around you. Most people think this is what "imagining" means. For a lot of people, it isn't their stronger side at all.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:1.5rem;">
+    <div class="card-eyebrow">Way Two</div>
+    <div class="card-title">Feeling</div>
+    <p>Feeling the movement from the inside, without seeing anything: the weight, the effort, the stretch, the warmth in your palm, the sense of where your arm is. For getting movement back, this is the more important side &mdash; and it's the one this tool cares about most.</p>
+    <p>This is a feeling your brain makes on its own. It isn't the same as feeling that travels up from your body, and it doesn't need it.</p>
+  </div>
+
+  <!-- WARM-UP -->
+  <h2 class="sec">Part One &middot; Warming Up Your Imagination</h2>
+  <span class="step-tag">Five minutes &middot; Do this first</span>
+  <p class="body-text">You can get better at imagining. It gets clearer the more you do it, like any skill. This warm-up starts with easy, everyday things and works up to movement &mdash; because starting with <em>imagine your hand closing</em> is starting with the hardest thing of all.</p>
+  <p class="body-text">Give each one twenty or thirty seconds. Nothing is scored here. This just wakes your imagination up.</p>
+
+  <div class="card">
+    <div class="card-eyebrow">Warm-up One &middot; An object</div>
+    <div class="card-title">A lemon</div>
+    <p>Picture a lemon on a plate in front of you. Its yellow. The bumpy, waxy skin. Now imagine picking it up &mdash; the weight, the cool surface, the slight give. Now imagine cutting it, and the sharp smell rising up.</p>
+    <p>Notice which parts were easy. The colour? The weight? The smell? That already tells you something about how you imagine.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-eyebrow">Warm-up Two &middot; A place</div>
+    <div class="card-title">A room you know well</div>
+    <p>Think of a room you know really well. Don't try to see all of it at once. Start at the door. Move slowly. Where is the light coming from? What sounds belong in this room?</p>
+    <p>If pictures don't come, notice what does. Lots of people get a strong sense of a place &mdash; how it's laid out, how it feels &mdash; without seeing anything. That sense is real imagining, and you can use it.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-eyebrow">Warm-up Three &middot; A movement</div>
+    <div class="card-title">Something you can still do</div>
+    <p>Now something with movement in it &mdash; and on purpose, a movement you can still do. Turning your head to look over your shoulder, maybe. Or a shrug. Or taking a slow, deep breath.</p>
+    <p>Do it for real first. Then close your eyes and imagine doing it. Not watching yourself &mdash; <em>doing</em> it. Feel the turn, the stretch, the effort, the settling back.</p>
+    <p>Take your time &mdash; as long as the real movement takes. Rushing is the most common mistake, and it makes imagining much weaker.</p>
+  </div>
+
+  <!-- QUIZ -->
+  <h2 class="sec">Part Two &middot; The Self-Check</h2>
+  <span class="step-tag">Four minutes</span>
+  <p class="body-text">This check does one slightly unusual thing, and it's the whole point. It asks you to rate your imagining <strong>twice</strong>: first for a movement you can still do, then for a movement your injury affects.</p>
+  <p class="body-text">The first set shows your starting point &mdash; how clearly you imagine in general. The second shows how clearly you imagine the affected part. The difference between them is the useful bit, and a normal imagery quiz won't show you that.</p>
+
+  <div class="quiz-wrap">
+    <p class="quiz-instruction">Rate each one honestly. There are no good or bad scores &mdash; only useful information. Nothing you type is saved, sent, or seen by anyone. Your result shows up on this page and disappears when you close it.</p>
+
+    <form id="quiz" novalidate>
+
+      <div class="target-select">
+        <label class="target-label" for="target">First &mdash; pick the movement this check should focus on</label>
+        <select id="target">
+          <option value="closing your hand around an object">Closing your hand around an object</option>
+          <option value="reaching forward with your arm">Reaching forward with your arm</option>
+          <option value="lifting your foot and flexing your ankle">Lifting your foot / flexing your ankle</option>
+          <option value="bending your knee and lifting your leg">Bending your knee / lifting your leg</option>
+        </select>
+      </div>
+
+      <div class="quiz-group-label">Part A &middot; Your starting point &mdash; a movement you can still do</div>
+      <p class="quiz-group-note">Do each movement for real first, if you can. Then close your eyes and imagine it. Then rate the imagining &mdash; not the movement.</p>
+
+      <div class="q-item">
+        <div class="q-text"><strong>1.</strong> Imagine turning your head to look over your shoulder. <strong>How clearly did you SEE it?</strong></div>
+        <div class="scale">
+          <label><input type="radio" name="bv1" value="1"><span>1<br>No picture</span></label>
+          <label><input type="radio" name="bv1" value="2"><span>2<br>Faint</span></label>
+          <label><input type="radio" name="bv1" value="3"><span>3<br>Middling</span></label>
+          <label><input type="radio" name="bv1" value="4"><span>4<br>Clear</span></label>
+          <label><input type="radio" name="bv1" value="5"><span>5<br>Like really seeing</span></label>
+        </div>
+      </div>
+
+      <div class="q-item">
+        <div class="q-text"><strong>2.</strong> The same head turn. <strong>How strongly did you FEEL it</strong> &mdash; the turn, the stretch in your neck?</div>
+        <div class="scale">
+          <label><input type="radio" name="bk1" value="1"><span>1<br>No feeling</span></label>
+          <label><input type="radio" name="bk1" value="2"><span>2<br>Faint</span></label>
+          <label><input type="radio" name="bk1" value="3"><span>3<br>Middling</span></label>
+          <label><input type="radio" name="bk1" value="4"><span>4<br>Strong</span></label>
+          <label><input type="radio" name="bk1" value="5"><span>5<br>Like really doing</span></label>
+        </div>
+      </div>
+
+      <div class="q-item">
+        <div class="q-text"><strong>3.</strong> Imagine taking a slow, deep breath on purpose. <strong>How clearly did you SEE it</strong> &mdash; your chest rising, your shoulders lifting?</div>
+        <div class="scale">
+          <label><input type="radio" name="bv2" value="1"><span>1<br>No picture</span></label>
+          <label><input type="radio" name="bv2" value="2"><span>2<br>Faint</span></label>
+          <label><input type="radio" name="bv2" value="3"><span>3<br>Middling</span></label>
+          <label><input type="radio" name="bv2" value="4"><span>4<br>Clear</span></label>
+          <label><input type="radio" name="bv2" value="5"><span>5<br>Like really seeing</span></label>
+        </div>
+      </div>
+
+      <div class="q-item">
+        <div class="q-text"><strong>4.</strong> The same deep breath. <strong>How strongly did you FEEL it</strong> &mdash; the fullness, then letting go?</div>
+        <div class="scale">
+          <label><input type="radio" name="bk2" value="1"><span>1<br>No feeling</span></label>
+          <label><input type="radio" name="bk2" value="2"><span>2<br>Faint</span></label>
+          <label><input type="radio" name="bk2" value="3"><span>3<br>Middling</span></label>
+          <label><input type="radio" name="bk2" value="4"><span>4<br>Strong</span></label>
+          <label><input type="radio" name="bk2" value="5"><span>5<br>Like really doing</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-group-label">Part B &middot; The movement you picked</div>
+      <p class="quiz-group-note">Now imagine the movement you picked above. Don't try to judge whether it "worked" or whether anything moved. Just rate how clear the imagining was.</p>
+
+      <div class="q-item">
+        <div class="q-text"><strong>5.</strong> Imagine <span class="tgt">closing your hand around an object</span>. <strong>How clearly did you SEE it?</strong></div>
+        <div class="scale">
+          <label><input type="radio" name="av1" value="1"><span>1<br>No picture</span></label>
+          <label><input type="radio" name="av1" value="2"><span>2<br>Faint</span></label>
+          <label><input type="radio" name="av1" value="3"><span>3<br>Middling</span></label>
+          <label><input type="radio" name="av1" value="4"><span>4<br>Clear</span></label>
+          <label><input type="radio" name="av1" value="5"><span>5<br>Like really seeing</span></label>
+        </div>
+      </div>
+
+      <div class="q-item">
+        <div class="q-text"><strong>6.</strong> The same movement. <strong>How strongly did you FEEL it from the inside</strong> &mdash; the effort, the weight, where it is?</div>
+        <div class="scale">
+          <label><input type="radio" name="ak1" value="1"><span>1<br>No feeling</span></label>
+          <label><input type="radio" name="ak1" value="2"><span>2<br>Faint</span></label>
+          <label><input type="radio" name="ak1" value="3"><span>3<br>Middling</span></label>
+          <label><input type="radio" name="ak1" value="4"><span>4<br>Strong</span></label>
+          <label><input type="radio" name="ak1" value="5"><span>5<br>Like really doing</span></label>
+        </div>
+      </div>
+
+      <div class="q-item">
+        <div class="q-text"><strong>7.</strong> Imagine the same movement again, slower, in real time. <strong>How clearly did you SEE it this time?</strong></div>
+        <div class="scale">
+          <label><input type="radio" name="av2" value="1"><span>1<br>No picture</span></label>
+          <label><input type="radio" name="av2" value="2"><span>2<br>Faint</span></label>
+          <label><input type="radio" name="av2" value="3"><span>3<br>Middling</span></label>
+          <label><input type="radio" name="av2" value="4"><span>4<br>Clear</span></label>
+          <label><input type="radio" name="av2" value="5"><span>5<br>Like really seeing</span></label>
+        </div>
+      </div>
+
+      <div class="q-item">
+        <div class="q-text"><strong>8.</strong> That slower version. <strong>How strongly did you FEEL it?</strong></div>
+        <div class="scale">
+          <label><input type="radio" name="ak2" value="1"><span>1<br>No feeling</span></label>
+          <label><input type="radio" name="ak2" value="2"><span>2<br>Faint</span></label>
+          <label><input type="radio" name="ak2" value="3"><span>3<br>Middling</span></label>
+          <label><input type="radio" name="ak2" value="4"><span>4<br>Strong</span></label>
+          <label><input type="radio" name="ak2" value="5"><span>5<br>Like really doing</span></label>
+        </div>
+      </div>
+
+      <button type="button" class="quiz-btn" id="submitBtn">See what this means</button>
+      <button type="button" class="quiz-btn secondary" id="resetBtn">Start over</button>
+      <div class="quiz-error" id="quizError">Please answer all eight before carrying on.</div>
+    </form>
+  </div>
+
+  <div id="result">
+    <div class="result-panel">
+      <div class="result-label">Your result</div>
+      <div class="result-title" id="resultTitle"></div>
+
+      <div class="score-bars">
+        <div class="score-row">
+          <div class="score-head"><span>Starting point &mdash; seeing</span><span id="bvScore"></span></div>
+          <div class="score-track"><div class="score-fill dim" id="bvFill"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-head"><span>Starting point &mdash; feeling</span><span id="bkScore"></span></div>
+          <div class="score-track"><div class="score-fill dim" id="bkFill"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-head"><span>Chosen movement &mdash; seeing</span><span id="avScore"></span></div>
+          <div class="score-track"><div class="score-fill" id="avFill"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-head"><span>Chosen movement &mdash; feeling</span><span id="akScore"></span></div>
+          <div class="score-track"><div class="score-fill" id="akFill"></div></div>
+        </div>
+      </div>
+
+      <div id="resultBody"></div>
+
+      <div class="do-this">
+        <div class="do-this-label">What to do in the practices</div>
+        <ul id="resultActions"></ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">Three Things That Are True, Whatever Your Score</h2>
+
+  <div class="card">
+    <div class="card-eyebrow">One</div>
+    <div class="card-title">This is not a measure of how much movement you have</div>
+    <p>This is the most important line on the page. A faint feeling-image of your hand does not mean there's nothing there. A strong one does not mean there is. They're separate things. How clear an image is tells you about your imagination, not about your spinal cord.</p>
+    <p>Please don't let a low score here become a verdict about your body. It isn't one, and it can't be one.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-eyebrow">Two</div>
+    <div class="card-title">Imagining gets stronger with practice</div>
+    <p>Imagining gets clearer the more you do it. Someone who starts with faint, shaky images and practises regularly for a few weeks will usually imagine much more clearly than when they began. The warm-up above <em>is</em> the training. Use it before every session, and take this check again in three weeks.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-eyebrow">Three</div>
+    <div class="card-title">Watch, then imagine, then try</div>
+    <p>Watching a real movement switches on many of the same brain areas as doing it. It also makes the imagining that comes right after much stronger. So before you imagine, watch: a video, a family member's hand opening and closing, your own working movement in a mirror. Then imagine it. Then try it &mdash; no matter what happens, because trying makes a stronger signal than imagining alone.</p>
+    <p><strong>Watch &rarr; imagine &rarr; try.</strong> That order beats imagining on its own for almost everyone. And if your imagining is faint, it's a lifeline.</p>
+  </div>
+
+  <div class="academic-note">
+    <div class="academic-note-label">An honest note about this tool</div>
+    <p>This is a tool to help you reflect, not a medical test. It hasn't been formally tested, and you shouldn't use it to make decisions about your care.</p>
+    <p>It's built on ideas from proper imagery questionnaires &mdash; keeping seeing and feeling separate, doing the movement before imagining it, and rating how clear it was out of five. But it isn't one of those official questionnaires, and it doesn't copy one. The official one is called the KVIQ (the Kinesthetic and Visual Imagery Questionnaire), made by Malouin and her team. If you want a formal check, ask your therapist to do the KVIQ with you.</p>
+    <p>The point here is simpler: to help you notice how <em>you</em> imagine, before you start, so the practices fit your actual mind instead of a guessed one. Whatever your result, it changes <em>how</em> you use the practices &mdash; never whether you can.</p>
+  </div>
+
+  <div class="cta-row">
+    <a href="guided-imagery.html" class="cta-link">&larr; The Guided Imagery Programme</a>
+    <a href="exercise-hand-grasp.html" class="cta-link">Begin a practice &rarr;</a>
+  </div>
+
+</div>
+
+<!-- ============ TAB: RESEARCH ============ -->
+<div class="tab-panel" id="panel-research">
+
+  <h2 class="sec">Why Check How You Imagine At All?</h2>
+  <p class="body-text">Imagining movement isn't one fixed ability that everyone has in equal amounts. It varies a lot from person to person, and that seems to matter: people who imagine more clearly tend to get more out of mental practice. This is one of the most overlooked points in the whole field. Handing everyone the same script and assuming it works the same way for all of them is a mistake.</p>
+  <p class="body-text">Even so, how well someone imagines is rarely checked before a mental practice programme starts. So people who imagine faintly, or who can feel movement but can't see it, get instructions built for someone else's mind, decide they're failing, and drop out.</p>
+
+  <h2 class="sec">The Two Ways of Imagining</h2>
+  <p class="body-text">Seeing a movement and feeling a movement are two different abilities, and they can come apart &mdash; you can be strong at one and weak at the other. This split is built into the main tool used in rehab, the Kinesthetic and Visual Imagery Questionnaire (KVIQ), made and tested by Malouin and her team for people with stroke and other conditions.</p>
+  <p class="body-text">For getting movement back, the feeling side seems to matter more. One well-known idea, from Jeannerod, is that imagining a movement is really your brain quietly running the movement command itself &mdash; not making a picture of it. If that's right, then the feeling of effort, force, and position is closer to what mental practice is trying to reach than the picture is.</p>
+
+  <h2 class="sec">Imagining Movement After Spinal Cord Injury</h2>
+  <p class="body-text">The idea behind the whole programme is that imagining movement happens in the brain, from the top down, and doesn't need signals coming back up from the body. The injury blocks the movement command from getting through. It doesn't remove the brain's ability to make one.</p>
+  <p class="body-text">Brain scans have shown, again and again, that people with spinal cord injury can still switch on their movement networks when they imagine movements they can no longer do. This is the same finding that makes brain&ndash;computer interface research possible: the movement part of the brain is still producing signals you can use.</p>
+  <p class="body-text">There is a catch, though, and this tool is built around it. The brain's "map" of the body isn't fixed &mdash; it changes when the signals coming in change, and this map shifts after a spinal cord injury. Some studies have found that imagining movements below the injury can be slower or less clear than imagining movements that still work, and that this may depend on how long ago the injury happened. The findings aren't all the same, and there's less research here than for stroke.</p>
+  <p class="body-text">This is why the check asks about a movement you can still do <em>and</em> a movement your injury affects. Someone whose imagining is faint everywhere is in a different spot from someone who imagines clearly in general but has gone faint for the affected part &mdash; and they need different advice. A normal questionnaire won't tell those two apart.</p>
+
+  <h2 class="sec">Aphantasia</h2>
+  <p class="body-text">A small number of people can't make pictures in their mind at all, on purpose &mdash; a lifelong thing called aphantasia, described in recent research by Zeman and his team. It isn't caused by injury, it isn't a fault to fix, and it's common enough that an imagery programme shouldn't ignore it.</p>
+  <p class="body-text">Importantly, aphantasia is usually about seeing only. Many people with aphantasia can still feel movement in their mind, and can imagine movement that way. Any programme that treats picturing as the only door leaves these people out for no reason.</p>
+
+  <h2 class="sec">Imagining Can Be Trained</h2>
+  <p class="body-text">How clearly you imagine isn't set in stone. It responds to practice. A common way to build it is to start with simple, everyday images that use several senses, and work up to the movement you're aiming for. That's the reason for the three warm-ups: starting someone with faint imagery on "imagine your hand closing" is starting at the hardest point.</p>
+
+  <h2 class="sec">The Limits of This Tool</h2>
+  <div class="academic-note">
+    <div class="academic-note-label">Read this before you draw any conclusions</div>
+    <p><strong>This tool hasn't been tested.</strong> It's an original reflection tool built on solid ideas, but it hasn't been checked for reliability, it doesn't copy the KVIQ, and its score cut-offs are sensible guesses, not proven numbers.</p>
+    <p><strong>There's less research on imagining after SCI than after stroke.</strong> A lot of the reasoning above is carried over from the wider research on imagining movement, and from stroke studies. Where SCI findings exist, they don't all agree.</p>
+    <p><strong>How you imagine does not predict recovery.</strong> Nothing here is a sign of how your recovery will go. The link between clear imagining and getting more from mental practice is about training &mdash; not about the state of your spinal cord.</p>
+    <p><strong>Rating yourself has limits.</strong> People aren't perfect judges of their own imagining, and your ratings can be swayed by mood, tiredness, and what you expect. Treat the result as a starting point for a conversation, not a measurement.</p>
+  </div>
+
+  <h2 class="sec">Key References</h2>
+  <div class="ref-item">Malouin, F., Richards, C. L., Jackson, P. L., Lafleur, M. F., Durand, A., &amp; Doyon, J. (2007). The Kinesthetic and Visual Imagery Questionnaire (KVIQ) for assessing motor imagery in persons with physical disabilities: A reliability and construct validity study. <span class="ref-journal">Journal of Neurologic Physical Therapy, 31</span>(1), 20&ndash;29.</div>
+  <div class="ref-item">Jeannerod, M. (2001). Neural simulation of action: A unifying mechanism for motor cognition. <span class="ref-journal">NeuroImage, 14</span>(1), S103&ndash;S109.</div>
+  <div class="ref-item">Zeman, A., Dewar, M., &amp; Della Sala, S. (2015). Lives without imagery: Congenital aphantasia. <span class="ref-journal">Cortex, 73</span>, 378&ndash;380.</div>
+  <div class="ref-item">Decety, J. (1996). The neurophysiological basis of motor imagery. <span class="ref-journal">Behavioural Brain Research, 77</span>(1&ndash;2), 45&ndash;52.</div>
+  <div class="ref-item">Sharma, N., Pomeroy, V. M., &amp; Baron, J.-C. (2006). Motor imagery: A backdoor to the motor system after stroke? <span class="ref-journal">Stroke, 37</span>(7), 1941&ndash;1952.</div>
+  <p class="body-text" style="margin-top:1.5rem;">Full references, with DOI links, are on the <a href="bibliography.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.3);">bibliography page</a>.</p>
+
+  <div class="cta-row">
+    <a href="guided-imagery.html" class="cta-link">&larr; The Guided Imagery Programme</a>
+    <a href="research.html" class="cta-link">The Research &rarr;</a>
+  </div>
+
+</div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="footer-brand">Living Beyond SCI</a>
+  <div class="footer-copy">&copy; 2011&ndash;2026 Living Beyond SCI &middot; <a href="terms-sitewide.html" style="color:#5A5040;text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.15);">Terms of Use</a></div>
+</footer>
+
+<script>
+function showTab(which){
+  document.getElementById('panel-quiz').classList.toggle('active', which === 'quiz');
+  document.getElementById('panel-research').classList.toggle('active', which === 'research');
+  document.getElementById('tab-btn-quiz').classList.toggle('active', which === 'quiz');
+  document.getElementById('tab-btn-research').classList.toggle('active', which === 'research');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+(function(){
+  var sel = document.getElementById('target');
+  function syncTarget(){
+    var t = sel.value;
+    var nodes = document.querySelectorAll('.tgt');
+    for (var i=0;i<nodes.length;i++){ nodes[i].textContent = t; }
+  }
+  sel.addEventListener('change', syncTarget);
+  syncTarget();
+
+  function pick(name){
+    var s = document.querySelector('input[name="'+name+'"]:checked');
+    return s ? parseInt(s.value,10) : null;
+  }
+
+  document.getElementById('submitBtn').addEventListener('click', function(){
+    var names = ['bv1','bk1','bv2','bk2','av1','ak1','av2','ak2'];
+    var vals = {};
+    for (var i=0;i<names.length;i++){
+      var v = pick(names[i]);
+      if (v === null){ document.getElementById('quizError').style.display='block'; return; }
+      vals[names[i]] = v;
+    }
+    document.getElementById('quizError').style.display='none';
+
+    var baseV = vals.bv1 + vals.bv2;
+    var baseK = vals.bk1 + vals.bk2;
+    var affV  = vals.av1 + vals.av2;
+    var affK  = vals.ak1 + vals.ak2;
+
+    document.getElementById('bvScore').textContent = baseV + ' / 10';
+    document.getElementById('bkScore').textContent = baseK + ' / 10';
+    document.getElementById('avScore').textContent = affV + ' / 10';
+    document.getElementById('akScore').textContent = affK + ' / 10';
+
+    var res = document.getElementById('result');
+    res.style.display = 'block';
+    setTimeout(function(){
+      document.getElementById('bvFill').style.width = (baseV/10*100)+'%';
+      document.getElementById('bkFill').style.width = (baseK/10*100)+'%';
+      document.getElementById('avFill').style.width = (affV/10*100)+'%';
+      document.getElementById('akFill').style.width = (affK/10*100)+'%';
+    }, 50);
+
+    var t, b, a;
+    var gapK = baseK - affK;
+    var totalBase = baseV + baseK;
+
+    if (totalBase <= 8 && affV <= 4 && affK <= 4){
+      t = 'Your imagining is quiet all round';
+      b = '<p>Both sides are faint &mdash; not just for the affected movement, but for the one you can still do too. That points to how your imagination works in general, rather than anything about your injury.</p>'
+        + '<p>If you have <strong>never</strong> been able to picture things on purpose, even long before your injury, you might have aphantasia. That just means your mind doesn\'t make pictures. You were likely born this way, it isn\'t caused by your injury, and it is not something that needs fixing. The practices are still open to you &mdash; through feeling, and through trying movements, not through picturing.</p>'
+        + '<p>If this is new for you, it\'s worth knowing that being tired, low, in pain, or on strong medication can all make imagining much weaker. This might be a snapshot of a hard week, not the real picture. Take it again in three weeks.</p>';
+      a = ['Treat the three warm-ups as part of every session, not an extra',
+           'Watch the real movement first &mdash; a video, a family member, your own working movement in a mirror &mdash; then imagine, then try',
+           'Use the audio instead of reading the scripts; let the voice do the work',
+           'Wherever a script says "picture" or "see", swap in "sense" or "feel"',
+           'Take this check again in three weeks. Imagining builds fastest early on'];
+    } else if (gapK >= 4 && baseK >= 6){
+      t = 'You imagine well &mdash; but it has faded for the affected part';
+      b = '<p>This is the most useful result the tool can give you, and it\'s the reason the check asks about two movements instead of one.</p>'
+        + '<p>Your imagining works well in general. What\'s weaker is the feeling of the movement your injury affects. This is a known thing: your brain\'s "map" of your body slowly changes when the signals from a body part change, so imagining a movement below your injury can get less clear over time.</p>'
+        + '<p>Two things follow. First, this is exactly what the practices are for. Imagining the movement keeps that part of the map alive and within reach. Second &mdash; and this really matters &mdash; a faint image says nothing about the state of your spinal cord. It\'s about your brain\'s map, not a prediction about your recovery.</p>';
+      a = ['Start each session with your strong movement first &mdash; imagine the one you can still do clearly, then move to the affected one while your mind is warmed up',
+           'Spend the most time in Phase Two, the body-pathway part &mdash; that\'s where the affected movement gets practised directly',
+           'Slow everything down. Real time, never faster',
+           'Watch someone else do the movement right before you imagine it &mdash; this is the biggest single boost you have',
+           'Always finish by trying the movement. Trying makes a stronger brain signal than imagining alone, whatever you see happen',
+           'Take this check again in a month and watch the gap shrink'];
+    } else if ((baseK + affK) - (baseV + affV) >= 5){
+      t = 'You feel more than you see';
+      b = '<p>Your feeling side &mdash; sensing the movement from the inside &mdash; is clearly stronger than your seeing side. That\'s a good place to be. For getting movement back, feeling is the side that does most of the work, and yours is working.</p>'
+        + '<p>The scripts often say "picture" and "watch". Those words weren\'t written for you. Just swap them as you go &mdash; you lose nothing.</p>';
+      a = ['Lean right into the feeling cues: weight, warmth, stretch, effort, pressure, where your body is',
+           'Wherever a script says "see" or "picture", swap in "feel". It works just the same',
+           'In the Ideal Being part, don\'t strain to see the figure clearly &mdash; move quickly to the merge, where the feeling starts',
+           'Spend the most time in Phase Two, the body-pathway part. It\'s your strongest ground',
+           'Always end by trying the movement &mdash; it builds the feeling side even more'];
+    } else if ((baseV + affV) - (baseK + affK) >= 5){
+      t = 'You see more than you feel';
+      b = '<p>Your seeing side is strong, but the feeling of movement is fainter. This is common, and it means one thing worth taking seriously: the feeling side is the one most tied to getting movement back, so it\'s worth building on purpose rather than just working around.</p>'
+        + '<p>Use your strong seeing as the way in &mdash; then turn it into feeling.</p>';
+      a = ['Start each practice by seeing it, where you\'re strong, then move your attention to the feeling',
+           'In the Ideal Being part, take your time watching the figure before the merge. That\'s your advantage &mdash; use it',
+           'After the merge, slow right down and keep asking: what does this feel like from the inside?',
+           'Have someone rest the real object against your hand, or hold it in your working hand, while you imagine &mdash; real feeling helps build imagined feeling',
+           'Always try the movement at the end. Trying is the fastest way to build the feeling side'];
+    } else if (affK >= 7 && baseK >= 7){
+      t = 'Both sides work, including for the affected movement';
+      b = '<p>You imagine clearly &mdash; and, importantly, that stays true for the movement your injury affects. Your brain\'s map of it is alive and within reach. That\'s a real strength.</p>'
+        + '<p>With this much natural ability, the thing that decides what you get from the programme isn\'t how clearly you imagine any more. It\'s how often you practise.</p>';
+      a = ['Use the scripts as written &mdash; both the seeing and feeling cues will land for you',
+           'Put your energy into how often, not how clear: three to five sessions a week is the amount used in the studies that got results',
+           'Keep imagining in real time. Clear imaginers rush the most, and rushing weakens it',
+           'Add the real world where you can: the real position, the real room, the real object',
+           'Still finish every session by trying the movement'];
+    } else {
+      t = 'Both sides work, at a middling level';
+      b = '<p>You imagine fairly well on both sides, without one taking over, and the affected movement isn\'t far behind your starting point. The scripts as written should suit you.</p>'
+        + '<p>Your imagining will sharpen with use. The warm-ups will speed that up a lot.</p>';
+      a = ['Use the scripts as written, using both the seeing and feeling cues',
+           'Do the warm-ups before each session for the first few weeks &mdash; imagining builds fastest early',
+           'Keep everything in real time. Imagined movement should take as long as the real one',
+           'Watch the real movement before imagining it whenever you can',
+           'Finish every session by trying the movement, whatever you see happen'];
+    }
+
+    document.getElementById('resultTitle').textContent = t;
+    document.getElementById('resultBody').innerHTML = b;
+    document.getElementById('resultActions').innerHTML = a.map(function(x){ return '<li>'+x+'</li>'; }).join('');
+    res.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    document.getElementById('quiz').reset();
+    syncTarget();
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('quizError').style.display = 'none';
+    ['bvFill','bkFill','avFill','akFill'].forEach(function(id){ document.getElementById(id).style.width = '0'; });
+    document.querySelector('.quiz-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+})();
+</script>
+</body>
+</html>
