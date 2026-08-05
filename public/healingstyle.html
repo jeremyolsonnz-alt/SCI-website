@@ -757,19 +757,9 @@ function renderResult(body) {
   const primary = profiles[scores.primary];
   const secondary = scores.secondary ? profiles[scores.secondary] : null;
 
-  const barsHTML = styleOrder.map(key => {
-    const p = profiles[key];
-    const pct = scores.pct[key];
-    return `<div class="bar-row">
-      <span class="bar-label">${p.style}</span>
-      <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
-      <span class="bar-pct">${pct}%</span>
-    </div>`;
-  }).join('');
-
   const secondaryHTML = secondary ? `
     <div class="secondary-card">
-      <div class="secondary-eyebrow">Secondary tendency</div>
+      <div class="secondary-eyebrow">Also present</div>
       <div class="secondary-name">${secondary.style}</div>
       <div class="secondary-short">${secondary.short}</div>
     </div>` : '';
@@ -778,15 +768,11 @@ function renderResult(body) {
 
   body.innerHTML = `
     <div class="result-card">
-      <div class="result-eyebrow">Your primary healing style</div>
+      <div class="result-eyebrow">Your strongest tendency</div>
       <div class="result-style-name">${primary.style}</div>
       <div class="result-short">${primary.short}</div>
     </div>
     ${secondaryHTML}
-    <div class="breakdown">
-      <div class="section-label">Your full breakdown</div>
-      ${barsHTML}
-    </div>
     <div class="description-prose">${primary.description}</div>
     <div class="section-label">What this means for you</div>
     <div class="tips-list">${tipsHTML}</div>
@@ -803,23 +789,13 @@ function renderSummary(body) {
   const secondary = scores.secondary ? profiles[scores.secondary] : null;
   const name = patientName;
 
-  const barsHTML = styleOrder.map(key => {
-    const p = profiles[key];
-    const pct = scores.pct[key];
-    return `<div class="summary-bar-row">
-      <span class="summary-bar-label">${p.style}</span>
-      <div class="summary-bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
-      <span class="summary-bar-pct">${pct}%</span>
-    </div>`;
-  }).join('');
-
   const tipsHTML = primary.tips.map((tip, i) => `<div class="tip-item">${tip}</div>`).join('');
 
-  const secondaryLine = secondary ? `<p style="margin-top:0.5rem;font-size:0.82rem;color:rgba(245,240,232,0.7);">Secondary tendency: ${secondary.style}</p>` : '';
+  const secondaryLine = secondary ? `<p style="margin-top:0.5rem;font-size:0.82rem;color:rgba(245,240,232,0.7);">Also present: ${secondary.style}</p>` : '';
 
   const careText = name
-    ? `${name} has completed the Healing Style questionnaire. Their primary style is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for them.`
-    : `I have completed the Healing Style questionnaire. My primary style is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for me.`;
+    ? `${name} has completed the Healing Style questionnaire. Their strongest tendency is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for them.`
+    : `I have completed the Healing Style questionnaire. My strongest tendency is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for me.`;
 
   body.innerHTML = `
     <div class="no-print" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.75rem;">
@@ -836,14 +812,11 @@ function renderSummary(body) {
     <div class="summary-card" id="summary-card">
       <div class="summary-header">
         <div class="summary-header-eyebrow">Healing Style — SCI Self-Reflection</div>
-        <div class="summary-header-name" id="card-style-line">Primary style — ${primary.style}</div>
+        <div class="summary-header-name" id="card-style-line">Your strongest tendency — ${primary.style}</div>
         <div class="summary-header-person" id="card-name">${name ? name : ''}</div>
         ${secondaryLine}
       </div>
       <div class="summary-body">
-        <div class="section-label">Style breakdown</div>
-        ${barsHTML}
-        <hr class="summary-divider" />
         <p class="description-prose" style="font-size:0.95rem;margin-bottom:1.5rem;">${primary.description}</p>
         <div class="section-label">What tends to help</div>
         ${tipsHTML}
@@ -867,8 +840,8 @@ function updateSummaryCard() {
   if (nameEl) nameEl.textContent = name;
   if (careEl) {
     careEl.innerHTML = name
-      ? `${name} has completed the Healing Style questionnaire. Their primary style is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for them.`
-      : `I have completed the Healing Style questionnaire. My primary style is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for me.`;
+      ? `${name} has completed the Healing Style questionnaire. Their strongest tendency is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for them.`
+      : `I have completed the Healing Style questionnaire. My strongest tendency is <strong>${primary.style}</strong>${secondary ? `, with secondary tendencies toward ${secondary.style}` : ''}. Knowing this may help you tailor your communication and support to what tends to work best for me.`;
   }
 }
 
@@ -877,16 +850,14 @@ function copyText() {
   const secondary = scores.secondary ? profiles[scores.secondary] : null;
   const name = patientName;
   const nameLine = name ? `Name: ${name}\n` : '';
-  const secLine = secondary ? `\nSecondary tendency: ${secondary.style}\n${secondary.short}\n` : '';
-  const breakdown = `Style breakdown:\n${styleOrder.map(k => `  ${profiles[k].style}: ${scores.pct[k]}%`).join('\n')}`;
+  const secLine = secondary ? `\nAlso present: ${secondary.style}\n${secondary.short}\n` : '';
   const text = [
     'My Healing Style — SCI Self-Reflection',
     nameLine,
-    `Primary style: ${primary.style}`,
+    `Your strongest tendency: ${primary.style}`,
     '',
     primary.description,
     secLine,
-    breakdown,
     '',
     'What tends to help:',
     ...primary.tips.map((t, i) => `${i + 1}. ${t}`),
