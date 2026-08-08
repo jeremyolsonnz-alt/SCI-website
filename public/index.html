@@ -594,6 +594,31 @@
     font-size: 0.78rem;
     color: #444030;
   }
+  .series-bar {
+    background: #1A1810;
+    padding: 0.85rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .series-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5A5040;
+  }
+  .series-link {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .series-link span { color: var(--gold); }
+  .series-link.current { opacity: 0.85; cursor: default; }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
@@ -695,6 +720,12 @@
   <a href="index.html" class="footer-brand">Living Beyond SCI</a>
   <div class="footer-copy">© 2011–2026 Living Beyond SCI · <a href="terms-sitewide.html" style="color:#5A5040;text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.15);">Terms of Use</a></div>
 </footer>
+
+<div class="series-bar">
+  <span class="series-label">Other sites in this series</span>
+  <a href="index.html" class="series-link current">Living Beyond <span>SCI</span></a>
+  <a href="https://livingbeyondstroke.com/" class="series-link">Living Beyond <span>Stroke</span></a>
+</div>
 
 <script>
 function loadYT(el, videoId) {
