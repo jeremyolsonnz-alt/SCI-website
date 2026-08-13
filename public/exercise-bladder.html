@@ -79,6 +79,27 @@
   .pathway-placeholder{aspect-ratio:3/2;max-width:420px;margin:0 auto 0.75rem;border:1px dashed rgba(200,150,60,0.3);background:rgba(200,150,60,0.03);display:flex;align-items:center;justify-content:center;text-align:center;color:#8A8070;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;padding:1rem;line-height:1.6;}
   .pathway-attribution{font-size:0.72rem;color:#A89C84;text-align:center;margin-top:0.5rem;}
   .pathway-attribution a{color:#A89C84;}
+  .pathway-image svg{width:100%;height:auto;display:block;margin:0 auto 0.9rem;}
+  .pathway-note{font-size:0.78rem;color:#A89C84;line-height:1.7;text-align:center;max-width:520px;margin:0.75rem auto 0;}
+  .diagram-label{font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;letter-spacing:0.11em;text-transform:uppercase;fill:var(--muted);}
+  .diagram-note{font-family:'DM Sans',system-ui,sans-serif;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;fill:var(--gold);}
+  .legend-label{font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;letter-spacing:0.04em;fill:var(--muted);}
+  .route{fill:none;stroke:var(--gold);stroke-linecap:round;stroke-linejoin:round;}
+  .route-trunk{stroke-width:2.6;}
+  .route-branch{stroke-width:1.7;}
+  .route-segment{stroke-width:5;}
+  @media(prefers-reduced-motion:no-preference){
+    .route{stroke-dasharray:640;stroke-dashoffset:640;animation:trace 2.8s cubic-bezier(0.4,0,0.2,1) forwards;}
+    .route-branch{animation-delay:1.1s;}
+    .terminus{opacity:0;animation:settle 1.2s ease forwards;animation-delay:2.4s;}
+  }
+  @keyframes trace{to{stroke-dashoffset:0;}}
+  @keyframes settle{to{opacity:1;}}
+  @media(max-width:780px){
+    .diagram-label{font-size:17px;letter-spacing:0.06em;}
+    .diagram-note{font-size:16px;letter-spacing:0.08em;}
+    .legend-label{font-size:17px;}
+  }
 
   .plain-intro{background:rgba(200,150,60,0.06);border-left:3px solid var(--gold);padding:1.75rem 2rem;margin-bottom:2.5rem;}
   .plain-intro-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
@@ -207,10 +228,144 @@
       <p>Bladder function is genuinely a two-way conversation — signals come up from the body and signals go down from the brain. The imagery work strengthens both directions.</p>
       <div class="pathway-image">
         <figure>
-          <img src="pathway-bladder.png" alt="Anatomical illustration of the nerve pathway from the sacral spinal cord to the bladder">
+          <svg viewBox="0 0 720 800" role="img" aria-labelledby="bladder-title bladder-desc" xmlns="http://www.w3.org/2000/svg">
+                <title id="bladder-title">Simplified schematic of the bladder control pathway</title>
+                <desc id="bladder-desc">On the left, a side view of the head and torso facing right. A gold line begins in the brain, passes through the brainstem, descends the full length of the spinal cord to the sacral segments in the lower back, then leaves through the pelvic nerves and runs forward to the bladder. Small chevrons on the cord show that signal travels in both directions. On the right, the bladder is shown enlarged, with gold nerve endings reaching its muscular wall and the two rings of muscle at its outlet.</desc>
+
+                <!-- ---------- Main figure: lateral head and torso, facing right ---------- -->
+
+                <ellipse cx="272" cy="96" rx="54" ry="60" fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.5"/>
+
+                <path d="M 252 152
+                         C 246 170, 232 180, 214 190
+                         C 198 200, 192 220, 194 248
+                         C 196 300, 200 350, 202 400
+                         C 204 440, 198 478, 188 512
+                         C 178 546, 186 578, 208 598
+                         L 262 624
+                         L 368 624
+                         C 388 604, 400 574, 404 542
+                         C 410 498, 416 456, 418 406
+                         C 422 336, 416 248, 408 196
+                         C 396 184, 330 172, 300 158
+                         C 288 155, 268 152, 252 152
+                         Z"
+                      fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.5"/>
+
+                <!-- Brain and brainstem -->
+                <ellipse cx="270" cy="82" rx="40" ry="33" fill="#E4DCCB" stroke="#D0C6B2" stroke-width="1.2"/>
+                <path d="M 262 112 C 268 126, 264 142, 256 154 C 250 150, 248 134, 252 116 Z"
+                      fill="#E4DCCB" stroke="#D0C6B2" stroke-width="1.2"/>
+
+                <!-- Bladder within the body, marked for the enlargement -->
+                <ellipse cx="330" cy="508" rx="22" ry="20" fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.4"/>
+                <path d="M 330 528 L 330 556" stroke="#DCD3C2" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+                <!-- Callout to the enlargement -->
+                <circle cx="332" cy="518" r="36" fill="none" stroke="#D0C6B2" stroke-width="1" stroke-dasharray="3 5"/>
+                <g stroke="#D0C6B2" stroke-width="1" fill="none">
+                  <line x1="362" y1="497" x2="470" y2="404"/>
+                  <line x1="364" y1="544" x2="470" y2="520"/>
+                </g>
+
+                <!-- The pathway: brain to brainstem -->
+                <path class="route route-trunk" d="M 250 72 C 253 90, 257 106, 261 122"/>
+
+                <!-- Brainstem down the length of the spinal cord -->
+                <path class="route route-trunk"
+                      d="M 261 122
+                         C 254 142, 244 162, 236 184
+                         C 226 212, 218 252, 214 300
+                         C 210 350, 206 400, 203 438"/>
+
+                <!-- Sacral segments S2 to S4 -->
+                <path class="route route-segment" d="M 202 442 L 198 478"/>
+
+                <!-- Pelvic nerves out to the bladder and its outlet -->
+                <path class="route route-branch" d="M 199 482 C 236 494, 278 502, 310 507"/>
+                <path class="route route-branch" d="M 199 486 C 238 512, 276 534, 306 548"/>
+
+                <!-- Direction marks: signal travels both ways -->
+                <g class="flow-mark" fill="none" stroke="#C8963C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 228 258 L 234 267 L 240 258"/>
+                  <path d="M 214 366 L 220 357 L 226 366"/>
+                </g>
+
+                <circle class="terminus" cx="250" cy="72" r="4.5" fill="#C8963C"/>
+                <circle class="terminus" cx="310" cy="507" r="3.2" fill="#C8963C"/>
+                <circle class="terminus" cx="306" cy="548" r="3.2" fill="#C8963C"/>
+
+                <!-- ---------- Enlargement: the bladder and its muscles ---------- -->
+
+                <text class="diagram-note" x="530" y="372" text-anchor="middle">The bladder, enlarged</text>
+
+                <path d="M 530 396
+                         C 570 396, 594 422, 594 452
+                         C 594 484, 566 506, 544 512
+                         L 544 524
+                         L 516 524
+                         L 516 512
+                         C 494 506, 466 484, 466 452
+                         C 466 422, 490 396, 530 396 Z"
+                      fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.6"/>
+
+                <rect x="516" y="524" width="28" height="66" fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.4"/>
+                <rect x="508" y="528" width="44" height="15" rx="7" fill="#E4DCCB" stroke="#D0C6B2" stroke-width="1.2"/>
+                <rect x="508" y="554" width="44" height="15" rx="7" fill="#E4DCCB" stroke="#D0C6B2" stroke-width="1.2"/>
+
+                <!-- Nerve endings reaching the wall and the two sphincters -->
+                <path class="route route-branch" d="M 448 428 C 458 426, 468 430, 478 437"/>
+                <path class="route route-branch" d="M 478 437 C 494 426, 512 418, 528 414"/>
+                <path class="route route-branch" d="M 478 437 C 486 452, 490 468, 492 484"/>
+                <path class="route route-branch" d="M 448 498 C 468 510, 488 524, 502 535"/>
+                <path class="route route-branch" d="M 448 508 C 466 530, 486 548, 502 561"/>
+
+                <circle class="terminus" cx="528" cy="414" r="3" fill="#C8963C"/>
+                <circle class="terminus" cx="492" cy="484" r="3" fill="#C8963C"/>
+                <circle class="terminus" cx="502" cy="535" r="3" fill="#C8963C"/>
+                <circle class="terminus" cx="502" cy="561" r="3" fill="#C8963C"/>
+
+                <!-- ---------- Leader lines ---------- -->
+                <g stroke="#D0C6B2" stroke-width="1" fill="none">
+                  <line x1="158" y1="72" x2="242" y2="72"/>
+                  <line x1="158" y1="128" x2="252" y2="128"/>
+                  <line x1="158" y1="300" x2="208" y2="300"/>
+                  <line x1="158" y1="462" x2="194" y2="462"/>
+                  <line x1="158" y1="540" x2="248" y2="522"/>
+                  <line x1="617" y1="416" x2="590" y2="426"/>
+                  <line x1="617" y1="536" x2="556" y2="536"/>
+                  <line x1="617" y1="580" x2="556" y2="562"/>
+                </g>
+
+                <!-- ---------- Labels ---------- -->
+                <g class="diagram-label">
+                  <text x="150" y="76"  text-anchor="end">Brain</text>
+                  <text x="150" y="132" text-anchor="end">Brainstem</text>
+                  <text x="150" y="304" text-anchor="end">Spinal cord</text>
+                  <text x="150" y="458" text-anchor="end">Sacral segments</text>
+                  <text x="150" y="476" text-anchor="end">S2&#8211;S4</text>
+                  <text x="150" y="544" text-anchor="end">Pelvic nerves</text>
+                  <text x="625" y="420" text-anchor="start">Bladder wall</text>
+                  <text x="625" y="532" text-anchor="start">Internal</text>
+                  <text x="625" y="550" text-anchor="start">sphincter</text>
+                  <text x="625" y="576" text-anchor="start">External</text>
+                  <text x="625" y="594" text-anchor="start">sphincter</text>
+                </g>
+
+                <!-- ---------- Legend ---------- -->
+                <g transform="translate(200, 700)">
+                  <line x1="0" y1="0" x2="34" y2="0" stroke="#C8963C" stroke-width="2.6" stroke-linecap="round"/>
+                  <text class="legend-label" x="46" y="4">Bladder control pathway</text>
+                  <g fill="none" stroke="#C8963C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 8 21 L 14 27 L 20 21"/>
+                    <path d="M 14 39 L 20 33 L 26 39"/>
+                  </g>
+                  <text class="legend-label" x="46" y="34">Signal travels in both directions</text>
+                </g>
+              </svg>
           <figcaption>The pathway this practice follows: from the brain, down to the sacral segments of the spinal cord, out through the pelvic nerves, to the bladder and its surrounding muscles.</figcaption>
         </figure>
-        <p class="pathway-attribution">"Anterior view of female pelvis; internal organs and innervation - no labels" by Ron Slagter, Marco DeRuiter and O. Paul Gobée, LUMC, via <a href="https://anatomytool.org">AnatomyTOOL</a>, licence CC BY-NC-SA.</p>
+        <p class="pathway-note">A simplified schematic rather than an anatomical reference, drawn from the side. The pelvic nerves are paired; only one side is drawn. The bladder wall is the detrusor, the muscle that empties it; the internal sphincter isn't under voluntary control, and coordinating it with the external sphincter is often what an injury disturbs.</p>
       </div>
 
     </div>

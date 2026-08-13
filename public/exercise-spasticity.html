@@ -79,6 +79,27 @@
   .pathway-placeholder{aspect-ratio:3/2;max-width:420px;margin:0 auto 0.75rem;border:1px dashed rgba(200,150,60,0.3);background:rgba(200,150,60,0.03);display:flex;align-items:center;justify-content:center;text-align:center;color:#8A8070;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;padding:1rem;line-height:1.6;}
   .pathway-attribution{font-size:0.72rem;color:#A89C84;text-align:center;margin-top:0.5rem;}
   .pathway-attribution a{color:#A89C84;}
+  .pathway-image svg{width:100%;height:auto;display:block;margin:0 auto 0.9rem;}
+  .pathway-note{font-size:0.78rem;color:#A89C84;line-height:1.7;text-align:center;max-width:520px;margin:0.75rem auto 0;}
+  .diagram-label{font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;letter-spacing:0.11em;text-transform:uppercase;fill:var(--muted);}
+  .diagram-note{font-family:'DM Sans',system-ui,sans-serif;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;fill:var(--gold);}
+  .legend-label{font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;letter-spacing:0.04em;fill:var(--muted);}
+  .route{fill:none;stroke:var(--gold);stroke-linecap:round;stroke-linejoin:round;}
+  .route-trunk{stroke-width:2.6;}
+  .route-branch{stroke-width:1.7;}
+  .route-segment{stroke-width:5;}
+  @media(prefers-reduced-motion:no-preference){
+    .route{stroke-dasharray:620;stroke-dashoffset:620;animation:trace 2.8s cubic-bezier(0.4,0,0.2,1) forwards;}
+    .route-branch{animation-delay:1.1s;}
+    .terminus{opacity:0;animation:settle 1.2s ease forwards;animation-delay:2.4s;}
+  }
+  @keyframes trace{to{stroke-dashoffset:0;}}
+  @keyframes settle{to{opacity:1;}}
+  @media(max-width:780px){
+    .diagram-label{font-size:17px;letter-spacing:0.06em;}
+    .diagram-note{font-size:16px;letter-spacing:0.08em;}
+    .legend-label{font-size:17px;}
+  }
 
   .plain-intro{background:rgba(200,150,60,0.06);border-left:3px solid var(--gold);padding:1.75rem 2rem;margin-bottom:2.5rem;}
   .plain-intro-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
@@ -217,10 +238,106 @@
       <p>You then bring warmth and quiet attention to wherever your spasticity is most active. With each long out-breath, a quiet message: you are safe, you can soften, you don't need to grip right now.</p>
       <div class="pathway-image">
         <figure>
-          <img src="pathway-vagus.png" alt="Anatomical illustration of the parasympathetic division of the autonomic nervous system, showing the vagus nerve running from the brainstem down through the neck, chest and abdomen to the organs, outside the spinal cord">
+          <svg viewBox="0 0 640 700" role="img" aria-labelledby="vagus-title vagus-desc" xmlns="http://www.w3.org/2000/svg">
+                <title id="vagus-title">Simplified schematic of the vagus nerve pathway</title>
+                <desc id="vagus-desc">A front view of a head and torso outline. A gold line begins at the brainstem below the skull, descends on both sides of the neck, branches towards the lungs and heart in the chest, passes through the diaphragm, and continues to the stomach and intestines. A faint dashed line at the midline marks the spinal cord, shown for contrast — the gold pathway runs outside it.</desc>
+
+                <!-- Body silhouette -->
+                <g>
+                  <ellipse cx="320" cy="92" rx="50" ry="60" fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.5"/>
+                  <path d="M 297 160
+                           L 297 190
+                           C 297 196, 285 200, 262 206
+                           C 232 214, 208 222, 198 238
+                           C 190 252, 194 280, 199 320
+                           C 204 356, 208 380, 210 410
+                           C 212 440, 208 462, 206 492
+                           C 204 524, 208 552, 212 582
+                           L 428 582
+                           C 432 552, 436 524, 434 492
+                           C 432 462, 428 440, 430 410
+                           C 432 380, 436 356, 441 320
+                           C 446 280, 450 252, 442 238
+                           C 432 222, 408 214, 378 206
+                           C 355 200, 343 196, 343 190
+                           L 343 160
+                           Z"
+                        fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.5"/>
+                </g>
+
+                <!-- Spinal cord, shown for contrast only -->
+                <line x1="320" y1="158" x2="320" y2="470"
+                      stroke="#C9C0AE" stroke-width="2" stroke-dasharray="3 6" stroke-linecap="round"/>
+
+                <!-- Diaphragm -->
+                <path d="M 216 358 Q 320 398, 424 358"
+                      fill="none" stroke="#D0C6B2" stroke-width="1.8" stroke-linecap="round"/>
+
+                <!-- Vagus nerve: trunks through neck and thorax -->
+                <path class="route route-trunk"
+                      d="M 320 150
+                         C 312 160, 300 170, 296 188
+                         C 292 210, 292 232, 294 254
+                         C 296 292, 302 330, 313 368"/>
+                <path class="route route-trunk"
+                      d="M 320 150
+                         C 328 160, 340 170, 344 188
+                         C 348 210, 348 232, 346 254
+                         C 344 292, 338 330, 327 368"/>
+
+                <!-- Branches to lungs and heart -->
+                <path class="route route-branch" d="M 294 254 C 282 264, 268 270, 252 278"/>
+                <path class="route route-branch" d="M 346 254 C 358 264, 372 270, 388 278"/>
+                <path class="route route-branch" d="M 296 262 C 300 280, 304 294, 308 308"/>
+
+                <!-- Below the diaphragm: stomach and intestines -->
+                <path class="route route-branch" d="M 314 372 C 306 392, 292 404, 277 414"/>
+                <path class="route route-branch" d="M 326 372 C 330 402, 326 430, 318 456"/>
+                <path class="route route-branch" d="M 318 456 C 307 470, 299 482, 293 496"/>
+                <path class="route route-branch" d="M 318 456 C 331 470, 341 482, 347 496"/>
+
+                <!-- Origin and termini -->
+                <circle class="terminus" cx="320" cy="150" r="4.5" fill="#C8963C"/>
+                <circle class="terminus" cx="252" cy="278" r="3.2" fill="#C8963C"/>
+                <circle class="terminus" cx="388" cy="278" r="3.2" fill="#C8963C"/>
+                <circle class="terminus" cx="308" cy="308" r="3.2" fill="#C8963C"/>
+                <circle class="terminus" cx="277" cy="414" r="3.2" fill="#C8963C"/>
+                <circle class="terminus" cx="293" cy="496" r="3.2" fill="#C8963C"/>
+                <circle class="terminus" cx="347" cy="496" r="3.2" fill="#C8963C"/>
+
+                <!-- Leader lines -->
+                <g stroke="#D0C6B2" stroke-width="1" fill="none">
+                  <line x1="178" y1="150" x2="298" y2="152"/>
+                  <line x1="178" y1="220" x2="291" y2="222"/>
+                  <line x1="462" y1="276" x2="394" y2="278"/>
+                  <line x1="178" y1="308" x2="302" y2="308"/>
+                  <line x1="462" y1="366" x2="408" y2="368"/>
+                  <line x1="178" y1="414" x2="271" y2="414"/>
+                  <line x1="178" y1="496" x2="287" y2="496"/>
+                </g>
+
+                <!-- Labels -->
+                <g class="diagram-label">
+                  <text x="170" y="154" text-anchor="end">Brainstem</text>
+                  <text x="170" y="224" text-anchor="end">Neck</text>
+                  <text x="470" y="280" text-anchor="start">Lungs</text>
+                  <text x="170" y="312" text-anchor="end">Heart</text>
+                  <text x="470" y="370" text-anchor="start">Diaphragm</text>
+                  <text x="170" y="418" text-anchor="end">Stomach</text>
+                  <text x="170" y="500" text-anchor="end">Intestines</text>
+                </g>
+
+                <!-- Legend -->
+                <g transform="translate(178, 626)">
+                  <line x1="0" y1="0" x2="34" y2="0" stroke="#C8963C" stroke-width="2.6" stroke-linecap="round"/>
+                  <text class="legend-label" x="46" y="4">Vagus nerve</text>
+                  <line x1="0" y1="26" x2="34" y2="26" stroke="#C9C0AE" stroke-width="2" stroke-dasharray="3 6" stroke-linecap="round"/>
+                  <text class="legend-label" x="46" y="30">Spinal cord, shown for contrast</text>
+                </g>
+              </svg>
           <figcaption>The pathway this practice follows: the vagus nerve leaving the brainstem and travelling down through the neck, chest and abdomen to the organs &mdash; a route that runs outside the spinal cord, and stays intact after injury.</figcaption>
         </figure>
-        <p class="pathway-attribution">"Figure 15.4 Connections of Parasympathetic Division of the Autonomic Nervous System" by <a href="https://openstax.org/details/books/anatomy-and-physiology-2e">OpenStax Anatomy and Physiology 2e</a>, licence CC BY.</p>
+        <p class="pathway-note">A simplified schematic rather than an anatomical reference. The vagus nerve is paired and its branching is far more extensive than shown; branches to the lungs and heart are drawn on one side only. The spinal cord is included solely to show the contrast — the point of the drawing is that this route runs outside it.</p>
       </div>
 
     </div>
