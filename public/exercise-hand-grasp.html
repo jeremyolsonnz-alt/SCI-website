@@ -89,6 +89,27 @@
   .pathway-placeholder{aspect-ratio:3/2;max-width:420px;margin:0 auto 0.75rem;border:1px dashed rgba(200,150,60,0.3);background:rgba(200,150,60,0.03);display:flex;align-items:center;justify-content:center;text-align:center;color:#8A8070;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;padding:1rem;line-height:1.6;}
   .pathway-attribution{font-size:0.72rem;color:#A89C84;text-align:center;margin-top:0.5rem;}
   .pathway-attribution a{color:#A89C84;}
+  .pathway-image svg{width:100%;height:auto;display:block;margin:0 auto 0.9rem;}
+  .pathway-note{font-size:0.78rem;color:#A89C84;line-height:1.7;text-align:center;max-width:520px;margin:0.75rem auto 0;}
+  .diagram-label{font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;letter-spacing:0.11em;text-transform:uppercase;fill:var(--muted);}
+  .diagram-note{font-family:'DM Sans',system-ui,sans-serif;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;fill:var(--gold);}
+  .legend-label{font-family:'DM Sans',system-ui,sans-serif;font-size:12.5px;letter-spacing:0.04em;fill:var(--muted);}
+  .route{fill:none;stroke:var(--gold);stroke-linecap:round;stroke-linejoin:round;}
+  .route-trunk{stroke-width:2.6;}
+  .route-branch{stroke-width:1.7;}
+  .route-segment{stroke-width:5;}
+  @media(prefers-reduced-motion:no-preference){
+    .route{stroke-dasharray:700;stroke-dashoffset:700;animation:trace 3s cubic-bezier(0.4,0,0.2,1) forwards;}
+    .route-branch{animation-delay:1.2s;}
+    .terminus{opacity:0;animation:settle 1.2s ease forwards;animation-delay:2.6s;}
+  }
+  @keyframes trace{to{stroke-dashoffset:0;}}
+  @keyframes settle{to{opacity:1;}}
+  @media(max-width:780px){
+    .diagram-label{font-size:17px;letter-spacing:0.06em;}
+    .diagram-note{font-size:16px;letter-spacing:0.08em;}
+    .legend-label{font-size:17px;}
+  }
 
   /* PRE-PRACTICE BLOCK */
   .plain-intro{background:rgba(200,150,60,0.06);border-left:3px solid var(--gold);padding:1.75rem 2rem;margin-bottom:2.5rem;}
@@ -226,10 +247,161 @@
       <p>Accurate, specific imagining activates the brain more strongly than vague imagining. And attempting the movement — even when nothing visibly happens — produces a stronger brain signal than imagining alone. This part stacks both.</p>
       <div class="pathway-image">
         <figure>
-          <img src="pathway-hand-grasp.png" alt="Anatomical illustration of the motor pathway from the cervical spinal cord through the arm nerves to the forearm muscles that close the hand">
+          <svg viewBox="0 0 720 860" role="img" aria-labelledby="hand-title hand-desc" xmlns="http://www.w3.org/2000/svg">
+                <title id="hand-title">Simplified schematic of the pathway from motor cortex to the muscles that close the hand</title>
+                <desc id="hand-desc">A front view of a head and upper body with one arm at the side. A gold line begins in the motor cortex on one side of the brain, descends, and crosses the midline low in the brainstem. It continues down the cervical spinal cord, where a thicker gold segment marks the segments C5 to T1, then passes out through the brachial plexus and down the arm. Below the cervical segments the spinal cord is drawn as a faint dashed line, showing it is not part of this route. The forearm is shown enlarged beneath, with gold nerves ending in the finger flexor muscles and their tendons running across the wrist into the curling fingers.</desc>
+
+                <!-- ---------- Head, brain, body ---------- -->
+                <ellipse cx="330" cy="102" rx="58" ry="64" fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.5"/>
+                <ellipse cx="330" cy="94" rx="46" ry="44" fill="#E4DCCB" stroke="#D0C6B2" stroke-width="1.2"/>
+                <line x1="330" y1="52" x2="330" y2="136" stroke="#D0C6B2" stroke-width="1.1"/>
+
+                <!-- Motor strip across both hemispheres -->
+                <path d="M 292 62 C 300 76, 302 96, 298 116" fill="none" stroke="#D0C6B2" stroke-width="1.4"/>
+                <path d="M 368 62 C 360 76, 358 96, 362 116" fill="none" stroke="#D0C6B2" stroke-width="1.4"/>
+
+                <!-- Brainstem -->
+                <path d="M 320 138 C 326 152, 326 168, 322 182 C 334 182, 340 168, 340 152 C 340 144, 336 138, 330 136 Z"
+                      fill="#E4DCCB" stroke="#D0C6B2" stroke-width="1.2"/>
+
+                <!-- Torso with one arm at the side -->
+                <path d="M 306 160
+                         C 306 172, 294 178, 274 186
+                         C 250 194, 232 204, 226 220
+                         C 220 238, 226 268, 232 300
+                         C 238 336, 240 380, 240 430
+                         L 240 486
+                         L 420 486
+                         C 420 430, 424 384, 430 344
+                         C 436 306, 442 274, 440 250
+                         L 452 300
+                         C 460 340, 466 372, 470 404
+                         L 470 452
+                         L 508 452
+                         L 508 400
+                         C 506 366, 498 320, 486 276
+                         C 476 238, 464 210, 446 198
+                         C 428 186, 406 178, 386 170
+                         C 370 166, 356 162, 356 160
+                         Z"
+                      fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.5"/>
+
+                <!-- Spinal cord below the cervical segments: not part of this route -->
+                <line x1="330" y1="286" x2="330" y2="452"
+                      stroke="#C9C0AE" stroke-width="2" stroke-dasharray="3 6" stroke-linecap="round"/>
+
+                <!-- ---------- The pathway ---------- -->
+
+                <!-- Motor cortex, hand territory -->
+                <circle class="terminus" cx="296" cy="78" r="4.5" fill="#C8963C"/>
+
+                <!-- Down through the hemisphere to the brainstem -->
+                <path class="route route-trunk"
+                      d="M 296 78 C 302 100, 308 122, 316 142"/>
+
+                <!-- Crossing to the other side, low in the brainstem -->
+                <path class="route route-trunk"
+                      d="M 316 142 C 322 158, 330 168, 340 178
+                         C 344 186, 344 196, 343 206"/>
+
+                <!-- Cervical segments C5 to T1 -->
+                <path class="route route-segment" d="M 343 212 L 341 282"/>
+
+                <!-- Out through the brachial plexus and down the arm -->
+                <path class="route route-branch" d="M 343 222 C 368 226, 390 232, 404 240"/>
+                <path class="route route-branch" d="M 343 248 C 370 248, 392 250, 406 254"/>
+                <path class="route route-branch" d="M 342 272 C 368 268, 390 262, 404 258"/>
+                <path class="route route-trunk"
+                      d="M 406 250 C 428 264, 444 292, 456 328
+                         C 466 358, 474 388, 478 414"/>
+
+                <!-- Callout around the forearm -->
+                <circle cx="482" cy="418" r="52" fill="none" stroke="#D0C6B2" stroke-width="1" stroke-dasharray="3 5"/>
+                <g stroke="#D0C6B2" stroke-width="1" fill="none">
+                  <line x1="446" y1="452" x2="286" y2="556"/>
+                  <line x1="522" y1="446" x2="576" y2="556"/>
+                </g>
+
+                <circle class="terminus" cx="478" cy="414" r="3.2" fill="#C8963C"/>
+
+                <!-- ---------- Enlargement: the forearm ---------- -->
+                <text class="diagram-note" x="430" y="534" text-anchor="middle">The forearm, enlarged</text>
+
+                <path d="M 272 570 C 330 562, 400 574, 468 582 L 468 630 C 400 638, 330 650, 272 642 Z"
+                      fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.5"/>
+
+                <!-- Finger flexor muscle bellies -->
+                <path d="M 290 582 C 332 576, 374 586, 404 596
+                         C 402 618, 360 632, 302 632
+                         C 290 622, 286 598, 290 582 Z"
+                      fill="#E4DCCB" stroke="#D0C6B2" stroke-width="1.2"/>
+
+                <!-- Tendons crossing the wrist -->
+                <g fill="none" stroke="#D0C6B2" stroke-width="1.4" stroke-linecap="round">
+                  <path d="M 404 598 C 430 598, 450 596, 466 594"/>
+                  <path d="M 404 606 C 430 606, 450 604, 466 602"/>
+                  <path d="M 403 614 C 430 614, 450 613, 466 611"/>
+                  <path d="M 401 622 C 428 622, 448 621, 464 619"/>
+                </g>
+
+                <!-- Hand and curling fingers -->
+                <path d="M 468 578 C 500 574, 520 583, 526 599
+                         C 532 619, 519 635, 496 638 L 468 632 Z"
+                      fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.5"/>
+                <g fill="none" stroke="#D0C6B2" stroke-width="7" stroke-linecap="round">
+                  <path d="M 520 584 C 546 584, 556 601, 544 615"/>
+                  <path d="M 523 596 C 548 599, 555 613, 542 625"/>
+                  <path d="M 521 608 C 543 613, 549 623, 536 633"/>
+                  <path d="M 516 618 C 533 623, 539 631, 528 640"/>
+                </g>
+
+                <!-- Nerves reaching the muscles -->
+                <path class="route route-branch" d="M 268 596 C 296 594, 324 598, 348 604"/>
+                <path class="route route-branch" d="M 268 618 C 292 620, 316 620, 336 618"/>
+                <circle class="terminus" cx="348" cy="604" r="3" fill="#C8963C"/>
+                <circle class="terminus" cx="336" cy="618" r="3" fill="#C8963C"/>
+
+                <!-- ---------- Leader lines ---------- -->
+                <g stroke="#D0C6B2" stroke-width="1" fill="none">
+                  <line x1="188" y1="78"  x2="288" y2="78"/>
+                  <line x1="188" y1="168" x2="314" y2="170"/>
+                  <line x1="188" y1="248" x2="334" y2="248"/>
+                  <line x1="188" y1="380" x2="322" y2="380"/>
+                  <line x1="188" y1="604" x2="262" y2="604"/>
+                  <line x1="552" y1="240" x2="414" y2="244"/>
+                  <line x1="552" y1="330" x2="462" y2="330"/>
+                  <line x1="352" y1="700" x2="340" y2="640"/>
+                  <line x1="512" y1="700" x2="452" y2="628"/>
+                </g>
+
+                <!-- ---------- Labels ---------- -->
+                <g class="diagram-label">
+                  <text x="180" y="82"  text-anchor="end">Motor cortex</text>
+                  <text x="180" y="164" text-anchor="end">Where the pathway</text>
+                  <text x="180" y="182" text-anchor="end">crosses over</text>
+                  <text x="180" y="244" text-anchor="end">Cervical segments</text>
+                  <text x="180" y="262" text-anchor="end">C5&#8211;T1</text>
+                  <text x="180" y="376" text-anchor="end">Spinal cord below</text>
+                  <text x="180" y="394" text-anchor="end">this level</text>
+                  <text x="180" y="608" text-anchor="end">Median and</text>
+                  <text x="180" y="626" text-anchor="end">ulnar nerves</text>
+                  <text x="560" y="244" text-anchor="start">Brachial plexus</text>
+                  <text x="560" y="334" text-anchor="start">Nerves of the arm</text>
+                  <text x="352" y="716" text-anchor="middle">Finger flexor muscles</text>
+                  <text x="512" y="716" text-anchor="middle">Tendons</text>
+                </g>
+
+                <!-- ---------- Legend ---------- -->
+                <g transform="translate(200, 782)">
+                  <line x1="0" y1="0" x2="34" y2="0" stroke="#C8963C" stroke-width="2.6" stroke-linecap="round"/>
+                  <text class="legend-label" x="46" y="4">Pathway from the cortex to the hand</text>
+                  <line x1="0" y1="26" x2="34" y2="26" stroke="#C9C0AE" stroke-width="2" stroke-dasharray="3 6" stroke-linecap="round"/>
+                  <text class="legend-label" x="46" y="30">Spinal cord below the cervical segments</text>
+                </g>
+              </svg>
           <figcaption>The pathway this practice follows: from the motor cortex, down through the cervical spinal cord, out along the nerves of the arm, into the forearm muscles that close the hand.</figcaption>
         </figure>
-        <p class="pathway-attribution">"OpenStax AnatPhys fig.14.28 - Corticospinal Pathway - English labels" by <a href="https://openstax.org/details/books/anatomy-and-physiology">OpenStax</a>, licence CC BY.</p>
+        <p class="pathway-note">A simplified schematic rather than an anatomical reference. Drawn from the front, so the arm shown is the left one. The nerves of the arm are drawn as a single line where in fact several run together and separate along the way, and the small muscles within the hand itself are not shown.</p>
       </div>
 
     </div>
