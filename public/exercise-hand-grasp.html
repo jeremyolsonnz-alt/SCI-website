@@ -169,7 +169,10 @@
   .hamburger span { width: 24px; height: 1.5px; background: var(--cream); display: block; }
   @media(max-width:900px){nav{padding:0 1.25rem;}.nav-links{display:none;}.hamburger{display:flex;}}
   }
+  /* Draw each pathway when it scrolls into view (added 2026-10-26) */
+  .js-draw svg:not(.drawn) *{animation-play-state:paused !important;}
 </style>
+<script>if('IntersectionObserver' in window)document.documentElement.classList.add('js-draw');</script>
 </head>
 <body>
 
@@ -277,29 +280,31 @@
                       fill="#E4DCCB" stroke="#D0C6B2" stroke-width="1.2"/>
 
                 <!-- Torso with one arm at the side -->
-                <path d="M 306 160
-                         C 306 172, 294 178, 274 186
-                         C 250 194, 232 204, 226 220
-                         C 220 238, 226 268, 232 300
-                         C 238 336, 240 380, 240 430
+                <path d="M 312 160
+                         L 312 216
+                         C 312 230, 298 238, 278 246
+                         C 252 256, 234 270, 230 288
+                         C 228 302, 230 308, 232 318
+                         C 238 352, 240 392, 240 430
                          L 240 486
                          L 420 486
-                         C 420 430, 424 384, 430 344
-                         C 436 306, 442 274, 440 250
-                         L 452 300
-                         C 460 340, 466 372, 470 404
+                         C 420 432, 424 392, 430 354
+                         C 434 332, 438 316, 440 306
+                         L 452 324
+                         C 460 350, 466 376, 470 404
                          L 470 452
                          L 508 452
                          L 508 400
-                         C 506 366, 498 320, 486 276
-                         C 476 238, 464 210, 446 198
-                         C 428 186, 406 178, 386 170
-                         C 370 166, 356 162, 356 160
+                         C 506 366, 500 332, 490 302
+                         C 482 280, 470 266, 452 258
+                         C 428 248, 400 240, 378 232
+                         C 362 226, 348 222, 348 216
+                         L 348 160
                          Z"
                       fill="#EFE9DD" stroke="#DCD3C2" stroke-width="1.5"/>
 
                 <!-- Spinal cord below the cervical segments: not part of this route -->
-                <line x1="330" y1="286" x2="330" y2="452"
+                <line x1="334" y1="294" x2="334" y2="452"
                       stroke="#C9C0AE" stroke-width="2" stroke-dasharray="3 6" stroke-linecap="round"/>
 
                 <!-- ---------- The pathway ---------- -->
@@ -313,19 +318,19 @@
 
                 <!-- Crossing to the other side, low in the brainstem -->
                 <path class="route route-trunk"
-                      d="M 316 142 C 322 158, 330 168, 340 178
-                         C 344 186, 344 196, 343 206"/>
+                      d="M 316 142 C 322 158, 330 168, 336 178
+                         C 338 188, 336 198, 334 208"/>
 
                 <!-- Cervical segments C5 to T1 -->
-                <path class="route route-segment" d="M 343 212 L 341 282"/>
+                <path class="route route-segment" d="M 334 212 L 334 282"/>
 
                 <!-- Out through the brachial plexus and down the arm -->
-                <path class="route route-branch" d="M 343 222 C 368 226, 390 232, 404 240"/>
-                <path class="route route-branch" d="M 343 248 C 370 248, 392 250, 406 254"/>
-                <path class="route route-branch" d="M 342 272 C 368 268, 390 262, 404 258"/>
+                <path class="route route-branch" d="M 334 234 C 370 246, 394 262, 410 276"/>
+                <path class="route route-branch" d="M 334 256 C 370 264, 394 274, 412 282"/>
+                <path class="route route-branch" d="M 334 278 C 368 280, 392 284, 410 288"/>
                 <path class="route route-trunk"
-                      d="M 406 250 C 428 264, 444 292, 456 328
-                         C 466 358, 474 388, 478 414"/>
+                      d="M 410 282 C 432 294, 446 312, 458 340
+                         C 468 366, 474 392, 478 414"/>
 
                 <!-- Callout around the forearm -->
                 <circle cx="482" cy="418" r="52" fill="none" stroke="#D0C6B2" stroke-width="1" stroke-dasharray="3 5"/>
@@ -380,7 +385,7 @@
                   <line x1="188" y1="248" x2="334" y2="248"/>
                   <line x1="188" y1="380" x2="322" y2="380"/>
                   <line x1="188" y1="604" x2="262" y2="604"/>
-                  <line x1="552" y1="240" x2="414" y2="244"/>
+                  <line x1="552" y1="240" x2="404" y2="268"/>
                   <line x1="552" y1="330" x2="462" y2="330"/>
                   <line x1="352" y1="700" x2="340" y2="640"/>
                   <line x1="512" y1="700" x2="452" y2="628"/>
@@ -525,5 +530,30 @@
   <div class="footer-copy">© 2011–2026 Living Beyond SCI · <a href="terms-sitewide.html" style="color:#5A5040;text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.15);">Terms of Use</a></div>
 </footer>
 
+<script>
+/* Pathway diagrams (added 2026-10-26):
+   1. widen each diagram just enough that no label is cut off at the edges;
+   2. draw the gold pathway when the diagram scrolls into view. */
+(function(){
+  var svgs=[].slice.call(document.querySelectorAll('svg[viewBox]'));
+  function fit(s){
+    var o=(s.dataset.vb||(s.dataset.vb=s.getAttribute('viewBox'))).split(/[ ,]+/).map(Number);
+    s.setAttribute('viewBox',o.join(' '));
+    try{var b=s.getBBox();}catch(e){return;}
+    if(!b.width)return;
+    var x0=Math.min(o[0],b.x-6),x1=Math.max(o[0]+o[2],b.x+b.width+6);
+    s.setAttribute('viewBox',[x0,o[1],x1-x0,o[3]].join(' '));
+  }
+  function fitAll(){svgs.forEach(fit);}
+  fitAll();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitAll);
+  var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(fitAll,150);});
+  if(!document.documentElement.classList.contains('js-draw'))return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('drawn');io.unobserve(e.target);}});
+  },{threshold:0.25});
+  document.querySelectorAll('svg').forEach(function(s){io.observe(s);});
+})();
+</script>
 </body>
 </html>
