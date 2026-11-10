@@ -57,6 +57,16 @@
   .btn-primary{display:inline-block;background:var(--gold);color:var(--charcoal);padding:0.75rem 1.75rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s;}
   .btn-primary:hover{background:#D8A84C;}
 
+  /* MEDIA */
+  .media-block{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(200,150,60,0.2);}
+  .media-label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:#5A5040;margin-bottom:0.75rem;}
+  .media-inner{display:flex;gap:1.25rem;align-items:flex-start;}
+  .media-photo{width:96px;height:96px;object-fit:cover;border:1px solid rgba(200,150,60,0.4);flex-shrink:0;}
+  .media-bio{font-size:0.88rem;color:#A89E8C;line-height:1.7;margin-bottom:0.75rem;}
+  .media-contact{font-size:0.85rem;color:#A89E8C;line-height:1.7;margin-bottom:0.75rem;}
+  .media-contact a{color:var(--cream);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.4);}
+  .media-download{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.4);padding-bottom:0.2rem;}
+
   /* FOOTER */
   footer{background:#1A1810;padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:1rem;}
   .footer-brand{font-family:'Lora',serif;font-size:0.9rem;color:#5A5040;text-decoration:none;}
@@ -66,6 +76,7 @@
   @media(max-width:900px){
     .contact-grid{grid-template-columns:1fr;gap:3rem;}
     .form-row{grid-template-columns:1fr;}
+    .media-inner{flex-direction:column;}
     nav{padding:0 1.25rem;}
     .nav-links{display:none;}
     .hamburger{display:flex;}
@@ -111,6 +122,17 @@
           <div style="margin-top:1.5rem;">
             <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:#5A5040;margin-bottom:0.5rem;">For Clinicians &amp; Rehabilitation Teams</div>
             <a href="clinician_overview.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(200,150,60,0.4);padding-bottom:0.2rem;">Download the one-page overview (PDF) &darr;</a>
+          </div>
+          <div class="media-block" id="media">
+            <div class="media-label">For Media</div>
+            <div class="media-inner">
+              <img src="jeremy-olson.jpg" alt="Jeremy Olson" width="96" height="96" class="media-photo">
+              <div>
+                <p class="media-bio">Jeremy Olson is a psychology researcher in Waihī, New Zealand. He holds an MSocSc from the University of Waikato and completed graduate research on quality of life after spinal cord injury at Deakin University. He created Living Beyond, free guided imagery websites for people living with SCI, stroke and Parkinson's.</p>
+                <p class="media-contact">Phone: <a href="tel:+64272319320">027 231 9320</a> (+64 27 231 9320 from overseas)<br>Email: <a href="mailto:jeremy@livingbeyondsci.com">jeremy@livingbeyondsci.com</a><br>Available for interviews by phone, Zoom or in studio.</p>
+                <a href="jeremy-olson-press.jpg" download class="media-download">Download high-resolution photo &darr;</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
